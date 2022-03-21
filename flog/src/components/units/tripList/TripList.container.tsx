@@ -19,6 +19,9 @@ export default function TripList() {
                       />
                     </T.Mark>
                   )}
+                  <T.EditWrap>
+                    <img src="/img/icon-body-edit.svg" alt="공유한 여행 표시" />
+                  </T.EditWrap>
                   <T.Image>
                     <img
                       src="https://images.unsplash.com/photo-1579169558076-260989da7cc8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"

@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
   box-shadow: 0px 0px 10px 0px #00000040;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 export const Mark = styled.div`
@@ -39,6 +40,16 @@ export const Mark = styled.div`
   img {
     position: relative;
     left: 25px;
+  }
+`;
+
+export const EditWrap = styled.div`
+  z-index: 3;
+  position: absolute;
+  img {
+    position: relative;
+    left: 225px;
+    top: 15px;
   }
 `;
 
@@ -72,21 +83,22 @@ export const Text = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: 500;
-  line-height: 23px;
+  line-height: 1.5rem;
   text-align: left;
   margin-bottom: 9px;
 `;
 
 export const Date = styled.div`
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 1.5rem;
   text-align: left;
   color: #818181;
 `;
 
 export const NewList = styled.div`
   margin-top: 60px;
+  cursor: pointer;
 `;
