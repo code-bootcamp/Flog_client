@@ -15,7 +15,7 @@ export default function TripList() {
                     <T.Mark>
                       <img
                         src="/img/icon-body-marker.svg"
-                        alt="공유한 여행 표시"
+                        alt="공유한 여행 표시야!"
                       />
                     </T.Mark>
                   )}
