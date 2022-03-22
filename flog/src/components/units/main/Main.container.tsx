@@ -1,8 +1,8 @@
-import LandingPageUI from "./Landing.presenter";
+import MainUI from "./Main.presenter";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
-export default function LandingPage() {
+export default function Main() {
   const settings = {
     dots: false,
     infinite: true,
@@ -14,5 +14,5 @@ export default function LandingPage() {
     arrows: false,
     cssEase: "linear",
   };
-  return <LandingPageUI settings={settings} />;
+  return <MainUI settings={settings} />;
 }
