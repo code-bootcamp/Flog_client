@@ -10,7 +10,6 @@ export const Container = styled.div`
   position: relative;
   z-index: 10;
   background: #ffffff;
-  border-bottom: 1px solid #dddddd;
 `;
 export const InnerWrap = styled.div`
   width: 95%;
