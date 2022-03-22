@@ -12,7 +12,6 @@ export default function TripWriteNavigation() {
   const onClickNav = (url: string) => () => {
     alert(url);
   };
-  console.log(router.asPath);
   return (
     <TripWriteNavigationUI
       TRIP_WRITE_NAVIGATION={TRIP_WRITE_NAVIGATION}

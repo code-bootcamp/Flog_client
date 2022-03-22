@@ -3,21 +3,21 @@ import * as Write from "./TripWriteNavigation.styles";
 export default function TripWriteNavigationUI(props) {
   return (
     <Write.Navigation>
-      <ul>
+      <Write.NavigationList>
         {props.TRIP_WRITE_NAVIGATION.map((el, index: number) => (
           <>
             {el.url === props.router.asPath ? (
-              <li key={el.title} className="onNow">
+              <Write.Item key={el.title} className="onNow">
                 <button onClick={props.onClickNav(el.url)}>{el.title}</button>
-              </li>
+              </Write.Item>
             ) : (
-              <li key={el.title}>
+              <Write.Item key={el.title}>
                 <button onClick={props.onClickNav(el.url)}>{el.title}</button>
-              </li>
+              </Write.Item>
             )}
           </>
         ))}
-      </ul>
+      </Write.NavigationList>
     </Write.Navigation>
   );
 }
