@@ -9,11 +9,12 @@ export default function LandingPageUI(props: ILandingPageUI) {
     <Landing.Container>
       <Landing.MainImg>
         <Slider {...props.settings}>
-          {[1, 2, 3].map((el) => (
-            <Landing.SliderItem
-              key={el}
-              src={`/img/main-bg-img${el}.png`}
-            ></Landing.SliderItem>
+          {[1, 2, 3].map((el, index) => (
+            <Landing.SliderWrapper key={el}>
+              <Landing.ImageBox className={`img${index}`}>
+                {/* <img src={`/img/main-bg-img${el}.png`} /> */}
+              </Landing.ImageBox>
+            </Landing.SliderWrapper>
           ))}
         </Slider>
         <Landing.TextGroup>
