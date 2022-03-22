@@ -26,12 +26,20 @@ export const InnerWrap = styled.div`
 
 export const Column = styled.div`
   display: block;
-  width: 24%;
+  width: 25%;
+  padding: 11px;
   background: #f6f6f6;
+  &:nth-of-type(2n) {
+    background: #eeeeee;
+  }
 `;
 
-export const TitleBox = styled.div``;
+export const TitleBox = styled.div`
+  width: 100%;
+`;
 export const Title = styled.div``;
 export const TitleNumber = styled.div``;
 export const TitleText = styled.div``;
-export const PlansBox = styled.div``;
+export const PlansBox = styled.div`
+  width: 100%;
+`;
