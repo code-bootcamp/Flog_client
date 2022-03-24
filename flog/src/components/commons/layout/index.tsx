@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { ReactChild } from "react";
+import LayoutFooter from "./footer/LayoutFooter.container";
 import LayoutHeader from "./header/LayoutHeader.container";
 
 interface ILayoutProps {
@@ -20,6 +21,7 @@ export default function Layout(props: ILayoutProps) {
     <Container>
       <LayoutHeader />
       <Body>{props.children}</Body>
+      <LayoutFooter />
     </Container>
   );
 }
