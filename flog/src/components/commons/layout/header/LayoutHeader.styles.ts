@@ -22,8 +22,9 @@ export const InnerWrap = styled.div`
 `;
 export const Logo = styled.div`
   h1 {
-    font-size: 24px;
-    font-weight: 600;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
     color: #58bd97;
     cursor: pointer;
   }
@@ -38,6 +39,7 @@ export const MenuBar = styled.div`
 export const Navigation = styled.div`
   width: auto;
   height: auto;
+  margin-right: 70px;
   ul {
     display: flex;
     flex-direction: row;
@@ -50,10 +52,14 @@ export const Navigation = styled.div`
         display: block;
         font-size: 1rem;
         font-weight: 500;
-        margin-right: 30px;
-        padding: 0 10px;
-        line-height: 80px;
+        padding: 10px 20px;
+        border-radius: 30px;
         cursor: pointer;
+      }
+    }
+    li:hover {
+      span {
+        background: #f4f4f4;
       }
     }
   }
@@ -69,10 +75,10 @@ export const HamburgerBtn = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: #58bd97;
+  background: #7dcbae;
   border: none;
   border-radius: 30px;
-  padding: 8px 15px 6px 10px;
+  padding: 8px 15px 5px 10px;
   cursor: pointer;
 `;
 export const HamburgerBtnLeft = styled.div`
@@ -85,9 +91,9 @@ export const HamburgerBtnRight = styled.div`
 export const HamburgerMenu = styled.div`
   position: absolute;
   top: 60px;
-  right: 0;
+  left: 0;
   width: 140px;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   background: #ffffff;
   overflow: hidden;
@@ -97,25 +103,25 @@ export const HamburgerMenu = styled.div`
       span {
         display: block;
         font-size: 0.9rem;
-        font-weight: 500;
-        padding: 7px 20px;
+        font-weight: 400;
+        padding: 12px 20px;
         cursor: pointer;
       }
     }
     li:first-of-type {
       span {
-        padding-top: 12px;
+        padding-top: 15px;
       }
     }
     li:last-of-type {
       span {
         padding-top: 10px;
-        padding-bottom: 12px;
-        border-top: 1px solid #d4d4d4;
+        padding-bottom: 15px;
+        border-top: 1px solid #e9e9e9;
       }
     }
     li:hover {
-      background: #f6f6f6;
+      color: #58bd97;
     }
   }
 `;

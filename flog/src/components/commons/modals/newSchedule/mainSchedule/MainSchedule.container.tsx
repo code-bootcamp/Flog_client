@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MyDatePicker from "../../../datePicker/DatePicker.container";
+import MyDatePicker from "../../../datePickers/DatePicker.container";
 import * as M from "./MainSchedule.styles";
 
 //  //상위 컴포넌트에 넣을 내용 - 신규 일정 생성
