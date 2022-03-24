@@ -12,6 +12,7 @@ export const Contents = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 60px 0 100px 0;
 `;
 
 export const InnerWrap = styled.div`
@@ -20,7 +21,7 @@ export const InnerWrap = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 `;
 
@@ -28,18 +29,58 @@ export const Column = styled.div`
   display: block;
   width: 25%;
   padding: 11px;
-  background: #f6f6f6;
-  &:nth-of-type(2n) {
-    background: #eeeeee;
-  }
 `;
 
 export const TitleBox = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
 `;
-export const Title = styled.div``;
-export const TitleNumber = styled.div``;
-export const TitleText = styled.div``;
+export const Title = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+export const TitleNumber = styled.div`
+  width: 80px;
+  height: 80px;
+  background: #58bd97;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  span {
+    color: #ffffff;
+    font-size: 60px;
+    font-weight: 700;
+  }
+  &:after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: calc(50% - 2px);
+    background: #ffffff;
+  }
+`;
+export const TitleText = styled.div`
+  padding-left: 15px;
+  .date {
+    font-size: 0.9rem;
+    color: #818181;
+    margin-bottom: 7px;
+  }
+  .text {
+    font-size: 1.35rem;
+    font-weight: 500;
+  }
+`;
 export const PlansBox = styled.div`
   width: 100%;
 `;

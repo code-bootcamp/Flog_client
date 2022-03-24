@@ -5,7 +5,7 @@ export default function TripWriteBannerUI() {
     <Write.Banner>
       <Write.BgImage></Write.BgImage>
       <Write.Text>
-        <Write.Title>나홀로 6일간 떠나는 강원도 여행</Write.Title>
+        <Write.Title>나홀로 6일간 떠나는 부산 여행</Write.Title>
         <Write.SubTitle>
           2022.03.30 ~ 2022.04.04 <span>나홀로</span>
         </Write.SubTitle>

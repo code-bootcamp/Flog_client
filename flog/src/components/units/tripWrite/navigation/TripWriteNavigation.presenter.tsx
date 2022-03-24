@@ -1,10 +1,13 @@
 import * as Write from "./TripWriteNavigation.styles";
+import { TripWriteNavigationUIProps } from "./TripWriteNavigation.types";
 
-export default function TripWriteNavigationUI(props) {
+export default function TripWriteNavigationUI(
+  props: TripWriteNavigationUIProps
+) {
   return (
     <Write.Navigation>
       <Write.NavigationList>
-        {props.TRIP_WRITE_NAVIGATION.map((el, index: number) => (
+        {props.TRIP_WRITE_NAVIGATION.map((el) => (
           <>
             {el.url === props.router.asPath ? (
               <Write.Item key={el.title} className="onNow">
