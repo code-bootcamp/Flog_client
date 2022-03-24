@@ -17,73 +17,93 @@ export const SubSection = styled.div`
     font-size: 36px;
   }
 `;
-export const MainImg = styled.div`
+export const SliderBg = styled.div`
+  background-color: ${(props) =>
+    props.bgImgNumber === 0
+      ? "#58bd97"
+      : props.bgImgNumber === 1
+      ? "#70baef"
+      : "#ef7088"};
   width: 100%;
-  position: relative;
+  display: flex;
+  justify-content: center;
+`;
+export const MainImg = styled.div`
+  max-width: 1200px;
+  .slick-dots {
+    bottom: 25px;
+    position: absolute;
+    button::before {
+      color: #fff;
+      border: #fff;
+      background-color: transparent;
+    }
+  }
 `;
 export const SliderWrapper = styled.div`
   position: relative;
+  display: flex;
+`;
+
+export const BackImgBox = styled.div`
+  height: calc(100vh - 60px);
+  width: 100%;
 `;
 
 export const ImageBox = styled.div`
   position: relative;
   height: calc(100vh - 60px);
   overflow: hidden;
+  margin-left: 20%;
+
+  width: 39%;
 
   &.img0 {
-    background: url(/img/main-bg-img1.png) no-repeat;
-    background-image: url(/img/main-bg-img1.png);
+    background: url(/img/main-bg-img1.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
   }
   &.img1 {
-    background: url(/img/main-bg-img2.png) no-repeat;
+    background: url(/img/main-bg-img2.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
   }
   &.img2 {
-    background: url(/img/main-bg-img3.png) no-repeat;
+    background: url(/img/main-bg-img3.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  }
-
-  img {
-    width: 100%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    background-size: contain;
   }
 `;
 
 export const TextGroup = styled.div`
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 8% 5% 8% 5%;
+  padding: 8% 0 8% 0;
   display: flex;
-  top: 0;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   color: #fff;
-  position: absolute;
-  width: calc(800 * 100% / 1920);
   height: calc(100vh - 60px);
 `;
 export const TitleSub = styled.div`
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 500;
   word-break: keep-all;
 `;
 export const TitleMain = styled.div`
-  font-size: 96px;
-  color: #58bd97;
+  font-size: 80px;
+  font-weight: 700;
+  margin-bottom: 69px;
 `;
 export const Description = styled.div`
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 24px;
   word-break: keep-all;
   line-height: 1.8em;
+  color: #c6e8db;
 `;
 
 export const LookAround = styled.div`

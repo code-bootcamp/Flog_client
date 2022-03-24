@@ -7,29 +7,33 @@ export default function MainUI(props: IMainUIProps) {
   const router = useRouter();
   return (
     <Main.Container>
-      <Main.MainImg>
-        <Slider {...props.settings}>
-          {[1, 2, 3].map((el, index) => (
-            <Main.SliderWrapper key={el}>
-              <Main.ImageBox className={`img${index}`}>
-                {/* <img src={`/img/main-bg-img${el}.png`} /> */}
-              </Main.ImageBox>
-            </Main.SliderWrapper>
-          ))}
-        </Slider>
-        <Main.TextGroup>
-          <div>
-            <Main.TitleSub>나만의 여행 가이드북을 만들다.</Main.TitleSub>
-            <Main.TitleMain>Flog</Main.TitleMain>
-          </div>
+      <Main.SliderBg bgImgNumber={props.bgImgNumber}>
+        <Main.MainImg>
+          <Slider {...props.settings}>
+            {[1, 2, 3].map((el, index) => (
+              <Main.BackImgBox key={el}>
+                <Main.SliderWrapper>
+                  <Main.TextGroup>
+                    <div>
+                      <Main.TitleSub>
+                        나만의 여행 가이드북을 만들다.
+                      </Main.TitleSub>
+                      <Main.TitleMain>Flog</Main.TitleMain>
+                    </div>
 
-          <Main.Description>
-            Flog는 여행의 소중한 추억을 간직할 수 있는 여행
-            가이드북입니다.여행일정, 가계부, 다이어리 등을 이용하여 여행과
-            관련된 모든 일들을 기록해 보세요!
-          </Main.Description>
-        </Main.TextGroup>
-      </Main.MainImg>
+                    <Main.Description>
+                      여행일정, 가계부, 다이어리 등<br />
+                      여행과 관련된모든 일들을 기록해 보세요!
+                    </Main.Description>
+                  </Main.TextGroup>
+                  <Main.ImageBox className={`img${index}`} />
+                </Main.SliderWrapper>
+              </Main.BackImgBox>
+            ))}
+          </Slider>
+        </Main.MainImg>
+      </Main.SliderBg>
+
       <Main.SubSection>
         <h4>Flog 둘러보기</h4>
         <Main.LookAround>
