@@ -18,11 +18,11 @@ export const InnerWrap = styled.div`
   padding: 50px 0 70px;
 `;
 export const LeftBox = styled.div`
-  width: 50%;
+  width: 60%;
   height: 100%;
 `;
 export const RightBox = styled.div`
-  width: 50%;
+  width: 40%;
   height: 100%;
 `;
 export const Info = styled.div`
@@ -108,6 +108,12 @@ export const NewsLetterTextBox = styled.div`
     font-size: 0.9rem;
     color: #a9a9a9;
     line-height: 1.5em;
+    word-break: keep-all;
   }
 `;
-export const NewsLetterInputBox = styled.div``;
+export const NewsLetterInputBox = styled.div`
+  button {
+    margin-left: 25px;
+    height: 54px;
+  }
+`;
