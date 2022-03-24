@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IContainedButton03UIEmotionProps } from "./ContainedButton02.types";
+import { IContainedButton03UIEmotionProps } from "./ContainedButton03.types";
 
 export const Button = styled.button`
   background: #ea4262;

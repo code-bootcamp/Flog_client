@@ -1,5 +1,5 @@
-import * as Contained from "./ContainedButton02.styles";
-import { IContainedButton03UIProps } from "./ContainedButton02.types";
+import * as Contained from "./ContainedButton03.styles";
+import { IContainedButton03UIProps } from "./ContainedButton03.types";
 
 export default function ContainedButton03UI(props: IContainedButton03UIProps) {
   return (
