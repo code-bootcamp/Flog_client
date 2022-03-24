@@ -7,32 +7,43 @@ export default function MainUI(props: IMainUIProps) {
   const router = useRouter();
   return (
     <Main.Container>
-      <Main.SliderBg bgImgNumber={props.bgImgNumber}>
-        <Main.MainImg>
-          <Slider {...props.settings}>
-            {[1, 2, 3].map((el, index) => (
-              <Main.BackImgBox key={el}>
-                <Main.SliderWrapper>
-                  <Main.TextGroup>
-                    <div>
-                      <Main.TitleSub>
-                        나만의 여행 가이드북을 만들다.
-                      </Main.TitleSub>
-                      <Main.TitleMain>Flog</Main.TitleMain>
-                    </div>
+      <Main.MainImg>
+        <Slider {...props.settings}>
+          {[1, 2, 3].map((el) => (
+            <Main.BackImgBox key={el} bgImg={el}>
+              <Main.SliderWrapper>
+                <Main.TextGroup>
+                  <div>
+                    <Main.TitleSub>
+                      {el === 1
+                        ? "나만의 여행 가이드북을 만들다."
+                        : el === 2
+                        ? "우물 밖이 궁금한 여행자 모여라"
+                        : "지금 회원가입하면"}
+                    </Main.TitleSub>
+                    <Main.TitleMain>
+                      {el === 3 ? "5000 Point" : "Flog"}
+                    </Main.TitleMain>
+                  </div>
 
-                    <Main.Description>
-                      여행일정, 가계부, 다이어리 등<br />
-                      여행과 관련된모든 일들을 기록해 보세요!
-                    </Main.Description>
-                  </Main.TextGroup>
-                  <Main.ImageBox className={`img${index}`} />
-                </Main.SliderWrapper>
-              </Main.BackImgBox>
-            ))}
-          </Slider>
-        </Main.MainImg>
-      </Main.SliderBg>
+                  <Main.Description bgImg={el}>
+                    {el === 3
+                      ? "포인트로 배가 되는"
+                      : "여행일정, 가계부, 다이어리 등  "}{" "}
+                    <br />
+                    {el === 3
+                      ? "여행의 즐거움을 누려보세요!"
+                      : "여행과 관련된 모든 일들을 "}
+                    <br />
+                    {el === 3 ? "" : "기록해 보세요!"}
+                  </Main.Description>
+                </Main.TextGroup>
+                <Main.ImageBox bgImg={el} />
+              </Main.SliderWrapper>
+            </Main.BackImgBox>
+          ))}
+        </Slider>
+      </Main.MainImg>
 
       <Main.SubSection>
         <h4>Flog 둘러보기</h4>
