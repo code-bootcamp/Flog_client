@@ -2,39 +2,38 @@ import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.c
 import * as M from "./TotalBudget.styles";
 import { ITotalBudget } from "./TotalBudget.types";
 
-//  //상위 컴포넌트에 넣을 내용 - total Budget
-// const [pointModal, setPointModal] = useState(false);
-//   const [point, setPoint] = useState(0);
-//   const [pointSelect, setPointSelect] = useState(true);
+//  // 상위 컴포넌트에 넣을 내용 - total Budget
+//  const [totalBudgetModal, setTotalBudgetModal] = useState(false);
+//  const [totalBuget, setTotalBudget] = useState(0);
+//  const [budgetSelect, setBudgetSelect] = useState(true);
 
-//   const onClickPointModal = () => {
-//     setPointModal(true);
-//   };
+//  const onClickTotalBudgetModal = () => {
+//    setTotalBudgetModal(true);
+//  };
 
-//   const onClickExitPointModal = () => {
-//     setPointModal(false);
-//   };
+//  const onClickExitTotalBudgetModal = () => {
+//    setTotalBudgetModal(false);
+//  };
 
-//   const onClickSubmitPointModal = () => {
-//     setPointModal(false);
-//   };
+//  const onClickSubmitTotalBudgetModal = () => {
+//    setTotalBudgetModal(false);
+//  };
 
-//   const onChangePoint = (event) => {
-//     setPoint(event.target.value);
-//     setPointSelect(false);
-//   };
+//  const onChangeTotalBudget = (event) => {
+//    setTotalBudget(event.target.value);
+//    setBudgetSelect(false);
+//  };
 
 // return(
-// <button onClick={onClickPointModal}>포인트 후원하기</button>
-// {pointModal && (
-//   <Point
-//     onClickExit={onClickExitPointModal}
-//     onClickSubmit={onClickSubmitPointModal}
-//     onChangePoint={onChangePoint}
-//     pointSelect={pointSelect}
+// <button onClick={onClickTotalBudgetModal}>예산 설정하기</button>
+// {totalBudgetModal && (
+//   <TotalBudget
+//     onClickExit={onClickExitTotalBudgetModal}
+//     onClickSubmit={onClickSubmitTotalBudgetModal}
+//     onChangeTotalBudget={onChangeTotalBudget}
+//     budgetSelect={budgetSelect}
 //   />
 // )}
-// )
 
 export default function TotalBudget(props: ITotalBudget) {
   return (
@@ -50,20 +49,12 @@ export default function TotalBudget(props: ITotalBudget) {
           </M.Exit>
           <M.Contents>
             <M.Title>예산 설정</M.Title>
-            {/* <M.UserPoint>
-              현재 이조참판님의 포인트는{" "}
-              <span style={{ color: "#58BD97" }}>1,200</span> 입니다
-            </M.UserPoint> */}
-            <M.Wrap>
-              <M.Select onChange={props.onChangeTotalBudget}>
-                <M.Option selected disabled>
-                  금액 입력
-                </M.Option>
-                <M.Option value="100">100</M.Option>
-                <M.Option value="200">200</M.Option>
-                <M.Option value="300">300</M.Option>
-              </M.Select>
-            </M.Wrap>
+
+            <M.Input
+              placeholder="예산을 설정해주세요"
+              type="number"
+              onChange={props.onChangeTotalBudget}
+            />
           </M.Contents>
           <ContainedButton01
             content="확인"

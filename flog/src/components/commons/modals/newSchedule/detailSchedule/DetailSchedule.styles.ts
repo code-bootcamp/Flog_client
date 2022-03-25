@@ -89,41 +89,45 @@ export const TimeInputWrap = styled.div`
 export const TimeInput = styled.input`
   width: 164px;
   height: 56px;
-  border: 1px solid #cacaca;
+  border: 1px solid #a9a9a9;
   border-radius: 8px;
   padding-left: 24px;
-  font-size: 1.1rem;
   line-height: 150%;
+
+  color: #626262;
+  font-size: 16px;
+
+  ::placeholder {
+    color: #a9a9a9;
+  }
+
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
+  }
 `;
 
 export const MemoInput = styled.textarea`
   width: 344px;
   height: 100px;
-  border: 1px solid #cacaca;
+  border: 1px solid #a9a9a9;
   border-radius: 8px;
   padding-left: 24px;
   padding: 16px 24px 16px 24px;
-  font-size: 1.1rem;
+  font-size: 16px;
   line-height: 150%;
   resize: none;
-`;
+  color: #626262;
+  font-size: 16px;
 
-export const Select = styled.select`
-  width: 485px;
-  height: 56px;
-  border: 1px solid #cacaca;
+  ::placeholder {
+    color: #a9a9a9;
+  }
 
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 0.9rem;
-  line-height: 150%;
-  background: url("/img/Modal-dropdown.svg") no-repeat 95% 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  select::-ms-expand {
-    display: none;
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
   }
 `;
-
-export const Option = styled.option``;

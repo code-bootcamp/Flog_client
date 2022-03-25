@@ -17,8 +17,8 @@ export const Container = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  width: 788px;
-  height: 700px;
+  width: 600px;
+  height: 755px;
   padding: 44px;
   border: none;
   border-radius: 20px;
@@ -53,13 +53,14 @@ export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
   text-align: center;
+  font-weight: 500;
   margin-bottom: 60px;
 `;
 
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
 `;
 
 export const Label = styled.div`
@@ -79,19 +80,26 @@ export const Input = styled.input`
 `;
 
 export const Select = styled.select`
-  width: 485px;
+  width: 338px;
   height: 56px;
-  border: 1px solid #58bd97;
+  border: 1px solid #a9a9a9;
   border-radius: 8px;
   padding-left: 24px;
-  font-size: 0.9rem;
+  font-size: 16px;
   line-height: 150%;
   background: url("/img/icon-modal-dropdown.svg") no-repeat 95% 50%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #626262;
   select::-ms-expand {
     display: none;
+  }
+
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
   }
 `;
 

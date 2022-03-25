@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.container";
+import OutlinedInput01 from "../../../inputs/outlined/01/OutlinedInput01.container";
 import * as M from "./DetailSchedule.styles";
 import { INewDetailScheduleModalProps } from "./DetailSchedule.types";
 
@@ -109,11 +110,12 @@ export default function NewDetailScheduleModal(
 
             <M.Wrap>
               <M.Label>장소</M.Label>
-              <M.Input
+
+              <OutlinedInput01
+                placeholder="장소를 입력하세요"
                 type="text"
-                placeholder="장소를 입력하세요."
                 onChange={onChangeTitle}
-              ></M.Input>
+              />
             </M.Wrap>
 
             <M.Wrap>

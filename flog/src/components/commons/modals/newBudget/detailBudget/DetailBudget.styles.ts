@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const ModalWrapper = styled.div`
   width: 600px;
-  height: 800px;
+  height: 755px;
   padding: 44px;
   border: none;
   border-radius: 20px;
@@ -45,18 +45,19 @@ export const Exit = styled.div`
   }
 `;
 export const Contents = styled.div`
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 `;
 export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 `;
 
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 15px;
 `;
 
@@ -66,9 +67,48 @@ export const Label = styled.div`
   color: #626262;
 `;
 
-export const Category = styled.div``;
+export const CategoryWrap = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+`;
+export interface IDetailBudgetEmotionProps {
+  isSelect: boolean;
+}
 
-export const CategoryLabel = styled.div``;
+export const Category = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 90px;
+  border-radius: 12px;
+  background-color: ${(props: IDetailBudgetEmotionProps) =>
+    props.isSelect ? "#F1F1F1" : "none"};
+`;
+
+export const CategoryIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 48px;
+  height: 38px;
+  img {
+    :hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const CategoryLabel = styled.div`
+  text-align: center;
+  font-size: 16px;
+  line-height: 19px;
+  color: #818181;
+`;
 
 export const Input = styled.input`
   width: 344px;
@@ -93,40 +133,43 @@ export const TimeInputWrap = styled.div`
 export const TimeInput = styled.input`
   width: 164px;
   height: 56px;
-  border: 1px solid #cacaca;
+  border: 1px solid #a9a9a9;
   border-radius: 8px;
   padding-left: 24px;
-  font-size: 1.1rem;
   line-height: 150%;
+  color: #626262;
+  font-size: 16px;
+  text-align: end;
+  ::placeholder {
+    color: #a9a9a9;
+  }
+
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
+  }
 `;
 export const MemoInput = styled.textarea`
   width: 344px;
   height: 100px;
-  border: 1px solid #cacaca;
+  border: 1px solid #a9a9a9;
   border-radius: 8px;
   padding-left: 24px;
   padding: 16px 24px 16px 24px;
-  font-size: 1.1rem;
+  font-size: 16px;
   line-height: 150%;
   resize: none;
-`;
+  color: #626262;
+  font-size: 16px;
 
-export const Select = styled.select`
-  width: 485px;
-  height: 56px;
-  border: 1px solid #cacaca;
+  ::placeholder {
+    color: #a9a9a9;
+  }
 
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 0.9rem;
-  line-height: 150%;
-  background: url("/img/Modal-dropdown.svg") no-repeat 95% 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  select::-ms-expand {
-    display: none;
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
   }
 `;
-
-export const Option = styled.option``;
