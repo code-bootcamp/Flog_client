@@ -17,8 +17,8 @@ export const Container = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  width: 788px;
-  height: 700px;
+  width: 480px;
+  height: 360px;
   padding: 44px;
   border: none;
   border-radius: 20px;
@@ -31,6 +31,15 @@ export const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: start;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Contents = styled.div`
+  margin-bottom: 4rem;
 `;
 
 export const Exit = styled.div`
@@ -46,47 +55,29 @@ export const Exit = styled.div`
   }
 `;
 
-export const Contents = styled.div`
-  margin-bottom: 3rem;
-`;
 export const Title = styled.div`
-  font-size: 2rem;
+  font-size: 1.9rem;
   line-height: 53px;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 2rem;
 `;
-
-export const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-`;
-
-export const Label = styled.div`
-  font-size: 1.1rem;
-  margin-right: 34px;
+export const UserPoint = styled.div`
   color: #626262;
-`;
-
-export const Input = styled.input`
-  width: 485px;
-  height: 56px;
-  border: 1px solid #58bd97;
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 0.9rem;
+  font-size: 16px;
   line-height: 150%;
+  text-align: center;
+  word-break: keep-all;
+  margin-bottom: 1.6rem;
 `;
-
 export const Select = styled.select`
-  width: 485px;
+  width: 338px;
   height: 56px;
-  border: 1px solid #58bd97;
-
+  border: 1px solid #cacaca;
   border-radius: 8px;
   padding-left: 24px;
   font-size: 0.9rem;
   line-height: 150%;
+
   background: url("/img/icon-modal-dropdown.svg") no-repeat 95% 50%;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -97,7 +88,10 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option``;
-
-export const ButtonWrap = styled.div`
-  margin-top: 100px;
-`;
+// export const Contents = styled.div`
+//   color: #626262;
+//   font-size: 20px;
+//   line-height: 140%;
+//   text-align: center;
+//   word-break: keep-all;
+// `;

@@ -1,8 +1,8 @@
-import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
-import * as M from "./ChargePoint.styles";
-import { IPointProps } from "./ChargePoint.types";
+import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.container";
+import * as M from "./TotalBudget.styles";
+import { ITotalBudget } from "./TotalBudget.types";
 
-//  //상위 컴포넌트에 넣을 내용 - point
+//  //상위 컴포넌트에 넣을 내용 - total Budget
 // const [pointModal, setPointModal] = useState(false);
 //   const [point, setPoint] = useState(0);
 //   const [pointSelect, setPointSelect] = useState(true);
@@ -36,7 +36,7 @@ import { IPointProps } from "./ChargePoint.types";
 // )}
 // )
 
-export default function Point(props: IPointProps) {
+export default function TotalBudget(props: ITotalBudget) {
   return (
     <M.Container>
       <M.ModalWrapper>
@@ -49,13 +49,13 @@ export default function Point(props: IPointProps) {
             />
           </M.Exit>
           <M.Contents>
-            <M.Title>포인트 후원하기</M.Title>
-            <M.UserPoint>
+            <M.Title>예산 설정</M.Title>
+            {/* <M.UserPoint>
               현재 이조참판님의 포인트는{" "}
               <span style={{ color: "#58BD97" }}>1,200</span> 입니다
-            </M.UserPoint>
+            </M.UserPoint> */}
             <M.Wrap>
-              <M.Select onChange={props.onChangePoint}>
+              <M.Select onChange={props.onChangeTotalBudget}>
                 <M.Option selected disabled>
                   금액 입력
                 </M.Option>
@@ -66,10 +66,10 @@ export default function Point(props: IPointProps) {
             </M.Wrap>
           </M.Contents>
           <ContainedButton01
-            content="후원하기"
+            content="확인"
             size="large"
             onClick={props.onClickSubmit}
-            disabled={props.pointSelect}
+            disabled={props.budgetSelect}
           />
         </M.Modal>
       </M.ModalWrapper>

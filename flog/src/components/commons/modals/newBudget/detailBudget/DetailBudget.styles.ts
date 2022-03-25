@@ -44,7 +44,9 @@ export const Exit = styled.div`
     }
   }
 `;
-
+export const Contents = styled.div`
+  margin-bottom: 4rem;
+`;
 export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
@@ -82,7 +84,21 @@ export const Input = styled.input`
     margin: 0;
   }
 `;
+export const TimeInputWrap = styled.div`
+  width: 344px;
+  display: flex;
+  justify-content: space-between;
+`;
 
+export const TimeInput = styled.input`
+  width: 164px;
+  height: 56px;
+  border: 1px solid #cacaca;
+  border-radius: 8px;
+  padding-left: 24px;
+  font-size: 1.1rem;
+  line-height: 150%;
+`;
 export const MemoInput = styled.textarea`
   width: 344px;
   height: 100px;
@@ -114,31 +130,3 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option``;
-
-export const ButtonWrap = styled.div`
-  margin-top: 100px;
-`;
-
-export const ModalCloseButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  border-radius: 5px;
-  height: 60px;
-  width: 115px;
-  border-radius: 100px;
-  padding: 16px, 40px, 16px, 40px;
-
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-
-  background-color: ${(props: IIsButtonActiveProps) =>
-    props.isButtonActive ? "#58BD97" : "black"};
-`;
-
-export interface IIsButtonActiveProps {
-  isButtonActive: boolean;
-}
