@@ -2,6 +2,8 @@ import * as Main from "./Main.styles";
 import { useRouter } from "next/router";
 import Slider from "react-slick";
 import { IMainUIProps } from "./Main.types";
+import OutlinedButton02 from "../../commons/buttons/outlined/02/OutlinedButton02.container";
+import ContainedButton01 from "../../commons/buttons/contained/01/ContainedButton01.container";
 
 export default function MainUI(props: IMainUIProps) {
   const router = useRouter();
@@ -57,13 +59,13 @@ export default function MainUI(props: IMainUIProps) {
               </Main.BoxDescription>
               <Main.BoxTitle>나의 여행</Main.BoxTitle>
 
-              <Main.BoxBtn
+              <OutlinedButton02
+                content="보러가기"
+                size="small"
                 onClick={() => {
                   router.push("/");
                 }}
-              >
-                보러가기
-              </Main.BoxBtn>
+              ></OutlinedButton02>
             </Main.Text>
           </Main.LookAroundBox>
           <Main.LookAroundBox>
@@ -74,13 +76,13 @@ export default function MainUI(props: IMainUIProps) {
                 내 경험을 다른 이들에게 들려주는 공유 공간
               </Main.BoxDescription>
               <Main.BoxTitle>우리의 여행</Main.BoxTitle>
-              <Main.BoxBtn
+              <OutlinedButton02
+                content="보러가기"
+                size="small"
                 onClick={() => {
                   router.push("/");
                 }}
-              >
-                보러가기
-              </Main.BoxBtn>
+              ></OutlinedButton02>
             </Main.Text>
           </Main.LookAroundBox>
         </Main.LookAround>

@@ -13,6 +13,7 @@ export default function Main() {
     arrows: false,
     autoplay: true,
     cssEase: "linear",
+    fade: true,
   };
 
   return <MainUI settings={settings} />;
