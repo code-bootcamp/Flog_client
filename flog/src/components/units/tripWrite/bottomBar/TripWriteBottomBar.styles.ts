@@ -31,6 +31,7 @@ export const ExitButton = styled.button`
   border: 0;
   background: transparent;
   cursor: pointer;
+  transition: all 0.2s ease;
   span {
     font-size: 1rem;
   }

@@ -1,4 +1,5 @@
 import TripWriteBanner from "../banner/TripWriteBanner.container";
+import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
 import TripWritePlansAdd from "./add/TripWritePlansAdd.container";
 import TripWritePlansCard from "./card/TripWritePlansCard.container";
@@ -35,6 +36,7 @@ export default function TripWritePlansUI() {
           ))}
         </Write.InnerWrap>
       </Write.Contents>
+      <TripWriteBottomBar />
     </Write.Container>
   );
 }
