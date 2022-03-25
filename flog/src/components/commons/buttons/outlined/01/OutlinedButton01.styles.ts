@@ -17,8 +17,10 @@ export const Button = styled.button`
   border-radius: 50px;
   border: 2px solid #58bd97;
   cursor: pointer;
+  transition: all 0.2s ease;
   &:hover {
-    background: #edf7f3;
+    color: #ffffff;
+    background: #58bd97;
   }
   &.disabled {
     color: #a9a9a9;
