@@ -1,5 +1,6 @@
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
+import TripWritePlansAdd from "./add/TripWritePlansAdd.container";
 import TripWritePlansCard from "./card/TripWritePlansCard.container";
 import { SAMPLE_DATA } from "./SampleData";
 import * as Write from "./TripWritePlans.styles";
@@ -28,6 +29,7 @@ export default function TripWritePlansUI() {
                 {el.contents.map((content) => (
                   <TripWritePlansCard content={content} key={content.name} />
                 ))}
+                <TripWritePlansAdd />
               </Write.PlansBox>
             </Write.Column>
           ))}

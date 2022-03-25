@@ -17,18 +17,25 @@ export const NavigationList = styled.div`
 
 export const Item = styled.div`
   list-style: none;
-  display: block;
   height: 100%;
-  padding: 0 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+
   button {
-    height: 100%;
+    height: auto;
     background: #ffffff;
     border: 0;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 30px;
+
     cursor: pointer;
     &:hover {
-      color: #58bd97;
+      background: #f8f8f8;
     }
   }
   &.onNow {
@@ -38,7 +45,7 @@ export const Item = styled.div`
       &:after {
         content: "";
         display: block;
-        width: 90%;
+        width: calc(90% - 50px);
         height: 2px;
         background: #58bd97;
         position: absolute;
