@@ -1,6 +1,8 @@
+import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
 import * as M from "./Exit.styles";
+import { IExitProps } from "./Exit.types";
 
-// //상위 컴포넌트에 넣을 내용 - alert
+// //상위 컴포넌트에 넣을 내용 - exit
 // const [exitModal, setExitModal] = useState(false);
 
 // const onClickExitModal = () => {
@@ -25,14 +27,14 @@ import * as M from "./Exit.styles";
 //     )}
 // )
 
-export default function Exit(props) {
+export default function Exit(props: IExitProps) {
   return (
     <M.Container>
       <M.ModalWrapper>
         <M.Modal>
           <M.Exit>
             <img
-              src="/img/Modal-exit.svg"
+              src="/img/icon-modal-exit.svg"
               alt="나가기버튼"
               onClick={props.onClickExit}
             />
@@ -40,12 +42,11 @@ export default function Exit(props) {
           <M.Contents>
             현재 창을 나가시면 일정이 저장되지 않습니다. 정말 나가시겠습니까?
           </M.Contents>
-
-          <M.ButtonWrap>
-            <M.ModalCloseButton onClick={props.onClickSubmit}>
-              네, 나갈래요
-            </M.ModalCloseButton>
-          </M.ButtonWrap>
+          <ContainedButton01
+            content="네, 나갈래요"
+            size="medium"
+            onClick={props.onClickSubmit}
+          />
         </M.Modal>
       </M.ModalWrapper>
     </M.Container>

@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { getYear, getMonth } from "date-fns";
 import { ko } from "date-fns/locale";
 import styled from "@emotion/styled";
+import { IMyDatePickerProps } from "./DatePicker.types";
 
 const DatePickerHead = styled.div`
   display: flex;
@@ -38,19 +39,10 @@ const SDatePicker = styled(DatePicker)`
   font-size: 0.9rem;
 `;
 
-interface IMyDatePickerProps {
-  setIsButtonActive: any;
-  setIsDateActive: any;
-  title: string;
-  people: string;
-  theme: string;
-  isDateActive: boolean;
-}
-
 export default function MyDatePicker(props: IMyDatePickerProps) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const onChange = (dates) => {
+  const onChange = (dates: [any, any]) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
@@ -69,14 +61,14 @@ export default function MyDatePicker(props: IMyDatePickerProps) {
         renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
           <DatePickerHead>
             <PrevButton>
-              <img src="/img/Modal-prev.svg" onClick={decreaseMonth} />
+              <img src="/img/icon-modal-prev.svg" onClick={decreaseMonth} />
             </PrevButton>
             <Text>
               {getYear(date)}년 {getMonth(date) + 1}월
             </Text>
 
             <NextButton>
-              <img src="/img/Modal-next.svg" onClick={increaseMonth} />
+              <img src="/img/icon-modal-next.svg" onClick={increaseMonth} />
             </NextButton>
           </DatePickerHead>
         )}

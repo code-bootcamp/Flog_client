@@ -37,6 +37,7 @@ export const Exit = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 2rem;
   img {
     width: 23px;
     :hover {
@@ -45,6 +46,9 @@ export const Exit = styled.div`
   }
 `;
 
+export const Contents = styled.div`
+  margin-bottom: 3rem;
+`;
 export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
@@ -55,7 +59,7 @@ export const Title = styled.div`
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 `;
 
 export const Label = styled.div`
@@ -82,7 +86,7 @@ export const Select = styled.select`
   padding-left: 24px;
   font-size: 0.9rem;
   line-height: 150%;
-  background: url("/img/Modal-dropdown.svg") no-repeat 95% 50%;
+  background: url("/img/icon-modal-dropdown.svg") no-repeat 95% 50%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -96,27 +100,3 @@ export const Option = styled.option``;
 export const ButtonWrap = styled.div`
   margin-top: 100px;
 `;
-
-export const ModalCloseButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  border-radius: 5px;
-  height: 60px;
-  width: 115px;
-  border-radius: 100px;
-  padding: 16px, 40px, 16px, 40px;
-
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-
-  background-color: ${(props: IIsButtonActiveProps) =>
-    props.isButtonActive ? "#58BD97" : "black"};
-`;
-
-export interface IIsButtonActiveProps {
-  isButtonActive: boolean;
-}
