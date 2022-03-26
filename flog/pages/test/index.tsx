@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Dropdown01 from "../../src/components/commons/dropdowns/01/Dropdown01.container";
+import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
 import Exit from "../../src/components/commons/modals/exit/Exit.container";
 import DetailBudget from "../../src/components/commons/modals/newBudget/detailBudget/DetailBudget.container";
@@ -165,6 +167,8 @@ export default function testPage() {
           budgetSelect={budgetSelect}
         />
       )}
+      <Dropdown01 />
+      <Dropdown02 />
     </div>
   );
 }

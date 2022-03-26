@@ -5,16 +5,15 @@ import { ko } from "date-fns/locale";
 import * as Date from "./DatePicker.styles";
 import { IMyDatePickerProps } from "./DatePicker.types";
 
-export default function MyDatePicker(props: IMyDatePickerProps) {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+export default function MyDatePicker(props) {
+  // const [startDate, setStartDate] = useState(null);
+  // const [endDate, setEndDate] = useState(null);
   const onChange = (dates: [any, any]) => {
     const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    console.log(dates);
+    props.setStartDate(start);
+    props.setEndDate(end);
     props.setIsDateActive(true);
-    if (props.title && props.people && props.theme && props.isDateActive) {
+    if (props.title && props.isDateActive && props.people && props.theme) {
       props.setIsButtonActive(true);
     }
   };
@@ -41,10 +40,10 @@ export default function MyDatePicker(props: IMyDatePickerProps) {
         className="date-input"
         dateFormat="yyyy년 M월 d일"
         locale={ko}
-        selected={startDate}
+        selected={props.startDate}
         onChange={onChange}
-        startDate={startDate}
-        endDate={endDate}
+        startDate={props.startDate}
+        endDate={props.endDate}
         selectsRange
         placeholderText="시작일과 종료일을 선택해주세요"
       />
