@@ -13,7 +13,7 @@ export default function MyTripsPage() {
   return (
     <BodyContainer>
       <MyTripBanner userInfo={false} />
-      <MyTripList userInfo={false} />
+      <MyTripList isMine={true} userInfo={false} />
     </BodyContainer>
   );
 }
