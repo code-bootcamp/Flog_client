@@ -2,9 +2,7 @@ import LoginUI from "./Login.presenter";
 import { useForm } from "react-hook-form";
 import { LOGIN } from "./Login.queries";
 import { useMutation } from "@apollo/client";
-import { useEffect, useState } from "react";
-import Alert from "@mui/material/Alert";
-import { string } from "yup";
+import { useState } from "react";
 
 interface FormValues {
   email?: string;
