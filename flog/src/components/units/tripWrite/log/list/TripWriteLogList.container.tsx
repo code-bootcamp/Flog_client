@@ -37,12 +37,20 @@ export default function TripWriteLogList(props) {
   };
   const toggle = (index) => () => {
     const temp = new Array(ArrayLength).fill(false);
+
     if (isShow[index]) return setIsShow(temp);
     else {
       temp[index] = true;
       setIsShow(temp);
     }
   };
+  const moveSroll = (dayIndex, elIndex) => {
+    allRef[dayIndex][elIndex].current?.scrollIntoView({
+      block: "center",
+      behavior: "smooth",
+    });
+  };
+  const isMine = false;
   return (
     <TripWriteLogListUI
       schedules={schedules}
@@ -50,6 +58,9 @@ export default function TripWriteLogList(props) {
       allRef={allRef}
       isShow={isShow}
       toggle={toggle}
+      isEdit={false}
+      isMine={isMine}
+      moveSroll={moveSroll}
     />
   );
 }
