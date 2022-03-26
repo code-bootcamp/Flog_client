@@ -30,52 +30,23 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
 `;
 
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
 `;
 
-export const Select = styled.select`
-  width: 338px;
-  height: 56px;
-  border: 1px solid #cacaca;
-
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 0.9rem;
-  line-height: 150%;
-  background: url("/img/Modal-dropdown.svg") no-repeat 95% 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  select::-ms-expand {
-    display: none;
-  }
-`;
-
-export const Option = styled.option``;
-
-export const Title = styled.div`
-  font-size: 1.9rem;
-  line-height: 53px;
-  text-align: center;
-`;
-export const UserPoint = styled.div`
-  color: #626262;
-  font-size: 16px;
-  line-height: 150%;
-  text-align: center;
-  word-break: keep-all;
+export const Contents = styled.div`
+  margin-bottom: 4rem;
 `;
 
 export const Exit = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 2rem;
   img {
     width: 23px;
     :hover {
@@ -84,33 +55,42 @@ export const Exit = styled.div`
   }
 `;
 
-export const Contents = styled.div`
+export const Title = styled.div`
+  font-size: 1.9rem;
+  line-height: 53px;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+export const UserPoint = styled.div`
   color: #626262;
-  font-size: 20px;
-  line-height: 140%;
+  font-size: 16px;
+  line-height: 150%;
   text-align: center;
   word-break: keep-all;
+  margin-bottom: 1.6rem;
 `;
-
-export const ButtonWrap = styled.div`
-  margin-top: 10px;
-`;
-
-export const ModalCloseButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  border-radius: 5px;
-  height: 52px;
-  width: 142px;
-  border-radius: 100px;
-  padding: 16px, 40px, 16px, 40px;
-
-  border: none;
-  color: white;
+export const Select = styled.select`
+  width: 338px;
+  height: 56px;
+  border: 1px solid #a9a9a9;
+  border-radius: 8px;
+  padding-left: 24px;
   font-size: 16px;
-  cursor: pointer;
+  line-height: 150%;
+  background: url("/img/icon-modal-dropdown.svg") no-repeat 95% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #626262;
+  select::-ms-expand {
+    display: none;
+  }
 
-  background-color: #58bd97;
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
+  }
 `;
+
+export const Option = styled.option``;

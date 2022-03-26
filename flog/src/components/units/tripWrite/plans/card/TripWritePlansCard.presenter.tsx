@@ -6,7 +6,7 @@ export default function TripWritePlansCardUI(props) {
       <Write.Contents>
         <Write.Top>
           <Write.StartTime>{props.content.startTime}</Write.StartTime>
-          <Write.Time>{props.content.time}</Write.Time>
+          <Write.Time>{props.content.time} 소요</Write.Time>
         </Write.Top>
         <Write.Center>
           <Write.Name>{props.content.name}</Write.Name>
@@ -17,10 +17,16 @@ export default function TripWritePlansCardUI(props) {
       </Write.Contents>
       <Write.Handle>
         <Write.Upper>
-          <img src="/img/icon-mytrip-write-card-upper.svg" />
+          <img
+            src="/img/icon-mytrip-write-card-upper.svg"
+            alt="위 화살표 아이콘"
+          />
         </Write.Upper>
         <Write.Lower>
-          <img src="/img/icon-mytrip-write-card-lower.svg" />
+          <img
+            src="/img/icon-mytrip-write-card-lower.svg"
+            alt="아래 화살표 아이콘"
+          />
         </Write.Lower>
       </Write.Handle>
     </Write.Card>

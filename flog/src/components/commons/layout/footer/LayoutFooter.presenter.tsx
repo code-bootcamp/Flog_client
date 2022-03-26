@@ -1,6 +1,9 @@
+import ContainedButton03 from "../../buttons/contained/03/ContainedButton03.container";
+import WithIconInput01 from "../../inputs/withIcon/01/WIthIconInput01.container";
 import * as Footer from "./LayoutFooter.styles";
+import { ILayoutFooterUIProps } from "./LayoutFooter.types";
 
-export default function LayoutFooterUI(props) {
+export default function LayoutFooterUI(props: ILayoutFooterUIProps) {
   return (
     <Footer.Container>
       <Footer.InnerWrap>
@@ -61,7 +64,18 @@ export default function LayoutFooterUI(props) {
             </p>
           </Footer.NewsLetterTextBox>
           <Footer.NewsLetterInputBox>
-            이 부분은 공통 컴포넌트 merge 후 작성 예정
+            <WithIconInput01
+              type="text"
+              placeholder="이메일을 입력해주세요."
+              iconUrl="/img/icon-input-mail.svg"
+              value={props.email}
+              onChange={props.onChangeNewsletterInput}
+            />
+            <ContainedButton03
+              content="보내기"
+              size="medium"
+              onClick={props.onClickNewsletterSubmit}
+            />
           </Footer.NewsLetterInputBox>
         </Footer.RightBox>
       </Footer.InnerWrap>

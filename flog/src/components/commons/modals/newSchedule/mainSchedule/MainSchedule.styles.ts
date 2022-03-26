@@ -17,8 +17,8 @@ export const Container = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  width: 788px;
-  height: 700px;
+  width: 600px;
+  height: 755px;
   padding: 44px;
   border: none;
   border-radius: 20px;
@@ -37,6 +37,7 @@ export const Exit = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 2rem;
   img {
     width: 23px;
     :hover {
@@ -45,17 +46,21 @@ export const Exit = styled.div`
   }
 `;
 
+export const Contents = styled.div`
+  margin-bottom: 3rem;
+`;
 export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
   text-align: center;
+  font-weight: 500;
   margin-bottom: 60px;
 `;
 
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 1.4rem;
 `;
 
 export const Label = styled.div`
@@ -75,20 +80,26 @@ export const Input = styled.input`
 `;
 
 export const Select = styled.select`
-  width: 485px;
+  width: 338px;
   height: 56px;
-  border: 1px solid #58bd97;
-
+  border: 1px solid #a9a9a9;
   border-radius: 8px;
   padding-left: 24px;
-  font-size: 0.9rem;
+  font-size: 16px;
   line-height: 150%;
-  background: url("/img/Modal-dropdown.svg") no-repeat 95% 50%;
+  background: url("/img/icon-modal-dropdown.svg") no-repeat 95% 50%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #626262;
   select::-ms-expand {
     display: none;
+  }
+
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
   }
 `;
 
@@ -97,27 +108,3 @@ export const Option = styled.option``;
 export const ButtonWrap = styled.div`
   margin-top: 100px;
 `;
-
-export const ModalCloseButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  border-radius: 5px;
-  height: 60px;
-  width: 115px;
-  border-radius: 100px;
-  padding: 16px, 40px, 16px, 40px;
-
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-
-  background-color: ${(props: IIsButtonActiveProps) =>
-    props.isButtonActive ? "#58BD97" : "black"};
-`;
-
-export interface IIsButtonActiveProps {
-  isButtonActive: boolean;
-}
