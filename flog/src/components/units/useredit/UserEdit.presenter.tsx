@@ -1,5 +1,5 @@
 import ContainedButton01 from "../../commons/buttons/contained/01/ContainedButton01.container";
-import ContainedInput01 from "../../commons/inputs/contained/01/ContainedInput01";
+import OutlinedInput01 from "../../commons/inputs/outlined/01/OutlinedInput01.container";
 import * as Edit from "./UserEdit.styles";
 import { IUserEditUIProps } from "./UserEdit.types";
 
@@ -26,34 +26,44 @@ export default function UserEditUI(props: IUserEditUIProps) {
             </Edit.FileButton>
           </Edit.UserImage>
           <Edit.NameInput>
-            <ContainedInput01 type="text" />
+            <OutlinedInput01
+              type="text"
+              value="유저 이름"
+              readOnly={true}
+              placeholder=""
+            />
           </Edit.NameInput>
           <Edit.InputLabel>
             <span>전화번호</span>
           </Edit.InputLabel>
           <Edit.PhoneInput>
-            <ContainedInput01 type="text" /> - <ContainedInput01 type="text" />{" "}
-            - <ContainedInput01 type="text" />
+            <OutlinedInput01 type="text" placeholder="" /> -{" "}
+            <OutlinedInput01 type="text" placeholder="" /> -{" "}
+            <OutlinedInput01 type="text" placeholder="" />
           </Edit.PhoneInput>
           <Edit.InputLabel>
             <span>생년월일</span>
           </Edit.InputLabel>
           <Edit.BirthdayInput>
-            <ContainedInput01 type="number" />{" "}
-            <ContainedInput01 type="number" />{" "}
-            <ContainedInput01 type="number" />
+            <OutlinedInput01 type="number" placeholder="" />{" "}
+            <OutlinedInput01 type="number" placeholder="" />{" "}
+            <OutlinedInput01 type="number" placeholder="" />
           </Edit.BirthdayInput>
           <Edit.InputLabel>
             <span>이메일주소</span>
           </Edit.InputLabel>
           <Edit.EmailInput>
-            <ContainedInput01
+            <OutlinedInput01
               type="text"
               placeholder="이메일 주소를 입력해주세요."
             />
           </Edit.EmailInput>
           <Edit.SubmitBox>
-            <ContainedButton01 content="저장하기" size="large" />
+            <ContainedButton01
+              content="저장하기"
+              size="large"
+              onClick={props.onClickSubmit}
+            />
           </Edit.SubmitBox>
         </Edit.Contents>
       </Edit.InnerWrap>

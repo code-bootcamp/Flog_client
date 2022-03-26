@@ -9,10 +9,14 @@ export default function UserEdit() {
   const onClickFileUpload = () => {
     alert("파일 첨부");
   };
+  const onClickSubmit = () => {
+    alert("개인정보 수정 완료!");
+  };
   return (
     <UserEditUI
       onClickMoveToMyPage={onClickMoveToMyPage}
       onClickFileUpload={onClickFileUpload}
+      onClickSubmit={onClickSubmit}
     />
   );
 }
