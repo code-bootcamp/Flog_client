@@ -7,21 +7,22 @@ export default function LoginUI(props) {
       <Login.Container>
         <Login.Bg>
           <Login.LoginBox>
-            <h3>flog</h3>
+            <h3>Flog</h3>
             <Login.Form onSubmit={props.handleSubmit(props.onclickSubmit)}>
               <Login.FormLabel>이메일</Login.FormLabel>
               <OutlinedInput01
                 type="text"
-                id="email"
+                // id="email"
                 register={props.register("email")}
                 placeholder="이메일을 입력하세요"
                 error={props.errorMsg.email !== ""}
               ></OutlinedInput01>
               <Login.ErrorMsg>{props.errorMsg.email}</Login.ErrorMsg>;
+
               <Login.FormLabel>비밀번호</Login.FormLabel>
               <OutlinedInput01
                 type="password"
-                id="password"
+                // id="password"
                 register={props.register("password")}
                 placeholder="비밀번호를 입력하세요"
                 error={props.errorMsg.password !== ""}
@@ -32,9 +33,13 @@ export default function LoginUI(props) {
                 <div>로그인 유지하기</div>
               </Login.checkBox>
               <Login.SubmitBtn type="submit">로그인</Login.SubmitBtn>
-              <Login.GoogleBtn type="button" onClick={props.onclickSubmit}>
+              <Login.SubmitBtn
+                className="google"
+                type="button"
+                onClick={props.onclickSubmit}
+              >
                 <img src="/img/login-google.png" /> Google로 시작하기
-              </Login.GoogleBtn>
+              </Login.SubmitBtn>
             </Login.Form>
             <Login.SignUp>
               계정이 아직 없으신가요?

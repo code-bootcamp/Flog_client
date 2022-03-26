@@ -1,8 +1,11 @@
 import * as Write from "./TripWriteBottomBar.styles";
 import ContainedButton01 from "../../../commons/buttons/contained/01/ContainedButton01.container";
 import OutlinedButton01 from "../../../commons/buttons/outlined/01/OutlinedButton01.container";
+import { ITripWriteBottomBarUIProps } from "./TripWriteBottomBar.types";
 
-export default function TripWriteBottomBarUI(props) {
+export default function TripWriteBottomBarUI(
+  props: ITripWriteBottomBarUIProps
+) {
   return (
     <Write.Container>
       <Write.InnerWrap>
@@ -12,11 +15,14 @@ export default function TripWriteBottomBarUI(props) {
           </Write.ExitButton>
         </Write.ExitBox>
         <Write.SubmitBox>
-          <OutlinedButton01
-            content="이전"
-            size="small"
-            onClick={props.onClickMoveToPrev}
-          />
+          {!props.router.asPath.includes("plans") && (
+            <OutlinedButton01
+              content="이전"
+              size="small"
+              onClick={props.onClickMoveToPrev}
+            />
+          )}
+
           <ContainedButton01
             content="다음"
             size="small"
