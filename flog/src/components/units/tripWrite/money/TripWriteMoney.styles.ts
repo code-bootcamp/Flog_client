@@ -14,7 +14,7 @@ export const Contents = styled.div`
   margin: 70px 0 100px;
 `;
 export const InnerWrap = styled.div`
-  width: calc(100% - 30px);
+  width: calc(100% - 30px); 
   max-width: 1200px;
   display: flex;
   flex-direction: row;
