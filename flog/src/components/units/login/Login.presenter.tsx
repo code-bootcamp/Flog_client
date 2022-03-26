@@ -1,5 +1,5 @@
+import OutlinedInput01 from "../../commons/inputs/outlined/01/OutlinedInput01.container";
 import * as Login from "./Login.styles";
-import ContainedInput01 from "../../commons/inputs/contained/01/ContainedInput01";
 
 export default function LoginUI(props) {
   return (
@@ -10,22 +10,23 @@ export default function LoginUI(props) {
             <h3>Flog</h3>
             <Login.Form onSubmit={props.handleSubmit(props.onclickSubmit)}>
               <Login.FormLabel>이메일</Login.FormLabel>
-              <ContainedInput01
+              <OutlinedInput01
                 type="text"
                 // id="email"
                 register={props.register("email")}
                 placeholder="이메일을 입력하세요"
                 error={props.errorMsg.email !== ""}
-              ></ContainedInput01>
-              <Login.ErrorMsg>{props.errorMsg.email}</Login.ErrorMsg>
+              ></OutlinedInput01>
+              <Login.ErrorMsg>{props.errorMsg.email}</Login.ErrorMsg>;
+
               <Login.FormLabel>비밀번호</Login.FormLabel>
-              <ContainedInput01
+              <OutlinedInput01
                 type="password"
                 // id="password"
                 register={props.register("password")}
                 placeholder="비밀번호를 입력하세요"
                 error={props.errorMsg.password !== ""}
-              ></ContainedInput01>
+              ></OutlinedInput01>
               <Login.ErrorMsg>{props.errorMsg.password}</Login.ErrorMsg>
               <Login.checkBox>
                 <input type="checkbox"></input>

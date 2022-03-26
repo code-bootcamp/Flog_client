@@ -2,34 +2,9 @@ import { useState } from "react";
 import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.container";
 import OutlinedInput01 from "../../../inputs/outlined/01/OutlinedInput01.container";
 import * as M from "./DetailBudget.styles";
-import { IDetailBudgetProps } from "./DetailBudget.types";
+import { IDetailBudget } from "./DetailBudget.types";
 
-// //상위 컴포넌트에 넣을 내용 - budget
-// const [detailBudgetModal, setDetailBudgetModal] = useState(false);
-
-// const onClickDetailBudgetModal = () => {
-//   setDetailBudgetModal(true);
-// };
-
-// const onClickExitDetailBudgetModal = () => {
-//   setDetailBudgetModal(false);
-// };
-
-// const onClickSubmitDetailBudgetModal = () => {
-//   setDetailBudgetModal(false);
-// };
-
-// return(
-//    <button onClick={onClickDetailBudgetModal}>세부 예산 생성</button>
-//    {detailBudgetModal && (
-//       <DetailBudget
-//         onClickExit={onClickExitDetailBudgetModal}
-//         onClickSubmit={onClickSubmitDetailBudgetModal}
-//       />
-//     )}
-// )
-
-export default function DetailBudget(props: IDetailBudgetProps) {
+export default function DetailBudget(props: IDetailBudget) {
   const [contents, setContents] = useState("");
   const [budget, setBudget] = useState(0);
   const [startHour, setStartHour] = useState(0);

@@ -109,6 +109,7 @@ export default function testPage() {
   const onChangeTotalBudget = (event) => {
     setTotalBudget(event.target.value);
     setBudgetSelect(false);
+    console.log(event.target.value);
   };
 
   return (

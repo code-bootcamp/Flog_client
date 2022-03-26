@@ -72,26 +72,25 @@ export const UserPoint = styled.div`
 export const Select = styled.select`
   width: 338px;
   height: 56px;
-  border: 1px solid #cacaca;
+  border: 1px solid #a9a9a9;
   border-radius: 8px;
   padding-left: 24px;
-  font-size: 0.9rem;
+  font-size: 16px;
   line-height: 150%;
-
   background: url("/img/icon-modal-dropdown.svg") no-repeat 95% 50%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #626262;
   select::-ms-expand {
     display: none;
+  }
+
+  :focus {
+    border: 1px solid #58bd97;
+    outline: none;
+    color: #2c3131;
   }
 `;
 
 export const Option = styled.option``;
-// export const Contents = styled.div`
-//   color: #626262;
-//   font-size: 20px;
-//   line-height: 140%;
-//   text-align: center;
-//   word-break: keep-all;
-// `;
