@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
 import Exit from "../../src/components/commons/modals/exit/Exit.container";
+import MapModal from "../../src/components/commons/modals/map/MapModal.container";
 import DetailBudget from "../../src/components/commons/modals/newBudget/detailBudget/DetailBudget.container";
 import TotalBudget from "../../src/components/commons/modals/newBudget/totalBudget/TotalBudget.container";
 import NewDetailScheduleModal from "../../src/components/commons/modals/newSchedule/detailSchedule/DetailSchedule.container";
@@ -112,6 +113,21 @@ export default function testPage() {
     console.log(event.target.value);
   };
 
+  // 상위 컴포넌트에 넣을 내용 - MapModal
+  const [mapModal, setMapModal] = useState(false);
+
+  const onClickMapModal = () => {
+    setMapModal(true);
+  };
+
+  const onClickExitMapModal = () => {
+    setMapModal(false);
+  };
+
+  const onClickSubmitMapModal = () => {
+    setMapModal(false);
+  };
+
   return (
     <div>
       <button onClick={onClickPointModal}>포인트 후원하기</button>
@@ -163,6 +179,14 @@ export default function testPage() {
           onClickSubmit={onClickSubmitTotalBudgetModal}
           onChangeTotalBudget={onChangeTotalBudget}
           budgetSelect={budgetSelect}
+        />
+      )}
+
+      <button onClick={onClickMapModal}>지도 열기</button>
+      {mapModal && (
+        <MapModal
+          onClickExit={onClickExitMapModal}
+          onClickSubmit={onClickSubmitMapModal}
         />
       )}
     </div>

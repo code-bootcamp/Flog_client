@@ -1,70 +1,9 @@
-import { useState } from "react";
 import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.container";
 import OutlinedInput01 from "../../../inputs/outlined/01/OutlinedInput01.container";
 import * as M from "./DetailBudget.styles";
-import { IDetailBudget } from "./DetailBudget.types";
+import { IDetailBudgetUIProps } from "./DetailBudget.types";
 
-export default function DetailBudget(props: IDetailBudget) {
-  const [contents, setContents] = useState("");
-  const [budget, setBudget] = useState(0);
-  const [startHour, setStartHour] = useState(0);
-  const [startMinutes, setStartMinutes] = useState(0);
-  const [category, setCategory] = useState("");
-
-  const [memo, setMemo] = useState("");
-
-  const [isButtonActive, setIsButtonActive] = useState(false);
-
-  const [isSelect, setIsSelect] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-
-  const onChangeContents = (event) => {
-    setContents(event.target.value);
-    if (event.target.value && budget) {
-      setIsButtonActive(true);
-    }
-  };
-
-  const onChangeBudget = (event) => {
-    setBudget(event.target.value);
-    if (event.target.value && contents) {
-      setIsButtonActive(true);
-    }
-  };
-
-  const onChangeStartHour = (event) => {
-    setStartHour(event.target.value);
-  };
-
-  const onChangeStartMinutes = (event) => {
-    setStartMinutes(event.target.value);
-  };
-
-  const onChangeMemo = (event) => {
-    setMemo(event.target.value);
-  };
-
-  const tripCategory = [
-    { num: 1, label: "식비" },
-    { num: 2, label: "쇼핑" },
-    { num: 3, label: "교통" },
-    { num: 4, label: "관광" },
-    { num: 5, label: "숙박" },
-    { num: 6, label: "기타" },
-  ];
-
-  const onClickCategory = (index: number) => () => {
-    const temp = [false, false, false, false, false, false];
-    temp[index] = true;
-    setIsSelect([...temp]);
-    setCategory(tripCategory[index].label);
-  };
+export default function DetailBudgetUI(props: IDetailBudgetUIProps) {
   return (
     <M.Container>
       <M.ModalWrapper>
@@ -80,14 +19,14 @@ export default function DetailBudget(props: IDetailBudget) {
             <M.Title>여행 준비</M.Title>
             <M.Wrap>
               <M.CategoryWrap>
-                {tripCategory.map((el, index) => (
+                {props.TRIP_CATEGORY.map((el, index) => (
                   <>
-                    <M.Category isSelect={isSelect[index]}>
+                    <M.Category isSelect={props.isSelect[index]}>
                       <M.CategoryIcon>
                         <img
                           src={`/img/icon-budget-category-${el.num}.svg`}
                           alt="카테고리"
-                          onClick={onClickCategory(index)}
+                          onClick={props.onClickCategory(index)}
                         />
                       </M.CategoryIcon>
                       <M.CategoryLabel>{el.label}</M.CategoryLabel>
@@ -101,7 +40,7 @@ export default function DetailBudget(props: IDetailBudget) {
               <OutlinedInput01
                 placeholder="내용을 입력하세요."
                 type="text"
-                onChange={onChangeContents}
+                onChange={props.onChangeContents}
               />
             </M.Wrap>
 
@@ -110,7 +49,7 @@ export default function DetailBudget(props: IDetailBudget) {
               <OutlinedInput01
                 placeholder="금액을 입력하세요."
                 type="number"
-                onChange={onChangeBudget}
+                onChange={props.onChangeBudget}
               />
             </M.Wrap>
 
@@ -120,13 +59,13 @@ export default function DetailBudget(props: IDetailBudget) {
                 <M.TimeInput
                   type="number"
                   placeholder="시"
-                  onChange={onChangeStartHour}
+                  onChange={props.onChangeStartHour}
                 ></M.TimeInput>
 
                 <M.TimeInput
                   type="number"
                   placeholder="분"
-                  onChange={onChangeStartMinutes}
+                  onChange={props.onChangeStartMinutes}
                 ></M.TimeInput>
               </M.TimeInputWrap>
             </M.Wrap>
@@ -135,7 +74,7 @@ export default function DetailBudget(props: IDetailBudget) {
               <M.Label style={{ visibility: "hidden" }}>메모</M.Label>
               <M.MemoInput
                 placeholder="(선택) 메모를 입력해주세요."
-                onChange={onChangeMemo}
+                onChange={props.onChangeMemo}
               ></M.MemoInput>
             </M.Wrap>
           </M.Contents>
@@ -144,7 +83,7 @@ export default function DetailBudget(props: IDetailBudget) {
             content="저장하기"
             size="large"
             onClick={props.onClickSubmit}
-            disabled={!isButtonActive}
+            disabled={!props.isButtonActive}
           />
         </M.Modal>
       </M.ModalWrapper>
