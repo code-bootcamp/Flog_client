@@ -15,6 +15,7 @@ export default function MyTripList(props: IMyTripListProps) {
       onClickMoveToOurTrip={onClickMoveToOurTrip}
       userInfo={props.userInfo}
       onClickMore={onClickMore}
+      isMine={props.isMine}
     />
   );
 }
