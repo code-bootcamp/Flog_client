@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Dropdown01 from "../../src/components/commons/dropdowns/01/Dropdown01.container";
+import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
 import Exit from "../../src/components/commons/modals/exit/Exit.container";
 import MapModal from "../../src/components/commons/modals/map/MapModal.container";
@@ -181,14 +183,8 @@ export default function testPage() {
           budgetSelect={budgetSelect}
         />
       )}
-
-      <button onClick={onClickMapModal}>지도 열기</button>
-      {mapModal && (
-        <MapModal
-          onClickExit={onClickExitMapModal}
-          onClickSubmit={onClickSubmitMapModal}
-        />
-      )}
+      <Dropdown01 />
+      <Dropdown02 />
     </div>
   );
 }
