@@ -29,15 +29,11 @@ import { INewDetailScheduleModalProps } from "./DetailSchedule.types";
 //     )}
 // )
 
-export default function NewDetailScheduleModal(
-  props: INewDetailScheduleModalProps
-) {
+export default function NewDetailScheduleModal(props) {
   const [title, setTitle] = useState("");
 
-  const [startHour, setStartHour] = useState(0);
-  const [startMinutes, setStartMinutes] = useState(0);
-  const [takenHour, setTakenHour] = useState(0);
-  const [takenMinutes, setTakenMinutes] = useState(0);
+  const [startTime, setStartTime] = useState([null, null]);
+  const [endTime, setEndTime] = useState([null, null]);
 
   const [memo, setMemo] = useState("");
 
@@ -47,10 +43,10 @@ export default function NewDetailScheduleModal(
     setTitle(event.target.value);
     if (
       event.target.value &&
-      startHour &&
-      startMinutes &&
-      takenHour &&
-      takenMinutes
+      startTime[0] &&
+      startTime[1] &&
+      endTime[0] &&
+      endTime[1]
     ) {
       setIsButtonActive(true);
     }
@@ -61,38 +57,55 @@ export default function NewDetailScheduleModal(
   };
 
   const onChangeStartHour = (event) => {
-    setStartHour(event.target.value);
+    setStartTime([event.target.value, startTime[1]]);
     if (
       title &&
       event.target.value &&
-      startMinutes &&
-      takenHour &&
-      takenMinutes
+      startTime[1] &&
+      endTime[0] &&
+      endTime[1]
     ) {
       setIsButtonActive(true);
     }
   };
 
   const onChangeStartMinutes = (event) => {
-    setStartMinutes(event.target.value);
-    if (title && startHour && event.target.value && takenHour && takenMinutes) {
+    setStartTime([startTime[0], event.target.value]);
+    if (
+      (title && startTime[0] && event.target.value && endTime[0], endTime[1])
+    ) {
       setIsButtonActive(true);
     }
   };
 
   const onChangeTakenHour = (event) => {
-    setTakenHour(event.target.value);
-    if (title && startHour && event.target.value && takenHour && takenMinutes) {
+    setEndTime([event.target.value, endTime[1]]);
+    if (
+      title &&
+      startTime[0] &&
+      startTime[1] &&
+      event.target.value &&
+      endTime[1]
+    ) {
       setIsButtonActive(true);
     }
   };
 
   const onChangeTakenMinutes = (event) => {
-    setTakenMinutes(event.target.value);
-    if (title && startHour && startMinutes && takenHour && event.target.value) {
+    setEndTime([endTime[0], event.target.value]);
+
+    if (
+      title &&
+      startTime[0] &&
+      startTime[1] &&
+      endTime[0] &&
+      event.target.value
+    ) {
       setIsButtonActive(true);
     }
   };
+
+  // console.log(startTime, endTime);
 
   return (
     <M.Container>
@@ -110,7 +123,6 @@ export default function NewDetailScheduleModal(
 
             <M.Wrap>
               <M.Label>장소</M.Label>
-
               <OutlinedInput01
                 placeholder="장소를 입력하세요"
                 type="text"
@@ -124,11 +136,15 @@ export default function NewDetailScheduleModal(
                 <M.TimeInput
                   type="number"
                   placeholder="시"
+                  max={24}
+                  maxLength={2}
                   onChange={onChangeStartHour}
                 ></M.TimeInput>
                 <M.TimeInput
                   type="number"
                   placeholder="분"
+                  max={60}
+                  maxLength={2}
                   onChange={onChangeStartMinutes}
                 ></M.TimeInput>
               </M.TimeInputWrap>
@@ -140,11 +156,15 @@ export default function NewDetailScheduleModal(
                 <M.TimeInput
                   type="number"
                   placeholder="시"
+                  max={24}
+                  maxLength={2}
                   onChange={onChangeTakenHour}
                 ></M.TimeInput>
                 <M.TimeInput
                   type="number"
                   placeholder="분"
+                  max={60}
+                  maxLength={2}
                   onChange={onChangeTakenMinutes}
                 ></M.TimeInput>
               </M.TimeInputWrap>
