@@ -143,7 +143,6 @@ export const TimeInput = styled.input`
   ::placeholder {
     color: #a9a9a9;
   }
-
   :focus {
     border: 1px solid #58bd97;
     outline: none;

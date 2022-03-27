@@ -93,14 +93,12 @@ export const TimeInput = styled.input`
   border-radius: 8px;
   padding-left: 24px;
   line-height: 150%;
-
   color: #626262;
   font-size: 16px;
-
+  text-align: end;
   ::placeholder {
     color: #a9a9a9;
   }
-
   :focus {
     border: 1px solid #58bd97;
     outline: none;

@@ -10,6 +10,9 @@ export default function ContainedInput01(props: IContainedInput01Props) {
       autoFocus
       disabled={props.disabled}
       error={props.error}
+      onChange={props.onChange}
+      value={props.value}
+      readOnly={props.readOnly}
     />
   );
 }
