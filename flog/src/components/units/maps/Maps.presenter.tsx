@@ -23,7 +23,7 @@ export default function MapsUI(props) {
         ></script>
       </Head>
       <Maps.Title>지역을 선택하세요</Maps.Title>
-      <div style={{ zIndex: "9" }}>
+      <div style={{ zIndex: "9", height: "30px" }}>
         <Maps.Subtitle id="doName">{props.doName}</Maps.Subtitle>
         <Maps.Subtitle id="doName">{props.cityName}</Maps.Subtitle>
       </div>
@@ -36,8 +36,8 @@ export default function MapsUI(props) {
             overflow: "visible",
           }}
           viewBox="0 0 500 500"
-          height="220"
-          width="220"
+          height="200"
+          width="200"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
