@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ContainedButton03 from "../../../commons/buttons/contained/03/ContainedButton03.container";
 import TagSearch from "../tagSearch/TagSearch.container";
 import TitleSearch from "../titleSearch/TitleSearch.container";
 import * as Our from "./OurTripBanner.styles";
@@ -17,19 +16,8 @@ export default function OurTripBannerUI(props) {
   };
 
   const onClickOption = (el) => () => {
-    if (el === "여행 테마") {
-      setIsSelect("여행 테마");
-    }
-    if (el === "제목") {
-      setIsSelect("제목");
-    }
+    setIsSelect(el);
   };
-
-  const onClickSearch = () => {
-    alert("검색하기");
-  };
-
-  console.log(isSelect);
 
   return (
     <Our.Banner>
