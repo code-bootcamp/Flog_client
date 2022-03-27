@@ -86,6 +86,8 @@ export const SearchLabel = styled.span`
 
 export const SearchReturn = styled.div`
   margin-left: 30px;
+  font-size: 20px;
+  font-weight: 500;
 `;
 
 export const SelectBtn = styled.div`
@@ -103,7 +105,11 @@ export const SelectBtn = styled.div`
   cursor: pointer;
 `;
 
-export const Selected = styled.div``;
+export const Selected = styled.div`
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+`;
 
 export const SelectIcon = styled.div`
   width: 20px;
@@ -113,7 +119,7 @@ export const SelectIcon = styled.div`
 
   img {
     position: relative;
-    bottom: 3px;
+    bottom: 5px;
   }
 `;
 
@@ -141,8 +147,8 @@ export const SelectOption = styled.div`
       }
       span {
         display: block;
-        font-size: 0.9rem;
-        font-weight: 400;
+        font-size: 1rem;
+        font-weight: 500;
         padding: 12px 20px;
         cursor: pointer;
         text-align: center;

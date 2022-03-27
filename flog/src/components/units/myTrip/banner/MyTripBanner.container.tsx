@@ -3,7 +3,7 @@ import { IMyTripBannerProps } from "./MyTripBanner.types";
 
 export default function MyTripBanner(props: IMyTripBannerProps) {
   const onClickNewTrip = () => {
-    alert("새로운 여행 만들기 function");
+    alert("myTrips/write로 이동");
   };
 
   return (

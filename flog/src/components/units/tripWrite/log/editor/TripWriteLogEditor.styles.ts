@@ -28,7 +28,7 @@ export const ReactWrapper = styled.div`
   }
   h3 {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .ql-editor .ql-size-large {
     font-size: 24px;
