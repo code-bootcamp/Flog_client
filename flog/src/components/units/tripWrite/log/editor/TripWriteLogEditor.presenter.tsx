@@ -1,4 +1,5 @@
 import * as Editor from "./TripWriteLogEditor.styles";
+import Dompurify from "dompurify";
 
 export default function TripWriteLogEditorUI(props) {
   return (
@@ -21,11 +22,22 @@ export default function TripWriteLogEditorUI(props) {
           <props.ReactQuill
             forwardedRef={props.quillRef}
             onChange={props.handleChange}
-            value={props.contents || "기본값"}
+            placeholder={"상세 일정을 작성해 보세요"}
+            value={props.contents}
             modules={props.modules}
             theme="snow"
           />
         </Editor.ReactWrapper>
+        {process.browser && (
+          <div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: Dompurify.sanitize(String(props.contents)),
+              }}
+            />
+            <div>{props.contents}</div>
+          </div>
+        )}
       </Editor.EditorWrapper>
     </Editor.Main>
   );

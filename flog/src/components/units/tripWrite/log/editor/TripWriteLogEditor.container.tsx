@@ -18,7 +18,6 @@ const ReactQuill = dynamic(
 
 export default function TripWriteLogEditor(props) {
   const [contents, setContents] = useState("");
-
   const quillRef = useRef();
 
   let quillCurrent: any;
@@ -34,11 +33,9 @@ export default function TripWriteLogEditor(props) {
   };
 
   setRefValue();
-  console.log(editor);
 
   const addEl = (name: string, des: string) => () => {
     if (!editor) setRefValue();
-    console.log(editor);
     editor?.insertText(currentFocus.index + 1, name, {
       header: 1,
       background: "#F1F1F1",
@@ -119,13 +116,11 @@ export default function TripWriteLogEditor(props) {
   );
 
   const handleChange = (value) => {
-    console.log(value);
     setContents(value);
   };
 
   useEffect(() => {
     setRefValue();
-    console.log(editor);
   }, [imageHandler, props.isShow]);
 
   return (
