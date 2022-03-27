@@ -8,6 +8,8 @@ export interface IOutlinedInput01Props {
   disabled?: boolean;
   error?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  readOnly?: boolean;
 }
 export interface IInputProps {
   error?: boolean;
