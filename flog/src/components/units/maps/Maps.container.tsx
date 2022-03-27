@@ -1,14 +1,15 @@
 import { Contents, Path, Text } from "./Maps.styles";
 import { useEffect, useRef, useState } from "react";
 import MapsUI from "./Maps.presenter";
-export default function SvgMap() {
-  const [doName, setDoName] = useState("");
-  const [cityName, setCityName] = useState("");
+
+export default function SvgMap(props) {
+  // const [doName, setDoName] = useState("");
+  // const [cityName, setCityName] = useState("");
 
   const selectDo = (event) => {
     const selected = document.getElementById(event.target.id + "Selected");
-    console.log(selected);
-    setDoName(event.target.id);
+
+    props.setDoName(event.target.id);
     gsap.to(Contents, 1, {
       display: "none",
       opacity: 0,
@@ -18,14 +19,11 @@ export default function SvgMap() {
         display: "block",
         opacity: 1,
       });
-    } else console.log("asdf");
+    } else console.log("오류");
   };
 
   const reset = () => {
-    const selected = document.getElementById(doName + "Selected");
-
-    console.log(doName);
-    console.log(selected);
+    const selected = document.getElementById(props.doName + "Selected");
     gsap.to(Contents, 1, {
       display: "block",
       opacity: 1,
@@ -36,17 +34,17 @@ export default function SvgMap() {
         opacity: 0,
       });
     }
-    setDoName("");
-    setCityName("");
+    props.setDoName("");
+    props.setCityName("");
   };
   return (
     <MapsUI
-      doName={doName}
-      cityName={cityName}
+      doName={props.doName}
+      cityName={props.cityName}
       selectDo={selectDo}
       Contents={Contents}
       reset={reset}
-      setCityName={setCityName}
+      setCityName={props.setCityName}
     />
   );
 }

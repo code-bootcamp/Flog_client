@@ -1,12 +1,11 @@
 import MyTripBannerUI from "./MyTripBanner.presenter";
 import { IMyTripBannerProps } from "./MyTripBanner.types";
 
-export default function MyTripBanner(props: IMyTripBannerProps) {
-  const onClickNewTrip = () => {
-    alert("myTrips/write로 이동");
-  };
-
+export default function MyTripBanner(props) {
   return (
-    <MyTripBannerUI onClickNewTrip={onClickNewTrip} userInfo={props.userInfo} />
+    <MyTripBannerUI
+      onClickMapModal={props.onClickMapModal}
+      userInfo={props.userInfo}
+    />
   );
 }

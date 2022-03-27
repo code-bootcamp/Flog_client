@@ -19,7 +19,7 @@ export default function MapModal(props) {
   // };
 
   // return (
-  // <button onClick={onClicMapModal}>map</button>
+  // <button onClick={onClickMapModal}>map</button>
   //    {mapModal && (
   //       <MapModal
   //         onClickExit={onClickExitMapModal}
@@ -32,7 +32,25 @@ export default function MapModal(props) {
     <M.Container>
       <M.ModalWrapper>
         <M.Modal>
-          <SvgMap />
+          <M.Exit>
+            <img
+              src="/img/icon-modal-exit.svg"
+              alt="나가기버튼"
+              onClick={props.onClickExit}
+            />
+          </M.Exit>
+          <SvgMap
+            doName={props.doName}
+            setDoName={props.setDoName}
+            cityName={props.cityName}
+            setCityName={props.setCityName}
+          />
+          <ContainedButton01
+            content="다음"
+            size="large"
+            onClick={props.onClickSubmit}
+            // disabled={!isButtonActive}
+          />
         </M.Modal>
       </M.ModalWrapper>
     </M.Container>

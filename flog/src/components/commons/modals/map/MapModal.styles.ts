@@ -1,29 +1,26 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 900;
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-color: rgba(44, 49, 49, 0.7);
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 900;
 `;
 
 export const ModalWrapper = styled.div`
-  width: 800px;
-  height: 900px;
-  padding: 50px;
-  border: none;
-  border-radius: 20px;
-  z-index: 999;
+  position: absolute;
   background-color: #ffffff;
+  border-radius: 20px;
+  width: 750px;
+  height: 880px;
+  padding: 25px;
+  border: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 export const Modal = styled.div`
   height: 100%;
@@ -45,33 +42,15 @@ export const Exit = styled.div`
   }
 `;
 
-export const Contents = styled.div`
-  color: #626262;
-  font-size: 20px;
-  line-height: 140%;
+export const Title = styled.div`
+  font-size: 44px;
+  line-height: 53px;
   text-align: center;
-  word-break: keep-all;
+  margin-bottom: 60px;
 `;
 
-export const ButtonWrap = styled.div`
-  margin-top: 10px;
-`;
-
-export const ModalCloseButton = styled.button`
+export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100px;
-  border-radius: 5px;
-  height: 52px;
-  width: 142px;
-  border-radius: 100px;
-  padding: 16px, 40px, 16px, 40px;
-
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-
-  background-color: #58bd97;
+  margin-bottom: 1rem;
 `;
