@@ -75,8 +75,8 @@ export default function chungNam(props) {
     <>
       <svg
         viewBox="0 0 1889.76 2002.48"
-        height="600"
-        width="600"
+        height="500"
+        width="500"
         xmlSpace="preserve"
         id="svg2"
         version="1.1"

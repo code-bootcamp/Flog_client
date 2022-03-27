@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 export const Main = styled.div`
-  padding-top: 100px;
-  height: 800px;
-  width: 800px;
+  padding-top: 80px;
+  height: 700px;
+  width: 700px;
   position: relative;
   display: flex;
   border-radius: 15px;
@@ -18,26 +18,25 @@ export const Contents = styled.div`
 `;
 export const Title = styled.div`
   font-weight: 700;
-  font-size: 40px;
+  font-size: 35px;
   color: #58bd97;
   margin-bottom: 20px;
 `;
 export const Subtitle = styled.span`
   font-weight: 500;
-  font-size: 30px;
+  font-size: 25px;
   color: #58bd97;
   height: 30px;
   z-index: 9;
 `;
 export const Text = styled.text`
   display: none;
-  font-size: 20px;
+  font-size: 30px;
   padding: 20px;
   text-anchor: middle;
   alignment-baseline: middle;
-  stroke: #e25c5c;
   background-color: #e25c5c;
-  fill: #e25c5c;
+  fill: red;
   :hover {
     cursor: pointer;
     fill: black;
@@ -67,10 +66,10 @@ export const CityWrapper = styled.div`
 `;
 
 export const BackBtn = styled.button`
-  padding: 15px 30px;
+  padding: 13px 20px;
   position: absolute;
-  left: 7%;
-  top: 25%;
+  left: 6%;
+  top: 19%;
   font-weight: 700;
   border-radius: 50px;
   border: none;
