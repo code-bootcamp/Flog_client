@@ -17,7 +17,7 @@ export default function LoginUI(props) {
                 placeholder="이메일을 입력하세요"
                 error={props.errorMsg.email !== ""}
               ></OutlinedInput01>
-              <Login.ErrorMsg>{props.errorMsg.email}</Login.ErrorMsg>;
+              <Login.ErrorMsg>{props.errorMsg.email}</Login.ErrorMsg>
 
               <Login.FormLabel>비밀번호</Login.FormLabel>
               <OutlinedInput01
@@ -43,7 +43,13 @@ export default function LoginUI(props) {
             </Login.Form>
             <Login.SignUp>
               계정이 아직 없으신가요?
-              <Login.MoveSignUp>회원가입하기</Login.MoveSignUp>
+              <Login.MoveSignUp
+                onClick={() => {
+                  props.moveToPage("./signUp");
+                }}
+              >
+                회원가입하기
+              </Login.MoveSignUp>
             </Login.SignUp>
           </Login.LoginBox>
         </Login.Bg>
