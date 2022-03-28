@@ -36,13 +36,25 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
             </Header.HamburgerBtn>
             {props.isActive && (
               <Header.HamburgerMenu>
-                <ul>
-                  {HAMBURGER_MENUS.map((el) => (
-                    <li key={el.title}>
-                      <span>{el.title}</span>
+                {props.isLogIn ? (
+                  <ul>
+                    {HAMBURGER_MENUS.map((el) => (
+                      <li key={el.title}>
+                        <span onClick={props.onClickMoveToHamburger(el.url)}>
+                          {el.title}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <ul>
+                    <li key="로그인">
+                      <span onClick={props.onClickMoveToHamburger("/login")}>
+                        로그인
+                      </span>
                     </li>
-                  ))}
-                </ul>
+                  </ul>
+                )}
               </Header.HamburgerMenu>
             )}
           </Header.Hamburger>
