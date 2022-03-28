@@ -1,7 +1,6 @@
 import { useMemo, useRef, useState, ChangeEvent, useEffect } from "react";
 import TripWriteLogEditorUI from "./TripWriteLogEditor.presenter";
 import "react-quill/dist/quill.snow.css";
-
 import dynamic from "next/dynamic";
 
 const ReactQuill = dynamic(
@@ -68,15 +67,17 @@ export default function TripWriteLogEditor(props) {
       }
       editor.focus();
 
-      // const file = event.target.files?.[0];
+      const file = event.target.files?.[0];
+      console.log(file);
       // const result = await uploadFile({ variables: { file } });
       // const fileUrl = result.data?.uploadFile.url;
 
-      // editor.insertEmbed(
-      //   quillCurrent.getEditorSelection().index,
-      //   "image",
-      //   `https://storage.googleapis.com/${fileUrl}`
-      // );
+      editor.insertEmbed(
+        quillCurrent.getEditorSelection().index,
+        "image",
+        // `https://storage.googleapis.com/${fileUrl}`
+        `/img/${file}`
+      );
       input.remove();
     };
   };
@@ -131,7 +132,7 @@ export default function TripWriteLogEditor(props) {
       handleChange={handleChange}
       contents={contents}
       modules={modules}
-      quillRef={quillRef}
+        ={quillRef}
       index={props.index}
       el={props.el}
       dayRef={props.dayRef}

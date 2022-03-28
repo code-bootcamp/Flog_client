@@ -67,9 +67,15 @@ export const BackImgBox = styled.div`
 export const ImageBox = styled.div`
   position: relative;
   overflow: hidden;
-  width: calc(500% * 100 / 1200);
+
+  width: ${(props: IBgImgProps) =>
+    props.bgImg === 1
+      ? "calc(490% * 100 / 1200)"
+      : props.bgImg === 2
+      ? "calc(500% * 100 / 1200)"
+      : "calc(510% * 100 / 1200)"};
   aspect-ratio: 1/1;
-  margin-left: 20%;
+  margin-left: auto;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

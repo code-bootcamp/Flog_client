@@ -3,7 +3,12 @@ import type { AppProps } from "next/app";
 import { Global } from "@emotion/react";
 import { GlobalStyle } from "../src/commons/styles/Global.styles";
 import Layout from "../src/components/commons/layout";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  ApolloLink,
+} from "@apollo/client";
 import {
   createContext,
   useState,
@@ -11,6 +16,7 @@ import {
   SetStateAction,
   useEffect,
 } from "react";
+import { createUploadLink } from "apollo-upload-client";
 
 interface IGlobalContext {
   acessToken?: string;
@@ -27,11 +33,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
   useEffect(() => {
     if (localStorage.getItem("acessToken"))
-      setAcessToken(JSON.parse(localStorage.getItem("acessToken")) || "{}");
+      setAcessToken(localStorage.getItem("acessToken") || "{}");
   }, []);
-  const client = new ApolloClient({
+  const uploadLink = createUploadLink({
     uri: "http://34.64.249.11:3000/graphql",
     headers: { Authorization: `Bearer ${acessToken}` },
+  });
+  const client = new ApolloClient({
+    link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
   return (

@@ -64,7 +64,9 @@ export default function SignupUI(props) {
           </Signup.Form>
           <Signup.SignUp>
             이미 아이디가 있으신가요?
-            <Signup.MoveSignUp>로그인</Signup.MoveSignUp>
+            <Signup.MoveSignUp onClick={props.moveToPage("/login")}>
+              로그인
+            </Signup.MoveSignUp>
           </Signup.SignUp>
         </Signup.LoginBox>
       </Signup.Bg>

@@ -37,7 +37,7 @@ export default function MainUI(props: IMainUIProps) {
                       ? "여행의 즐거움을 누려보세요!"
                       : "여행과 관련된 모든 일들을 "}
                     <br />
-                    {el === 3 ? "" : "기록해 보세요!"}
+                    {el === 3 ? <span> &nbsp;</span> : "기록해 보세요!"}
                   </Main.Description>
                 </Main.TextGroup>
                 <Main.ImageBox bgImg={el} />

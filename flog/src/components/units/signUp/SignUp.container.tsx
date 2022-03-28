@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import * as yup from "yup";
+import { useRouter } from "next/router";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
 
 import { CREATE_USER } from "./SignUp.queries";
 
@@ -32,15 +34,17 @@ interface FormValues {
   name: string;
 }
 export default function Signup() {
-  const [pwdType, setPwdType] = useState(false);
+  const [pwdType, setPwdType] = useState(true);
   const [createUser] = useMutation(CREATE_USER);
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
-
+  const { moveToPage } = useMoveToPage();
+  const router = useRouter();
   const onclickSubmit = async (data: FormValues) => {
     console.log(data);
+
     try {
       const result = await createUser({
         variables: {
@@ -53,6 +57,8 @@ export default function Signup() {
         },
       });
       console.log(result);
+      moveToPage("/login");
+      router.push("/login");
       alert("회원가입이 완료되었습니다");
     } catch (error) {
       if (error instanceof Error) {
@@ -78,6 +84,7 @@ export default function Signup() {
       formState={formState}
       pwdType={pwdType}
       pwdToggle={pwdToggle}
+      moveToPage={moveToPage}
     />
   );
 }

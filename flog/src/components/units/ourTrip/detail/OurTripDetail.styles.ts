@@ -32,6 +32,9 @@ export const Bar = styled.div`
 export const MoveBack = styled.div`
   font-size: 18px;
   color: #58bd97;
+  img {
+    margin-right: 12px;
+  }
 `;
 export const BtnGroup = styled.div`
   display: flex;

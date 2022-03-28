@@ -1,7 +1,16 @@
 import OutlinedInput01 from "../../commons/inputs/outlined/01/OutlinedInput01.container";
+
 import * as Login from "./Login.styles";
 
-export default function LoginUI(props) {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+interface ILoginUIProps {
+  register: any;
+  handleSubmit: any;
+  onclickSubmit: any;
+  errorMsg: any;
+  moveToPage: (id: string) => () => void;
+}
+export default function LoginUI(props: ILoginUIProps) {
   return (
     <>
       <Login.Container>
@@ -43,11 +52,7 @@ export default function LoginUI(props) {
             </Login.Form>
             <Login.SignUp>
               계정이 아직 없으신가요?
-              <Login.MoveSignUp
-                onClick={() => {
-                  props.moveToPage("./signUp");
-                }}
-              >
+              <Login.MoveSignUp onClick={props.moveToPage("/signUp")}>
                 회원가입하기
               </Login.MoveSignUp>
             </Login.SignUp>
