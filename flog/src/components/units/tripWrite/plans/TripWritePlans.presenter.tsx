@@ -6,7 +6,7 @@ import TripWritePlansCard from "./card/TripWritePlansCard.container";
 import { SAMPLE_DATA } from "./SampleData";
 import * as Write from "./TripWritePlans.styles";
 
-export default function TripWritePlansUI() {
+export default function TripWritePlansUI(props) {
   return (
     <Write.Container>
       <TripWriteBanner />
