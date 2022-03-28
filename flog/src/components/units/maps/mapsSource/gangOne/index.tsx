@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
 
 const Path = styled.path`
   fill: #ffffff;
@@ -15,9 +14,10 @@ const Path = styled.path`
 `;
 const Text = styled.tspan`
   :hover {
-    fill: red;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 50px;
+    font-weight: 500;
+    fill: #2c3131;
   }
   padding: 15px;
 `;
@@ -46,7 +46,7 @@ export default function gangOne(props) {
     <>
       <svg
         viewBox="0 0 1889.76 2002.48"
-        height="500"
+        height="440"
         width="500"
         xmlSpace="preserve"
         id="svg2"
@@ -64,7 +64,7 @@ export default function gangOne(props) {
           <path
             id="path12"
             style={{
-              fill: "#c6e8db",
+              fill: "#F1F1F1",
               fillOpacity: "1",
               fillRule: "nonzero",
               stroke: "none",
@@ -472,13 +472,9 @@ export default function gangOne(props) {
           <text
             id="text226"
             style={{
-              fontVariant: "normal",
-              fontWeight: "normal",
               fontStretch: "normal",
-              fontSize: "30px",
-              fontFamily: "THEJung130",
-              // writingMode: "lr-tb",
-              fill: "#000000",
+              fontSize: "40px",
+              fill: "#626262",
               fillOpacity: "1",
               fillRule: "nonzero",
               stroke: "none",

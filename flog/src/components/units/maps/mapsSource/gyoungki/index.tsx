@@ -14,9 +14,10 @@ const Path = styled.path`
 `;
 const Text = styled.tspan`
   :hover {
-    fill: red;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 50px;
+    font-weight: 500;
+    fill: #2c3131;
   }
   padding: 15px;
 `;
@@ -51,7 +52,7 @@ export default function gyoungki(props) {
     <>
       <svg
         viewBox="0 0 1889.76 2002.48"
-        height="500"
+        height="440"
         width="500"
         xmlSpace="preserve"
         id="svg2"
@@ -69,7 +70,7 @@ export default function gyoungki(props) {
           <path
             id="path12"
             style={{
-              fill: "#c6e8db",
+              fill: "#F1F1F1",
               fillOpacity: "1",
               fillRule: "nonzero",
               stroke: "none",
@@ -651,12 +652,9 @@ export default function gyoungki(props) {
           <text
             id="text494"
             style={{
-              fontVariant: "normal",
-              fontWeight: "normal",
-              fontStretch: "normal",
+              fontStretch: "nomal",
               fontSize: "30px",
-              fontFamily: "THEJung130",
-              fill: "#000000",
+              fill: "#626262",
               fillOpacity: "1",
               fillRule: "nonzero",
               stroke: "none",
@@ -670,7 +668,7 @@ export default function gyoungki(props) {
               id="파주"
               onClick={onClickCityName}
               y="182.66283"
-              x="-118.67663 -96.76355"
+              x="-118.67663 -80.76355"
             >
               파주
             </Text>

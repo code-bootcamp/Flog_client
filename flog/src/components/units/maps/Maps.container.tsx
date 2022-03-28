@@ -10,12 +10,12 @@ export default function SvgMap(props) {
     const selected = document.getElementById(event.target.id + "Selected");
 
     props.setDoName(event.target.id);
-    gsap.to(Contents, 1, {
+    gsap.to(Contents, 0.3, {
       display: "none",
       opacity: 0,
     });
     if (selected) {
-      gsap.to(selected, 1, {
+      gsap.to(selected, 0.3, {
         display: "block",
         opacity: 1,
       });
@@ -24,12 +24,12 @@ export default function SvgMap(props) {
 
   const reset = () => {
     const selected = document.getElementById(props.doName + "Selected");
-    gsap.to(Contents, 1, {
+    gsap.to(Contents, 0.3, {
       display: "block",
       opacity: 1,
     });
     if (selected) {
-      gsap.to(selected, 1, {
+      gsap.to(selected, 0.3, {
         display: "none",
         opacity: 0,
       });
