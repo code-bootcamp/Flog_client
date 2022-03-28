@@ -13,6 +13,7 @@ const Text = styled.tspan`
     cursor: pointer;
     font-size: 40px;
     font-weight: 500;
+    fill: #2c3131;
   }
   padding: 15px;
 `;
@@ -61,7 +62,7 @@ export default function chungBook(props) {
           <path
             id="path12"
             style={{
-              fill: "#c6e8db",
+              fill: "#F1F1F1",
               fillOpacity: "1",
               fillRule: "nonzero",
               stroke: "none",
@@ -199,7 +200,7 @@ export default function chungBook(props) {
               fontWeight: "normal",
               fontStretch: "normal",
               fontSize: "30px",
-              fill: "#58bd97",
+              fill: "#626262",
               fillOpacity: "1",
               fillRule: "nonzero",
               stroke: "none",
@@ -428,7 +429,6 @@ export default function chungBook(props) {
           </g>
         </g>
       </svg>
-      ;
     </>
   );
 }

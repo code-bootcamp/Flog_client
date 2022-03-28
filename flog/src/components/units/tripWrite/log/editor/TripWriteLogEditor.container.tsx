@@ -2,6 +2,8 @@ import { useMemo, useRef, useState, ChangeEvent, useEffect } from "react";
 import TripWriteLogEditorUI from "./TripWriteLogEditor.presenter";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import { UPLOAD_FILE } from "./TripWriteLogEditor.queries";
+import { useMutation } from "@apollo/client";
 
 const ReactQuill = dynamic(
   async () => {
@@ -18,7 +20,7 @@ const ReactQuill = dynamic(
 export default function TripWriteLogEditor(props) {
   const [contents, setContents] = useState("");
   const quillRef = useRef();
-
+  const [uploadBoardImagefile] = useMutation(UPLOAD_FILE);
   let quillCurrent: any;
   let editor: any;
   let currentFocus: any;
@@ -56,6 +58,7 @@ export default function TripWriteLogEditor(props) {
   const imageHandler = () => {
     const input = document.createElement("input");
     input.setAttribute("type", "file");
+    input.setAttribute("multiple", "true");
     input.setAttribute("className", "ImgUrl");
     input.setAttribute("accept", "image/*");
     document.body.appendChild(input);
@@ -68,15 +71,15 @@ export default function TripWriteLogEditor(props) {
       editor.focus();
 
       const file = event.target.files?.[0];
-      console.log(file);
-      // const result = await uploadFile({ variables: { file } });
-      // const fileUrl = result.data?.uploadFile.url;
+      // console.log(file);
+      const result = await uploadBoardImagefile({ variables: { file } });
+      const fileUrl = result.data?.uploadBoardImagefile;
+      console.log(result);
 
       editor.insertEmbed(
         quillCurrent.getEditorSelection().index,
         "image",
-        // `https://storage.googleapis.com/${fileUrl}`
-        `/img/${file}`
+        `https://storage.cloud.google.com/${fileUrl}`
       );
       input.remove();
     };
@@ -132,7 +135,7 @@ export default function TripWriteLogEditor(props) {
       handleChange={handleChange}
       contents={contents}
       modules={modules}
-        ={quillRef}
+      quillRef={quillRef}
       index={props.index}
       el={props.el}
       dayRef={props.dayRef}
