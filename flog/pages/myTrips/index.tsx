@@ -1,3 +1,4 @@
+import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import MapModal from "../../src/components/commons/modals/map/MapModal.container";
@@ -12,7 +13,22 @@ const BodyContainer = styled.div`
   align-items: center;
 `;
 
+const FETCH_SCHEDULES = gql`
+  query fetchSchedules($page: Float) {
+    fetchSchedules(page: $page) {
+      id
+      title
+      location
+      startDate
+      endDate
+      isShare
+    }
+  }
+`;
+
 export default function MyTripsPage() {
+  const { data: myData } = useQuery(FETCH_SCHEDULES);
+
   // 상위 컴포넌트에 넣을 내용 - 신규 일정 생성
   const [newScheduleModal, setNewScheduleModal] = useState(false);
 
@@ -123,8 +139,12 @@ export default function MyTripsPage() {
       )}
 
       <BodyContainer>
-        <MyTripBanner userInfo={false} onClickMapModal={onClickMapModal} />
-        <MyTripList isMine={true} userInfo={false} />
+        <MyTripBanner
+          userInfo={true}
+          onClickMapModal={onClickMapModal}
+          myData={myData}
+        />
+        <MyTripList isMine={true} userInfo={true} myData={myData} />
       </BodyContainer>
     </>
   );

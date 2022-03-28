@@ -1,21 +1,12 @@
-import { gql, useQuery } from "@apollo/client";
-import TripListUI from "./TripsList.presenter";
-
-const FETCH_SHARE_SCHEDULES = gql`
-  query fetchShareSchedules($page: Float) {
-    fetchShareSchedules(page: $page) {
-      id
-      title
-      startDate
-      endDate
-      hashtag
-      location
-    }
-  }
-`;
+import { GlobalContext } from "../../../../pages/_app";
+import TripListUI from "./TripList.presenter";
 
 export default function TripList(props) {
-  const { data: shareData } = useQuery(FETCH_SHARE_SCHEDULES);
-
-  return <TripListUI isMine={props.isMine} shareData={shareData} />;
+  return (
+    <TripListUI
+      isMine={props.isMine}
+      shareData={props.shareData}
+      myData={props.myData}
+    />
+  );
 }

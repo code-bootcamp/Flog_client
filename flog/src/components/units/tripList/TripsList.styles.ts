@@ -69,7 +69,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  cursor: pointer;
   position: relative;
 `;
 
@@ -101,7 +100,7 @@ export const Image = styled.div`
   border-radius: 20px;
   z-index: 0;
   aspect-ratio: 38 / 32.8;
-
+  cursor: pointer;
   :hover {
     img {
       width: 100%;
