@@ -1,7 +1,11 @@
 export interface ILayoutHeaderUIProps {
-  onClickLogo: () => void;
+  moveToPage: (page: string) => () => void;
   onClickHamburgerBtn: () => void;
-  onClickMoveToHamburger: (url: string) => () => void;
+  onClickLogout: () => void;
+  accessToken: string | undefined;
   isActive: boolean;
-  isLogIn: boolean;
+  onClickExitAlertModal: () => void;
+  onClickSubmitAlertModal: () => void;
+  alertModal: boolean;
+  modalContents: string;
 }
