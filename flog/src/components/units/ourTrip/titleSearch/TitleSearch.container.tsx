@@ -1,6 +1,6 @@
 import TitleSearchUI from "./TitleSearch.presenter";
 
-export default function TitleSearch() {
+export default function TitleSearch(props) {
   const onClickSearch = () => {
     alert("제목 검색하기");
   };
@@ -13,6 +13,8 @@ export default function TitleSearch() {
     <TitleSearchUI
       onClickSearch={onClickSearch}
       onChangeTitle={onChangeTitle}
+      doName={props.doName}
+      cityName={props.cityName}
     />
   );
 }

@@ -1,7 +1,7 @@
 import MyTripListUI from "./MyTripList.presenter";
 import { IMyTripListProps } from "./MyTripList.types";
 
-export default function MyTripList(props: IMyTripListProps) {
+export default function MyTripList(props) {
   const onClickMoveToOurTrip = () => {
     alert("우리의 여행 보러가기 function");
   };
@@ -16,6 +16,7 @@ export default function MyTripList(props: IMyTripListProps) {
       userInfo={props.userInfo}
       onClickMore={onClickMore}
       isMine={props.isMine}
+      myData={props.myData}
     />
   );
 }

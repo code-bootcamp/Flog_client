@@ -8,7 +8,7 @@ export default function MyTripBannerUI(props) {
       <My.BgImage></My.BgImage>
       <My.BgImage2></My.BgImage2>
       <My.Contents>
-        {props.userInfo ? (
+        {props.userInfo && props.myData ? (
           <>
             <My.Title>
               이조판서님

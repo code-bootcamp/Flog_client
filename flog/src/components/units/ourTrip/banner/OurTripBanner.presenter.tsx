@@ -4,11 +4,7 @@ import TitleSearch from "../titleSearch/TitleSearch.container";
 import * as Our from "./OurTripBanner.styles";
 
 export default function OurTripBannerUI(props) {
-  // default는 title
-  const [isSearchToggle, setIsSearchToggle] = useState(true);
-
   const [isSelect, setIsSelect] = useState("제목");
-
   const [isActive, setIsActive] = useState(false);
 
   const onClickSelectBtn = () => {
@@ -35,32 +31,35 @@ export default function OurTripBannerUI(props) {
             </Our.SearchIcon>
             <Our.SearchLabel>지역 찾아보기</Our.SearchLabel>
           </Our.RegionSearch>
-          <Our.SearchReturn>제주도</Our.SearchReturn>
+          <Our.SearchReturn>
+            {props.doName} {props.cityName}
+          </Our.SearchReturn>
         </Our.Region>
-
-        {isSearchToggle && (
-          <Our.Search>
-            <Our.SelectBtn onClick={onClickSelectBtn}>
-              <Our.Selected>{isSelect}</Our.Selected>
-              <Our.SelectIcon>
-                <img src="/img/icon-ourtrip-select-arrow.svg" />
-              </Our.SelectIcon>
-              {isActive && (
-                <Our.SelectOption>
-                  <ul>
-                    {["제목", "여행 테마"].map((el) => (
-                      <li key={el}>
-                        <span onClick={onClickOption(el)}>{el}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Our.SelectOption>
-              )}
-            </Our.SelectBtn>
-            {isSelect === "제목" && <TitleSearch />}
-            {isSelect === "여행 테마" && <TagSearch />}
-          </Our.Search>
-        )}
+        <Our.Search>
+          <Our.SelectBtn onClick={onClickSelectBtn}>
+            <Our.Selected>{isSelect}</Our.Selected>
+            <Our.SelectIcon>
+              <img src="/img/icon-ourtrip-select-arrow.svg" />
+            </Our.SelectIcon>
+            {isActive && (
+              <Our.SelectOption>
+                <ul>
+                  {["제목", "여행 테마"].map((el) => (
+                    <li key={el}>
+                      <span onClick={onClickOption(el)}>{el}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Our.SelectOption>
+            )}
+          </Our.SelectBtn>
+          {isSelect === "제목" && (
+            <TitleSearch doName={props.doName} cityName={props.cityName} />
+          )}
+          {isSelect === "여행 테마" && (
+            <TagSearch doName={props.doName} cityName={props.cityName} />
+          )}
+        </Our.Search>
       </Our.Contents>
     </Our.Banner>
   );

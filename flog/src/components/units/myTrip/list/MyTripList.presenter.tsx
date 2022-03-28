@@ -4,15 +4,14 @@ import * as My from "./MyTripList.styles";
 import { IMyTripListUIProps } from "./MyTripList.types";
 import TripList from "../../tripList/TripList.container";
 
-export default function MyTripListUI(props: IMyTripListUIProps) {
+export default function MyTripListUI(props) {
   const Array = [1, 2, 3, 4, 5, 6];
 
   return (
     <My.List>
-      {props.userInfo ? (
-        <TripList isMine={props.isMine} />
+      {props.userInfo && props.myData ? (
+        <TripList isMine={props.isMine} myData={props.myData} />
       ) : (
-        // </>
         <>
           <Non.Text>
             지금까지{" "}

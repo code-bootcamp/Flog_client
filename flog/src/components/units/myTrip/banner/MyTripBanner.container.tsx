@@ -6,6 +6,7 @@ export default function MyTripBanner(props) {
     <MyTripBannerUI
       onClickMapModal={props.onClickMapModal}
       userInfo={props.userInfo}
+      myData={props.myData}
     />
   );
 }
