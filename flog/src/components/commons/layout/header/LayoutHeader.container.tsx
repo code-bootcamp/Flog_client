@@ -1,14 +1,18 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
+import { useMoveToPage } from "../../hooks/useMoveToPage/index";
 
 export default function LayoutHeader() {
+  const moveToPage = useMoveToPage();
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
   const [isLogIn, setIsLogIn] = useState(false);
 
   const onClickLogo = () => {
     router.push("/main");
+    // moveToPage("/main");
+    // useMoveToPage("/main");
   };
   const onClickHamburgerBtn = () => {
     setIsActive((prev) => !prev);
