@@ -1,11 +1,13 @@
 import LoginUI from "./Login.presenter";
 import { useForm } from "react-hook-form";
+import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
+
 import { LOGIN } from "./Login.queries";
 import { useMutation } from "@apollo/client";
 import { useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { GlobalContext } from "../../../../pages/_app";
 // import Alert from "../../commons/modals/alert/Alert.container";
-import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
 interface FormValues {
   email?: string;
   password?: string;
@@ -17,11 +19,12 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const { moveToPage } = useMoveToPage();
+  const router = useRouter();
   const [login] = useMutation(LOGIN);
   const { register, handleSubmit, watch } = useForm({
     mode: "onChange",
   });
-  const moveToPage = useMoveToPage();
   const onclickSubmit = async (data: FormValues) => {
     console.log(data);
     try {
@@ -38,6 +41,7 @@ export default function Login() {
         localStorage.setItem("acessToken", token);
       }
       alert("로그인이 완료되었습니다");
+      router.push("/myTrips/write/plans");
     } catch (error) {
       if (error instanceof Error) {
         if (error.message.includes("이메일")) {
@@ -59,7 +63,6 @@ export default function Login() {
         setErrorMsg({ ...errorMsg, password: "" });
     });
   };
-
   return (
     <LoginUI
       register={register}

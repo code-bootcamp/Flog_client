@@ -5,7 +5,7 @@ export default function TripWriteLogListUI(props) {
   return (
     <List.Main>
       <List.PlanBox>
-        {props.isMine || (
+        {props.isMine || props.isEdit || (
           <List.UserInfo>
             <img src="/img/ourtrips-detail-usericon.png" />
             <List.Name>사용자 이름</List.Name>
@@ -54,18 +54,20 @@ export default function TripWriteLogListUI(props) {
           ))}
         </List.PlanWrapper>
       </List.PlanBox>
-
-      <List.EditorWrapper>
-        {props.schedules.map((el: string[], index: number) => (
-          <TripWriteLogEditor
-            key={index}
-            el={el}
-            dayRef={props.allRef[index]}
-            index={index}
-            isShow={props.isShow[index]}
-          />
-        ))}
-      </List.EditorWrapper>
+      {props.isEdit && (
+        <List.EditorWrapper>
+          {props.schedules.map((el: string[], index: number) => (
+            <TripWriteLogEditor
+              key={index}
+              el={el}
+              dayRef={props.allRef[index]}
+              index={index}
+              isShow={props.isShow[index]}
+              isEdit={props.isEdit}
+            />
+          ))}
+        </List.EditorWrapper>
+      )}
     </List.Main>
   );
 }

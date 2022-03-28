@@ -13,7 +13,6 @@ export default function OurTripDetailUI() {
     <Detail.Container>
       <TripWriteBanner />
       <Detail.Contents>
-        {}
         <Detail.Bar>
           <Detail.MoveBack>
             <img src="/img/mytrips-write-log1.png" />

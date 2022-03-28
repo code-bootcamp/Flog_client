@@ -58,7 +58,7 @@ export default function TripWriteLogList(props) {
       allRef={allRef}
       isShow={isShow}
       toggle={toggle}
-      isEdit={false}
+      isEdit={props.isEdit}
       isMine={isMine}
       moveSroll={moveSroll}
     />
