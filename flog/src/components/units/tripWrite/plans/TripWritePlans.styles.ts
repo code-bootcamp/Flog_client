@@ -18,6 +18,7 @@ export const Contents = styled.div`
 export const InnerWrap = styled.div`
   width: 95%;
   max-width: 1200px;
+  min-height: calc(100vh - 560px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
