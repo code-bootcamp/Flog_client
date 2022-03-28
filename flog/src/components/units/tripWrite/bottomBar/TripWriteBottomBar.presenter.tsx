@@ -10,24 +10,46 @@ export default function TripWriteBottomBarUI(
     <Write.Container>
       <Write.InnerWrap>
         <Write.ExitBox>
-          <Write.ExitButton onClick={props.onClickExit}>
+          <Write.ExitButton onClick={props.moveToPage("/myTrips")}>
             <span>나가기</span>
           </Write.ExitButton>
         </Write.ExitBox>
         <Write.SubmitBox>
-          {!props.router.asPath.includes("plans") && (
-            <OutlinedButton01
-              content="이전"
+          {props.router.asPath.includes("plans") && (
+            <ContainedButton01
+              content="다음"
               size="small"
-              onClick={props.onClickMoveToPrev}
+              onClick={props.moveToPage("/myTrips/write/money")}
             />
           )}
-
-          <ContainedButton01
-            content="다음"
-            size="small"
-            onClick={props.onClickMoveToNext}
-          />
+          {props.router.asPath.includes("money") && (
+            <>
+              <OutlinedButton01
+                content="이전"
+                size="small"
+                onClick={props.moveToPage("/myTrips/write/plans")}
+              />
+              <ContainedButton01
+                content="다음"
+                size="small"
+                onClick={props.moveToPage("/myTrips/write/log")}
+              />
+            </>
+          )}
+          {props.router.asPath.includes("log") && (
+            <>
+              <OutlinedButton01
+                content="이전"
+                size="small"
+                onClick={props.moveToPage("/myTrips/write/money")}
+              />
+              <ContainedButton01
+                content="저장하기"
+                size="small"
+                onClick={props.onClickSubmit}
+              />
+            </>
+          )}
         </Write.SubmitBox>
       </Write.InnerWrap>
     </Write.Container>
