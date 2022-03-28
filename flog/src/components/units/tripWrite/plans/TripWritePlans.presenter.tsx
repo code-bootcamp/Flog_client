@@ -1,6 +1,5 @@
 import {
   getDateString,
-  getDatetime,
   getMonthString,
   getWeekdayString,
 } from "../../../../commons/utils/getDate";

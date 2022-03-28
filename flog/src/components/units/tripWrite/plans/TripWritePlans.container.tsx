@@ -1,4 +1,7 @@
-import { diffDays, getDatetime } from "../../../../commons/utils/getDate";
+import {
+  changeStringToDatetime,
+  diffDays,
+} from "../../../../commons/utils/getDate";
 import { SAMPLE_DATA_PLANS, SAMPLE_DATA_PLANS_TITLE } from "./SampleData";
 import TripWritePlansUI from "./TripWritePlans.presenter";
 
@@ -18,8 +21,8 @@ export default function TripWritePlans() {
   const tripTitleData = SAMPLE_DATA_PLANS_TITLE.fetchSchedules; // TitleData 추출 - 추후 API에서 불러오는 데이터로 변경
 
   const getTripTotalDays = () => {
-    const startDatetime = getDatetime(tripTitleData[0].startDate);
-    const endDatetime = getDatetime(tripTitleData[0].endDate);
+    const startDatetime = changeStringToDatetime(tripTitleData[0].startDate);
+    const endDatetime = changeStringToDatetime(tripTitleData[0].endDate);
     const tripTotalDays = diffDays(endDatetime, startDatetime);
     return tripTotalDays;
   };
