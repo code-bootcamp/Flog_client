@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import TripWriteNavigationUI from "./TripWriteNavigation.presenter";
 
 const TRIP_WRITE_NAVIGATION = [
@@ -8,15 +9,13 @@ const TRIP_WRITE_NAVIGATION = [
 ];
 
 export default function TripWriteNavigation() {
+  const { moveToPage } = useMoveToPage();
   const router = useRouter();
-  const onClickNav = (url: string) => () => {
-    alert(url);
-  };
   return (
     <TripWriteNavigationUI
       TRIP_WRITE_NAVIGATION={TRIP_WRITE_NAVIGATION}
-      onClickNav={onClickNav}
       router={router}
+      moveToPage={moveToPage}
     />
   );
 }

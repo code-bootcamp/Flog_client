@@ -5,6 +5,6 @@ export interface TripWriteNavigationUIProps {
     title: string;
     url: string;
   }[];
-  onClickNav: (url: string) => () => void;
   router: NextRouter;
+  moveToPage: (page: string) => () => void;
 }

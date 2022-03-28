@@ -45,9 +45,9 @@ export default function UserEditUI(props: IUserEditUIProps) {
             <span>생년월일</span>
           </Edit.InputLabel>
           <Edit.BirthdayInput>
-            <OutlinedInput01 type="number" placeholder="" />{" "}
-            <OutlinedInput01 type="number" placeholder="" />{" "}
-            <OutlinedInput01 type="number" placeholder="" />
+            <OutlinedInput01 type="number" placeholder="2000" />{" "}
+            <OutlinedInput01 type="number" placeholder="03" />{" "}
+            <OutlinedInput01 type="number" placeholder="28" />
           </Edit.BirthdayInput>
           <Edit.InputLabel>
             <span>이메일주소</span>

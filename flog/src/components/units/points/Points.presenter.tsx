@@ -1,3 +1,4 @@
+import Dropdown01 from "../../commons/dropdowns/01/Dropdown01.container";
 import Pagination01 from "../../commons/paginations/01/Pagination01.container";
 import * as Points from "./Points.styles";
 import { IPointsUIProps } from "./Points.types";
@@ -15,7 +16,9 @@ export default function PointsUI(props: IPointsUIProps) {
           <Points.TitleText>
             <h2>포인트 이용내역</h2>
           </Points.TitleText>
-          <Points.TitleDropdown>드롭다운 추후 import 예정</Points.TitleDropdown>
+          <Points.TitleDropdown>
+            <Dropdown01 />
+          </Points.TitleDropdown>
         </Points.Title>
         <Points.Contents>
           {SAMPLE_DATA_POINTS.map((el, index) => (

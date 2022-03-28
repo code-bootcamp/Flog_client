@@ -32,13 +32,18 @@ export default function MapModal(props) {
     <M.Container>
       <M.ModalWrapper>
         <M.Modal>
-          <M.Exit>
+          <M.Title>
+            <div>지역을 선택하세요</div>
             <img
               src="/img/icon-modal-exit.svg"
               alt="나가기버튼"
               onClick={props.onClickExit}
             />
-          </M.Exit>
+          </M.Title>
+          <div style={{ zIndex: "9", height: "30px" }}>
+            <M.Subtitle id="doName">{props.doName}</M.Subtitle>
+            <M.Subtitle id="doName">{props.cityName}</M.Subtitle>
+          </div>
           <SvgMap
             doName={props.doName}
             setDoName={props.setDoName}

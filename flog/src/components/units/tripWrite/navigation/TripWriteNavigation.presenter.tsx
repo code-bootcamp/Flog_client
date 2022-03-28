@@ -11,11 +11,11 @@ export default function TripWriteNavigationUI(
           <>
             {el.url === props.router.asPath ? (
               <Write.Item key={el.title} className="onNow">
-                <button onClick={props.onClickNav(el.url)}>{el.title}</button>
+                <button onClick={props.moveToPage(el.url)}>{el.title}</button>
               </Write.Item>
             ) : (
               <Write.Item key={el.title}>
-                <button onClick={props.onClickNav(el.url)}>{el.title}</button>
+                <button onClick={props.moveToPage(el.url)}>{el.title}</button>
               </Write.Item>
             )}
           </>

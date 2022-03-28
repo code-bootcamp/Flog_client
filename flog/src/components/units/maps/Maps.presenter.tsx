@@ -22,22 +22,21 @@ export default function MapsUI(props) {
           referrerPolicy="no-referrer"
         ></script>
       </Head>
-      <Maps.Title>지역을 선택하세요</Maps.Title>
-      <div style={{ zIndex: "9", height: "30px" }}>
-        <Maps.Subtitle id="doName">{props.doName}</Maps.Subtitle>
-        <Maps.Subtitle id="doName">{props.cityName}</Maps.Subtitle>
-      </div>
-      <Maps.BackBtn onClick={props.reset}>전국 지도로 돌아가기</Maps.BackBtn>
+
+      <Maps.BackBtn onClick={props.reset}>
+        <img src="/img/mytrips-write-log1.png" />
+        전국 지도
+      </Maps.BackBtn>
 
       <Maps.Contents id="wholeMap">
         <svg
           style={{
-            background: "#C6E8DB",
+            background: "#F1F1F1",
             overflow: "visible",
           }}
           viewBox="0 0 500 500"
-          height="200"
-          width="200"
+          height="180"
+          width="180"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>

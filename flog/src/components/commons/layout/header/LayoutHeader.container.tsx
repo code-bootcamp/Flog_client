@@ -11,6 +11,8 @@ export default function LayoutHeader() {
   const [logout] = useMutation(LOG_OUT);
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
   const { accessToken } = useContext(GlobalContext);
 
   const onClickHamburgerBtn = () => {
@@ -23,18 +25,30 @@ export default function LayoutHeader() {
       setIsActive((prev) => !prev);
       router.push("/main");
     } catch (error) {
-      alert(error);
+      setAlertModal(true);
+      if (error instanceof Error) setModalContents(error.message);
     }
+  };
+
+  const onClickExitAlertModal = () => {
+    setAlertModal(false);
+  };
+
+  const onClickSubmitAlertModal = () => {
+    setAlertModal(false);
   };
 
   return (
     <LayoutHeaderUI
       moveToPage={moveToPage}
       onClickHamburgerBtn={onClickHamburgerBtn}
-      // onClickMoveToHamburger={onClickMoveToHamburger}
       onClickLogout={onClickLogout}
       isActive={isActive}
       accessToken={accessToken}
+      onClickExitAlertModal={onClickExitAlertModal}
+      onClickSubmitAlertModal={onClickSubmitAlertModal}
+      alertModal={alertModal}
+      modalContents={modalContents}
     />
   );
 }
