@@ -19,25 +19,25 @@ import {
 import { createUploadLink } from "apollo-upload-client";
 
 interface IGlobalContext {
-  acessToken?: string;
-  setAcessToken?: Dispatch<SetStateAction<string>>;
+  accessToken?: string;
+  setAccessToken?: Dispatch<SetStateAction<string>>;
 }
 export const GlobalContext = createContext<IGlobalContext>({});
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [acessToken, setAcessToken] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
   const value = {
-    acessToken,
-    setAcessToken,
+    accessToken,
+    setAccessToken,
   };
   useEffect(() => {
-    if (localStorage.getItem("acessToken"))
-      setAcessToken(localStorage.getItem("acessToken") || "{}");
+    if (localStorage.getItem("accessToken"))
+      setAccessToken(localStorage.getItem("accessToken") || "{}");
   }, []);
   const uploadLink = createUploadLink({
     uri: "http://34.64.249.11:3000/graphql",
-    headers: { Authorization: `Bearer ${acessToken}` },
+    headers: { Authorization: `Bearer ${accessToken}` },
   });
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink as unknown as ApolloLink]),

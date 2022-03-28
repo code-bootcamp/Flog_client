@@ -1,40 +1,40 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
 import { useMoveToPage } from "../../hooks/useMoveToPage/index";
+import { GlobalContext } from "../../../../../pages/_app";
+import { useMutation } from "@apollo/client";
+import { LOG_OUT } from "./LayoutHeader.queries";
 
 export default function LayoutHeader() {
-  const moveToPage = useMoveToPage();
+  const { moveToPage } = useMoveToPage();
+  const [logout] = useMutation(LOG_OUT);
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
-  const [isLogIn, setIsLogIn] = useState(false);
+  const { accessToken } = useContext(GlobalContext);
 
-  const onClickLogo = () => {
-    router.push("/main");
-    // moveToPage("/main");
-    // useMoveToPage("/main");
-  };
   const onClickHamburgerBtn = () => {
     setIsActive((prev) => !prev);
   };
-  const onClickMoveToHamburger = (url: string) => () => {
-    router.push(url);
-    setIsActive((prev) => !prev);
+  const onClickLogout = () => {
+    try {
+      // logout();
+      localStorage.removeItem("accessToken");
+      setIsActive((prev) => !prev);
+      router.push("/main");
+    } catch (error) {
+      alert(error);
+    }
   };
-
-  // 빨간 줄 없애기 위한 임시 함수 (추후 로그인 구현되면 삭제 예정)
-  const temp = () => {
-    setIsLogIn((prev) => !prev);
-  };
-  console.log(temp);
 
   return (
     <LayoutHeaderUI
-      onClickLogo={onClickLogo}
+      moveToPage={moveToPage}
       onClickHamburgerBtn={onClickHamburgerBtn}
-      onClickMoveToHamburger={onClickMoveToHamburger}
+      // onClickMoveToHamburger={onClickMoveToHamburger}
+      onClickLogout={onClickLogout}
       isActive={isActive}
-      isLogIn={isLogIn}
+      accessToken={accessToken}
     />
   );
 }

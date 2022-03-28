@@ -14,7 +14,7 @@ interface FormValues {
 }
 
 export default function Login() {
-  const { setAcessToken } = useContext(GlobalContext);
+  const { setAccessToken } = useContext(GlobalContext);
   const [errorMsg, setErrorMsg] = useState({
     email: "",
     password: "",
@@ -37,11 +37,11 @@ export default function Login() {
       console.log(result.data?.login);
       const token = result.data?.login;
       if (token) {
-        setAcessToken(token);
-        localStorage.setItem("acessToken", token);
+        setAccessToken(token);
+        localStorage.setItem("accessToken", token);
       }
       alert("로그인이 완료되었습니다");
-      router.push("/myTrips/write/plans");
+      router.push("/myTrips");
     } catch (error) {
       if (error instanceof Error) {
         if (error.message.includes("이메일")) {

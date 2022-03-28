@@ -12,7 +12,7 @@ export default function TripListUI(props) {
             <Dropdown01 />
           </List.Head>
           <List.TripList>
-            {props.myData?.fetchShareSchedules.map((el, index) => (
+            {props.myData?.fetchSchedules.map((el, index) => (
               <>
                 <List.CardWrapper key={el.id}>
                   <List.Wrapper>
