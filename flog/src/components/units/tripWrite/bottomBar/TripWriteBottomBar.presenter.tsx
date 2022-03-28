@@ -2,6 +2,7 @@ import * as Write from "./TripWriteBottomBar.styles";
 import ContainedButton01 from "../../../commons/buttons/contained/01/ContainedButton01.container";
 import OutlinedButton01 from "../../../commons/buttons/outlined/01/OutlinedButton01.container";
 import { ITripWriteBottomBarUIProps } from "./TripWriteBottomBar.types";
+import router from "next/router";
 
 export default function TripWriteBottomBarUI(
   props: ITripWriteBottomBarUIProps
@@ -19,7 +20,9 @@ export default function TripWriteBottomBarUI(
             <ContainedButton01
               content="다음"
               size="small"
-              onClick={props.moveToPage("/myTrips/write/money")}
+              onClick={props.moveToPage(
+                `/myTrips/${props.router.query.scheduleId}/money`
+              )}
             />
           )}
           {props.router.asPath.includes("money") && (
@@ -27,12 +30,16 @@ export default function TripWriteBottomBarUI(
               <OutlinedButton01
                 content="이전"
                 size="small"
-                onClick={props.moveToPage("/myTrips/write/plans")}
+                onClick={props.moveToPage(
+                  `/myTrips/${props.router.query.scheduleId}/plans`
+                )}
               />
               <ContainedButton01
                 content="다음"
                 size="small"
-                onClick={props.moveToPage("/myTrips/write/log")}
+                onClick={props.moveToPage(
+                  `/myTrips/${props.router.query.scheduleId}/log`
+                )}
               />
             </>
           )}
@@ -41,7 +48,9 @@ export default function TripWriteBottomBarUI(
               <OutlinedButton01
                 content="이전"
                 size="small"
-                onClick={props.moveToPage("/myTrips/write/money")}
+                onClick={props.moveToPage(
+                  `/myTrips/${props.router.query.scheduleId}/money`
+                )}
               />
               <ContainedButton01
                 content="저장하기"
