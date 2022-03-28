@@ -14,8 +14,8 @@ export const ModalWrapper = styled.div`
   position: absolute;
   background-color: #ffffff;
   border-radius: 20px;
-  width: 780px;
-  height: auto;
+  width: 560px;
+  height: 750px;
   padding: 25px;
   border: none;
   left: 50%;
@@ -38,7 +38,7 @@ export const Title = styled.div`
   display: flex;
   color: #2c3131;
   justify-content: space-between;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   img {
     width: 23px;
     :hover {
@@ -46,28 +46,34 @@ export const Title = styled.div`
     }
   }
 `;
-export const Subtitle = styled.span`
-  font-weight: 500;
-  font-size: 22px;
-  position: absolute;
-  left: 20px;
-  color: #626262;
-  text-align: start;
 
+export const Subtitle = styled.div`
+  width: 100%;
   z-index: 9;
+  align-items: flex-start;
 `;
+
+export const DoName = styled.span`
+  font-weight: 300;
+  font-size: 22px;
+  color: #a9a9a9;
+  margin-right: 7px;
+`;
+
+export const CityName = styled.span`
+  font-weight: 400;
+  font-size: 22px;
+  color: #626262;
+  img {
+    margin-right: 6px;
+  }
+`;
+
 export const Exit = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
 `;
-
-// export const Title = styled.div`
-//   font-size: 44px;
-//   line-height: 53px;
-//   text-align: center;
-//   margin-bottom: 60px;
-// `;
 
 export const Wrap = styled.div`
   display: flex;

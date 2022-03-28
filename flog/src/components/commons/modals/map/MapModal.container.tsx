@@ -40,10 +40,16 @@ export default function MapModal(props) {
               onClick={props.onClickExit}
             />
           </M.Title>
-          <div style={{ zIndex: "9", height: "30px" }}>
-            <M.Subtitle id="doName">{props.doName}</M.Subtitle>
-            <M.Subtitle id="doName">{props.cityName}</M.Subtitle>
-          </div>
+          <M.Subtitle>
+            <M.DoName>{props.doName}</M.DoName>
+            {props.cityName && (
+              <M.CityName>
+                <img src="/img/icon-right-gray.svg" />
+                {props.cityName}
+              </M.CityName>
+            )}
+          </M.Subtitle>
+
           <SvgMap
             doName={props.doName}
             setDoName={props.setDoName}

@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 export const Main = styled.div`
-  margin-top: 15px;
   height: 480px;
-  width: 700px;
+  width: 500px;
   position: relative;
   display: flex;
   border-radius: 15px;
@@ -14,17 +13,19 @@ export const Contents = styled.div`
   display: flex;
   fill: #fff;
   flex-direction: column;
+  position: absolute;
+  top: 10px;
   margin-top: 40px;
 `;
 
 export const Text = styled.text`
   font-size: 35px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 20px;
   text-anchor: middle;
   alignment-baseline: middle;
   fill: #2c3131;
-  cursor: pointer
+  cursor: pointer;
   :hover {
     fill: #2c3131;
   }
@@ -56,12 +57,11 @@ export const CityWrapper = styled.div`
 export const BackBtn = styled.div`
   padding: 13px 20px;
   position: absolute;
-  font-size: 22px;
+  font-size: 20px;
   left: 1%;
   top: 15px;
-  font-weight: 400;
-  border-radius: 50px;
-  border: none;
+  font-weight: 300;
+
   z-index: 2;
   color: #58bd97;
   :hover {

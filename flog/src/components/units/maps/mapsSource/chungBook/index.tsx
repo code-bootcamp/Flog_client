@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import zIndex from "@mui/material/styles/zIndex";
-import { useState } from "react";
 
 const Path = styled.path`
   fill: #ffffff;
@@ -11,7 +9,7 @@ const Path = styled.path`
 const Text = styled.tspan`
   :hover {
     cursor: pointer;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 500;
     fill: #2c3131;
   }
@@ -44,7 +42,7 @@ export default function chungBook(props) {
     <>
       <svg
         viewBox="0 0 1889.76 2002.48"
-        height="500"
+        height="440"
         width="500"
         xmlSpace="preserve"
         id="svg2"
@@ -197,9 +195,8 @@ export default function chungBook(props) {
           <text
             id="text108"
             style={{
-              fontWeight: "normal",
-              fontStretch: "normal",
-              fontSize: "30px",
+              fontStretch: "nomal",
+              fontSize: "40px",
               fill: "#626262",
               fillOpacity: "1",
               fillRule: "nonzero",

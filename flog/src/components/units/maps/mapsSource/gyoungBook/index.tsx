@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
 
 const PATH = styled.path`
   fill: #ffffff;
@@ -10,8 +9,9 @@ const PATH = styled.path`
 const TEXT = styled.tspan`
   :hover {
     cursor: pointer;
-    fill: red;
     font-size: 40px;
+    font-weight: 500;
+    fill: #2c3131;
   }
   padding: 15px;
 `;
@@ -53,7 +53,7 @@ export default function gyoungBook(props) {
     <>
       <svg
         viewBox="0 0 1889.76 2002.48"
-        height="500"
+        height="440"
         width="500"
         xmlSpace="preserve"
         id="svg2"
@@ -71,7 +71,7 @@ export default function gyoungBook(props) {
           <Path12
             id="path12"
             d="M 0,0 H 1417.32 V 1501.856 H 0 Z"
-            style={{ fill: "#c6e8db" }}
+            style={{ fill: "#F1F1F1" }}
           />
 
           <g id="g14">

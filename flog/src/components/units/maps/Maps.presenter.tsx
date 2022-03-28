@@ -4,9 +4,7 @@ import ChungBook from "./mapsSource/chungBook";
 import ChungNam from "./mapsSource/chungNam";
 import GangOne from "./mapsSource/gangOne";
 import GyoungBook from "./mapsSource/gyoungBook";
-
 import Gyoungki from "./mapsSource/gyoungki";
-
 import GyoungNam from "./mapsSource/gyoungNam";
 import JeonBook from "./mapsSource/jeonBook";
 import JeonNam from "./mapsSource/jeonNam";
@@ -22,12 +20,12 @@ export default function MapsUI(props) {
           referrerPolicy="no-referrer"
         ></script>
       </Head>
-
-      <Maps.BackBtn onClick={props.reset}>
-        <img src="/img/mytrips-write-log1.png" />
-        전국 지도
-      </Maps.BackBtn>
-
+      {props.doName && (
+        <Maps.BackBtn onClick={props.reset}>
+          <img src="/img/mytrips-write-log1.png" />
+          전국 지도
+        </Maps.BackBtn>
+      )}
       <Maps.Contents id="wholeMap">
         <svg
           style={{
@@ -36,7 +34,7 @@ export default function MapsUI(props) {
           }}
           viewBox="0 0 500 500"
           height="180"
-          width="180"
+          width="200"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>

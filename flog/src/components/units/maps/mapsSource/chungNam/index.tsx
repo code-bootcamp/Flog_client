@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
 
 const PATH = styled.path`
   fill: #ffffff;
@@ -10,8 +9,9 @@ const PATH = styled.path`
 const TEXT = styled.tspan`
   :hover {
     cursor: pointer;
-    fill: red;
-    font-size: 40px;
+    font-size: 50px;
+    font-weight: 500;
+    fill: #2c3131;
   }
   padding: 15px;
 `;
@@ -58,10 +58,9 @@ export default function chungNam(props) {
   const big: any = {
     fontWeight: "normal",
     fontStretch: "normal",
-    fontSize: "30px",
-    fontFamily: "THEJung130",
+    fontSize: "40px",
     writingMode: "lr-tb",
-    fill: "#000000",
+    fill: "#626262",
     fillOpacity: "1",
     fillRule: "nonzero",
     stroke: "none",
@@ -75,8 +74,8 @@ export default function chungNam(props) {
     <>
       <svg
         viewBox="0 0 1889.76 2002.48"
-        height="500"
-        width="500"
+        height="440"
+        width="400"
         xmlSpace="preserve"
         id="svg2"
         version="1.1"
@@ -93,7 +92,7 @@ export default function chungNam(props) {
           <Path12
             id="path12"
             d="M 0,0 H 1417.32 V 1501.856 H 0 Z"
-            style={{ fill: "#c6e8db" }}
+            style={{ fill: "#F1F1F1" }}
           />
 
           <g id="g14">
