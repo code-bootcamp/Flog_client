@@ -4,6 +4,9 @@ import { IAlertProps } from "./Alert.types";
 
 // //상위 컴포넌트에 넣을 내용 - alert
 // const [alertModal, setAlertModal] = useState(false);
+// const [modalContents, setModalContents] = useState("");
+
+// setModalContents("모달에 넣을 내용 입력")
 
 // const onClickAlertModal = () => {
 //   setAlertModal(true);
@@ -23,7 +26,7 @@ import { IAlertProps } from "./Alert.types";
 //       <Alert
 //         onClickExit={onClickExitAlertModal}
 //         onClickSubmit={onClickSubmitAlertModal}
-//         contents = "Alert 모달 내부에 들어갈 내용을 입력해주세요."
+//         contents={modalContents}
 //       />
 //     )}
 // )

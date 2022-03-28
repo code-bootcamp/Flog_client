@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { HAMBURGER_MENUS, NAVIGATION_MENUS } from "../Menus";
+import Alert from "../../modals/alert/Alert.container";
+import { NAVIGATION_MENUS } from "../Menus";
 import * as Header from "./LayoutHeader.styles";
 import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
 
@@ -59,6 +60,13 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
           </Header.Hamburger>
         </Header.MenuBar>
       </Header.InnerWrap>
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
+        />
+      )}
     </Header.Container>
   );
 }
