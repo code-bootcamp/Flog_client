@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 
+export const PlansBox = styled.div`
+  width: 100%;
+`;
 export const Card = styled.div`
   width: 100%;
   height: auto;
