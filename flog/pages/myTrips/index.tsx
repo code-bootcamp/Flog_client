@@ -123,8 +123,8 @@ export default function MyTripsPage() {
       )}
 
       <BodyContainer>
-        <MyTripBanner userInfo={true} onClickMapModal={onClickMapModal} />
-        <MyTripList isMine={true} userInfo={true} />
+        <MyTripBanner userInfo={false} onClickMapModal={onClickMapModal} />
+        <MyTripList isMine={true} userInfo={false} />
       </BodyContainer>
     </>
   );

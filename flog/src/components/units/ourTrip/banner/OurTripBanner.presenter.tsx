@@ -29,7 +29,7 @@ export default function OurTripBannerUI(props) {
           당신을 기다리고 있어요!
         </Our.Title>
         <Our.Region>
-          <Our.RegionSearch onClick={props.onClickOpenMap}>
+          <Our.RegionSearch onClick={props.onClickMapModal}>
             <Our.SearchIcon>
               <img src="/img/icon-ourtrip-search.svg" alt="검색" />
             </Our.SearchIcon>
