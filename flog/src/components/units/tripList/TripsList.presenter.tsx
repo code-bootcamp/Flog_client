@@ -1,3 +1,4 @@
+import Dropdown01 from "../../commons/dropdowns/01/Dropdown01.container";
 import * as List from "./TripsList.styles";
 
 export default function TripListUI(props) {
@@ -7,11 +8,12 @@ export default function TripListUI(props) {
     <List.List>
       <List.Head>
         <List.Label>{props.isMine ? "지난 여행" : "여행 족보"}</List.Label>
-        <List.Select>
+        <Dropdown01 />
+        {/* <List.Select>
           <List.SelectOption selected>최신순</List.SelectOption>
           <List.SelectOption>조회순</List.SelectOption>
           <List.SelectOption>과거순</List.SelectOption>
-        </List.Select>
+        </List.Select> */}
       </List.Head>
       <List.TripList>
         {arr.map((_el, index) => (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropdown01 from "../../src/components/commons/dropdowns/01/Dropdown01.container";
 import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
@@ -8,6 +8,7 @@ import DetailBudget from "../../src/components/commons/modals/newBudget/detailBu
 import TotalBudget from "../../src/components/commons/modals/newBudget/totalBudget/TotalBudget.container";
 import NewDetailScheduleModal from "../../src/components/commons/modals/newSchedule/detailSchedule/DetailSchedule.container";
 import NewTripScheduleModal from "../../src/components/commons/modals/newSchedule/mainSchedule/MainSchedule.container";
+import TripList from "../../src/components/units/tripList/TripList.container";
 
 export default function testPage() {
   // 상위 컴포넌트에 넣을 내용 - point
@@ -128,63 +129,75 @@ export default function testPage() {
 
   const onClickSubmitMapModal = () => {
     setMapModal(false);
+    // onClickNewScheduleModal();
+    setTimeout(onClickNewScheduleModal, 500);
   };
 
   return (
-    <div>
-      <button onClick={onClickPointModal}>포인트 후원하기</button>
-      {pointModal && (
-        <Point
-          onClickExit={onClickExitPointModal}
-          onClickSubmit={onClickSubmitPointModal}
-          onChangePoint={onChangePoint}
-          pointSelect={pointSelect}
-        />
-      )}
+    <>
+      <div>
+        <button onClick={onClickPointModal}>포인트 후원하기</button>
+        {pointModal && (
+          <Point
+            onClickExit={onClickExitPointModal}
+            onClickSubmit={onClickSubmitPointModal}
+            onChangePoint={onChangePoint}
+            pointSelect={pointSelect}
+          />
+        )}
 
-      <button onClick={onClickExitModal}>exit</button>
-      {exitModal && (
-        <Exit
-          onClickExit={onClickExitExitModal}
-          onClickSubmit={onClickSubmitExitModal}
-        />
-      )}
+        <button onClick={onClickExitModal}>exit</button>
+        {exitModal && (
+          <Exit
+            onClickExit={onClickExitExitModal}
+            onClickSubmit={onClickSubmitExitModal}
+          />
+        )}
 
-      <button onClick={onClickNewScheduleModal}>신규 일정 생성</button>
-      {newScheduleModal && (
-        <NewTripScheduleModal
-          onClickExit={onClickExitNewScheduleModal}
-          onClickSubmit={onClickSubmitNewScheduleModal}
-        />
-      )}
+        <button onClick={onClickNewScheduleModal}>신규 일정 생성</button>
+        {newScheduleModal && (
+          <NewTripScheduleModal
+            onClickExit={onClickExitNewScheduleModal}
+            onClickSubmit={onClickSubmitNewScheduleModal}
+          />
+        )}
 
-      <button onClick={onClickDetailScheduleModal}>세부 일정 생성</button>
-      {detailScheduleModal && (
-        <NewDetailScheduleModal
-          onClickExit={onClickExitDetailScheduleModal}
-          onClickSubmit={onClickSubmitDetailScheduleModal}
-        />
-      )}
+        <button onClick={onClickDetailScheduleModal}>세부 일정 생성</button>
+        {detailScheduleModal && (
+          <NewDetailScheduleModal
+            onClickExit={onClickExitDetailScheduleModal}
+            onClickSubmit={onClickSubmitDetailScheduleModal}
+          />
+        )}
 
-      <button onClick={onClickDetailBudgetModal}>세부 예산 생성</button>
-      {detailBudgetModal && (
-        <DetailBudget
-          onClickExit={onClickExitDetailBudgetModal}
-          onClickSubmit={onClickSubmitDetailBudgetModal}
-        />
-      )}
+        <button onClick={onClickDetailBudgetModal}>세부 예산 생성</button>
+        {detailBudgetModal && (
+          <DetailBudget
+            onClickExit={onClickExitDetailBudgetModal}
+            onClickSubmit={onClickSubmitDetailBudgetModal}
+          />
+        )}
 
-      <button onClick={onClickTotalBudgetModal}>예산 설정하기</button>
-      {totalBudgetModal && (
-        <TotalBudget
-          onClickExit={onClickExitTotalBudgetModal}
-          onClickSubmit={onClickSubmitTotalBudgetModal}
-          onChangeTotalBudget={onChangeTotalBudget}
-          budgetSelect={budgetSelect}
-        />
-      )}
-      <Dropdown01 />
-      <Dropdown02 />
-    </div>
+        <button onClick={onClickTotalBudgetModal}>예산 설정하기</button>
+        {totalBudgetModal && (
+          <TotalBudget
+            onClickExit={onClickExitTotalBudgetModal}
+            onClickSubmit={onClickSubmitTotalBudgetModal}
+            onChangeTotalBudget={onChangeTotalBudget}
+            budgetSelect={budgetSelect}
+          />
+        )}
+        <Dropdown01 />
+        <Dropdown02 />
+        <button onClick={onClickMapModal}>map</button>
+        {mapModal && (
+          <MapModal
+            onClickExit={onClickExitMapModal}
+            onClickSubmit={onClickSubmitMapModal}
+          />
+        )}
+      </div>
+      <TripList />
+    </>
   );
 }

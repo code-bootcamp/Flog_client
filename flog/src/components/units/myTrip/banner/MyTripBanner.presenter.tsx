@@ -2,7 +2,7 @@ import ContainedButton01UI from "../../../commons/buttons/contained/01/Contained
 import * as My from "./MyTripBanner.styles";
 import { IMyTripsBannerUIProps } from "./MyTripBanner.types";
 
-export default function MyTripBannerUI(props: IMyTripsBannerUIProps) {
+export default function MyTripBannerUI(props) {
   return (
     <My.Banner>
       <My.BgImage></My.BgImage>
@@ -18,7 +18,7 @@ export default function MyTripBannerUI(props: IMyTripsBannerUIProps) {
             <ContainedButton01UI
               content="새로운 여행 만들기"
               size="large"
-              onClick={props.onClickNewTrip}
+              onClick={props.onClickMapModal}
               disabled={false}
             />
             <My.Illust1>
@@ -43,7 +43,7 @@ export default function MyTripBannerUI(props: IMyTripsBannerUIProps) {
             <ContainedButton01UI
               content="새로운 여행 만들기"
               size="large"
-              onClick={props.onClickNewTrip}
+              onClick={props.onClickMapModal}
               disabled={false}
             />
             <My.Illust2>

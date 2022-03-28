@@ -45,6 +45,7 @@ export const Option = styled.div`
       width: 338px;
       height: 50px;
       border-radius: 8px;
+
       cursor: pointer;
 
       span {
@@ -67,6 +68,7 @@ export const Option = styled.div`
     li:last-of-type {
       span {
         border-radius: 0 0 8px 8px;
+        border: none;
       }
     }
   }

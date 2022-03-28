@@ -13,6 +13,7 @@ export const SelectButton = styled.div`
   padding-left: 24px;
   padding-right: 28px;
   cursor: pointer;
+  z-index: 999;
 `;
 
 export const Selected = styled.div`
