@@ -42,15 +42,7 @@ export const TitleText = styled.div`
     font-weight: 500;
   }
 `;
-export const TitleDropdown = styled.div`
-  height: 60px;
-  border: 1px solid #cacaca;
-  border-radius: 10px;
-  padding: 0 20px;
-  line-height: 60px;
-  text-align: center;
-  background: #f4f4f4;
-`;
+export const TitleDropdown = styled.div``;
 export const Contents = styled.div``;
 export const Item = styled.div`
   border: 1px solid #e9e9e9;
