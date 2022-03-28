@@ -7,7 +7,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
   return (
     <Header.Container>
       <Header.InnerWrap>
-        <Header.Logo onClick={props.onClickLogo}>
+        <Header.Logo onClick={props.moveToPage("/main")}>
           <h1>Flog</h1>
         </Header.Logo>
         <Header.MenuBar>
@@ -36,22 +36,21 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
             </Header.HamburgerBtn>
             {props.isActive && (
               <Header.HamburgerMenu>
-                {props.isLogIn ? (
+                {props.accessToken ? (
                   <ul>
-                    {HAMBURGER_MENUS.map((el) => (
-                      <li key={el.title}>
-                        <span onClick={props.onClickMoveToHamburger(el.url)}>
-                          {el.title}
-                        </span>
-                      </li>
-                    ))}
+                    <li>
+                      <span onClick={props.moveToPage("/mypage")}>
+                        마이페이지
+                      </span>
+                    </li>
+                    <li>
+                      <span onClick={props.onClickLogout}>로그아웃</span>
+                    </li>
                   </ul>
                 ) : (
                   <ul>
-                    <li key="로그인">
-                      <span onClick={props.onClickMoveToHamburger("/login")}>
-                        로그인
-                      </span>
+                    <li>
+                      <span onClick={props.moveToPage("/login")}>로그인</span>
                     </li>
                   </ul>
                 )}
