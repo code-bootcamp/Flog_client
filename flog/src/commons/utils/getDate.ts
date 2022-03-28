@@ -1,14 +1,25 @@
-export const getDatetime = (str: string) => {
+// String을 Datetime으로 변경
+export const changeStringToDatetime = (str: string) => {
   const datetime = new Date(str);
   return datetime;
 };
 
+// Datetime을 '2022.02.02' 양식의 string으로 변경
+export const changeDatetimeToString = (datetime: Date) => {
+  const year = datetime.getFullYear().toString();
+  const month = datetime.getMonth().toString().padStart(2, 0);
+  const date = datetime.getDate().toString().padStart(2, 0);
+  return year + "." + month + "." + date;
+};
+
+// 시작일과 종료일을 입력하면 총 여행 일자 반환
 export const diffDays = (firstDate: Date, lastDate: Date) => {
   const diffTimeSeconds = lastDate.getTime() - firstDate.getTime();
   const diffDays = Math.abs(diffTimeSeconds / (1000 * 3600 * 24));
   return diffDays + 2;
 };
 
+//
 export const getMonthString = (str: string, plusDay?: number) => {
   const datetime = new Date(str);
   if (plusDay) {

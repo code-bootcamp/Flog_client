@@ -1,6 +1,5 @@
 import {
   getDateString,
-  getDatetime,
   getMonthString,
   getWeekdayString,
 } from "../../../../commons/utils/getDate";
@@ -11,6 +10,7 @@ import TripWritePlansAdd from "./add/TripWritePlansAdd.container";
 import TripWritePlansCard from "./card/TripWritePlansCard.container";
 import { SAMPLE_DATA } from "./SampleData";
 import * as Write from "./TripWritePlans.styles";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export default function TripWritePlansUI(props) {
   return (
@@ -19,32 +19,46 @@ export default function TripWritePlansUI(props) {
       <TripWriteNavigation />
       <Write.Contents>
         <Write.InnerWrap>
-          {props.tripTitleDataArray.map((el, index) => (
-            <Write.Column key={el.id + String(index)}>
-              <Write.TitleBox>
-                <Write.Title>
-                  <Write.TitleNumber>
-                    <span>{index + 1}</span>
-                  </Write.TitleNumber>
-                  <Write.TitleText>
-                    <p className="date">
-                      {`${getMonthString(el.startDate, index)}.${getDateString(
-                        el.startDate,
-                        index
-                      )} (${getWeekdayString(el.startDate, index)})`}
-                    </p>
-                    <p className="text">일차</p>
-                  </Write.TitleText>
-                </Write.Title>
-              </Write.TitleBox>
-              <Write.PlansBox>
-                {/* {el.contents.map((content) => (
-                  <TripWritePlansCard content={content} key={content.name} />
-                ))} */}
-                <TripWritePlansAdd />
-              </Write.PlansBox>
-            </Write.Column>
-          ))}
+          {props.isLoading && (
+            <DragDropContext onDragEnd={props.onDragEndReorder}>
+              {props.tripTitleDataArray.map((el: any, index: number) => (
+                <Droppable key={index} droppableId={String(index)}>
+                  {(provided, snapshot) => (
+                    <Write.Column
+                      className={`day${index + 1}`}
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                      // style={getListStyle(snapshot.isDraggingOver)}
+                    >
+                      <Write.TitleBox>
+                        <Write.Title>
+                          <Write.TitleNumber>
+                            <span>{index + 1}</span>
+                          </Write.TitleNumber>
+                          <Write.TitleText>
+                            <p className="date">
+                              {`${getMonthString(
+                                el.startDate,
+                                index
+                              )}.${getDateString(
+                                el.startDate,
+                                index
+                              )} (${getWeekdayString(el.startDate, index)})`}
+                            </p>
+                            <p className="text">일차</p>
+                          </Write.TitleText>
+                        </Write.Title>
+                      </Write.TitleBox>
+                      {props.plansList[index] && (
+                        <TripWritePlansCard content={props.plansList[index]} />
+                      )}
+                      {provided.placeholder}
+                    </Write.Column>
+                  )}
+                </Droppable>
+              ))}
+            </DragDropContext>
+          )}
         </Write.InnerWrap>
       </Write.Contents>
       <TripWriteBottomBar />
