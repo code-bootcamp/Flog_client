@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.container";
 import MyDatePicker from "../../../datePickers/DatePicker.container";
@@ -5,12 +6,12 @@ import Dropdown02 from "../../../dropdowns/02/Dropdown02.container";
 import Dropdown03 from "../../../dropdowns/03/Dropdown03.container";
 import OutlinedInput01 from "../../../inputs/outlined/01/OutlinedInput01.container";
 import MapModal from "../../map/MapModal.container";
-
+import { CREATE_SCHEDULE } from "./MainSchedule.queries";
 import * as M from "./MainSchedule.styles";
 
 export default function NewTripScheduleModal(props) {
   const [mapModal, setMapModal] = useState(true);
-
+  const [createSchedule] = useMutation(CREATE_SCHEDULE);
   const [inputs, setInputs] = useState({
     title: "",
     theme: "",
@@ -23,6 +24,29 @@ export default function NewTripScheduleModal(props) {
 
   const onClickMapModal = () => {
     setTimeout(() => setMapModal((prev) => !prev), 500);
+  };
+  const onClickSubmit = async () => {
+    console.log(inputs);
+    // try {
+    //   const result = await createSchedule({
+    //     variables: {
+    //       createScheduleInput: {
+    //         title: inputs.title,
+    //         location: inputs.doName + inputs.cityName,
+    //         startDate: inputs.startDate.slice(0, 12),
+    //         endDate: inputs.endDate.slice(0, 12),
+    //         numberPeople: inputs.people,
+    //         hashtag: inputs.theme,
+    //         mainCategoryId: "",
+    //       },
+    //     },
+    //   });
+    //   console.log(result);
+    // } catch (error) {
+    //   if (error instanceof Error) {
+    //     alert(error.message);
+    //   }
+    // }
   };
 
   return (
@@ -42,7 +66,7 @@ export default function NewTripScheduleModal(props) {
                 <img
                   src="/img/icon-modal-exit.svg"
                   alt="나가기버튼"
-                  onClick={props.onClickExit}
+                  onClick={props.onClickNewScheduleModal}
                 />
               </M.Exit>
               <M.Contents>
@@ -56,7 +80,7 @@ export default function NewTripScheduleModal(props) {
                     onChange={(event) => {
                       setInputs({
                         ...inputs,
-                        [inputs.title]: event.target.value,
+                        title: event.target.value,
                       });
                     }}
                   />
@@ -81,7 +105,7 @@ export default function NewTripScheduleModal(props) {
               <ContainedButton01
                 content="생성하기"
                 size="large"
-                onClick={props.onClickSubmit}
+                onClick={onClickSubmit}
                 disabled={
                   !(
                     inputs.theme &&
