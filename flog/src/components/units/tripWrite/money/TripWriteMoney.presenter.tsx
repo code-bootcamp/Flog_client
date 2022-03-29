@@ -1,3 +1,5 @@
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { insertCommaPrice } from "../../../../commons/utils/insertComma";
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
@@ -6,7 +8,7 @@ import TripWriteMoneyCard from "./card/TripWriteMoneyCard.container";
 import { SAMPLE_DATA_MONEY } from "./SampleDataMoney";
 import * as Write from "./TripWriteMoney.styles";
 
-export default function TripWriteMoneyUI() {
+export default function TripWriteMoneyUI(props) {
   return (
     <Write.Container>
       <TripWriteBanner />
@@ -34,24 +36,35 @@ export default function TripWriteMoneyUI() {
             </Write.BudgetText>
           </Write.BudgetBox>
           <Write.MoneyBookBox>
-            {SAMPLE_DATA_MONEY.map((el) => (
-              <Write.MoneyBookColumn key={el.date}>
-                <Write.MoneyBookTitle>
-                  <span className="title">
-                    {el.date === "ready"
-                      ? "여행 준비"
-                      : el.date.slice(-5).replace("-", ".")}
-                  </span>
-                  <span className="amount">121,000원</span>
-                </Write.MoneyBookTitle>
-                <Write.MoneyBookCards>
-                  {el.contents.map((contents) => (
-                    <TripWriteMoneyCard contents={contents} key={contents.id} />
-                  ))}
-                </Write.MoneyBookCards>
-                <TripWriteMoneyAdd />
-              </Write.MoneyBookColumn>
-            ))}
+            {props.isLoading && (
+              <DragDropContext onDragEnd={props.onDragEndReorder}>
+                {SAMPLE_DATA_MONEY.map((el, index) => (
+                  <Droppable key={el.date} droppableId={String(index)}>
+                    {(provided, snapshot) => (
+                      <Write.MoneyBookColumn
+                        className={`title day${index + 1}`}
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                      >
+                        <Write.MoneyBookTitle>
+                          <span className="title">
+                            {el.date === "ready"
+                              ? "여행 준비"
+                              : el.date.slice(-5).replace("-", ".")}
+                          </span>
+                          <span className="amount">121,000원</span>
+                        </Write.MoneyBookTitle>
+                        <Write.MoneyBookCards>
+                          <TripWriteMoneyCard el={el} />
+                        </Write.MoneyBookCards>
+                        <TripWriteMoneyAdd />
+                        {provided.placeholder}
+                      </Write.MoneyBookColumn>
+                    )}
+                  </Droppable>
+                ))}
+              </DragDropContext>
+            )}
           </Write.MoneyBookBox>
         </Write.InnerWrap>
       </Write.Contents>

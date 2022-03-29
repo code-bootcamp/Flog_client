@@ -13,9 +13,6 @@ export default function TripWriteMoneyCard(props) {
   };
 
   return (
-    <TripWriteMoneyCardUI
-      contents={props.contents}
-      selectStatusIcon={selectStatusIcon}
-    />
+    <TripWriteMoneyCardUI el={props.el} selectStatusIcon={selectStatusIcon} />
   );
 }
