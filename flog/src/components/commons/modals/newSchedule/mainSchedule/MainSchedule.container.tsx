@@ -11,6 +11,7 @@ import * as M from "./MainSchedule.styles";
 
 export default function NewTripScheduleModal(props) {
   const [mapModal, setMapModal] = useState(true);
+
   const [createSchedule] = useMutation(CREATE_SCHEDULE);
   const [inputs, setInputs] = useState({
     title: "",
@@ -18,9 +19,8 @@ export default function NewTripScheduleModal(props) {
     people: "",
     startDate: "",
     endDate: "",
-    doName: "",
-    cityName: "",
   });
+  const [location, setLocation] = useState({ doName: "", cityName: "" });
 
   const onClickMapModal = () => {
     setTimeout(() => setMapModal((prev) => !prev), 500);
@@ -28,6 +28,7 @@ export default function NewTripScheduleModal(props) {
   const onClickSubmit = async () => {
     console.log(inputs);
     console.log(inputs.startDate.getMonth());
+    console.log(inputs.startDate.getFullYear());
     // try {
     //   const result = await createSchedule({
     //     variables: {
@@ -58,6 +59,7 @@ export default function NewTripScheduleModal(props) {
           onClickSubmit={onClickMapModal}
           inputs={inputs}
           setInputs={setInputs}
+          setLocation={setLocation}
         />
       ) : (
         <M.Container>

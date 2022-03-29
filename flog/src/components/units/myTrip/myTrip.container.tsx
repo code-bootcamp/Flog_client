@@ -33,6 +33,7 @@ export default function MyTrip() {
 
   const onClickNewScheduleModal = () => {
     setNewScheduleModal((prev) => !prev);
+    console.log("sdf");
   };
 
   return (
