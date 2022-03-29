@@ -32,7 +32,7 @@ export default function OurTripBannerUI(props) {
             <Our.SearchLabel>지역 찾아보기</Our.SearchLabel>
           </Our.RegionSearch>
           <Our.SearchReturn>
-            {props.doName} {props.cityName}
+            {props.inputs.doName} {props.inputs.cityName}
           </Our.SearchReturn>
         </Our.Region>
         <Our.Search>
@@ -54,10 +54,16 @@ export default function OurTripBannerUI(props) {
             )}
           </Our.SelectBtn>
           {isSelect === "제목" && (
-            <TitleSearch doName={props.doName} cityName={props.cityName} />
+            <TitleSearch
+              doName={props.inputs.doName}
+              cityName={props.inputs.cityName}
+            />
           )}
           {isSelect === "여행 테마" && (
-            <TagSearch doName={props.doName} cityName={props.cityName} />
+            <TagSearch
+              doName={props.inputs.doName}
+              cityName={props.inputs.cityName}
+            />
           )}
         </Our.Search>
       </Our.Contents>
