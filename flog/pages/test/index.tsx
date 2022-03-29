@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Dropdown01 from "../../src/components/commons/dropdowns/01/Dropdown01.container";
-import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
+// import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
 import Exit from "../../src/components/commons/modals/exit/Exit.container";
 import DetailBudgetForm from "../../src/components/commons/modals/formBuget/DetailBugetForm.container";
+import DetailScheduleForm from "../../src/components/commons/modals/formDetailSchedule/DetailScheduleForm.container";
 import MapModal from "../../src/components/commons/modals/map/MapModal.container";
 import DetailBudget from "../../src/components/commons/modals/newBudget/detailBudget/DetailBudget.container";
 import TotalBudget from "../../src/components/commons/modals/newBudget/totalBudget/TotalBudget.container";
@@ -78,21 +79,6 @@ export default function testPage() {
 
   const onClickSubmitDetailScheduleModal = () => {
     setDetailScheduleModal(false);
-  };
-
-  // //상위 컴포넌트에 넣을 내용 - budget
-  const [detailBudgetModal, setDetailBudgetModal] = useState(false);
-
-  const onClickDetailBudgetModal = () => {
-    setDetailBudgetModal(true);
-  };
-
-  const onClickExitDetailBudgetModal = () => {
-    setDetailBudgetModal(false);
-  };
-
-  const onClickSubmitDetailBudgetModal = () => {
-    setDetailBudgetModal(false);
   };
 
   // 상위 컴포넌트에 넣을 내용 - total Budget
@@ -181,6 +167,31 @@ export default function testPage() {
     setCategory(TRIP_CATEGORY[index].label);
   };
 
+  // 상위 컴포넌트에 넣을 내용 - detailScheduleForm
+
+  const [detailScheduleFormModal, setDetailScheduleFormModal] = useState(false);
+
+  const onClickDetailScheduleFormModal = () => {
+    setDetailScheduleFormModal(true);
+  };
+
+  const onClickExitDetailScheduleFormModal = () => {
+    setDetailScheduleFormModal(false);
+  };
+
+  const onClickSubmitDetailScheduleFormModal = (data: any) => {
+    if (
+      !data?.place ||
+      !data?.startHour ||
+      !data?.startMinutes ||
+      !data?.takenHour ||
+      !data?.takenMinutes
+    )
+      return;
+    console.log(data);
+    // setDetailScheduleFormModal(false);
+  };
+
   return (
     <>
       <div>
@@ -194,6 +205,15 @@ export default function testPage() {
             onClickCategory={onClickCategory}
             TRIP_CATEGORY={TRIP_CATEGORY}
             isSelect={isSelect}
+          />
+        )}
+        <button onClick={onClickDetailScheduleFormModal}>
+          세부 일정 - useForm
+        </button>
+        {detailScheduleFormModal && (
+          <DetailScheduleForm
+            onClickExit={onClickExitDetailScheduleFormModal}
+            onClickSubmit={onClickSubmitDetailScheduleFormModal}
           />
         )}
 
@@ -215,27 +235,19 @@ export default function testPage() {
           />
         )}
 
-        <button onClick={onClickNewScheduleModal}>신규 일정 생성</button>
+        {/* <button onClick={onClickNewScheduleModal}>신규 일정 생성</button>
         {newScheduleModal && (
           <NewTripScheduleModal
             onClickExit={onClickExitNewScheduleModal}
             onClickSubmit={onClickSubmitNewScheduleModal}
           />
-        )}
+        )} */}
 
         <button onClick={onClickDetailScheduleModal}>세부 일정 생성</button>
         {detailScheduleModal && (
           <NewDetailScheduleModal
             onClickExit={onClickExitDetailScheduleModal}
             onClickSubmit={onClickSubmitDetailScheduleModal}
-          />
-        )}
-
-        <button onClick={onClickDetailBudgetModal}>세부 예산 생성</button>
-        {detailBudgetModal && (
-          <DetailBudget
-            onClickExit={onClickExitDetailBudgetModal}
-            onClickSubmit={onClickSubmitDetailBudgetModal}
           />
         )}
 
@@ -249,7 +261,7 @@ export default function testPage() {
           />
         )}
         <Dropdown01 />
-        <Dropdown02 />
+        {/* <Dropdown02 /> */}
         <button onClick={onClickMapModal}>map</button>
         {mapModal && (
           <MapModal

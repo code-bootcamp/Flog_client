@@ -13,6 +13,7 @@ export default function OutlinedInput01(props: IOutlinedInput01Props) {
       onChange={props.onChange}
       value={props.value}
       readOnly={props.readOnly}
+      version={props.version}
     />
   );
 }
