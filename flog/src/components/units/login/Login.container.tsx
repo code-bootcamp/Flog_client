@@ -38,7 +38,7 @@ export default function Login() {
       const token = result.data?.login;
       if (token) {
         setAccessToken(token);
-        localStorage.setItem("accessToken", token);
+        // localStorage.setItem("accessToken", token);
       }
       alert("로그인이 완료되었습니다");
       router.push("/myTrips");

@@ -2,6 +2,8 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Global } from "@emotion/react";
 import { GlobalStyle } from "../src/commons/styles/Global.styles";
+import { onError } from "@apollo/client/link/error";
+import { getAccessToken } from "../src/components/commons/libraries/getAccessToken";
 import Layout from "../src/components/commons/layout";
 import {
   ApolloClient,
@@ -34,8 +36,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     setAccessToken,
   };
   useEffect(() => {
-    if (localStorage.getItem("accessToken"))
-      setAccessToken(localStorage.getItem("accessToken") || "{}");
     getAccessToken().then((newAccessToken) => {
       setAccessToken(newAccessToken);
     });
@@ -66,7 +66,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     }
   });
-
   const uploadLink = createUploadLink({
     uri: "https://gyeoriii.shop/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },

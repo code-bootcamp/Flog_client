@@ -9,7 +9,10 @@ export default function SvgMap(props) {
   const selectDo = (event) => {
     const selected = document.getElementById(event.target.id + "Selected");
 
-    props.setDoName(event.target.id);
+    props.setInputs({
+      ...props.inputs,
+      doName: event.target.id,
+    });
     gsap.to(Contents, 0.3, {
       display: "none",
       opacity: 0,
@@ -23,7 +26,7 @@ export default function SvgMap(props) {
   };
 
   const reset = () => {
-    const selected = document.getElementById(props.doName + "Selected");
+    const selected = document.getElementById(props.inputs.doName + "Selected");
     gsap.to(Contents, 0.3, {
       display: "block",
       opacity: 1,
@@ -34,17 +37,25 @@ export default function SvgMap(props) {
         opacity: 0,
       });
     }
-    props.setDoName("");
-    props.setCityName("");
+    props.setInputs({
+      ...props.inputs,
+      doName: "",
+      cityName: "",
+    });
+  };
+  const setCityName = (value) => {
+    props.setInputs({
+      ...props.inputs,
+      cityName: value,
+    });
   };
   return (
     <MapsUI
-      doName={props.doName}
-      cityName={props.cityName}
+      inputs={props.inputs}
+      setCityName={setCityName}
       selectDo={selectDo}
       Contents={Contents}
       reset={reset}
-      setCityName={props.setCityName}
     />
   );
 }

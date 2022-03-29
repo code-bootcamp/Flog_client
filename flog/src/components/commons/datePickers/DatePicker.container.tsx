@@ -10,12 +10,8 @@ export default function MyDatePicker(props) {
   // const [endDate, setEndDate] = useState(null);
   const onChange = (dates: [any, any]) => {
     const [start, end] = dates;
-    props.setStartDate(start);
-    props.setEndDate(end);
-    props.setIsDateActive(true);
-    if (props.title && props.isDateActive && props.people && props.theme) {
-      props.setIsButtonActive(true);
-    }
+
+    props.setInputs({ ...props.inputs, startDate: start, endDate: end });
   };
 
   return (
@@ -40,10 +36,10 @@ export default function MyDatePicker(props) {
         className="date-input"
         dateFormat="yyyy년 M월 d일"
         locale={ko}
-        selected={props.startDate}
+        selected={props.inputs.startDate}
         onChange={onChange}
-        startDate={props.startDate}
-        endDate={props.endDate}
+        startDate={props.inputs.startDate}
+        endDate={props.inputs.endDate}
         selectsRange
         placeholderText="시작일과 종료일을 선택해주세요"
       />

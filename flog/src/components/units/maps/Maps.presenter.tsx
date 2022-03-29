@@ -20,7 +20,7 @@ export default function MapsUI(props) {
           referrerPolicy="no-referrer"
         ></script>
       </Head>
-      {props.doName && (
+      {props.inputs.doName && (
         <Maps.BackBtn onClick={props.reset}>
           <img src="/img/mytrips-write-log1.png" />
           전국 지도
@@ -236,60 +236,28 @@ export default function MapsUI(props) {
           <g filter="url(#dropshadow)"></g>
         </svg>
       </Maps.Contents>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="충청북도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="충청북도Selected">
         <ChungBook setCityName={props.setCityName} />
       </Maps.CityWrapper>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="충청남도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="충청남도Selected">
         <ChungNam setCityName={props.setCityName} />
       </Maps.CityWrapper>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="강원도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="강원도Selected">
         <GangOne setCityName={props.setCityName} />
       </Maps.CityWrapper>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="경상북도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="경상북도Selected">
         <GyoungBook setCityName={props.setCityName} />
       </Maps.CityWrapper>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="경기도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="경기도Selected">
         <Gyoungki setCityName={props.setCityName} />
       </Maps.CityWrapper>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="경상남도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="경상남도Selected">
         <GyoungNam setCityName={props.setCityName} />
       </Maps.CityWrapper>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="전라북도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="전라북도Selected">
         <JeonBook setCityName={props.setCityName} />
       </Maps.CityWrapper>
-      <Maps.CityWrapper
-        className="partialMap"
-        id="전라남도Selected"
-        isHide={!props.doName && !props.cityName}
-      >
+      <Maps.CityWrapper className="partialMap" id="전라남도Selected">
         <JeonNam setCityName={props.setCityName} />
       </Maps.CityWrapper>
     </Maps.Main>
