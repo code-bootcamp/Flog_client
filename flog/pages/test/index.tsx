@@ -3,11 +3,13 @@ import Dropdown01 from "../../src/components/commons/dropdowns/01/Dropdown01.con
 import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
 import Exit from "../../src/components/commons/modals/exit/Exit.container";
+import DetailBudgetForm from "../../src/components/commons/modals/formBuget/DetailBugetForm.container";
 import MapModal from "../../src/components/commons/modals/map/MapModal.container";
 import DetailBudget from "../../src/components/commons/modals/newBudget/detailBudget/DetailBudget.container";
 import TotalBudget from "../../src/components/commons/modals/newBudget/totalBudget/TotalBudget.container";
 import NewDetailScheduleModal from "../../src/components/commons/modals/newSchedule/detailSchedule/DetailSchedule.container";
 import NewTripScheduleModal from "../../src/components/commons/modals/newSchedule/mainSchedule/MainSchedule.container";
+
 import TripList from "../../src/components/units/tripList/TripList.container";
 
 export default function testPage() {
@@ -133,9 +135,68 @@ export default function testPage() {
     setTimeout(onClickNewScheduleModal, 500);
   };
 
+  // 상위 컴포넌트에 넣을 내용 - detailBudgetForm
+
+  const [detailBudgetFormModal, setDetailBudgetFormModal] = useState(false);
+  const [isSelect, setIsSelect] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const [category, setCategory] = useState("");
+
+  const onClickDetailBudgetFormModal = () => {
+    setDetailBudgetFormModal(true);
+    setIsSelect([false, false, false, false, false, false]);
+  };
+
+  const onClickExitDetailBudgetFormModal = () => {
+    setDetailBudgetFormModal(false);
+  };
+
+  const onClickSubmitDetailBudgetFormModal = (data: any) => {
+    if (!data?.contents || !data?.budget || !data?.hour || !data?.minutes) {
+      return;
+    }
+    console.log(data, category);
+    // setDetailBudgetFormModal(false);
+  };
+
+  const TRIP_CATEGORY = [
+    { num: 1, label: "식비" },
+    { num: 2, label: "쇼핑" },
+    { num: 3, label: "교통" },
+    { num: 4, label: "관광" },
+    { num: 5, label: "숙박" },
+    { num: 6, label: "기타" },
+  ];
+
+  const onClickCategory = (index: number) => () => {
+    const temp = [false, false, false, false, false, false];
+    temp[index] = true;
+    setIsSelect([...temp]);
+    setCategory(TRIP_CATEGORY[index].label);
+  };
+
   return (
     <>
       <div>
+        <button onClick={onClickDetailBudgetFormModal}>
+          세부 예산 - useForm
+        </button>
+        {detailBudgetFormModal && (
+          <DetailBudgetForm
+            onClickExit={onClickExitDetailBudgetFormModal}
+            onClickSubmit={onClickSubmitDetailBudgetFormModal}
+            onClickCategory={onClickCategory}
+            TRIP_CATEGORY={TRIP_CATEGORY}
+            isSelect={isSelect}
+          />
+        )}
+
         <button onClick={onClickPointModal}>포인트 후원하기</button>
         {pointModal && (
           <Point

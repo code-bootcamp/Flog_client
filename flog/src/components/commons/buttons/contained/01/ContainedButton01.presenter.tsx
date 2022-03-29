@@ -8,6 +8,7 @@ export default function ContainedButton01UI(props: IContainedButton01UIProps) {
       className={props.disabled ? "disabled" : ""}
       disabled={props.disabled}
       onClick={props.onClick}
+      type={props.type}
     >
       {props.content}
     </Contained.Button>
