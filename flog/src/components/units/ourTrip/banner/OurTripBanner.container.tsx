@@ -6,10 +6,7 @@ export default function OurTripBanner(props) {
       onClickMapModal={props.onClickMapModal}
       onClickExit={props.onClickExitMapModal}
       onClickSubmit={props.onClickSubmitMapModal}
-      doName={props.doName}
-      setDoName={props.setDoName}
-      cityName={props.cityName}
-      setCityName={props.setCityName}
+      inputs={props.inputs}
     />
   );
 }

@@ -29,9 +29,8 @@ export default function OurTripsPage() {
   const { data: shareData } = useQuery(FETCH_SHARE_SCHEDULES);
 
   // 상위 컴포넌트에 넣을 내용 - MapModal
-  const [doName, setDoName] = useState("");
-  const [cityName, setCityName] = useState("");
 
+  const [inputs, setInputs] = useState({ doName: "", cityName: "" });
   const [mapModal, setMapModal] = useState(false);
 
   const onClickMapModal = () => {
@@ -40,13 +39,12 @@ export default function OurTripsPage() {
 
   const onClickExitMapModal = () => {
     setMapModal(false);
-    setDoName("");
-    setCityName("");
+    setInputs({ doName: "", cityName: "" });
   };
 
   const onClickSubmitMapModal = () => {
     setMapModal(false);
-    console.log(doName, cityName);
+    console.log(inputs.doName, inputs.cityName);
   };
 
   return (
@@ -55,10 +53,8 @@ export default function OurTripsPage() {
         <MapModal
           onClickExit={onClickExitMapModal}
           onClickSubmit={onClickSubmitMapModal}
-          doName={doName}
-          setDoName={setDoName}
-          cityName={cityName}
-          setCityName={setCityName}
+          inputs={inputs}
+          setInputs={setInputs}
         />
       )}
       <BodyContainer>
@@ -66,10 +62,7 @@ export default function OurTripsPage() {
           onClickMapModal={onClickMapModal}
           onClickExit={onClickExitMapModal}
           onClickSubmit={onClickSubmitMapModal}
-          doName={doName}
-          setDoName={setDoName}
-          cityName={cityName}
-          setCityName={setCityName}
+          inputs={inputs}
         />
         <TripList isMine={false} shareData={shareData} />
       </BodyContainer>
