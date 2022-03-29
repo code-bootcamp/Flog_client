@@ -1,5 +1,6 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { insertCommaPrice } from "../../../../commons/utils/insertComma";
+import DetailBudgetForm from "../../../commons/modals/formBuget/DetailBugetForm.container";
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
@@ -16,7 +17,7 @@ export default function TripWriteMoneyUI(props) {
       <Write.Contents>
         <Write.InnerWrap>
           <Write.BudgetBox>
-            <Write.ProgressBar progress={65}>
+            <Write.ProgressBar progress={(720000 / 900000) * 100}>
               <div className="progress"></div>
             </Write.ProgressBar>
             <Write.BudgetText>
@@ -31,16 +32,14 @@ export default function TripWriteMoneyUI(props) {
               </Write.AllAmount>
               <Write.Amount>
                 <span className="text1">총 지출</span>
-                <span className="text2">
-                  {`${insertCommaPrice(props.totalAmount)}`}원
-                </span>
+                <span className="text2">720,000원</span>
               </Write.Amount>
             </Write.BudgetText>
           </Write.BudgetBox>
           <Write.MoneyBookBox>
             {props.isLoading && (
               <DragDropContext onDragEnd={props.onDragEndReorder}>
-                {SAMPLE_DATA_MONEY.map((el, index) => (
+                {props.moneyList.map((el, index) => (
                   <Droppable key={el.date} droppableId={String(index)}>
                     {(provided, snapshot) => (
                       <Write.MoneyBookColumn
@@ -64,7 +63,10 @@ export default function TripWriteMoneyUI(props) {
                         <Write.MoneyBookCards>
                           <TripWriteMoneyCard el={el} />
                         </Write.MoneyBookCards>
-                        <TripWriteMoneyAdd />
+                        <TripWriteMoneyAdd
+                          date={el.date}
+                          onClick={props.onClickDetailBudgetFormModal(el.date)}
+                        />
                         {provided.placeholder}
                       </Write.MoneyBookColumn>
                     )}
@@ -76,6 +78,15 @@ export default function TripWriteMoneyUI(props) {
         </Write.InnerWrap>
       </Write.Contents>
       <TripWriteBottomBar />
+      {props.detailBudgetFormModal && (
+        <DetailBudgetForm
+          onClickExit={props.onClickExitDetailBudgetFormModal}
+          onClickSubmit={props.onClickSubmitDetailBudgetFormModal}
+          onClickCategory={props.onClickCategory}
+          TRIP_CATEGORY={props.TRIP_CATEGORY}
+          isSelect={props.isSelect}
+        />
+      )}
     </Write.Container>
   );
 }

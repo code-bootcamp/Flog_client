@@ -16,7 +16,6 @@ export default function TripWritePlans() {
       userId: "ac7ac614-7afb-4e0c-a3e4-afcd3c604d73",
     },
   });
-  console.log(data);
 
   const tripTitleData = SAMPLE_DATA_PLANS_TITLE.fetchSchedules; // TitleData 추출 - 추후 API에서 불러오는 데이터로 변경
 
