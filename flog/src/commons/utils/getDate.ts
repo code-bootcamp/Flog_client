@@ -7,8 +7,8 @@ export const changeStringToDatetime = (str: string) => {
 // Datetime을 '2022.02.02' 양식의 string으로 변경
 export const changeDatetimeToString = (datetime: Date) => {
   const year = datetime.getFullYear().toString();
-  const month = datetime.getMonth().toString().padStart(2, 0);
-  const date = datetime.getDate().toString().padStart(2, 0);
+  const month = datetime.getMonth().toString().padStart(2, "0");
+  const date = datetime.getDate().toString().padStart(2, "0");
   return year + "." + month + "." + date;
 };
 

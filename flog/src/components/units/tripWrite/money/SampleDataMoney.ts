@@ -27,7 +27,7 @@ export const SAMPLE_DATA_MONEY = [
     contents: [
       {
         id: "32c35e66-8e2f-42cf-b2ad-beeec24d8805",
-        date: "2022-03-30",
+        date: "2022.03.30",
         status: "FOOD",
         time: "3:00",
         context: "소프트 아이스크림",
@@ -36,7 +36,7 @@ export const SAMPLE_DATA_MONEY = [
       },
       {
         id: "5a55f001-e0aa-4311-b768-565e21d4adea",
-        date: "2022-03-30",
+        date: "2022.03.30",
         status: "TOURISM",
         time: "2:00",
         context: "박물관 입장료",
@@ -45,7 +45,7 @@ export const SAMPLE_DATA_MONEY = [
       },
       {
         id: "d400bbd5-08ce-4c6f-aba5-5596db59798d",
-        date: "2022-03-30",
+        date: "2022.03.30",
         status: "FOOD",
         time: "5:30",
         context: "편의점",
@@ -54,7 +54,7 @@ export const SAMPLE_DATA_MONEY = [
       },
       {
         id: "e3b1a882-a071-44a5-af38-1ef40997c364",
-        date: "2022-03-30",
+        date: "2022.03.30",
         status: "FOOD",
         time: "12:00",
         context: "해운대 암소갈비집",
@@ -63,7 +63,7 @@ export const SAMPLE_DATA_MONEY = [
       },
       {
         id: "e82db9c1-1e99-4d9e-b774-62ce7b9fb2da",
-        date: "2022-03-30",
+        date: "2022.03.30",
         status: "TRANSPORTATION",
         time: "2:00",
         context: "택시",
@@ -72,7 +72,7 @@ export const SAMPLE_DATA_MONEY = [
       },
       {
         id: "f19060e1-bb27-4d2b-8722-4afe7e7c05fc",
-        date: "2022-03-30",
+        date: "2022.03.30",
         status: "FOOD",
         time: "5:30",
         context: "초밥 세트",
@@ -82,15 +82,15 @@ export const SAMPLE_DATA_MONEY = [
     ],
   },
   {
-    date: "2022-03-31",
+    date: "2022.03.31",
     contents: [],
   },
   {
-    date: "2022-04-01",
+    date: "2022.04.01",
     contents: [],
   },
   {
-    date: "2022-04-02",
+    date: "2022.04.02",
     contents: [],
   },
 ];
