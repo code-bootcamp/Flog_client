@@ -41,21 +41,16 @@ export default function MapModal(props) {
             />
           </M.Title>
           <M.Subtitle>
-            <M.DoName>{props.doName}</M.DoName>
-            {props.cityName && (
+            <M.DoName>{props.inputs.doName}</M.DoName>
+            {props.inputs.cityName && (
               <M.CityName>
                 <img src="/img/icon-right-gray.svg" />
-                {props.cityName}
+                {props.inputs.cityName}
               </M.CityName>
             )}
           </M.Subtitle>
 
-          <SvgMap
-            doName={props.doName}
-            setDoName={props.setDoName}
-            cityName={props.cityName}
-            setCityName={props.setCityName}
-          />
+          <SvgMap inputs={props.inputs} setInputs={props.setInputs} />
           <ContainedButton01
             content="다음"
             size="large"

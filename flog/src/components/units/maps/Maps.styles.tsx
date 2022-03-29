@@ -47,7 +47,7 @@ export const Path = styled.path`
   }
 `;
 export const CityWrapper = styled.div`
-  transition: 2s;
+  transition: 0.3s;
   display: none;
   position: absolute;
   opacity: 0;
