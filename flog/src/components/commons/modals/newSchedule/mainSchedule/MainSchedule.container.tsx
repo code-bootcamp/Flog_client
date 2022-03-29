@@ -27,6 +27,7 @@ export default function NewTripScheduleModal(props) {
   };
   const onClickSubmit = async () => {
     console.log(inputs);
+    console.log(inputs.startDate.getMonth());
     // try {
     //   const result = await createSchedule({
     //     variables: {
