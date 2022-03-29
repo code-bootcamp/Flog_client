@@ -19,8 +19,6 @@ import {
   useEffect,
 } from "react";
 import { createUploadLink } from "apollo-upload-client";
-import { getAccessToken } from "../src/components/commons/libraries/getAccessToken";
-import { onError } from "@apollo/client/link/error";
 
 interface IGlobalContext {
   accessToken?: string;
