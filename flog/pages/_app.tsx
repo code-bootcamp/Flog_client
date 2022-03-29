@@ -19,6 +19,8 @@ import {
   useEffect,
 } from "react";
 import { createUploadLink } from "apollo-upload-client";
+import { getAccessToken } from "../src/components/commons/libraries/getAccessToken";
+import { onError } from "@apollo/client/link/error";
 
 interface IGlobalContext {
   accessToken?: string;
@@ -73,6 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
+
   return (
     <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>

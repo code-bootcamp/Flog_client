@@ -15,7 +15,7 @@ export const ModalWrapper = styled.div`
   background-color: #ffffff;
   border-radius: 20px;
   width: 600px;
-  height: 755px;
+  height: 700px;
   padding: 44px;
   border: none;
   left: 50%;
@@ -41,6 +41,14 @@ export const Exit = styled.div`
     }
   }
 `;
+
+export const Form = styled.form`
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Contents = styled.div`
   margin-bottom: 1rem;
 `;
@@ -48,7 +56,7 @@ export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 export const Wrap = styled.div`
@@ -122,50 +130,6 @@ export const Input = styled.input`
   }
 `;
 export const TimeInputWrap = styled.div`
-  width: 344px;
   display: flex;
   justify-content: space-between;
-`;
-
-export const TimeInput = styled.input`
-  width: 164px;
-  height: 56px;
-  border: 1px solid #a9a9a9;
-  border-radius: 8px;
-  padding-left: 24px;
-  line-height: 150%;
-  color: #626262;
-  font-size: 16px;
-  text-align: end;
-  ::placeholder {
-    color: #a9a9a9;
-  }
-  :focus {
-    border: 1px solid #58bd97;
-    outline: none;
-    color: #2c3131;
-  }
-`;
-export const MemoInput = styled.textarea`
-  width: 344px;
-  height: 100px;
-  border: 1px solid #a9a9a9;
-  border-radius: 8px;
-  padding-left: 24px;
-  padding: 16px 24px 16px 24px;
-  font-size: 16px;
-  line-height: 150%;
-  resize: none;
-  color: #626262;
-  font-size: 16px;
-
-  ::placeholder {
-    color: #a9a9a9;
-  }
-
-  :focus {
-    border: 1px solid #58bd97;
-    outline: none;
-    color: #2c3131;
-  }
 `;
