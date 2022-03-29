@@ -1,8 +1,16 @@
 import styled from "@emotion/styled";
 import { IInputProps } from "./OutlinedInput01.types";
 export const Input01 = styled.input`
-  width: 338px;
-  height: 56px;
+  width: ${(props: IInputProps) => {
+    if (!props.version) return "338px";
+    if (props.version === "time") return "160px";
+    if (props.version === "memo") return "338px";
+  }};
+  height: ${(props: IInputProps) => {
+    if (!props.version) return "56px";
+    if (props.version === "time") return "56px";
+    if (props.version === "memo") return "100px";
+  }};
   border-radius: 8px;
   padding: 0 24px;
   color: ${(props: IInputProps) => (props.error ? " #E25C5C" : "#626262")};
