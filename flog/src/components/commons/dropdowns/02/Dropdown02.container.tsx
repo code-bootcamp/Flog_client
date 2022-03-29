@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as Drop from "./Dropdown02.styles";
 export default function Dropdown02(props) {
   const [isThemeActive, setIsThemeActive] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
   const LIST = [
     ["테마를 선택해주세요"],
     ["혼자 여행", "ALONE"],
@@ -10,24 +11,22 @@ export default function Dropdown02(props) {
     ["가족 여행", "FAMILY"],
     ["반려동물 여행", "PET"],
   ];
-  let index = 0;
   const onClickSelectBtn = () => {
     setIsThemeActive((prev) => !prev);
     console.log(isThemeActive);
   };
 
-  const onClickOption = (el) => () => {
+  const onClickOption = (index) => () => {
     setIsThemeActive((prev) => !prev);
     onClickSelectBtn();
-    props.setInputs({ ...props.inputs, theme: el });
-    console.log(isThemeActive);
-    console.log(el);
+    props.setInputs({ ...props.inputs, theme: LIST[index][1] });
+    setSelectedOption(LIST[index][0]);
   };
 
   return (
     <>
       <Drop.SelectButton onClick={onClickSelectBtn}>
-        <Drop.Selected>{LIST[index]}</Drop.Selected>
+        <Drop.Selected>{selectedOption || "테마를 선택해주세요"}</Drop.Selected>
         <Drop.SelectIcon>
           <img src="/img/icon-modal-dropdown.svg" />
         </Drop.SelectIcon>
@@ -36,7 +35,7 @@ export default function Dropdown02(props) {
             <ul>
               {LIST.map((el, index) => (
                 <li key={index}>
-                  <span onClick={onClickOption(el[1])}>{el[0]}</span>
+                  <span onClick={onClickOption(index)}>{el[0]}</span>
                 </li>
               ))}
             </ul>

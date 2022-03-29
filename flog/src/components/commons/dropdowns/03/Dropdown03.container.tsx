@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as Drop from "./Dropdown03.styles";
 export default function Dropdown03(props) {
   const [isPeopleActive, setIsPeopleActive] = useState(false);
+  const [isPeopleSelected, setIsPeopleSelected] = useState("");
   const LIST = [
     ["1명", "ONE"],
     ["2명", "TWO"],
@@ -14,17 +15,18 @@ export default function Dropdown03(props) {
     setIsPeopleActive((prev) => !prev);
   };
 
-  const onClickOption = (el) => () => {
+  const onClickOption = (index) => () => {
     setIsPeopleActive((prev) => !prev);
     onClickSelectBtn();
-    props.setInputs({ ...props.inputs, people: el });
+    props.setInputs({ ...props.inputs, people: LIST[index][1] });
+    setIsPeopleSelected(LIST[index][0]);
   };
 
   return (
     <>
       <Drop.SelectButton onClick={onClickSelectBtn}>
         <Drop.Selected>
-          {props.inputs.people || "인원을 선택해주세요"}
+          {isPeopleSelected || "인원을 선택해주세요"}
         </Drop.Selected>
         <Drop.SelectIcon>
           <img src="/img/icon-modal-dropdown.svg" />
@@ -34,7 +36,7 @@ export default function Dropdown03(props) {
             <ul>
               {LIST.map((el, index) => (
                 <li key={index}>
-                  <span onClick={onClickOption(el[1])}>{el[0]}</span>
+                  <span onClick={onClickOption(index)}>{el[0]}</span>
                 </li>
               ))}
             </ul>
