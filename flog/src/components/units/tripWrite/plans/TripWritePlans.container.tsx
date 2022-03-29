@@ -147,8 +147,6 @@ export default function TripWritePlans() {
       tempList[Number(endDropIndex)] = newPlan;
       setPlansList(tempList);
     }
-
-    console.log("최종 리스트는 ", plansList);
   };
 
   return (

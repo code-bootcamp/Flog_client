@@ -31,7 +31,9 @@ export default function TripWriteMoneyUI(props) {
               </Write.AllAmount>
               <Write.Amount>
                 <span className="text1">총 지출</span>
-                <span className="text2">790,000원</span>
+                <span className="text2">
+                  {`${insertCommaPrice(props.totalAmount)}`}원
+                </span>
               </Write.Amount>
             </Write.BudgetText>
           </Write.BudgetBox>
@@ -52,7 +54,12 @@ export default function TripWriteMoneyUI(props) {
                               ? "여행 준비"
                               : el.date.slice(-5).replace("-", ".")}
                           </span>
-                          <span className="amount">121,000원</span>
+                          <span className="amount">
+                            {`${insertCommaPrice(
+                              String(props.dailyAmount[index])
+                            )}`}
+                            원
+                          </span>
                         </Write.MoneyBookTitle>
                         <Write.MoneyBookCards>
                           <TripWriteMoneyCard el={el} />
