@@ -8,6 +8,7 @@ export default function ContainedButton01(props: IContainedButton01Props) {
       size={props.size}
       onClick={props.onClick}
       disabled={props.disabled}
+      type={props.type}
     />
   );
 }
