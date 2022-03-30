@@ -17,7 +17,13 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
               {NAVIGATION_MENUS.map((el) => (
                 <li key={el.title}>
                   <Link href={{ pathname: el.url }} passHref>
-                    <span>{el.title}</span>
+                    <span
+                      className={
+                        props.router.asPath.includes(el.url) ? "isNow" : ""
+                      }
+                    >
+                      {el.title}
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -36,7 +42,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
               </Header.HamburgerBtnRight>
             </Header.HamburgerBtn>
             {props.isActive && (
-              <Header.HamburgerMenu>
+              <Header.HamburgerMenu ref={props.hbgMenuRef}>
                 {props.accessToken ? (
                   <ul>
                     <li>
