@@ -7,6 +7,7 @@ export default function OurTripBanner(props) {
       onClickExit={props.onClickExitMapModal}
       onClickSubmit={props.onClickSubmitMapModal}
       inputs={props.inputs}
+      onClickTagSearch={props.onClickTagSearch}
     />
   );
 }

@@ -48,11 +48,11 @@ export default function SvgMap(props) {
       ...props.inputs,
       cityName: value,
     });
-    props.setLocation ({
-      doName: props.inputs.doName,
-      cityName: props.inputs.cityName,
-    })
-       
+    if (props.setLocation)
+      props.setLocation({
+        doName: props.inputs.doName,
+        cityName: props.inputs.cityName,
+      });
   };
   return (
     <MapsUI
