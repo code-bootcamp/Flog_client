@@ -50,7 +50,7 @@ export default function MapModal(props) {
             )}
           </M.Subtitle>
 
-          <SvgMap inputs={props.inputs} setInputs={props.setInputs} setLocation={props.setLocation}/>
+          <SvgMap inputs={props.inputs} setInputs={props.setInputs} />
           <ContainedButton01
             content="다음"
             size="large"
