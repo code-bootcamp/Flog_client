@@ -8,11 +8,11 @@ import OutlinedInput01 from "../../../inputs/outlined/01/OutlinedInput01.contain
 import MapModal from "../../map/MapModal.container";
 import { CREATE_SCHEDULE } from "./MainSchedule.queries";
 import { changeDatetimeToString } from "../../../../../commons/utils/getDate";
-import { useMoveToPage } from "../../../hooks/useMoveToPage";
 import * as M from "./MainSchedule.styles";
 import { useRouter } from "next/router";
+import { INewTripScheduleModal } from "./MainSchedule.types";
 
-export default function NewTripScheduleModal(props) {
+export default function NewTripScheduleModal(props: INewTripScheduleModal) {
   const [mapModal, setMapModal] = useState(true);
 
   const [createSchedule] = useMutation(CREATE_SCHEDULE);
@@ -25,27 +25,13 @@ export default function NewTripScheduleModal(props) {
     doName: "",
     cityName: "",
   });
-  const { moveToPage } = useMoveToPage();
+
   const router = useRouter();
   const onClickMapModal = () => {
     setTimeout(() => setMapModal((prev) => !prev), 500);
   };
-  // if (end && start) {
-  //   props.setInputs({
-  //     ...props.inputs,
-  //     startDate: `${start?.getFullYear()}.${String(
-  //       start.getMonth() + 1
-  //     ).padStart(2, "0")}.${String(start.getDate()).padStart(2, "0")}`,
-  //     endDate: `${end?.getFullYear()}.${String(end.getMonth() + 1).padStart(
-  //       2,
-  //       "0"
-  //     )}.${String(end.getDate()).padStart(2, "0")}`,
-  //   });
-  // }
+
   const onClickSubmit = async () => {
-    console.log(inputs);
-    console.log(changeDatetimeToString(inputs.startDate));
-    console.log(changeDatetimeToString(inputs.endDate));
     try {
       const result = await createSchedule({
         variables: {
@@ -93,7 +79,6 @@ export default function NewTripScheduleModal(props) {
               </M.Exit>
               <M.Contents>
                 <M.Title>신규 일정 생성</M.Title>
-
                 <M.Wrap>
                   <M.Label>제목</M.Label>
                   <OutlinedInput01
@@ -130,10 +115,11 @@ export default function NewTripScheduleModal(props) {
                 onClick={onClickSubmit}
                 disabled={
                   !(
-                    inputs.theme &&
-                    inputs.theme &&
+                    inputs.title &&
+                    inputs.startDate &&
                     inputs.endDate &&
-                    inputs.startDate
+                    inputs.theme &&
+                    inputs.people
                   )
                 }
               />

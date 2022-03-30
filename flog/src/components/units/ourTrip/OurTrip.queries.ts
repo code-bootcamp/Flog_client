@@ -9,6 +9,7 @@ export const FETCH_SHARE_SCHEDULES = gql`
       endDate
       hashtag
       location
+      url
     }
   }
 `;

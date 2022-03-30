@@ -25,12 +25,6 @@ export default function TagSearchBanner(props) {
         </Tag.Region>
         <Tag.Search>
           <Dropdown04 />
-          {/* {isSelect === "제목" && (
-            <TitleSearch
-              doName={props.inputs.doName}
-              cityName={props.inputs.cityName}
-            />
-          )} */}
           <TagSearchBar hashTag={props.hashTag} setHashTag={props.setHashTag} />
         </Tag.Search>
       </Tag.Contents>

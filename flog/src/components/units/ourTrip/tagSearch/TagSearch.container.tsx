@@ -12,7 +12,7 @@ const BodyContainer = styled.div`
   margin-bottom: 100px;
 `;
 
-const FETCH_HASH_TAG_SEARCH = gql`
+const FETCH_HASHTAG_SEARCH = gql`
   query scheduleHashTagSearch($where: String!, $hashTag: String!) {
     scheduleHashTagSearch(where: $where, hashTag: $hashTag) {
       id
@@ -46,7 +46,7 @@ export default function TagSearch() {
 
   const [hashTag, setHashTag] = useState("");
 
-  const { data: hashTagData, refetch } = useQuery(FETCH_HASH_TAG_SEARCH, {
+  const { data: hashTagData, refetch } = useQuery(FETCH_HASHTAG_SEARCH, {
     variables: {
       where: `${inputs.doName}${inputs.cityName}`,
       hashTag: String(hashTag),

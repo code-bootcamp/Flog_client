@@ -6,10 +6,7 @@ import Exit from "../../src/components/commons/modals/exit/Exit.container";
 import DetailBudgetForm from "../../src/components/commons/modals/formBuget/DetailBugetForm.container";
 import DetailScheduleForm from "../../src/components/commons/modals/formDetailSchedule/DetailScheduleForm.container";
 import MapModal from "../../src/components/commons/modals/map/MapModal.container";
-import DetailBudget from "../../src/components/commons/modals/newBudget/detailBudget/DetailBudget.container";
 import TotalBudget from "../../src/components/commons/modals/newBudget/totalBudget/TotalBudget.container";
-import NewDetailScheduleModal from "../../src/components/commons/modals/newSchedule/detailSchedule/DetailSchedule.container";
-import NewTripScheduleModal from "../../src/components/commons/modals/newSchedule/mainSchedule/MainSchedule.container";
 
 import TripList from "../../src/components/units/tripList/TripList.container";
 
@@ -49,36 +46,6 @@ export default function testPage() {
 
   const onClickSubmitExitModal = () => {
     setExitModal(false);
-  };
-
-  // 상위 컴포넌트에 넣을 내용 - 신규 일정 생성
-  const [newScheduleModal, setNewScheduleModal] = useState(false);
-
-  const onClickNewScheduleModal = () => {
-    setNewScheduleModal(true);
-  };
-
-  const onClickExitNewScheduleModal = () => {
-    setNewScheduleModal(false);
-  };
-
-  const onClickSubmitNewScheduleModal = () => {
-    setNewScheduleModal(false);
-  };
-
-  // 상위 컴포넌트에 넣을 내용 - 세부 일정 생성
-  const [detailScheduleModal, setDetailScheduleModal] = useState(false);
-
-  const onClickDetailScheduleModal = () => {
-    setDetailScheduleModal(true);
-  };
-
-  const onClickExitDetailScheduleModal = () => {
-    setDetailScheduleModal(false);
-  };
-
-  const onClickSubmitDetailScheduleModal = () => {
-    setDetailScheduleModal(false);
   };
 
   // 상위 컴포넌트에 넣을 내용 - total Budget
@@ -232,22 +199,6 @@ export default function testPage() {
           <Exit
             onClickExit={onClickExitExitModal}
             onClickSubmit={onClickSubmitExitModal}
-          />
-        )}
-
-        {/* <button onClick={onClickNewScheduleModal}>신규 일정 생성</button>
-        {newScheduleModal && (
-          <NewTripScheduleModal
-            onClickExit={onClickExitNewScheduleModal}
-            onClickSubmit={onClickSubmitNewScheduleModal}
-          />
-        )} */}
-
-        <button onClick={onClickDetailScheduleModal}>세부 일정 생성</button>
-        {detailScheduleModal && (
-          <NewDetailScheduleModal
-            onClickExit={onClickExitDetailScheduleModal}
-            onClickSubmit={onClickSubmitDetailScheduleModal}
           />
         )}
 

@@ -1,39 +1,22 @@
-import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { getYear, getMonth } from "date-fns";
 import { ko } from "date-fns/locale";
 import * as Date from "./DatePicker.styles";
 import { IMyDatePickerProps } from "./DatePicker.types";
-import { changeDatetimeToString } from "../../../commons/utils/getDate";
 
 export default function MyDatePicker(props) {
-  // const [startDate, setStartDate] = useState(null);
-  // const [endDate, setEndDate] = useState(null);
   const onChange = (dates: [any, any]) => {
     const [start, end] = dates;
-
-    console.log(start);
-    console.log(end);
-    console.log(dates);
 
     props.setInputs({
       ...props.inputs,
       startDate: start,
       endDate: end,
     });
-
-    // if (end)
-    //   props.setInputs({
-    //     ...props.inputs,
-
-    //     getDate: changeDatetimeToString(end),
-    //   });
   };
 
   return (
     <div>
-      {/* <div>{String(startDate)}</div> */}
-      {/* <div>{String(endDate)}</div> */}
       <Date.MyDatePicker
         renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
           <Date.DatePickerHead>
