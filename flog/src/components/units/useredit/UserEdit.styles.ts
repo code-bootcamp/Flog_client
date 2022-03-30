@@ -42,7 +42,7 @@ export const TitleText = styled.div`
     font-weight: 500;
   }
 `;
-export const Contents = styled.form`
+export const Contents = styled.div`
   padding: 57px 20px 96px;
   border: 1px solid #e9e9e9;
   border-radius: 20px;
@@ -125,9 +125,19 @@ export const BirthdayInput = styled.div`
 `;
 export const EmailInput = styled.div`
   width: 100%;
+  position: relative;
   max-width: 480px;
   & input {
     width: 100%;
+  }
+  img {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    padding: 10px;
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
 export const SubmitBox = styled.div`
