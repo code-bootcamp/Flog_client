@@ -918,7 +918,7 @@ export default function chungNam(props) {
               id="천안시"
               onClick={onClickCityName}
               y="0"
-              x="0 33.013924 66.027847"
+              x="0 43.013924 86.027847"
             >
               천안시
             </TEXT>
@@ -926,7 +926,7 @@ export default function chungNam(props) {
               id="아산시"
               onClick={onClickCityName}
               y="16.472212"
-              x="-206.66718 -173.65324 -140.63933"
+              x="-206.66718 -166.65324 -126.63933"
             >
               아산시
             </TEXT>
@@ -934,7 +934,7 @@ export default function chungNam(props) {
               id="당진군"
               onClick={onClickCityName}
               y="-63.317234"
-              x="-459.76236 -426.74841 -393.7345"
+              x="-459.76236 -419.74841 -379.7345"
             >
               당진군
             </TEXT>
@@ -942,7 +942,7 @@ export default function chungNam(props) {
               id="서산시"
               onClick={onClickCityName}
               y="52.718025"
-              x="-638.48932 -605.4754 -572.46149"
+              x="-638.48932 -598.4754 -558.46149"
             >
               서산시
             </TEXT>
@@ -950,7 +950,7 @@ export default function chungNam(props) {
               id="태안군"
               onClick={onClickCityName}
               y="45.107449"
-              x="-830.42181 -797.4079 -764.39398"
+              x="-830.42181 -790.4079 -750.39398"
             >
               태안군
             </TEXT>
@@ -958,7 +958,7 @@ export default function chungNam(props) {
               id="홍성군"
               onClick={onClickCityName}
               y="284.71906"
-              x="-492.39401 -459.38007 -426.36615"
+              x="-492.39401 -452.38007 -412.36615"
             >
               홍성군
             </TEXT>
@@ -966,7 +966,7 @@ export default function chungNam(props) {
               id="예산군"
               onClick={onClickCityName}
               y="183.90494"
-              x="-319.26202 -286.24811 -253.23418"
+              x="-319.26202 -279.24811 -239.23418"
             >
               예산군
             </TEXT>
@@ -974,7 +974,7 @@ export default function chungNam(props) {
               id="공주시"
               onClick={onClickCityName}
               y="357.73193"
-              x="-135.25284 -102.23891 -69.224991"
+              x="-135.25284 -95.23891 -55.224991"
             >
               공주시
             </TEXT>
@@ -982,7 +982,7 @@ export default function chungNam(props) {
               id="청양군"
               onClick={onClickCityName}
               y="409.26843"
-              x="-342.7193 -309.70535 -276.69144"
+              x="-342.7193 -302.70535 -262.69144"
             >
               청양군
             </TEXT>
@@ -990,7 +990,7 @@ export default function chungNam(props) {
               id="보령시"
               onClick={onClickCityName}
               y="496.42517"
-              x="-516.23352 -483.2196 -450.20569"
+              x="-516.23352 -476.2196 -436.20569"
             >
               보령시
             </TEXT>
@@ -998,7 +998,7 @@ export default function chungNam(props) {
               id="부여군"
               onClick={onClickCityName}
               y="626.32629"
-              x="-290.9743 -257.96039 -224.94646"
+              x="-290.9743 -250.96039 -210.94646"
             >
               부여군
             </TEXT>
@@ -1006,7 +1006,7 @@ export default function chungNam(props) {
               id="서천군"
               onClick={onClickCityName}
               y="750.80615"
-              x="-432.4129 -399.39899 -366.38507"
+              x="-432.4129 -392.39899 -352.38507"
             >
               서천군
             </TEXT>
@@ -1014,7 +1014,7 @@ export default function chungNam(props) {
               id="논산시"
               onClick={onClickCityName}
               y="691.90234"
-              x="-57.756992 -24.743069 8.2708569"
+              x="-57.756992 -17.743069 23.2708569"
             >
               논산시
             </TEXT>
@@ -1022,7 +1022,7 @@ export default function chungNam(props) {
               id="계룡시"
               onClick={onClickCityName}
               y="576.7359"
-              x="43.578381 76.592308 109.60623"
+              x="43.578381 83.592308 123.60623"
             >
               계룡시
             </TEXT>
@@ -1030,7 +1030,7 @@ export default function chungNam(props) {
               id="금산군"
               onClick={onClickCityName}
               y="757.26996"
-              x="215.3898 248.40372 281.41763"
+              x="215.3898 255.40372 295.41763"
             >
               금산군
             </TEXT>

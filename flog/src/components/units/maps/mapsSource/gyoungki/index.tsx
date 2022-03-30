@@ -653,7 +653,7 @@ export default function gyoungki(props) {
             id="text494"
             style={{
               fontStretch: "nomal",
-              fontSize: "30px",
+              fontSize: "40px",
               fill: "#626262",
               fillOpacity: "1",
               fillRule: "nonzero",
@@ -661,14 +661,14 @@ export default function gyoungki(props) {
             }}
             transform="matrix(1,0,0,-1,669.6641,1189.7627)"
           >
-            <Text id="연천" onClick={onClickCityName} y="0" x="0 21.91308">
+            <Text id="연천" onClick={onClickCityName} y="0" x="0 39.91308">
               연천
             </Text>
             <Text
               id="파주"
               onClick={onClickCityName}
               y="182.66283"
-              x="-118.67663 -80.76355"
+              x="-118.67663 -75.76355"
             >
               파주
             </Text>
@@ -676,7 +676,7 @@ export default function gyoungki(props) {
               id="동두천"
               onClick={onClickCityName}
               y="148.66295"
-              x="56.651077 78.564156 100.47724"
+              x="56.651077 90.564156 125.47724"
             >
               동두천
             </Text>
@@ -684,7 +684,7 @@ export default function gyoungki(props) {
               id="양주"
               onClick={onClickCityName}
               y="217.33162"
-              x="21.359486 43.272568"
+              x="21.359486 61.272568"
             >
               양주
             </Text>
@@ -692,7 +692,7 @@ export default function gyoungki(props) {
               id="의정부"
               onClick={onClickCityName}
               y="292.66647"
-              x="51.553406 73.466484 95.379562"
+              x="51.553406 91.466484 130.379562"
             >
               의정부
             </Text>
@@ -700,15 +700,15 @@ export default function gyoungki(props) {
               id="구리"
               onClick={onClickCityName}
               y="413.32681"
-              x="111.87204 133.78513"
+              x="111.87204 151.78513"
             >
               구리
             </Text>
             <Text
               id="서울"
-              onClick={onClickCityName}
+              // onClick={onClickCityName}
               y="446.65778"
-              x="-14.4857 7.4273806"
+              x="-14.4857 30.4273806"
             >
               서울
             </Text>
@@ -716,7 +716,7 @@ export default function gyoungki(props) {
               id="남양주"
               onClick={onClickCityName}
               y="349.87115"
-              x="166.65474 188.56783 210.4809"
+              x="166.65474 206.56783 246.4809"
             >
               남양주
             </Text>
@@ -724,7 +724,7 @@ export default function gyoungki(props) {
               id="포천"
               onClick={onClickCityName}
               y="105.20585"
-              x="174.63571 196.5488"
+              x="174.63571 214.5488"
             >
               포천
             </Text>
@@ -732,7 +732,7 @@ export default function gyoungki(props) {
               id="가평"
               onClick={onClickCityName}
               y="236.75352"
-              x="292.6434 314.55649"
+              x="292.6434 332.55649"
             >
               가평
             </Text>
@@ -740,7 +740,7 @@ export default function gyoungki(props) {
               id="양평"
               onClick={onClickCityName}
               y="487.02396"
-              x="399.30246 421.21555"
+              x="399.30246 439.21555"
             >
               양평
             </Text>
@@ -748,7 +748,7 @@ export default function gyoungki(props) {
               id="여주"
               onClick={onClickCityName}
               y="660.41412"
-              x="452.63196 474.54504"
+              x="452.63196 492.54504"
             >
               여주
             </Text>
@@ -756,7 +756,7 @@ export default function gyoungki(props) {
               id="이천"
               onClick={onClickCityName}
               y="713.44373"
-              x="317.6474 339.56049"
+              x="317.6474 357.56049"
             >
               이천
             </Text>
@@ -764,7 +764,7 @@ export default function gyoungki(props) {
               id="안성"
               onClick={onClickCityName}
               y="886.78772"
-              x="208.31265 230.22574"
+              x="208.31265 248.22574"
             >
               안성
             </Text>
@@ -772,7 +772,7 @@ export default function gyoungki(props) {
               id="용인"
               onClick={onClickCityName}
               y="725.46136"
-              x="174.63571 196.5488"
+              x="174.63571 214.5488"
             >
               용인
             </Text>
@@ -781,7 +781,7 @@ export default function gyoungki(props) {
         "
               onClick={onClickCityName}
               y="565.42664"
-              x="228.01137 249.92444"
+              x="228.01137 268.92444"
             >
               광주
             </Text>
@@ -789,7 +789,7 @@ export default function gyoungki(props) {
               id="하남"
               onClick={onClickCityName}
               y="478.48941"
-              x="166.65474 188.56783"
+              x="166.65474 206.56783"
             >
               하남
             </Text>
@@ -797,7 +797,7 @@ export default function gyoungki(props) {
               id="평택"
               onClick={onClickCityName}
               y="886.78772"
-              x="37.159969 59.073051"
+              x="37.159969 77.073051"
             >
               평택
             </Text>
@@ -805,7 +805,7 @@ export default function gyoungki(props) {
               id="오산"
               onClick={onClickCityName}
               y="780.47473"
-              x="48.577839 70.490921"
+              x="48.577839 88.490921"
             >
               오산
             </Text>
@@ -813,7 +813,7 @@ export default function gyoungki(props) {
               id="화성"
               onClick={onClickCityName}
               y="765.66608"
-              x="-149.88547 -127.97239"
+              x="-149.88547 -109.97239"
             >
               화성
             </Text>
@@ -821,7 +821,7 @@ export default function gyoungki(props) {
               id="수원"
               onClick={onClickCityName}
               y="676.03003"
-              x="12.386657 34.299736"
+              x="12.386657 52.299736"
             >
               수원
             </Text>
@@ -829,7 +829,7 @@ export default function gyoungki(props) {
               id="성남"
               onClick={onClickCityName}
               y="576.03723"
-              x="92.634659 114.54774"
+              x="92.634659 132.54774"
             >
               성남
             </Text>
@@ -837,7 +837,7 @@ export default function gyoungki(props) {
               id="과천"
               onClick={onClickCityName}
               y="549.9491"
-              x="21.359486 43.272568"
+              x="21.359486 61.272568"
             >
               과천
             </Text>
@@ -845,7 +845,7 @@ export default function gyoungki(props) {
               id="의왕"
               onClick={onClickCityName}
               y="603.11719"
-              x="16.377144 38.290222"
+              x="16.377144 56.290222"
             >
               의왕
             </Text>
@@ -853,7 +853,7 @@ export default function gyoungki(props) {
               id="군포"
               onClick={onClickCityName}
               y="622.74664"
-              x="-36.698643 -14.785563"
+              x="-36.698643 -4.785563"
             >
               군포
             </Text>
@@ -861,7 +861,7 @@ export default function gyoungki(props) {
               id="안양"
               onClick={onClickCityName}
               y="573.59216"
-              x="-33.584679 -11.671598"
+              x="-33.584679 7.671598"
             >
               안양
             </Text>
@@ -869,7 +869,7 @@ export default function gyoungki(props) {
               id="광명"
               onClick={onClickCityName}
               y="539.98444"
-              x="-87.421654 -65.508575"
+              x="-87.421654 -47.508575"
             >
               광명
             </Text>
@@ -877,7 +877,7 @@ export default function gyoungki(props) {
               id="부천"
               onClick={onClickCityName}
               y="487.02396"
-              x="-145.41058 -123.49751"
+              x="-145.41058 -105.49751"
             >
               부천
             </Text>
@@ -885,7 +885,7 @@ export default function gyoungki(props) {
               id="인천"
               onClick={onClickCityName}
               y="471.13123"
-              x="-218.48494 -196.57185"
+              x="-218.48494 -180.57185"
             >
               인천
             </Text>
@@ -893,7 +893,7 @@ export default function gyoungki(props) {
               id="시흥"
               onClick={onClickCityName}
               y="599.61108"
-              x="-181.41724 -159.50415"
+              x="-181.41724 -141.50415"
             >
               시흥
             </Text>
@@ -901,7 +901,7 @@ export default function gyoungki(props) {
               id="안산"
               onClick={onClickCityName}
               y="642.60681"
-              x="-105.48265 -83.569565"
+              x="-105.48265 -65.569565"
             >
               안산
             </Text>
@@ -909,7 +909,7 @@ export default function gyoungki(props) {
               id="강화도"
               onClick={onClickCityName}
               y="300.5062"
-              x="-402.09399 -380.18091"
+              x="-402.09399 -362.18091"
             >
               강화도
             </Text>
@@ -917,7 +917,7 @@ export default function gyoungki(props) {
               id="김포"
               onClick={onClickCityName}
               y="340.5062"
-              x="-266.09399 -244.18091"
+              x="-266.09399 -226.18091"
             >
               김포
             </Text>
@@ -925,7 +925,7 @@ export default function gyoungki(props) {
               id="고양"
               onClick={onClickCityName}
               y="349.87115"
-              x="-111.43378 -89.520699"
+              x="-111.43378 -71.520699"
             >
               고양
             </Text>
