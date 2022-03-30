@@ -78,24 +78,13 @@ export default function UserEditUI(props: IUserEditUIProps) {
           </Edit.InputLabel>
           <Edit.EmailInput>
             <OutlinedInput01
-              type="text"
-              id="password1"
-              value={props.inputs.password1}
+              type={props.pwdType && "password"}
+              id="password"
+              value={props.inputs.password}
               placeholder="비밀번호를 입력해주세요."
               onChange={props.onChange}
             />
-          </Edit.EmailInput>
-          <Edit.InputLabel>
-            <span>비밀번호 확인</span>
-          </Edit.InputLabel>
-          <Edit.EmailInput>
-            <OutlinedInput01
-              type="text"
-              id="password2"
-              value={props.inputs.password2}
-              placeholder="비밀번호를 입력해주세요."
-              onChange={props.onChange}
-            />
+            <img src="/img/signUp-icon1.png" onClick={props.pwdToggle} />
           </Edit.EmailInput>
 
           <Edit.InputLabel>
@@ -106,7 +95,10 @@ export default function UserEditUI(props: IUserEditUIProps) {
               type="text"
               placeholder=""
               id="number1"
-              value={props.inputs.number1}
+              value={
+                props.inputs.number1 ||
+                props.data?.fetchUser.phoneNumber.slice(0, 3)
+              }
               onChange={props.onChange}
             />
 
@@ -114,14 +106,20 @@ export default function UserEditUI(props: IUserEditUIProps) {
               type="text"
               placeholder=""
               id="number2"
-              value={props.inputs.number2}
+              value={
+                props.inputs.number2 ||
+                props.data?.fetchUser.phoneNumber.slice(3, 7)
+              }
               onChange={props.onChange}
             />
             <OutlinedInput01
               type="text"
               id="number3"
               placeholder=""
-              value={props.inputs.number3}
+              value={
+                props.inputs.number3 ||
+                props.data?.fetchUser.phoneNumber.slice(7, 11)
+              }
               onChange={props.onChange}
             />
           </Edit.PhoneInput>
