@@ -1,8 +1,9 @@
 import Dropdown01 from "../../commons/dropdowns/01/Dropdown01.container";
 import * as List from "./TripsList.styles";
+import { v4 as uuid4 } from "uuid";
 
 export default function TripListUI(props) {
-  console.log(props.shareData, props.myData);
+  // console.log(props.shareData, props.myData);
   return (
     <>
       {props.isMine ? (
@@ -14,23 +15,41 @@ export default function TripListUI(props) {
           <List.TripList>
             {props.myData?.fetchSchedules.map((el, index) => (
               <>
-                <List.CardWrapper key={el.id}>
+                <List.CardWrapper key={uuid4()}>
                   <List.Wrapper>
-                    <List.Mark>
-                      <img src="/img/icon-body-marker.svg" alt="공유한 여행" />
-                    </List.Mark>
-                    <List.EditWrap>
+                    {el.isShare === "1" ? (
+                      <List.Mark>
+                        <img
+                          src="/img/icon-body-marker.svg"
+                          alt="공유한 여행"
+                        />
+                      </List.Mark>
+                    ) : (
+                      ""
+                    )}
+                    <List.EditWrap onClick={props.onClickUploadBanner}>
                       <img
                         src="/img/icon-body-edit.svg"
                         alt="여행이미지 수정"
                       />
                     </List.EditWrap>
+                    <input
+                      type="file"
+                      onChange={props.onChangeFile}
+                      ref={props.fileRef}
+                      style={{ display: "none" }}
+                    />
                     <List.Image>
                       <img
-                        src={`/img/trips/user/trip-img${index + 1}.jpg`}
+                        src={
+                          el.url
+                            ? `https://storage.googleapis.com/${el.url}`
+                            : `/img/trips/user/trip-img${1}.jpg`
+                        }
                         alt="여행이미지"
                       />
                     </List.Image>
+
                     <List.Text>
                       <List.Title>{el.title}</List.Title>
                       <List.Subtitle>
@@ -54,15 +73,17 @@ export default function TripListUI(props) {
           <List.TripList>
             {props.shareData?.fetchShareSchedules.map((el, index) => (
               <>
-                <List.CardWrapper key={el.id}>
+                <List.CardWrapper key={uuid4()}>
                   <List.Wrapper>
-                    {props.shareData?.fetchShareSchedules.isShare && (
+                    {props.myData?.fetchSchedules.isShare === "1" ? (
                       <List.Mark>
                         <img
                           src="/img/icon-body-marker.svg"
                           alt="공유한 여행"
                         />
                       </List.Mark>
+                    ) : (
+                      ""
                     )}
                     <List.Image>
                       <img

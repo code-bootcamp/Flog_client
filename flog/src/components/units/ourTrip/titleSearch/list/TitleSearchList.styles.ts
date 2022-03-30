@@ -89,9 +89,6 @@ export const EditWrap = styled.div`
     position: relative;
     top: 21px;
     width: 1.5rem;
-    :hover {
-      cursor: pointer;
-    }
   }
 `;
 

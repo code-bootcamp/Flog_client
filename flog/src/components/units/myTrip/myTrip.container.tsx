@@ -24,10 +24,22 @@ const FETCH_SCHEDULES = gql`
   }
 `;
 
+const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      id
+      nickName
+    }
+  }
+`;
+
 export default function MyTrip() {
-  const { data: myData } = useQuery(FETCH_SCHEDULES, {
+  const { data: myData, refetch } = useQuery(FETCH_SCHEDULES, {
     variables: { page: 1 },
   });
+
+  const { data: userData } = useQuery(FETCH_USER);
+  // console.log(userData?.fetchUser);
 
   const [newScheduleModal, setNewScheduleModal] = useState(false);
 
@@ -45,11 +57,16 @@ export default function MyTrip() {
 
       <BodyContainer>
         <MyTripBanner
-          userInfo={true}
+          userData={userData}
           onClickMapModal={onClickNewScheduleModal}
           myData={myData}
         />
-        <MyTripList isMine={true} userInfo={true} myData={myData} />
+        <MyTripList
+          isMine={true}
+          userData={userData}
+          myData={myData}
+          refetch={refetch}
+        />
       </BodyContainer>
     </>
   );
