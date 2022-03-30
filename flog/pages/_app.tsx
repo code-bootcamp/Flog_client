@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { Global } from "@emotion/react";
 import { GlobalStyle } from "../src/commons/styles/Global.styles";
 import { onError } from "@apollo/client/link/error";
-import { getAccessToken } from "../src/components/commons/libraries/getAccessToken";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 import Layout from "../src/components/commons/layout";
 import {
   ApolloClient,

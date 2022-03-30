@@ -42,7 +42,7 @@ export const TitleText = styled.div`
     font-weight: 500;
   }
 `;
-export const Contents = styled.div`
+export const Contents = styled.form`
   padding: 57px 20px 96px;
   border: 1px solid #e9e9e9;
   border-radius: 20px;
@@ -56,6 +56,12 @@ export const UserImage = styled.div`
   height: 180px;
   position: relative;
 `;
+export const ErrorMsg = styled.div`
+  color: red;
+  font-size: 14px;
+
+  height: 14px;
+`;
 export const NoImage = styled.div`
   width: 100%;
   height: 100%;
@@ -65,6 +71,7 @@ export const NoImage = styled.div`
   align-items: center;
   border: 1px solid #a1dac5;
   border-radius: 50%;
+  overflow: hidden;
   background: #eaf7f2;
 `;
 export const FileButton = styled.div`
@@ -80,6 +87,9 @@ export const FileButton = styled.div`
   bottom: 0;
   right: -6px;
   cursor: pointer;
+  input {
+    display: none;
+  }
 `;
 export const NameInput = styled.div`
   margin: 38px 0;
