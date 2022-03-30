@@ -23,38 +23,39 @@ export default function TripWriteLogListUI(props) {
         )}
 
         <List.PlanWrapper>
-          {props.schedules.map((day, dayIndex) => (
-            <List.DayWrapper key={dayIndex}>
-              <div>
-                <span>{dayIndex + 1}일차</span>
-                <img
-                  src="/img/mytrips-write-log2.png"
-                  onClick={props.toggle(dayIndex)}
-                />
-              </div>
+          {props.schedules.length === 3 &&
+            props.schedules?.map((day, dayIndex) => (
+              <List.DayWrapper key={dayIndex}>
+                <div>
+                  <span>{dayIndex + 1}일차</span>
+                  <img
+                    src="/img/mytrips-write-log2.png"
+                    onClick={props.toggle(dayIndex)}
+                  />
+                </div>
 
-              {props.isShow[dayIndex] && (
-                <List.DayPlanWrapper>
-                  {day.map((el, elIndex) => (
-                    <List.DayPlanDetail
-                      key={elIndex}
-                      onClick={
-                        props.isEdit
-                          ? props.addElement(dayIndex, elIndex)
-                          : props.moveSroll(dayIndex, elIndex)
-                      }
-                    >
-                      <List.DayPlanLabel>{el.name}</List.DayPlanLabel>
-                      <div>{el.des}</div>
-                    </List.DayPlanDetail>
-                  ))}
-                </List.DayPlanWrapper>
-              )}
-            </List.DayWrapper>
-          ))}
+                {props.isShow[dayIndex] && (
+                  <List.DayPlanWrapper>
+                    {day.map((el, elIndex) => (
+                      <List.DayPlanDetail
+                        key={elIndex}
+                        onClick={
+                          props.isEdit
+                            ? props.addElement(dayIndex, elIndex)
+                            : props.moveSroll(dayIndex, elIndex)
+                        }
+                      >
+                        <List.DayPlanLabel>{el.id}</List.DayPlanLabel>
+                        <div>{el.date}</div>
+                      </List.DayPlanDetail>
+                    ))}
+                  </List.DayPlanWrapper>
+                )}
+              </List.DayWrapper>
+            ))}
         </List.PlanWrapper>
       </List.PlanBox>
-      {props.isEdit && (
+      {/* {props.isEdit && (
         <List.EditorWrapper>
           {props.schedules.map((el: string[], index: number) => (
             <TripWriteLogEditor
@@ -67,7 +68,7 @@ export default function TripWriteLogListUI(props) {
             />
           ))}
         </List.EditorWrapper>
-      )}
+      )} */}
     </List.Main>
   );
 }

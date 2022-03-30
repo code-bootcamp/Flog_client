@@ -9,10 +9,7 @@ export const Main = styled.div`
     margin-bottom: 20px;
   }
 `;
-export const hideWrapper = styled.div`
-  display: none;
-  position: absolute;
-`;
+export const hideWrapper = styled.div``;
 
 export const EditorWrapper = styled.div`
   position: absolute;
