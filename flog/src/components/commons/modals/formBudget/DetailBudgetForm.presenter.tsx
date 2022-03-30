@@ -2,6 +2,7 @@ import OutlinedInput01 from "../../inputs/outlined/01/OutlinedInput01.container"
 import * as M from "../newBudget/detailBudget/DetailBudget.styles";
 import OutlinedInput02 from "../../inputs/outlined/02/OutlinedInput02.container";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
+import { IDetailBudgetFormUIProps } from "./DetailBudgetForm.types";
 
 export default function DetailBudgetFormUI(props) {
   return (
