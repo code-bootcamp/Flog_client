@@ -9,7 +9,7 @@ const PATH = styled.path`
 const TEXT = styled.tspan`
   :hover {
     cursor: pointer;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 500;
     fill: #2c3131;
   }
@@ -562,7 +562,7 @@ export default function gyoungBook(props) {
               fontVariant: "normal",
               fontWeight: "normal",
               fontStretch: "normal",
-              fontSize: "30px",
+              fontSize: "40px",
               fontFamily: "THEJung130",
               fill: "#000000",
               fillOpacity: "1",
@@ -575,7 +575,7 @@ export default function gyoungBook(props) {
               id="울릉도"
               onClick={onClickCityName}
               y="0"
-              x="0 20.60474 41.20948"
+              x="0 40.60474 80.20948"
             >
               울릉도
             </TEXT>
@@ -583,7 +583,7 @@ export default function gyoungBook(props) {
               id="독도"
               onClick={onClickCityName}
               y="61.271992"
-              x="138.13852 158.74326"
+              x="138.13852 178.74326"
             >
               독도
             </TEXT>
@@ -591,7 +591,7 @@ export default function gyoungBook(props) {
               id="울진군"
               onClick={onClickCityName}
               y="-128.92059"
-              x="-237.27985 -216.67511 -196.07037"
+              x="-237.27985 -197.67511 -167.07037"
             >
               울진군
             </TEXT>
@@ -599,7 +599,7 @@ export default function gyoungBook(props) {
               id="봉화군"
               onClick={onClickCityName}
               y="-120.30999"
-              x="-448.53265 -427.92792 -407.32318"
+              x="-448.53265 -408.92792 -368.32318"
             >
               봉화군
             </TEXT>
@@ -607,7 +607,7 @@ export default function gyoungBook(props) {
               id="영주시"
               onClick={onClickCityName}
               y="-65.089287"
-              x="-626.77448 -606.16974 -585.565"
+              x="-626.77448 -586.16974 -546.565"
             >
               영주시
             </TEXT>
@@ -615,7 +615,7 @@ export default function gyoungBook(props) {
               id="예천군"
               onClick={onClickCityName}
               y="51.685364"
-              x="-688.04651 -667.44177 -646.83704"
+              x="-688.04651 -648.44177 -608.83704"
             >
               예천군
             </TEXT>
@@ -623,7 +623,7 @@ export default function gyoungBook(props) {
               id="문경시"
               onClick={onClickCityName}
               y="39.192383"
-              x="-844.05688 -823.45215 -802.84741"
+              x="-844.05688 -804.45215 -764.84741"
             >
               문경시
             </TEXT>
@@ -631,7 +631,7 @@ export default function gyoungBook(props) {
               id="상주시"
               onClick={onClickCityName}
               y="228.04025"
-              x="-891.40442 -870.79968 -850.19495"
+              x="-891.40442 -851.79968 -811.19495"
             >
               상주시
             </TEXT>
@@ -639,7 +639,7 @@ export default function gyoungBook(props) {
               id="의성군"
               onClick={onClickCityName}
               y="260.14026"
-              x="-570.57776 -549.97302 -529.36829"
+              x="-570.57776 -530.97302 -490.36829"
             >
               의성군
             </TEXT>
@@ -647,7 +647,7 @@ export default function gyoungBook(props) {
               id="구미시"
               onClick={onClickCityName}
               y="375.59189"
-              x="-707.61017 -687.00543 -666.4007"
+              x="-707.61017 -667.00543 -627.4007"
             >
               구미시
             </TEXT>
@@ -655,7 +655,7 @@ export default function gyoungBook(props) {
               id="김천시"
               onClick={onClickCityName}
               y="444.32495"
-              x="-879.12836 -858.52362 -837.91888"
+              x="-879.12836 -838.52362 -798.91888"
             >
               김천시
             </TEXT>
@@ -663,7 +663,7 @@ export default function gyoungBook(props) {
               id="성주군"
               onClick={onClickCityName}
               y="540.08276"
-              x="-785.60449 -764.99976 -744.39502"
+              x="-785.60449 -745.99976 -705.39502"
             >
               성주군
             </TEXT>
@@ -671,26 +671,26 @@ export default function gyoungBook(props) {
               id="칠곡군"
               onClick={onClickCityName}
               y="480.19888"
-              x="-664.47034 -643.8656 -623.26086"
+              x="-664.47034 -624.8656 -584.26086"
             >
               칠곡군
             </TEXT>
-            <TEXT id="tspan320" y="578.2124" x="-598.75208 -578.14734">
+            <tspan id="tspan320" y="578.2124" x="-598.75208 -558.14734">
               대구
-            </TEXT>
-            <TEXT
+            </tspan>
+            <tspan
               id="광역시"
               onClick={onClickCityName}
-              y="604.23944"
-              x="-598.75208 -578.14734 -557.5426"
+              y="610.23944"
+              x="-598.75208 -558.14734 -518.5426"
             >
               광역시
-            </TEXT>
+            </tspan>
             <TEXT
               id="고령군"
               onClick={onClickCityName}
               y="667.33331"
-              x="-765.30341 -744.69867 -724.09393"
+              x="-765.30341 -725.69867 -685.09393"
             >
               고령군
             </TEXT>
@@ -698,15 +698,15 @@ export default function gyoungBook(props) {
               id="청도군"
               onClick={onClickCityName}
               y="728.06305"
-              x="-510.97586 -490.37112 -469.76639"
+              x="-510.97586 -470.37112 -430.76639"
             >
               청도군
             </TEXT>
             <TEXT
               id="경산시"
               onClick={onClickCityName}
-              y="611.0932"
-              x="-482.45456 -461.84982 -441.24509"
+              y="581.0932"
+              x="-482.45456 -442.84982 -402.24509"
             >
               경산시
             </TEXT>
@@ -714,7 +714,7 @@ export default function gyoungBook(props) {
               id="영천시"
               onClick={onClickCityName}
               y="471.65335"
-              x="-408.71127 -388.10654 -367.5018"
+              x="-408.71127 -368.10654 -328.5018"
             >
               영천시
             </TEXT>
@@ -722,7 +722,7 @@ export default function gyoungBook(props) {
               id="경주시"
               onClick={onClickCityName}
               y="585.71686"
-              x="-262.78635 -242.18161 -221.57687"
+              x="-262.78635 -222.18161 -182.57687"
             >
               경주시
             </TEXT>
@@ -730,7 +730,7 @@ export default function gyoungBook(props) {
               id="포항시"
               onClick={onClickCityName}
               y="381.81668"
-              x="-252.76593 -232.16119 -211.55646"
+              x="-252.76593 -212.16119 -172.55646"
             >
               포항시
             </TEXT>
@@ -738,7 +738,7 @@ export default function gyoungBook(props) {
               id="청송군"
               onClick={onClickCityName}
               y="250.05479"
-              x="-346.33316 -325.72839 -305.12366"
+              x="-346.33316 -306.72839 -266.12366"
             >
               청송군
             </TEXT>
@@ -746,7 +746,7 @@ export default function gyoungBook(props) {
               id="영덕군"
               onClick={onClickCityName}
               y="168.35156"
-              x="-214.26761 -193.66287 -173.05812"
+              x="-214.26761 -174.66287 -134.05812"
             >
               영덕군
             </TEXT>
@@ -754,7 +754,7 @@ export default function gyoungBook(props) {
               id="영암군"
               onClick={onClickCityName}
               y="30.321503"
-              x="-323.79807 -303.19333 -282.58859"
+              x="-323.79807 -283.19333 -243.58859"
             >
               영암군
             </TEXT>
@@ -762,7 +762,7 @@ export default function gyoungBook(props) {
               id="안동시"
               onClick={onClickCityName}
               y="95.540924"
-              x="-513.14478 -492.54004 -471.9353"
+              x="-513.14478 -473.54004 -431.9353"
             >
               안동시
             </TEXT>
@@ -770,7 +770,7 @@ export default function gyoungBook(props) {
               id="군위군"
               onClick={onClickCityName}
               y="392.72635"
-              x="-554.35425 -533.74951 -513.14478"
+              x="-554.35425 -514.74951 -474.14478"
             >
               군위군
             </TEXT>

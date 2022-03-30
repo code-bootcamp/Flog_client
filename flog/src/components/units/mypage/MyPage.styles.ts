@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-
+import { breakPoints } from "../../../commons/styles/Media";
 export const Container = styled.div`
   width: 100%;
   height: auto;
@@ -39,6 +39,18 @@ export const BannerButton = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
+  button {
+    @media ${breakPoints.mobile} {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+    @media ${breakPoints.tablet} {
+      position: absolute;
+
+      right: 16px;
+    }
+  }
 `;
 export const UserInfo = styled.div`
   width: auto;
@@ -93,12 +105,19 @@ export const PointBox = styled.div`
   border: 1px solid #58bd97;
   border-radius: 20px;
   padding: 29px 38px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 export const PointText = styled.span`
   font-size: 1.75rem;
   color: #58bd97;
   font-weight: 500;
   width: 200px;
+  @media ${breakPoints.mobile} {
+    width: 100px;
+    font-size: 1.5rem;
+  }
 `;
 export const Amount = styled.div`
   display: flex;
@@ -113,9 +132,23 @@ export const Amount = styled.div`
     font-weight: 600;
     color: #2c3131;
   }
+  @media ${breakPoints.mobile} {
+    font-size: 1.8rem;
+    width: calc(100% - 200px);
+  }
 `;
 export const PointButton = styled.div`
   width: 180px;
+  button {
+    @media ${breakPoints.mobile} {
+      width: 100px;
+      height: 58px;
+      padding: 0;
+    }
+  }
+  @media ${breakPoints.mobile} {
+    width: 100px;
+  }
 `;
 export const MenuBox = styled.div`
   width: calc(100% - 30px);
