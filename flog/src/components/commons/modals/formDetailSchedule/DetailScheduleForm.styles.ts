@@ -70,6 +70,22 @@ export const Wrap = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
+  position: relative;
+  &.start-hour {
+    z-index: 3;
+  }
+  &.start-minutes {
+    z-index: 3;
+  }
+  &.taken-hour {
+    z-index: 2;
+  }
+  &.taken-minutes {
+    z-index: 2;
+  }
+  &.memo {
+    z-index: 1;
+  }
 `;
 
 export const Label = styled.div`

@@ -1,6 +1,10 @@
 import OutlinedInput01 from "../../inputs/outlined/01/OutlinedInput01.container";
 import * as M from "./DetailScheduleForm.styles";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
+import Dropdown06 from "../../dropdowns/06-start-hour/Dropdown06.container";
+import Dropdown05 from "../../dropdowns/05-start-minutes/Dropdown05.container";
+import Dropdown07 from "../../dropdowns/07-taken-hour/Dropdown07.container";
+import Dropdown08 from "../../dropdowns/08-taken-minutes /Dropdown08.container";
 
 export default function DetailScheduleFormUI(props) {
   return (
@@ -29,45 +33,24 @@ export default function DetailScheduleFormUI(props) {
                 />
               </M.Wrap>
               <M.TimeInputWrap>
-                <M.Wrap>
+                <M.Wrap className="start-hour">
                   <M.Label>시작</M.Label>
-                  <OutlinedInput01
-                    placeholder="시"
-                    type="number"
-                    register={props.register("startHour")}
-                    version="time"
-                  />
+                  <Dropdown06 setValue={props.setValue} />
                 </M.Wrap>
-                <M.Wrap>
-                  <OutlinedInput01
-                    placeholder="분"
-                    type="number"
-                    register={props.register("startMinutes")}
-                    version="time"
-                  />
+                <M.Wrap className="start-minutes">
+                  <Dropdown05 setValue={props.setValue} />
                 </M.Wrap>
               </M.TimeInputWrap>
               <M.TimeInputWrap>
-                <M.Wrap>
+                <M.Wrap className="taken-hour">
                   <M.Label>소요</M.Label>
-                  <OutlinedInput01
-                    placeholder="시"
-                    type="number"
-                    register={props.register("takenHour")}
-                    version="time"
-                  />
+                  <Dropdown07 setValue={props.setValue} />
                 </M.Wrap>
-                <M.Wrap>
-                  <OutlinedInput01
-                    placeholder="분"
-                    type="number"
-                    register={props.register("takenMinutes")}
-                    version="time"
-                  />
+                <M.Wrap className="taken-minutes">
+                  <Dropdown08 setValue={props.setValue} />
                 </M.Wrap>
               </M.TimeInputWrap>
-
-              <M.Wrap>
+              <M.Wrap className="memo">
                 <M.Label style={{ visibility: "hidden" }}>메모</M.Label>
                 <OutlinedInput01
                   placeholder="(선택) 메모를 입력해주세요"
