@@ -51,7 +51,7 @@ export default function TripWriteLogEditor(props) {
       color: " #818181",
     });
     currentFocus.index += des.length + 6;
-
+    console.log(name, des);
     editor.setSelection(currentFocus.index, 0, 0);
   };
 
@@ -130,7 +130,6 @@ export default function TripWriteLogEditor(props) {
   return (
     <TripWriteLogEditorUI
       ReactQuill={ReactQuill}
-      daySchedule={props.el}
       addEl={addEl}
       handleChange={handleChange}
       contents={contents}

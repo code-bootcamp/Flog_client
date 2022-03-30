@@ -20,26 +20,13 @@ export const FETCH_DETAIL_SCHEDULES = gql`
   }
 `;
 export const FETCH_DETAIL_SCHEDULE = gql`
-  query fetchDetailSchedule(
-    $scheduleId: String!
-    $userId: String!
-    $day: String!
-  ) {
-    fetchDetailSchedule(scheduleId: $scheduleId, userId: $userId, day: $day) {
+  query fetchDetailSchedule($scheduleId: String!, $day: String!) {
+    fetchDetailSchedule(scheduleId: $scheduleId, day: $day) {
       id
       day
       date
       startTime
       useTime
-      place
-      memo
-      schedule {
-        id
-        title
-        location
-        startDate
-        endDate
-      }
     }
   }
 `;

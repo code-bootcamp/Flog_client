@@ -5,13 +5,13 @@ export default function TripWriteLogEditorUI(props) {
   return (
     <Editor.Main>
       <Editor.hideWrapper>
-        {props.daySchedule.map((el, index) => (
+        {props.el?.map((el, index) => (
           <button
-            ref={props.dayRef[index]}
-            onClick={props.addEl(el.name, el.des)}
+            ref={props.dayRef?.[index]}
+            onClick={props.addEl(el.id, el.useTime)}
             key={el}
           >
-            {el.des}
+            {el.id}
           </button>
         ))}
       </Editor.hideWrapper>
