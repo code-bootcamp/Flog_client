@@ -31,7 +31,7 @@ export const BannerImage = styled.div`
 `;
 export const BannerButton = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: 0;
   width: 100%;
   max-width: 1200px;
   height: calc(100% - 72px);
