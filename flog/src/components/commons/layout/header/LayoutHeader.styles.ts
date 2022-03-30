@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 100%;
@@ -10,6 +11,9 @@ export const Container = styled.div`
   position: relative;
   z-index: 10;
   background: #ffffff;
+  @media ${breakPoints.mobile} {
+    height: 48px;
+  }
 `;
 export const InnerWrap = styled.div`
   width: 95%;
@@ -27,6 +31,9 @@ export const Logo = styled.div`
     font-weight: 700;
     color: #58bd97;
     cursor: pointer;
+    @media ${breakPoints.mobile} {
+      font-size: 24px;
+    }
   }
 `;
 
@@ -67,10 +74,16 @@ export const Navigation = styled.div`
       }
     }
   }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const Hamburger = styled.div`
   width: auto;
   position: relative;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const HamburgerBtn = styled.button`
   width: auto;
