@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 100%;
@@ -16,17 +17,30 @@ export const InnerWrap = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 50px 0 70px;
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+    padding: 24px 0 50px;
+  }
 `;
 export const LeftBox = styled.div`
   width: 60%;
   height: 100%;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 export const RightBox = styled.div`
   width: 40%;
   height: 100%;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 export const Info = styled.div`
   margin-bottom: 50px;
+  @media ${breakPoints.mobile} {
+    margin-bottom: 24px;
+  }
 `;
 export const Title = styled.h5`
   font-family: "Montserrat Alternates", sans-serif;
@@ -45,6 +59,9 @@ export const ContactUs = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 80px;
+  @media ${breakPoints.mobile} {
+    margin-bottom: 35px;
+  }
 `;
 export const ContactItem = styled.div`
   width: auto;
@@ -54,6 +71,12 @@ export const ContactItem = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    margin-right: 25px;
+    &:nth-of-type(2) {
+      margin-right: 0;
+    }
+  }
 `;
 export const ContactIconBox = styled.div`
   width: 48px;
@@ -65,6 +88,10 @@ export const ContactIconBox = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 12px;
+  @media ${breakPoints.mobile} {
+    width: 36px;
+    height: 36px;
+  }
 `;
 export const ContactTextBox = styled.div`
   .name {
@@ -81,6 +108,9 @@ export const ContactTextBox = styled.div`
 export const SiteMap = styled.div`
   width: 100%;
   height: auto;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const SiteMapList = styled.ul`
   display: flex;

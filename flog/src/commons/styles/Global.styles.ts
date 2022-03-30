@@ -127,8 +127,7 @@ export const GlobalStyle = css`
   }
   @media ${breakPoints.mobile} {
     html {
-      // mobile
-      // rem의 기준이 되는 font-size 설정
+      font-size: 16px;
     }
   }
 `;
