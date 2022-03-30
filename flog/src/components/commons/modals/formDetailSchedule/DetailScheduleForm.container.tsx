@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DetailScheduleFormUI from "./DetailScheduleForm.presenter";
 
@@ -39,7 +40,7 @@ import DetailScheduleFormUI from "./DetailScheduleForm.presenter";
 // )
 
 export default function DetailScheduleForm(props) {
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, setValue } = useForm({
     mode: "onChange",
   });
 
@@ -49,6 +50,7 @@ export default function DetailScheduleForm(props) {
       onClickSubmit={props.onClickSubmit}
       register={register}
       handleSubmit={handleSubmit}
+      setValue={setValue}
     />
   );
 }
