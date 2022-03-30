@@ -55,6 +55,10 @@ export const Navigation = styled.div`
         padding: 10px 20px;
         border-radius: 30px;
         cursor: pointer;
+        transition: all 0.3s ease;
+        &.isNow {
+          color: #58bd97;
+        }
       }
     }
     li:hover {
