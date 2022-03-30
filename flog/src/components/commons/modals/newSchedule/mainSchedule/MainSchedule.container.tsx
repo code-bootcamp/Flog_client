@@ -7,7 +7,10 @@ import Dropdown03 from "../../../dropdowns/03/Dropdown03.container";
 import OutlinedInput01 from "../../../inputs/outlined/01/OutlinedInput01.container";
 import MapModal from "../../map/MapModal.container";
 import { CREATE_SCHEDULE } from "./MainSchedule.queries";
+import { changeDatetimeToString } from "../../../../../commons/utils/getDate";
+import { useMoveToPage } from "../../../hooks/useMoveToPage";
 import * as M from "./MainSchedule.styles";
+import { useRouter } from "next/router";
 
 export default function NewTripScheduleModal(props) {
   const [mapModal, setMapModal] = useState(true);
@@ -19,36 +22,53 @@ export default function NewTripScheduleModal(props) {
     people: "",
     startDate: "",
     endDate: "",
+    doName: "",
+    cityName: "",
   });
-  const [location, setLocation] = useState({ doName: "", cityName: "" });
-
+  const { moveToPage } = useMoveToPage();
+  const router = useRouter();
   const onClickMapModal = () => {
     setTimeout(() => setMapModal((prev) => !prev), 500);
   };
+  // if (end && start) {
+  //   props.setInputs({
+  //     ...props.inputs,
+  //     startDate: `${start?.getFullYear()}.${String(
+  //       start.getMonth() + 1
+  //     ).padStart(2, "0")}.${String(start.getDate()).padStart(2, "0")}`,
+  //     endDate: `${end?.getFullYear()}.${String(end.getMonth() + 1).padStart(
+  //       2,
+  //       "0"
+  //     )}.${String(end.getDate()).padStart(2, "0")}`,
+  //   });
+  // }
   const onClickSubmit = async () => {
     console.log(inputs);
-    console.log(inputs.startDate.getMonth());
-    console.log(inputs.startDate.getFullYear());
-    // try {
-    //   const result = await createSchedule({
-    //     variables: {
-    //       createScheduleInput: {
-    //         title: inputs.title,
-    //         location: inputs.doName + inputs.cityName,
-    //         startDate: inputs.startDate.slice(0, 12),
-    //         endDate: inputs.endDate.slice(0, 12),
-    //         numberPeople: inputs.people,
-    //         hashtag: inputs.theme,
-    //         mainCategoryId: "",
-    //       },
-    //     },
-    //   });
-    //   console.log(result);
-    // } catch (error) {
-    //   if (error instanceof Error) {
-    //     alert(error.message);
-    //   }
-    // }
+    console.log(changeDatetimeToString(inputs.startDate));
+    console.log(changeDatetimeToString(inputs.endDate));
+    try {
+      const result = await createSchedule({
+        variables: {
+          createScheduleInput: {
+            title: inputs.title,
+            location: inputs.doName + inputs.cityName,
+            startDate: changeDatetimeToString(inputs.startDate),
+            endDate: changeDatetimeToString(inputs.endDate),
+            numberPeople: inputs.people,
+            hashtag: inputs.theme,
+            mainCategoryId: "",
+          },
+        },
+      });
+      const scheduleId = result?.data?.createSchedule.id;
+      alert("신규 일정 생성이 완료되었습니다.");
+      props.onClickNewScheduleModal();
+      router.push(`/myTrips/${scheduleId}/plans`);
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
+    }
   };
 
   return (
@@ -59,7 +79,6 @@ export default function NewTripScheduleModal(props) {
           onClickSubmit={onClickMapModal}
           inputs={inputs}
           setInputs={setInputs}
-          setLocation={setLocation}
         />
       ) : (
         <M.Container>

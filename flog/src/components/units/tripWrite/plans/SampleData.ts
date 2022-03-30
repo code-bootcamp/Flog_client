@@ -228,7 +228,7 @@ export const SAMPLE_DATA_PLANS_TITLE = {
       title: "처음으로 혼자 떠난 여행",
       location: "강릉",
       startDate: "2021.08.21",
-      endDate: "2021.08.23",
+      endDate: "2021.08.24",
       numberPeople: "ONE",
       hashtag: "ALONE",
       user: {
