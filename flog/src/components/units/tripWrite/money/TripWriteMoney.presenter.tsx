@@ -1,12 +1,11 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { insertCommaPrice } from "../../../../commons/utils/insertComma";
-import DetailBudgetForm from "../../../commons/modals/formBuget/DetailBugetForm.container";
+import DetailBudgetForm from "../../../commons/modals/formBudget/DetailBudgetForm.container";
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
 import TripWriteMoneyAdd from "./add/TripWriteMoneyAdd.container";
 import TripWriteMoneyCard from "./card/TripWriteMoneyCard.container";
-import { SAMPLE_DATA_MONEY } from "./SampleDataMoney";
 import * as Write from "./TripWriteMoney.styles";
 
 export default function TripWriteMoneyUI(props) {

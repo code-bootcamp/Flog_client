@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import DetailBudgetFormUI from "./DetailBudgetForm.presenter";
+import { IDetailBudgetFormProps } from "./DetailBudgetForm.types";
 
 // 상위 컴포넌트에 넣을 내용 - detailBudgetForm
 

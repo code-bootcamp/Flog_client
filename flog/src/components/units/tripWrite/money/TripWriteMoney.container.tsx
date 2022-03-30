@@ -64,9 +64,9 @@ export default function TripWriteMoney() {
   //     console.log("tripDates is ", tripDates);
   //   }
   // }, [dataSchedule]);
-  useEffect(() => {
-    setBudgetId(dataBudget?.fetchBudget[0].id);
-  }, [dataBudget]);
+  // useEffect(() => {
+  //   setBudgetId(dataBudget?.fetchBudget[0].id);
+  // }, [dataBudget]);
 
   useEffect(() => {
     sortMoneyBooks();

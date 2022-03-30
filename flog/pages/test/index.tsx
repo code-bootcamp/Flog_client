@@ -3,7 +3,7 @@ import Dropdown01 from "../../src/components/commons/dropdowns/01/Dropdown01.con
 // import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
 import Exit from "../../src/components/commons/modals/exit/Exit.container";
-import DetailBudgetForm from "../../src/components/commons/modals/formBuget/DetailBugetForm.container";
+import DetailBudgetForm from "../../src/components/commons/modals/formBudget/DetailBudgetForm.container";
 import DetailScheduleForm from "../../src/components/commons/modals/formDetailSchedule/DetailScheduleForm.container";
 import MapModal from "../../src/components/commons/modals/map/MapModal.container";
 import TotalBudget from "../../src/components/commons/modals/newBudget/totalBudget/TotalBudget.container";
