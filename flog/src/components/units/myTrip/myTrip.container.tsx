@@ -4,6 +4,8 @@ import { useState } from "react";
 import NewTripScheduleModal from "../../commons/modals/newSchedule/mainSchedule/MainSchedule.container";
 import MyTripBanner from "./banner/MyTripBanner.container";
 import MyTripList from "./list/MyTripList.container";
+import { FETCH_SCHEDULES, FETCH_USER } from "./MyTrip.queries";
+
 const BodyContainer = styled.div`
   width: 100%;
   display: flex;
@@ -11,30 +13,8 @@ const BodyContainer = styled.div`
   align-items: center;
 `;
 
-const FETCH_SCHEDULES = gql`
-  query fetchSchedules($page: Float) {
-    fetchSchedules(page: $page) {
-      id
-      title
-      location
-      startDate
-      endDate
-      isShare
-    }
-  }
-`;
-
-const FETCH_USER = gql`
-  query fetchUser {
-    fetchUser {
-      id
-      nickName
-    }
-  }
-`;
-
 export default function MyTrip() {
-  const { data: myData, refetch } = useQuery(FETCH_SCHEDULES, {
+  const { data: myData, fetchMore } = useQuery(FETCH_SCHEDULES, {
     variables: { page: 1 },
   });
 
@@ -45,6 +25,27 @@ export default function MyTrip() {
 
   const onClickNewScheduleModal = () => {
     setNewScheduleModal((prev) => !prev);
+  };
+
+  const onClickMore = () => {
+    if (!myData) return;
+
+    fetchMore({
+      variables: {
+        page: Math.ceil(myData.fetchSchedules.length / 12) + 1,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.fetchSchedules)
+          return { fetchSchedules: [...prev.fetchSchedules] };
+
+        return {
+          fetchSchedules: [
+            ...prev.fetchSchedules,
+            ...fetchMoreResult.fetchSchedules,
+          ],
+        };
+      },
+    });
   };
 
   return (
@@ -65,7 +66,8 @@ export default function MyTrip() {
           isMine={true}
           userData={userData}
           myData={myData}
-          refetch={refetch}
+          fetchMore={fetchMore}
+          onClickMore={onClickMore}
         />
       </BodyContainer>
     </>

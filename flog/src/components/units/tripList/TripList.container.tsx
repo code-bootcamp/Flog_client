@@ -20,6 +20,7 @@ const UPLOAD_BANNER_IMAGE = gql`
     ) {
       id
       url
+      title
     }
   }
 `;
@@ -27,11 +28,9 @@ const UPLOAD_BANNER_IMAGE = gql`
 export default function TripList(props) {
   const [uploadBannerImagefile] = useMutation(GET_BANNER_IMAGE_URL);
   const [updateBannerImage] = useMutation(UPLOAD_BANNER_IMAGE);
-  const fileRef = useRef(null);
 
   const onChangeFile = async (event) => {
     const file = event.target.files[0];
-    console.log(file);
     try {
       const result = await uploadBannerImagefile({
         variables: { file },
@@ -39,15 +38,15 @@ export default function TripList(props) {
       const url = result?.data?.uploadBannerImagefile;
       // console.log(result?.data?.uploadBannerImagefile);
       try {
-        const imageResult = await updateBannerImage({
+        await updateBannerImage({
           variables: {
-            scheduleId: String("de3d1bc0-38fe-4b6d-a439-03c9be6c864b"),
+            scheduleId: String(event.target.id),
             updateBannerImageInput: {
-              url: { url },
+              url: url,
             },
           },
         });
-        console.log(imageResult);
+        // console.log(imageResult?.data?.updateBannerImage);
       } catch (error) {
         console.log(error.message);
       }
@@ -55,20 +54,14 @@ export default function TripList(props) {
       console.log(error.message);
     }
   };
-  const onClickUploadBanner = () => {
-    fileRef.current?.click();
-  };
 
   return (
     <>
       <TripListUI
         isMine={props.isMine}
         shareData={props.shareData}
-        hashTagData={props.hashTagData}
         myData={props.myData}
         onChangeFile={onChangeFile}
-        fileRef={fileRef}
-        onClickUploadBanner={onClickUploadBanner}
       />
       <OutlinedButton01
         content="더보기"

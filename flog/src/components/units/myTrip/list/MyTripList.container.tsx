@@ -17,7 +17,8 @@ export default function MyTripList(props) {
         <TripList
           isMine={props.isMine}
           myData={props.myData}
-          refetch={props.refetch}
+          fetchMore={props.fetchMore}
+          onClickMore={props.onClickMore}
         />
       ) : (
         <>

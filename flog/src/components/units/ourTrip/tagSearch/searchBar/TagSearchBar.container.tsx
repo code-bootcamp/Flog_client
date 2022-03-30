@@ -3,14 +3,6 @@ import { useState } from "react";
 import ContainedButton03 from "../../../../commons/buttons/contained/03/ContainedButton03.container";
 
 export default function TagSearchBar(props) {
-  // const TRIP_THEME = [
-  //   { theme: "혼자서", value: "혼자서", check: false },
-  //   { theme: "우정여행", value: "친구", check: false },
-  //   { theme: "가족여행", value: "가족", check: false },
-  //   { theme: "커플여행", value: "커플", check: false },
-  //   { theme: "반려동물여행", value: "반려동물", check: false },
-  // ];
-
   const [isSelect, setIsSelect] = useState([
     { theme: "혼자서", value: "혼자서", checked: false, index: 0 },
     { theme: "우정여행", value: "친구", checked: false, index: 1 },
