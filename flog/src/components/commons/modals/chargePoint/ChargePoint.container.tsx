@@ -1,3 +1,4 @@
+import { insertCommaPrice } from "../../../../commons/utils/insertComma";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
 import * as M from "./ChargePoint.styles";
 import { IPointProps } from "./ChargePoint.types";
@@ -25,7 +26,7 @@ import { IPointProps } from "./ChargePoint.types";
 //   };
 
 // return(
-// <button onClick={onClickPointModal}>포인트 후원하기</button>
+// <button onClick={onClickPointModal}>포인트 충전하기</button>
 // {pointModal && (
 //   <Point
 //     onClickExit={onClickExitPointModal}
@@ -49,24 +50,31 @@ export default function Point(props: IPointProps) {
             />
           </M.Exit>
           <M.Contents>
-            <M.Title>포인트 후원하기</M.Title>
+            <M.Title>포인트 충전하기</M.Title>
             <M.UserPoint>
-              현재 이조참판님의 포인트는{" "}
-              <span style={{ color: "#58BD97" }}>1,200</span> 입니다
+              현재 {props.userName}님의 포인트는{" "}
+              <span style={{ color: "#58BD97" }}>
+                {insertCommaPrice(props.userPoint)}
+              </span>{" "}
+              입니다
             </M.UserPoint>
             <M.Wrap>
               <M.Select onChange={props.onChangePoint}>
                 <M.Option selected disabled>
                   금액 입력
                 </M.Option>
-                <M.Option value="100">100</M.Option>
-                <M.Option value="200">200</M.Option>
-                <M.Option value="300">300</M.Option>
+                <M.Option value="500">500</M.Option>
+                <M.Option value="1000">1000</M.Option>
+                <M.Option value="2000">2000</M.Option>
+                <M.Option value="3000">3000</M.Option>
+                <M.Option value="4000">4000</M.Option>
+                <M.Option value="5000">5000</M.Option>
+                <M.Option value="10000">10000</M.Option>
               </M.Select>
             </M.Wrap>
           </M.Contents>
           <ContainedButton01
-            content="후원하기"
+            content="충전하기"
             size="large"
             onClick={props.onClickSubmit}
             disabled={props.pointSelect}

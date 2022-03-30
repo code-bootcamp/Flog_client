@@ -1,9 +1,13 @@
+import { insertCommaPrice } from "../../../commons/utils/insertComma";
 import ContainedButton01 from "../../commons/buttons/contained/01/ContainedButton01.container";
 import OutlinedButton04 from "../../commons/buttons/outlined/04/OutlinedButton04.container";
+import Alert from "../../commons/modals/alert/Alert.container";
+import Point from "../../commons/modals/chargePoint/ChargePoint.container";
 import * as My from "./MyPage.styles";
 import { IMyPageUIProps } from "./MyPage.types";
 
 export default function MyPageUI(props: IMyPageUIProps) {
+  console.log(props.data);
   return (
     <My.Container>
       <My.Banner>
@@ -18,25 +22,31 @@ export default function MyPageUI(props: IMyPageUIProps) {
       </My.Banner>
       <My.UserInfo>
         <My.UserImage>
-          <My.NoImage>
-            <img src="/img/icon-mypage-noimage.svg" />
-          </My.NoImage>
+          {props.data?.fetchUser?.url ? (
+            <div>
+              <img src={props.data?.fetchUser?.url} />
+            </div>
+          ) : (
+            <My.NoImage>
+              <img src="/img/icon-mypage-noimage.svg" />
+            </My.NoImage>
+          )}
         </My.UserImage>
         <My.UserName>
-          <h3 className="name">이조판서 님</h3>
-          <p className="email">flog@gmail.com</p>
+          <h3 className="name">{props.data?.fetchUser?.nickName} 님</h3>
+          <p className="email">{props.data?.fetchUser?.email}</p>
         </My.UserName>
       </My.UserInfo>
       <My.PointBox>
         <My.PointText>내 포인트</My.PointText>
         <My.Amount>
-          <span>14,000 P</span>
+          <span>{insertCommaPrice(props.data?.fetchUser?.point)} P</span>
         </My.Amount>
         <My.PointButton>
           <ContainedButton01
             content="충전하기"
             size="large"
-            onClick={props.onClickPoint}
+            onClick={props.onClickPointModal}
           />
         </My.PointButton>
       </My.PointBox>
@@ -66,6 +76,23 @@ export default function MyPageUI(props: IMyPageUIProps) {
           </li>
         </My.MenuList>
       </My.MenuBox>
+      {props.pointModal && (
+        <Point
+          onClickExit={props.onClickExitPointModal}
+          onClickSubmit={props.onClickSubmitPointModal}
+          onChangePoint={props.onChangePoint}
+          pointSelect={props.pointSelect}
+          userName={props.data?.fetchUser?.nickName}
+          userPoint={props.data?.fetchUser?.point}
+        />
+      )}
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
+        />
+      )}
     </My.Container>
   );
 }

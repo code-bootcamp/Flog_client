@@ -5,4 +5,6 @@ export interface IPointProps {
   onChangePoint: ChangeEventHandler<HTMLSelectElement> | undefined;
   onClickExit: () => void;
   onClickSubmit: () => void;
+  userName: string;
+  userPoint: string;
 }
