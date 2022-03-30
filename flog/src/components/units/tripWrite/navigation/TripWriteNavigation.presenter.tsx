@@ -8,7 +8,7 @@ export default function TripWriteNavigationUI(
     <Write.Navigation>
       <Write.NavigationList>
         {props.TRIP_WRITE_NAVIGATION.map((el) => (
-          <>
+          <div key={el.title}>
             {el.url === props.router.asPath ? (
               <Write.Item key={el.title} className="onNow">
                 <button onClick={props.moveToPage(el.url)}>{el.title}</button>
@@ -18,7 +18,7 @@ export default function TripWriteNavigationUI(
                 <button onClick={props.moveToPage(el.url)}>{el.title}</button>
               </Write.Item>
             )}
-          </>
+          </div>
         ))}
       </Write.NavigationList>
     </Write.Navigation>

@@ -16,3 +16,14 @@ export const FETCH_DETAIL_SCHEDULES = gql`
     }
   }
 `;
+
+export const FETCH_SCHEDULE = gql`
+  query fetchSchedule($scheduleId: String!) {
+    fetchSchedule(scheduleId: $scheduleId) {
+      id
+      title
+      startDate
+      endDate
+    }
+  }
+`;

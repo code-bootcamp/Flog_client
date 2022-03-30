@@ -23,7 +23,7 @@ export const SAMPLE_DATA_MONEY = [
     ],
   },
   {
-    date: "2022-03-30",
+    date: "2022.03.30",
     contents: [
       {
         id: "32c35e66-8e2f-42cf-b2ad-beeec24d8805",
