@@ -5,56 +5,6 @@ export const Search = styled.div`
   flex-direction: row;
 `;
 
-// export const SearchBox = styled.div`
-//   width: 664px;
-//   height: 60px;
-//   background: #ffffff;
-//   border-radius: 10px;
-//   margin-right: 20px;
-//   padding: 0 24px;
-//   border: none;
-//   font-size: 16px;
-//   ::placeholder {
-//     color: #a9a9a9;
-//   }
-//   :focus {
-//     outline: none;
-//   }
-//   input[type="checkbox"] {
-//     position: absolute;
-//     width: 20px;
-//     height: 20px;
-//   }
-//   input[type="checkbox"] + label {
-//     display: inline-block;
-//     position: relative;
-//     padding-left: 32px;
-//     cursor: pointer;
-//   }
-
-//   input[type="checkbox"] + label::before {
-//     content: "";
-//     position: absolute;
-//     left: 0;
-//     top: 0;
-//     width: 20px;
-//     height: 20px;
-//     border: 1px solid #cacaca;
-//     box-sizing: border-box;
-//     border-radius: 2px;
-//   }
-//   input[type="checkbox"] + label::after {
-//     content: "";
-//     position: absolute;
-//     left: 0;
-//     top: 0;
-//     width: 20px;
-//     height: 20px;
-//     background: #58bd97;
-//     border-radius: 2px;
-//   }
-// `;
-
 export const SearchBox = styled.div`
   width: 664px;
   height: 60px;

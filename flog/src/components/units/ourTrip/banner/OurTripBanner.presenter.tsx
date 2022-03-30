@@ -1,20 +1,11 @@
 import { useState } from "react";
+import ContainedButton03 from "../../../commons/buttons/contained/03/ContainedButton03.container";
+import Dropdown04 from "../../../commons/dropdowns/04/Dropdown04.container";
 import TagSearch from "../tagSearch/TagSearch.container";
 import TitleSearch from "../titleSearch/TitleSearch.container";
 import * as Our from "./OurTripBanner.styles";
 
 export default function OurTripBannerUI(props) {
-  const [isSelect, setIsSelect] = useState("제목");
-  const [isActive, setIsActive] = useState(false);
-
-  const onClickSelectBtn = () => {
-    setIsActive((prev) => !prev);
-  };
-
-  const onClickOption = (el) => () => {
-    setIsSelect(el);
-  };
-
   return (
     <Our.Banner>
       <Our.BgImage />
@@ -36,15 +27,17 @@ export default function OurTripBannerUI(props) {
           </Our.SearchReturn>
         </Our.Region>
         <Our.Search>
-          <Our.SelectBtn onClick={onClickSelectBtn}>
+          <Dropdown04 />
+          {/* <Our.SelectBtn onClick={onClickSelectBtn}>
             <Our.Selected>{isSelect}</Our.Selected>
             <Our.SelectIcon>
               <img src="/img/icon-ourtrip-select-arrow.svg" />
             </Our.SelectIcon>
+
             {isActive && (
               <Our.SelectOption>
                 <ul>
-                  {["제목", "여행 테마"].map((el) => (
+                  {["전체보기", "제목", "여행 테마"].map((el) => (
                     <li key={el}>
                       <span onClick={onClickOption(el)}>{el}</span>
                     </li>
@@ -52,8 +45,8 @@ export default function OurTripBannerUI(props) {
                 </ul>
               </Our.SelectOption>
             )}
-          </Our.SelectBtn>
-          {isSelect === "제목" && (
+          </Our.SelectBtn> */}
+          {/* {isSelect === "제목" && (
             <TitleSearch
               doName={props.inputs.doName}
               cityName={props.inputs.cityName}
@@ -63,8 +56,20 @@ export default function OurTripBannerUI(props) {
             <TagSearch
               doName={props.inputs.doName}
               cityName={props.inputs.cityName}
+              onClickTagSearch={props.onClickTagSearch}
             />
-          )}
+          )} */}
+          <Our.SearchBox
+            type="text"
+            placeholder="검색 테마를 선택해주세요."
+            onChange={props.onChangeTitle}
+            disabled={true}
+          />
+          <ContainedButton03
+            content="검색"
+            size="large"
+            onClick={props.onClickSearch}
+          />
         </Our.Search>
       </Our.Contents>
     </Our.Banner>

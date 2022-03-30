@@ -16,7 +16,7 @@ export const changeDatetimeToString = (datetime: Date) => {
 export const diffDays = (firstDate: Date, lastDate: Date) => {
   const diffTimeSeconds = lastDate.getTime() - firstDate.getTime();
   const diffDays = Math.abs(diffTimeSeconds / (1000 * 3600 * 24));
-  return diffDays + 2;
+  return diffDays + 1;
 };
 
 //
