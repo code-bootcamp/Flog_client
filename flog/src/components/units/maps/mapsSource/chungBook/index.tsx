@@ -208,7 +208,7 @@ export default function chungBook(props) {
               id="단양군"
               onClick={onClickCityName}
               y="0"
-              x="0 33.013924 66.027847"
+              x="0 43.013924 86.027847"
             >
               단양군
             </Text>
@@ -216,7 +216,7 @@ export default function chungBook(props) {
               id="제천시"
               onClick={onClickCityName}
               y="-113.98492"
-              x="-150.68251 -117.66858 -84.654655"
+              x="-150.68251 -107.66858 -64.654655"
             >
               제천시
             </Text>
@@ -224,7 +224,7 @@ export default function chungBook(props) {
               id="충주시"
               onClick={onClickCityName}
               y="-25.333843"
-              x="-349.35684 -316.3429 -283.32898"
+              x="-349.35684 -306.3429 -263.32898"
             >
               충주시
             </Text>
@@ -232,7 +232,7 @@ export default function chungBook(props) {
               id="음성군"
               onClick={onClickCityName}
               y="26.6544"
-              x="-560.61121 -527.59729 -494.58334"
+              x="-560.61121 -517.59729 -474.58334"
             >
               음성군
             </Text>
@@ -240,7 +240,7 @@ export default function chungBook(props) {
               id="진천군"
               onClick={onClickCityName}
               y="109.9885"
-              x="-655.27429 -622.26038 -589.24646"
+              x="-655.27429 -612.26038 -579.24646"
             >
               진천군
             </Text>
@@ -248,7 +248,7 @@ export default function chungBook(props) {
               id="증평"
               onClick={onClickCityName}
               y="180.98581"
-              x="-546.60632 -513.59241"
+              x="-546.60632 -503.59241"
             >
               증평
             </Text>
@@ -256,7 +256,7 @@ export default function chungBook(props) {
               id="괴산군"
               onClick={onClickCityName}
               y="188.97865"
-              x="-391.92743 -358.91348 -325.89957"
+              x="-391.92743 -348.91348 -305.89957"
             >
               괴산군
             </Text>
@@ -264,7 +264,7 @@ export default function chungBook(props) {
               id="청주시"
               onClick={onClickCityName}
               y="311.65146"
-              x="-613.91998 -580.90607 -547.89215"
+              x="-613.91998 -570.90607 -527.89215"
             >
               청주시
             </Text>
@@ -272,7 +272,7 @@ export default function chungBook(props) {
               id="보은군"
               onClick={onClickCityName}
               y="436.27032"
-              x="-450.58795 -417.57404 -384.56009"
+              x="-450.58795 -407.57404 -364.56009"
             >
               보은군
             </Text>
@@ -280,7 +280,7 @@ export default function chungBook(props) {
               id="옥천군"
               onClick={onClickCityName}
               y="599.32434"
-              x="-508.5882 -475.57428 -442.56036"
+              x="-508.5882 -465.57428 -422.56036"
             >
               옥천군
             </Text>
@@ -288,7 +288,7 @@ export default function chungBook(props) {
               id="영동군"
               onClick={onClickCityName}
               y="734.64673"
-              x="-403.91669 -370.90277 -337.88882"
+              x="-403.91669 -360.90277 -317.88882"
             >
               영동군
             </Text>

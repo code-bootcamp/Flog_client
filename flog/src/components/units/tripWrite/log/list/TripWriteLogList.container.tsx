@@ -148,25 +148,25 @@ export default function TripWriteLogList(props) {
 
   const { data: schedule1 } = useQuery(FETCH_DETAIL_SCHEDULE, {
     variables: {
-      scheduleId: "7dc11309-81a2-4c02-8d89-dfc8dd3f5572",
+      scheduleId: "909e8e53-2b2d-4f4a-ab9b-b57cb7955b55",
       day: "1",
     },
   });
   const { data: schedule2 } = useQuery(FETCH_DETAIL_SCHEDULE, {
     variables: {
-      scheduleId: "7dc11309-81a2-4c02-8d89-dfc8dd3f5572",
+      scheduleId: "909e8e53-2b2d-4f4a-ab9b-b57cb7955b55",
       day: "2",
     },
   });
   const { data: schedule3 } = useQuery(FETCH_DETAIL_SCHEDULE, {
     variables: {
-      scheduleId: "7dc11309-81a2-4c02-8d89-dfc8dd3f5572",
+      scheduleId: "909e8e53-2b2d-4f4a-ab9b-b57cb7955b55",
       day: "3",
     },
   });
   const { data: schedule4 } = useQuery(FETCH_DETAIL_SCHEDULE, {
     variables: {
-      scheduleId: "7dc11309-81a2-4c02-8d89-dfc8dd3f5572",
+      scheduleId: "909e8e53-2b2d-4f4a-ab9b-b57cb7955b55",
       day: "4",
     },
   });

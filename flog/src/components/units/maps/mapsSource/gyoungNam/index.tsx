@@ -9,7 +9,7 @@ const Path = styled.path`
 const Text = styled.tspan`
   :hover {
     cursor: pointer;
-    font-size: 45px;
+    font-size: 50px;
     font-weight: 500;
     fill: #2c3131;
   }
@@ -416,7 +416,7 @@ export default function gyoungNam(props) {
               id="거창군"
               onClick={onClickCityName}
               y="0"
-              x="0 28.68734 57.37468"
+              x="0 38.68734 76.37468"
             >
               거창군
             </Text>
@@ -424,7 +424,7 @@ export default function gyoungNam(props) {
               id="함양군"
               onClick={onClickCityName}
               y="125.31838"
-              x="-140.1452 -111.45786 -82.770523"
+              x="-140.1452 -101.45786 -62.770523"
             >
               함양군
             </Text>
@@ -432,7 +432,7 @@ export default function gyoungNam(props) {
               id="하동군"
               onClick={onClickCityName}
               y="479.89389"
-              x="-85.035316 -56.347977 -27.660635"
+              x="-85.035316 -46.347977 -7.660635"
             >
               하동군
             </Text>
@@ -440,7 +440,7 @@ export default function gyoungNam(props) {
               id="산청군"
               onClick={onClickCityName}
               y="310.97076"
-              x="-15.430769 13.256571 41.943913"
+              x="-15.430769 23.256571 61.943913"
             >
               산청군
             </Text>
@@ -448,7 +448,7 @@ export default function gyoungNam(props) {
               id="합천군"
               onClick={onClickCityName}
               y="153.79434"
-              x="167.32268 196.01003 224.69737"
+              x="167.32268 206.01003 244.69737"
             >
               합천군
             </Text>
@@ -456,7 +456,7 @@ export default function gyoungNam(props) {
               id="의령군"
               onClick={onClickCityName}
               y="273.70743"
-              x="260.14886 288.83621 317.52356"
+              x="260.14886 298.83621 337.52356"
             >
               의령군
             </Text>
@@ -464,7 +464,7 @@ export default function gyoungNam(props) {
               id="진주시"
               onClick={onClickCityName}
               y="418.08023"
-              x="163.9406 192.62794 221.31528"
+              x="163.9406 202.62794 241.31528"
             >
               진주시
             </Text>
@@ -472,7 +472,7 @@ export default function gyoungNam(props) {
               id="사천시"
               onClick={onClickCityName}
               y="528.39062"
-              x="75.432602 104.11995 132.80728"
+              x="75.432602 114.11995 152.80728"
             >
               사천시
             </Text>
@@ -480,7 +480,7 @@ export default function gyoungNam(props) {
               id="남해군"
               onClick={onClickCityName}
               y="742.66992"
-              x="28.566551 57.253891 85.941231"
+              x="28.566551 67.253891 105.941231"
             >
               남해군
             </Text>
@@ -488,7 +488,7 @@ export default function gyoungNam(props) {
               id="통영시"
               onClick={onClickCityName}
               y="661.56024"
-              x="338.57101 367.25833 395.94568"
+              x="338.57101 377.25833 415.94568"
             >
               통영시
             </Text>
@@ -496,7 +496,7 @@ export default function gyoungNam(props) {
               id="고성군"
               onClick={onClickCityName}
               y="578.94073"
-              x="283.79327 312.48062 341.16797"
+              x="283.79327 322.48062 361.16797"
             >
               고성군
             </Text>
@@ -504,7 +504,7 @@ export default function gyoungNam(props) {
               id="함안군"
               onClick={onClickCityName}
               y="366.95636"
-              x="343.1308 371.81812 400.50546"
+              x="343.1308 381.81812 420.50546"
             >
               함안군
             </Text>
@@ -512,7 +512,7 @@ export default function gyoungNam(props) {
               id="창녕군"
               onClick={onClickCityName}
               y="174.81158"
-              x="392.38242 421.06976 449.75711"
+              x="392.38242 431.06976 469.75711"
             >
               창녕군
             </Text>
@@ -520,7 +520,7 @@ export default function gyoungNam(props) {
               id="창원시"
               onClick={onClickCityName}
               y="382.7193"
-              x="500.00525 528.69257 557.37994"
+              x="500.00525 538.69257 577.37994"
             >
               창원시
             </Text>
@@ -528,7 +528,7 @@ export default function gyoungNam(props) {
               id="김해시"
               onClick={onClickCityName}
               y="361.52087"
-              x="661.62067 690.30798 718.99536"
+              x="661.62067 700.30798 738.99536"
             >
               김해시
             </Text>
@@ -536,7 +536,7 @@ export default function gyoungNam(props) {
               id="양산시"
               onClick={onClickCityName}
               y="258.51822"
-              x="775.79626 804.48358 833.17096"
+              x="775.79626 814.48358 853.17096"
             >
               양산시
             </Text>
@@ -544,7 +544,7 @@ export default function gyoungNam(props) {
               id="거제시"
               onClick={onClickCityName}
               y="685.08386"
-              x="537.26855 565.95593 594.64325"
+              x="537.26855 575.95593 614.64325"
             >
               거제시
             </Text>
@@ -552,7 +552,7 @@ export default function gyoungNam(props) {
               id="밀양시"
               onClick={onClickCityName}
               y="196.85555"
-              x="567.61676 596.30414 624.99146"
+              x="567.61676 606.30414 644.99146"
             >
               밀양시
             </Text>
