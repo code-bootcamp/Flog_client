@@ -58,7 +58,7 @@ export default function MainUI(props: IMainUIProps) {
       </Main.MainImg>
 
       <Main.SubSection>
-        <h4>Flog 둘러보기</h4>
+        <h4>둘러보기</h4>
         <Main.LookAround>
           <Main.LookAroundBox>
             <Main.BoxBgImage
@@ -77,7 +77,7 @@ export default function MainUI(props: IMainUIProps) {
                 content="보러가기"
                 size="medium"
                 onClick={() => {
-                  router.push("/");
+                  router.push("/myTrips");
                 }}
               ></ContainedButton01>
             </Main.Text>
@@ -91,14 +91,14 @@ export default function MainUI(props: IMainUIProps) {
             <img src="/img/landing-lookAround-bg.png" /> */}
             <Main.Text>
               <Main.BoxDescription>
-                내 경험을 다른 이들에게 들려주는 공유 공간
+                내 경험을 나누며 즐기는 공유 공간
               </Main.BoxDescription>
               <Main.BoxTitle>우리의 여행</Main.BoxTitle>
               <ContainedButton01
                 content="보러가기"
                 size="medium"
                 onClick={() => {
-                  router.push("/");
+                  router.push("/ourTrips");
                 }}
               ></ContainedButton01>
             </Main.Text>
