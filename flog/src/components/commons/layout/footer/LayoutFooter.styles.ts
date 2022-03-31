@@ -8,6 +8,9 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    padding-bottom: 64px;
+  }
 `;
 export const InnerWrap = styled.div`
   width: calc(100% - 30px);
@@ -140,10 +143,24 @@ export const NewsLetterTextBox = styled.div`
     line-height: 1.5em;
     word-break: keep-all;
   }
+  @media ${breakPoints.mobile} {
+    margin-bottom: 12px;
+  }
 `;
 export const NewsLetterInputBox = styled.div`
   button {
     margin-left: 25px;
     height: 54px;
+  }
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      min-width: 75px;
+      height: 41px;
+      margin-left: 10px;
+    }
   }
 `;

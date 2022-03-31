@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 338px;
   height: 56px;
   position: relative;
   display: inline-block;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 40px;
+  }
 `;
 export const Input01 = styled.input`
   width: 100%;
@@ -25,6 +30,9 @@ export const Input01 = styled.input`
   :focus {
     outline: none;
     color: #2c3131;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
   }
 `;
 export const Icon = styled.span`

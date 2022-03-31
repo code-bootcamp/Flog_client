@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 import { IContainedButton01UIEmotionProps } from "./ContainedButton01.types";
 
 export const Button = styled.button`
@@ -27,5 +28,22 @@ export const Button = styled.button`
     color: #a9a9a9;
     border-color: #cacaca;
     cursor: default;
+  }
+  @media ${breakPoints.mobile} {
+    transition: none;
+    &:hover {
+      background: #58bd97;
+      border-color: #58bd97;
+    }
+    font-size: ${(props: IContainedButton01UIEmotionProps) => {
+      if (props.size === "large") return "14px";
+      if (props.size === "medium") return "14px";
+      if (props.size === "small") return "14px";
+    }};
+    padding: ${(props: IContainedButton01UIEmotionProps) => {
+      if (props.size === "large") return "10px 18px";
+      if (props.size === "medium") return "10px 18px";
+      if (props.size === "small") return "10px 18px";
+    }};
   }
 `;
