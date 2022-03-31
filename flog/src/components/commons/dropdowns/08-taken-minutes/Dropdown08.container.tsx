@@ -18,7 +18,7 @@ export default function Dropdown08(props) {
     setIsMinutesActive((prev) => !prev);
     onClickSelectBtn();
     setIsMinutesSelected(MINUTES[index]);
-    props.setValue("startMinutes", MINUTES[index]);
+    props.setValue("takenMinutes", MINUTES[index]);
   };
 
   // console.log(isMinutesSelected);

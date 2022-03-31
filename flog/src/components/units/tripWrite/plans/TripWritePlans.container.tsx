@@ -17,25 +17,23 @@ export default function TripWritePlans() {
   const router = useRouter();
   const client = useApolloClient();
   const [isLoading, setIsLoading] = useState(false);
+  const [isDataLoading, setIsDataLoading] = useState(false);
   const [tripTotalDays, setTripTotalDays] = useState(0);
   const [tripTitleData, setTripTitleData] = useState({});
-  const [tripData, setTripData] = useState([]);
-  const [sortedTripData, setSortedTripData] = useState([]);
-  const { data: dataDetailSchedules } = useQuery(FETCH_DETAIL_SCHEDULES, {
+  const [tripTitleDataArray, setTripTitleDataArray] = useState([]);
+  // const [tripData, setTripData] = useState([]);
+  // const [sortedTripData, setSortedTripData] = useState([]);
+  const [plansList, setPlansList] = useState([[]]);
+  const { data: dataSchedule } = useQuery(FETCH_SCHEDULE, {
     variables: {
       scheduleId: router.query.scheduleId,
     },
   });
-  const { data: dataSchedules } = useQuery(FETCH_SCHEDULE, {
-    variables: {
-      scheduleId: String(router.query.scheduleId),
-    },
-  });
 
   useEffect(() => {
-    setTripTotalDays(dataSchedules?.fetchSchedule.tripdates.split("/").length);
-    setTripTitleData(dataSchedules?.fetchSchedule);
-  }, [dataSchedules]);
+    setTripTotalDays(dataSchedule?.fetchSchedule.tripdates.split("/").length);
+    setTripTitleData(dataSchedule?.fetchSchedule);
+  }, [dataSchedule]);
 
   const getTripTitleData = () => {
     const resultArr = [];
@@ -44,10 +42,8 @@ export default function TripWritePlans() {
         resultArr.push(tripTitleData);
       });
     }
-    return resultArr;
+    setTripTitleDataArray(resultArr);
   };
-  const tripTitleDataArray = getTripTitleData();
-  console.log("tripTitleDataArray is", tripTitleDataArray);
 
   const sortTripData = async () => {
     const TotalResult = await Promise.all(
@@ -56,46 +52,28 @@ export default function TripWritePlans() {
           query: FETCH_DETAIL_SCHEDULE,
           variables: {
             day: String(index + 1),
-            scheduleId: String(router.query.scheduleId),
+            scheduleId: router.query.scheduleId,
           },
         });
-        return result.data.fetchDetailSchedule;
+        return result.data?.fetchDetailSchedule;
       })
     );
-
-    setTimeout(function () {
-      console.log("TotalResult is", TotalResult);
-      setTripData(TotalResult);
-    }, 1000);
+    setPlansList(TotalResult);
   };
   useEffect(() => {
-    sortTripData();
+    setTimeout(function () {
+      setIsDataLoading((prev) => !prev);
+    }, 300);
   }, []);
 
-  // useEffect(() => {
-  //   console.log(dataDetailSchedules);
-  //   if (dataDetailSchedules) {
-  //     setTripData(dataDetailSchedules?.data?.fetchDetailSchedules);
-  //     const array1 = tripData.filter((el) => el.day === "1");
-  //     const array2 = tripData.filter((el) => el.day === "2");
-  //     const array3 = tripData.filter((el) => el.day === "3");
-  //     const array4 = tripData.filter((el) => el.day === "4");
-
-  //     const tempArray = [];
-  //     if (array1.length > 0) tempArray.push(array1);
-  //     if (array2.length > 0) tempArray.push(array2);
-  //     if (array3.length > 0) tempArray.push(array3);
-  //     if (array4.length > 0) tempArray.push(array4);
-  //     setSortedTripData(tempArray);
-  //   }
-  // }, [dataDetailSchedules]);
-  // console.log(tripData, sortedTripData);
-
-  const [plansList, setPlansList] = useState([[]]);
+  useEffect(() => {
+    getTripTitleData();
+    sortTripData();
+  }, [isDataLoading]);
   useEffect(() => {
     setIsLoading(true);
-    setPlansList(sortedTripData);
   }, []);
+
   const onDragEndReorder = (result) => {
     if (!result.destination) return;
     const currentPlansList = [...plansList];
@@ -103,19 +81,18 @@ export default function TripWritePlans() {
     const endDropIndex = result.destination.droppableId;
     const startDragIndex = result.source.index;
     const endDragIndex = result.destination.index;
-    // console.log("startDropIndex is ", startDropIndex);
-    // console.log("endDropIndex is ", endDropIndex);
-    // console.log("startDragIndex is ", startDragIndex);
-    // console.log("endDragIndex is ", endDragIndex);
 
     if (startDropIndex === endDropIndex) {
       const currentPlans = currentPlansList[Number(startDropIndex)];
-      const removePlan = currentPlans.splice(startDragIndex, 1);
+      const removePlan = currentPlans.filter(
+        (el, index) => index === startDragIndex
+      );
+      const restPlans = currentPlans.filter(
+        (el, index) => index !== startDragIndex
+      );
       let newPlan = [];
-      if (endDragIndex === currentPlans.length) {
-        const tempArr = currentPlans.concat(
-          currentPlans[currentPlans.length - 1]
-        );
+      if (endDragIndex === restPlans.length) {
+        const tempArr = restPlans.concat(restPlans[restPlans.length - 1]);
         tempArr.forEach((el, index) => {
           if (index < endDragIndex) {
             newPlan.push(el);
@@ -129,7 +106,7 @@ export default function TripWritePlans() {
           }
         });
       } else {
-        currentPlans.forEach((el, index) => {
+        restPlans.forEach((el, index) => {
           if (index < endDragIndex) {
             newPlan.push(el);
           }
@@ -150,7 +127,13 @@ export default function TripWritePlans() {
       const startPlans = currentPlansList[Number(startDropIndex)];
       const endPlans = currentPlansList[Number(endDropIndex)];
       const newPlan = [];
-      const removePlan = startPlans.splice(startDragIndex, 1);
+      // const removePlan = startPlans.splice(startDragIndex, 1);
+      const removePlan = startPlans.filter(
+        (el, index) => index === startDragIndex
+      );
+      const restStartPlans = startPlans.filter(
+        (el, index) => index !== startDragIndex
+      );
       if (endDragIndex === endPlans.length) {
         const tempArr = endPlans.concat(endPlans[endPlans.length - 1]);
         tempArr.forEach((el, index) => {
@@ -180,21 +163,21 @@ export default function TripWritePlans() {
         });
       }
       const tempList = currentPlansList;
-      tempList[Number(startDropIndex)] = startPlans;
+      tempList[Number(startDropIndex)] = restStartPlans;
       tempList[Number(endDropIndex)] = newPlan;
       setPlansList(tempList);
     }
+
+    console.log(plansList);
   };
 
   return (
-    <></>
-    // <TripWritePlansUI
-    //   tripTitleDataArray={tripTitleDataArray}
-    //   tripTitleData={tripTitleData}
-    //   sortedTripData={sortedTripData}
-    //   onDragEndReorder={onDragEndReorder}
-    //   isLoading={isLoading}
-    //   plansList={plansList}
-    // />
+    // <></>
+    <TripWritePlansUI
+      tripTitleDataArray={tripTitleDataArray}
+      onDragEndReorder={onDragEndReorder}
+      isLoading={isLoading}
+      plansList={plansList}
+    />
   );
 }

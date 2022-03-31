@@ -1,9 +1,9 @@
 import * as Write from "./TripWritePlansAdd.styles";
 
-export default function TripWritePlansAddUI() {
+export default function TripWritePlansAddUI(props) {
   return (
     <Write.Card>
-      <Write.AddButton>
+      <Write.AddButton onClick={props.onClick}>
         <span className="icon">
           <img src="/img/icon-mytrip-write-card-add.svg" alt="일정 추가하기" />
         </span>
