@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 100%;
@@ -8,6 +9,9 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    padding: 0 0 25px;
+  }
 `;
 export const AddButton = styled.button`
   background: transparent;
