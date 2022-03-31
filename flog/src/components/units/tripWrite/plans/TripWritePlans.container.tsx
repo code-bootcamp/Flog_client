@@ -1,4 +1,5 @@
-import { useQuery } from "@apollo/client";
+import { useApolloClient, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {
   changeStringToDatetime,
@@ -6,52 +7,89 @@ import {
 } from "../../../../commons/utils/getDate";
 import { SAMPLE_DATA_PLANS, SAMPLE_DATA_PLANS_TITLE } from "./SampleData";
 import TripWritePlansUI from "./TripWritePlans.presenter";
-import { FETCH_DETAIL_SCHEDULES } from "./TripWritePlans.queries";
+import {
+  FETCH_DETAIL_SCHEDULE,
+  FETCH_DETAIL_SCHEDULES,
+  FETCH_SCHEDULE,
+} from "./TripWritePlans.queries";
 
 export default function TripWritePlans() {
+  const router = useRouter();
+  const client = useApolloClient();
   const [isLoading, setIsLoading] = useState(false);
-  const { data } = useQuery(FETCH_DETAIL_SCHEDULES, {
+  const [tripTotalDays, setTripTotalDays] = useState(0);
+  const [tripTitleData, setTripTitleData] = useState({});
+  const [tripData, setTripData] = useState([]);
+  const [sortedTripData, setSortedTripData] = useState([]);
+  const { data: dataDetailSchedules } = useQuery(FETCH_DETAIL_SCHEDULES, {
     variables: {
-      scheduleId: "da0b8706-2505-47de-8fd4-81511604c4b3",
-      userId: "ac7ac614-7afb-4e0c-a3e4-afcd3c604d73",
+      scheduleId: router.query.scheduleId,
+    },
+  });
+  const { data: dataSchedules } = useQuery(FETCH_SCHEDULE, {
+    variables: {
+      scheduleId: String(router.query.scheduleId),
     },
   });
 
-  const tripTitleData = SAMPLE_DATA_PLANS_TITLE.fetchSchedules; // TitleData 추출 - 추후 API에서 불러오는 데이터로 변경
-
-  const getTripTotalDays = () => {
-    const startDatetime = changeStringToDatetime(tripTitleData[0].startDate);
-    const endDatetime = changeStringToDatetime(tripTitleData[0].endDate);
-    const tripTotalDays = diffDays(endDatetime, startDatetime);
-    return tripTotalDays;
-  };
-  const tripTotalDays = getTripTotalDays();
+  useEffect(() => {
+    setTripTotalDays(dataSchedules?.fetchSchedule.tripdates.split("/").length);
+    setTripTitleData(dataSchedules?.fetchSchedule);
+  }, [dataSchedules]);
 
   const getTripTitleData = () => {
     const resultArr = [];
-    new Array(tripTotalDays).fill(0).map((el) => {
-      resultArr.push(tripTitleData[0]);
-    });
+    if (tripTotalDays) {
+      new Array(tripTotalDays).fill(0).map((el) => {
+        resultArr.push(tripTitleData);
+      });
+    }
     return resultArr;
   };
   const tripTitleDataArray = getTripTitleData();
+  console.log("tripTitleDataArray is", tripTitleDataArray);
 
-  const sortTripData = () => {
-    const tripData = SAMPLE_DATA_PLANS.fetchDetailSchedules;
-    const array1 = tripData.filter((el) => el.day === "1");
-    const array2 = tripData.filter((el) => el.day === "2");
-    const array3 = tripData.filter((el) => el.day === "3");
-    const array4 = tripData.filter((el) => el.day === "4");
+  const sortTripData = async () => {
+    const TotalResult = await Promise.all(
+      new Array(tripTotalDays).fill(0).map(async (el, index) => {
+        const result = await client.query({
+          query: FETCH_DETAIL_SCHEDULE,
+          variables: {
+            day: String(index + 1),
+            scheduleId: String(router.query.scheduleId),
+          },
+        });
+        return result.data.fetchDetailSchedule;
+      })
+    );
 
-    const sortedTripData = [];
-    if (array1.length > 0) sortedTripData.push(array1);
-    if (array2.length > 0) sortedTripData.push(array2);
-    if (array3.length > 0) sortedTripData.push(array3);
-    if (array4.length > 0) sortedTripData.push(array4);
-
-    return sortedTripData;
+    setTimeout(function () {
+      console.log("TotalResult is", TotalResult);
+      setTripData(TotalResult);
+    }, 1000);
   };
-  const sortedTripData = sortTripData();
+  useEffect(() => {
+    sortTripData();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(dataDetailSchedules);
+  //   if (dataDetailSchedules) {
+  //     setTripData(dataDetailSchedules?.data?.fetchDetailSchedules);
+  //     const array1 = tripData.filter((el) => el.day === "1");
+  //     const array2 = tripData.filter((el) => el.day === "2");
+  //     const array3 = tripData.filter((el) => el.day === "3");
+  //     const array4 = tripData.filter((el) => el.day === "4");
+
+  //     const tempArray = [];
+  //     if (array1.length > 0) tempArray.push(array1);
+  //     if (array2.length > 0) tempArray.push(array2);
+  //     if (array3.length > 0) tempArray.push(array3);
+  //     if (array4.length > 0) tempArray.push(array4);
+  //     setSortedTripData(tempArray);
+  //   }
+  // }, [dataDetailSchedules]);
+  // console.log(tripData, sortedTripData);
 
   const [plansList, setPlansList] = useState([[]]);
   useEffect(() => {
@@ -149,13 +187,14 @@ export default function TripWritePlans() {
   };
 
   return (
-    <TripWritePlansUI
-      tripTitleDataArray={tripTitleDataArray}
-      tripTitleData={tripTitleData}
-      sortedTripData={sortedTripData}
-      onDragEndReorder={onDragEndReorder}
-      isLoading={isLoading}
-      plansList={plansList}
-    />
+    <></>
+    // <TripWritePlansUI
+    //   tripTitleDataArray={tripTitleDataArray}
+    //   tripTitleData={tripTitleData}
+    //   sortedTripData={sortedTripData}
+    //   onDragEndReorder={onDragEndReorder}
+    //   isLoading={isLoading}
+    //   plansList={plansList}
+    // />
   );
 }
