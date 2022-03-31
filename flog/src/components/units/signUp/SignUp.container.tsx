@@ -35,6 +35,8 @@ interface FormValues {
 }
 export default function Signup() {
   const [pwdType, setPwdType] = useState(true);
+  const [modalContents, setModalContents] = useState("");
+
   const [createUser] = useMutation(CREATE_USER);
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
@@ -56,10 +58,11 @@ export default function Signup() {
           },
         },
       });
-      console.log(result);
+      console.log(result);  
+      setModalContents("회원가입을 완료하였습니다")
+
       moveToPage("/login");
       router.push("/login");
-      alert("회원가입이 완료되었습니다");
     } catch (error) {
       if (error instanceof Error) {
         // if (error.message.includes("이메일")) {
@@ -70,12 +73,17 @@ export default function Signup() {
         //   setErrorMsg({ ...errorMsg, password: error.message });
         //   resetError(data.email, "password");
         // }
+        setModalContents(error.message)
+
       }
     }
   };
   const pwdToggle = () => {
     setPwdType((prev) => !prev);
   };
+  const onModal = () => {
+    setModalContents("")
+  }
   return (
     <SignupUI
       register={register}
@@ -85,6 +93,8 @@ export default function Signup() {
       pwdType={pwdType}
       pwdToggle={pwdToggle}
       moveToPage={moveToPage}
+      onModal={onModal}
+      modalContents={modalContents}
     />
   );
 }

@@ -7,7 +7,6 @@ import { useMutation } from "@apollo/client";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { GlobalContext } from "../../../../pages/_app";
-// import Alert from "../../commons/modals/alert/Alert.container";
 interface FormValues {
   email?: string;
   password?: string;
@@ -19,6 +18,7 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const [modalContents, setModalContents] = useState("");
   const { moveToPage } = useMoveToPage();
   const router = useRouter();
   const [login] = useMutation(LOGIN);
@@ -40,7 +40,7 @@ export default function Login() {
         setAccessToken(token);
         // localStorage.setItem("accessToken", token);
       }
-      alert("로그인이 완료되었습니다");
+      setModalShow(true)
       router.push("/myTrips");
     } catch (error) {
       if (error instanceof Error) {
@@ -51,18 +51,24 @@ export default function Login() {
         if (error.message.includes("비밀번호")) {
           setErrorMsg({ ...errorMsg, password: error.message });
           resetError(data.email, "password");
-        } else alert(error.message);
+        } 
       }
     }
   };
   const resetError = (data: string | undefined, section: string) => {
+    console.log('d')
     watch((value) => {
+      console.log('v')
+      console.log(value)
       if (section === "email" && data !== value.email)
         setErrorMsg({ ...errorMsg, email: "" });
       if (section === "password" && data !== value.password)
         setErrorMsg({ ...errorMsg, password: "" });
     });
   };
+  const onModal = () => {
+    setModalShow(prev => !prev)
+  }
   return (
     <LoginUI
       register={register}
@@ -70,6 +76,8 @@ export default function Login() {
       onclickSubmit={onclickSubmit}
       errorMsg={errorMsg}
       moveToPage={moveToPage}
+      onModal={onModal}
+      modalContents={modalContents}
     />
   );
 }

@@ -97,7 +97,7 @@ export default function UserEditUI(props: IUserEditUIProps) {
               id="number1"
               value={
                 props.inputs.number1 ||
-                props.data?.fetchUser.phoneNumber.slice(0, 3)
+                props.data?.fetchUser.phoneNumber?.slice(0, 3)
               }
               onChange={props.onChange}
             />
@@ -108,7 +108,7 @@ export default function UserEditUI(props: IUserEditUIProps) {
               id="number2"
               value={
                 props.inputs.number2 ||
-                props.data?.fetchUser.phoneNumber.slice(3, 7)
+                props.data?.fetchUser.phoneNumber?.slice(3, 7)
               }
               onChange={props.onChange}
             />
@@ -118,7 +118,7 @@ export default function UserEditUI(props: IUserEditUIProps) {
               placeholder=""
               value={
                 props.inputs.number3 ||
-                props.data?.fetchUser.phoneNumber.slice(7, 11)
+                props.data?.fetchUser.phoneNumber?.slice(7, 11)
               }
               onChange={props.onChange}
             />

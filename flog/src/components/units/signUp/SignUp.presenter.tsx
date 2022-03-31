@@ -1,10 +1,13 @@
 import OutlinedInput01 from "../../commons/inputs/outlined/01/OutlinedInput01.container";
+import Alert from "../../commons/modals/alert/Alert.container";
 
 import * as Signup from "./SignUp.styles";
 
 export default function SignupUI(props) {
   return (
     <Signup.Container>
+          {props.modalContents && <Alert onClick={props.onModal} onClickSubmit={props.onModal} contents={props.modalContents}/>}
+
       <Signup.Bg>
         <Signup.LoginBox>
           <h3>회원 가입</h3>

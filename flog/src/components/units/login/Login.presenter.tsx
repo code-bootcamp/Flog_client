@@ -1,5 +1,5 @@
 import OutlinedInput01 from "../../commons/inputs/outlined/01/OutlinedInput01.container";
-
+import Alert from "../../commons/modals/alert/Alert.container"
 import * as Login from "./Login.styles";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -13,6 +13,8 @@ interface ILoginUIProps {
 export default function LoginUI(props: ILoginUIProps) {
   return (
     <>
+    {props.modalContents ==="" ? <div/> : <Alert onClick={props.onModal} onClickSubmit={props.onModal} contents={props.modalContents}/>}
+    
       <Login.Container>
         <Login.Bg>
           <Login.LoginBox>

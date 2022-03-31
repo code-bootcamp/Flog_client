@@ -17,6 +17,13 @@ export const Banner = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    height: 200px;
+
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const BannerImage = styled.div`
   width: 100%;
@@ -69,6 +76,13 @@ export const UserImage = styled.div`
   border: 1px solid #a1dac5;
   border-radius: 50%;
   margin-bottom: 37px;
+  @media ${breakPoints.mobile} {
+    width: 96px;
+    height: 96px;
+    }
+    @media ${breakPoints.tablet} {
+
+    }
 `;
 export const NoImage = styled.div`
   width: 100%;
@@ -86,11 +100,24 @@ export const UserName = styled.div`
     font-weight: 600;
     margin-bottom: 10px;
     color: #2c3131;
+    @media ${breakPoints.mobile} {
+      font-size:24px
+    }
+    @media ${breakPoints.tablet} {
+
+    }
   }
   .email {
     font-size: 1.3rem;
     color: #2c3131;
+    @media ${breakPoints.mobile} {
+      font-size:14px
+    }
+    @media ${breakPoints.tablet} {
+
+    }
   }
+ 
 `;
 export const PointBox = styled.div`
   width: 100%;
@@ -107,6 +134,7 @@ export const PointBox = styled.div`
   padding: 29px 38px;
   @media ${breakPoints.mobile} {
     width: 100%;
+    margin: 0 17px;
   }
 `;
 export const PointText = styled.span`
@@ -116,7 +144,7 @@ export const PointText = styled.span`
   width: 200px;
   @media ${breakPoints.mobile} {
     width: 100px;
-    font-size: 1.5rem;
+    font-size: 14px;
   }
 `;
 export const Amount = styled.div`
@@ -131,10 +159,13 @@ export const Amount = styled.div`
     font-size: 2.5rem;
     font-weight: 600;
     color: #2c3131;
+    @media ${breakPoints.mobile} {
+    font-size: 24px;
+  }
   }
   @media ${breakPoints.mobile} {
     font-size: 1.8rem;
-    width: calc(100% - 200px);
+    width: calc(100% - 100px);
   }
 `;
 export const PointButton = styled.div`

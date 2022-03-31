@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 100%;
@@ -12,6 +13,12 @@ export const InnerWrap = styled.div`
   width: calc(100% - 30px);
   max-width: 1200px;
   margin: 50px 0 50px;
+  @media ${breakPoints.mobile} {
+    margin: 25px 0 50px;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const Navigator = styled.div`
   width: 100%;
@@ -25,6 +32,12 @@ export const Navigator = styled.div`
     &.now {
       font-weight: 600;
       cursor: default;
+    }
+    @media ${breakPoints.mobile} {
+      font-size: 18px;
+    }
+    @media ${breakPoints.tablet} {
+   
     }
   }
 `;
@@ -40,9 +53,23 @@ export const TitleText = styled.div`
     font-size: 2rem;
     color: #2c3131;
     font-weight: 500;
+    @media ${breakPoints.mobile} {
+      font-size: 24px;
+
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
   }
 `;
-export const TitleDropdown = styled.div``;
+export const TitleDropdown = styled.div`
+  @media ${breakPoints.mobile} {
+      display:none;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
+`;
 export const Contents = styled.div``;
 export const Item = styled.div`
   border: 1px solid #e9e9e9;
@@ -53,9 +80,23 @@ export const Item = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  @media ${breakPoints.mobile} {
+    padding:  12px;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
+ 
 `;
 export const Status = styled.div`
   width: 100px;
+  @media ${breakPoints.mobile} {
+     width: auto;
+    
+    }
+    @media ${breakPoints.tablet} {
+   
+  }
   span {
     font-size: 1.5rem;
     font-weight: 400;
@@ -71,6 +112,13 @@ export const Status = styled.div`
     &.cancle {
       color: #f7babb;
     }
+    @media ${breakPoints.mobile} {
+      font-size: 18px;
+
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
   }
 `;
 export const ItemText = styled.div`
@@ -80,23 +128,57 @@ export const ItemText = styled.div`
     font-weight: 500;
     color: #2c3131;
     margin-bottom: 5px;
+    @media ${breakPoints.mobile} {
+      font-size: 18px;width: 100px;
+
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
   }
   .date {
     font-size: 1.1rem;
     color: #a9a9a9;
+    @media ${breakPoints.mobile} {
+      font-size: 14px;
+      width: 100px;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
   }
+
+
 `;
 export const ItemAmount = styled.div`
   width: 200px;
   text-align: right;
+  
   .changed {
     font-size: 1.5rem;
     font-weight: 500;
     color: #2c3131;
     margin-bottom: 5px;
+    @media ${breakPoints.mobile} {
+      font-size: 20px;
+    }
+
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
+    
   }
   .amount {
     font-size: 1.1rem;
     color: #a9a9a9;
+    @media ${breakPoints.mobile} {
+      font-size: 14px;
+    }
+
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
   }
 `;
