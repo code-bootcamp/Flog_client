@@ -4,6 +4,9 @@ import { breakPoints } from "../../../../commons/styles/Media";
 export const Banner = styled.div`
   width: 100%;
   height: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   @media ${breakPoints.mobile} {
     height: 280px;
@@ -32,11 +35,37 @@ export const InnerWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-export const BannerWrap = styled.div`
   width: 95%;
   max-width: 1200px;
+  @media ${breakPoints.mobile} {
+    width: calc(100%-30px);
+  }
+  @media ${breakPoints.tablet} {
+  }
+`;
+
+export const UpperWrap = styled.div`
+  height: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media ${breakPoints.mobile} {
+    height: 140px;
+  }
+  @media ${breakPoints.tablet} {
+  }
+`;
+
+export const LowerWrap = styled.div`
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  @media ${breakPoints.mobile} {
+    height: 140px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Title = styled.div`
@@ -45,7 +74,6 @@ export const Title = styled.div`
   color: #ffffff;
   line-height: 120%;
   text-align: center;
-  margin-bottom: 60px;
   @media ${breakPoints.mobile} {
     font-size: 20px;
   }
@@ -58,11 +86,6 @@ export const Contents = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  @media ${breakPoints.mobile} {
-    width: 100%;
-  }
-  @media ${breakPoints.tablet} {
-  }
 `;
 
 export const Region = styled.div`
@@ -74,8 +97,11 @@ export const Region = styled.div`
   flex-direction: row;
   align-items: center;
   padding-left: 10px;
+  margin-bottom: 20px;
   @media ${breakPoints.mobile} {
-    width: 80%;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 12px;
   }
   @media ${breakPoints.tablet} {
   }
@@ -92,7 +118,8 @@ export const RegionSearch = styled.div`
   align-items: center;
   cursor: pointer;
   @media ${breakPoints.mobile} {
-    width: 50px;
+    width: 75px;
+    border-radius: 100px;
   }
   @media ${breakPoints.tablet} {
   }
@@ -106,15 +133,38 @@ export const SearchIcon = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media ${breakPoints.mobile} {
+    margin-right: 4px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const SearchLabel = styled.span`
   color: #626262;
+  @media ${breakPoints.mobile} {
+    font-weight: 400;
+    font-size: 14px;
+    color: black;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const SearchReturn = styled.div`
-  margin-left: 30px;
+  padding-left: 30px;
   font-size: 20px;
   font-weight: 500;
+  .default {
+    color: #a9a9a9;
+  }
+  @media ${breakPoints.mobile} {
+    padding-left: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Search = styled.div`
@@ -122,9 +172,9 @@ export const Search = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 20px;
   @media ${breakPoints.mobile} {
     width: 100%;
+    height: 48px;
   }
   @media ${breakPoints.tablet} {
   }
@@ -140,13 +190,21 @@ export const SearchBox = styled.input`
   font-size: 16px;
   ::placeholder {
     color: #a9a9a9;
+    font-size: 20px;
+    font-weight: 500;
   }
   :focus {
     outline: none;
   }
 
   @media ${breakPoints.mobile} {
-    width: 150px;
+    width: 230px;
+    height: 48px;
+    margin-left: 10px;
+    ::placeholder {
+      font-weight: 400;
+      font-size: 15px;
+    }
   }
   @media ${breakPoints.tablet} {
   }

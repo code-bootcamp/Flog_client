@@ -41,7 +41,7 @@ export default function TagSearch() {
 
   const onClickSubmitMapModal = () => {
     setMapModal(false);
-    console.log(inputs.doName, inputs.cityName);
+    // console.log(inputs.doName, inputs.cityName);
   };
 
   const [hashTag, setHashTag] = useState("");

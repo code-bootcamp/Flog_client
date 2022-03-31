@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 import { IOutlinedButton01UIEmotionProps } from "./OutlinedButton01.types";
 
 export const Button = styled.button`
@@ -29,5 +30,20 @@ export const Button = styled.button`
   }
   &.disabled:hover {
     background: transparent;
+  }
+
+  @media ${breakPoints.mobile} {
+    transition: none;
+    border: 1px solid #58bd97;
+    font-size: ${(props: IOutlinedButton01UIEmotionProps) => {
+      if (props.size === "large") return "14px";
+      if (props.size === "medium") return "14px";
+      if (props.size === "small") return "14px";
+    }};
+    padding: ${(props: IOutlinedButton01UIEmotionProps) => {
+      if (props.size === "large") return "10px 18px";
+      if (props.size === "medium") return "10px 18px";
+      if (props.size === "small") return "10px 18px";
+    }};
   }
 `;
