@@ -6,8 +6,6 @@ export const List = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
-  margin-bottom: 80px;
 `;
 
 export const TripList = styled.div`

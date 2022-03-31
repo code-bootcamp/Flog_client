@@ -21,7 +21,7 @@ export default function MyTripBanner(props) {
               onClick={props.onClickMapModal}
               disabled={false}
             />
-            <My.Illust1>
+            {/* <My.Illust1>
               <My.ImageCloud1>
                 <img src="/img/illust-cloud1.png" />
               </My.ImageCloud1>
@@ -31,7 +31,7 @@ export default function MyTripBanner(props) {
               <My.ImageCloud2>
                 <img src="/img/illust-cloud2.png" />
               </My.ImageCloud2>
-            </My.Illust1>
+            </My.Illust1> */}
           </>
         ) : (
           <>
@@ -46,9 +46,7 @@ export default function MyTripBanner(props) {
               onClick={props.onClickMapModal}
               disabled={false}
             />
-            <My.Illust2>
-              <img src="/img/illust-stack.png" />
-            </My.Illust2>
+            <My.Illust2>{/* <img src="/img/illust-stack.png" /> */}</My.Illust2>
           </>
         )}
       </My.Contents>

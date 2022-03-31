@@ -1,5 +1,4 @@
 import { gql, useMutation } from "@apollo/client";
-import { useRef } from "react";
 import OutlinedButton01 from "../../commons/buttons/outlined/01/OutlinedButton01.container";
 import TripListUI from "./TripList.presenter";
 

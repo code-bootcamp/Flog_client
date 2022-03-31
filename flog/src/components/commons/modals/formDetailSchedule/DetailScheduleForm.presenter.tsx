@@ -4,7 +4,7 @@ import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.cont
 import Dropdown06 from "../../dropdowns/06-start-hour/Dropdown06.container";
 import Dropdown05 from "../../dropdowns/05-start-minutes/Dropdown05.container";
 import Dropdown07 from "../../dropdowns/07-taken-hour/Dropdown07.container";
-import Dropdown08 from "../../dropdowns/08-taken-minutes /Dropdown08.container";
+import Dropdown08 from "../../dropdowns/08-taken-minutes/Dropdown08.container";
 
 export default function DetailScheduleFormUI(props) {
   return (

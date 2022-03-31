@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const SelectButton = styled.div`
   display: flex;
@@ -14,12 +15,26 @@ export const SelectButton = styled.div`
   padding-right: 28px;
   cursor: pointer;
   z-index: 999;
+  @media ${breakPoints.mobile} {
+    width: 122px;
+    height: 37px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Selected = styled.div`
   color: #2c3131;
   font-size: 16px;
   font-weight: 300;
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const SelectIcon = styled.div`
@@ -38,6 +53,13 @@ export const Option = styled.div`
   background: #ffffff;
   box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
+  @media ${breakPoints.mobile} {
+    width: 120px;
+    left: 0px;
+    top: 40px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 
   ul {
     li {
@@ -46,6 +68,12 @@ export const Option = styled.div`
       width: 150px;
       height: 50px;
       border-radius: 8px;
+      @media ${breakPoints.mobile} {
+        width: 120px;
+        height: 100%;
+      }
+      @media ${breakPoints.tablet} {
+      }
       :hover {
         color: #58bd97;
       }
@@ -57,6 +85,13 @@ export const Option = styled.div`
         cursor: pointer;
         text-align: left;
         border-bottom: 1px solid #e9e9e9;
+        @media ${breakPoints.mobile} {
+          font-size: 14px;
+          font-weight: 200;
+          padding: 5px 10px;
+        }
+        @media ${breakPoints.tablet} {
+        }
       }
     }
     li:last-of-type {
