@@ -1,8 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import MapModal from "../../../src/components/commons/modals/map/MapModal.container";
-import OurTripBanner from "../../../src/components/units/ourTrip/banner/OurTripBanner.container";
 import { FETCH_TITLE_SEARCH } from "../../../src/components/units/ourTrip/OurTrip.queries";
 import TitleSearchBanner from "../../../src/components/units/ourTrip/titleSearch/banner/TitleSearchBanner.container";
 import TitleSearchList from "../../../src/components/units/ourTrip/titleSearch/list/TitleSearchList.container";
@@ -16,10 +15,12 @@ const BodyContainer = styled.div`
 
 export default function TitleSearchPage() {
   const [inputs, setInputs] = useState({ doName: "", cityName: "", title: "" });
+  const [where, setWhere] = useState("");
 
   const { data: titleData } = useQuery(FETCH_TITLE_SEARCH, {
     variables: {
-      where: `${inputs.doName}.${inputs.cityName}`,
+      where: where,
+
       search: inputs.title,
     },
   });
@@ -40,7 +41,19 @@ export default function TitleSearchPage() {
     setInputs({ doName: "", cityName: "" });
   };
 
+  let newWhere = "";
   const onClickSubmitMapModal = () => {
+    if (inputs.doName && !inputs.cityName) {
+      setWhere(`${inputs.doName}`);
+    }
+
+    if (inputs.doName && inputs.cityName) {
+      newWhere = `${inputs.doName}.${inputs.cityName}`;
+      if (newWhere.includes(" ")) {
+        newWhere = newWhere.replace(" ", "");
+        setWhere(newWhere);
+      }
+    }
     setMapModal(false);
   };
 
@@ -62,7 +75,7 @@ export default function TitleSearchPage() {
           inputs={inputs}
           setInputs={setInputs}
         />
-        <TitleSearchList isMine={false} titleData={titleData} />
+        <TitleSearchList titleData={titleData} />
       </BodyContainer>
     </>
   );
