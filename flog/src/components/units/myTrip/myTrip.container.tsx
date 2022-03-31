@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import NewTripScheduleModal from "../../commons/modals/newSchedule/mainSchedule/MainSchedule.container";

@@ -1,47 +1,51 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
+
+export const Wrap = styled.div`
+  padding-top: 80px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media ${breakPoints.mobile} {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  @media ${breakPoints.tablet} {
+  }
+`;
 
 export const Text = styled.div`
   font-size: 2.4rem;
   color: #2c3131;
   line-height: 120%;
   text-align: center;
-  margin-bottom: 80px;
+
+  @media ${breakPoints.mobile} {
+    font-size: 20px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
-export const RowContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 80px;
-`;
-
-export const Row1 = styled.div`
+export const TripList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
-  grid-gap: 30px;
+  grid-gap: 32px;
+  padding: 80px 0px;
+  @media ${breakPoints.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 8px;
+    grid-row-gap: 10px;
+    padding: 30px 4px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
-export const Row3 = styled.div`
+export const CardWrapper = styled.div`
   width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const Row4 = styled.div`
-  width: cal(100%-760px);
-  height: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const Row2 = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
-  grid-gap: 30px;
 `;
 
 export const Image = styled.div`
@@ -50,11 +54,29 @@ export const Image = styled.div`
   overflow: hidden;
   position: relative;
   border-radius: 20px;
-  border: none;
+  z-index: 0;
   aspect-ratio: 38 / 32.8;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    border-radius: 10px;
+  }
+  @media ${breakPoints.tablet} {
+  }
+  :hover {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%) scale(1.2);
+      transition: all 0.2s ease-in-out;
+    }
+  }
   img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: relative;
     top: 50%;
     transform: translateY(-50%);

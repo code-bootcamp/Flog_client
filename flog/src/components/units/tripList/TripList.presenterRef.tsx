@@ -48,9 +48,12 @@ export default function TripListUIItem(props) {
         <List.Text>
           <List.Title>{props.el.title}</List.Title>
           <List.Subtitle>
-            <List.Date>{props.el.startDate} ~ </List.Date>
-            <List.Date>{props.el.endDate}</List.Date>
-            <List.Region>| {props.el.location}</List.Region>
+            <List.Date>
+              {props.el.startDate.slice(2, 10)} ~{" "}
+              {props.el.endDate.slice(2, 10)}
+            </List.Date>
+
+            <List.Region>{props.el.location}</List.Region>
           </List.Subtitle>
         </List.Text>
       </List.Wrapper>
