@@ -40,8 +40,7 @@ export default function Login() {
         setAccessToken(token);
         // localStorage.setItem("accessToken", token);
       }
-      setModalShow(true)
-      router.push("/myTrips");
+      setModalContents("로그인에 성공했습니다")
     } catch (error) {
       if (error instanceof Error) {
         if (error.message.includes("이메일")) {
@@ -67,7 +66,9 @@ export default function Login() {
     });
   };
   const onModal = () => {
-    setModalShow(prev => !prev)
+    setModalContents("")
+    router.push("/myTrips");
+
   }
   return (
     <LoginUI

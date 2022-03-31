@@ -20,9 +20,12 @@ export default function TitleSearchPage() {
   const { data: titleData } = useQuery(FETCH_TITLE_SEARCH, {
     variables: {
       where: where,
+
       search: inputs.title,
     },
   });
+
+  console.log(titleData);
 
   // 상위 컴포넌트에 넣을 내용 - MapModal
 

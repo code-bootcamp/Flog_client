@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ITipWriteBannerUIEmotionProps } from "./TripWriteBanner.types";
 
 export const Banner = styled.div`
   width: 100%;
@@ -12,7 +13,11 @@ export const BgImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("/img/mytrip-write-banner-img1.jpg") no-repeat center;
+  background: ${(props: ITipWriteBannerUIEmotionProps) => {
+    if (props.url)
+      return `url(${props.bucketUrl + props.url}) no-repeat center`;
+    else return `url("/img/mytrip-write-banner-img1.jpg") no-repeat center`;
+  }};
   background-size: cover;
   z-index: 0;
   :after {

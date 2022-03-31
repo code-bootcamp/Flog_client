@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-import { ReactChild } from "react";
+import { ReactChild, SetStateAction, useEffect, useState } from "react";
 import LayoutFooter from "./footer/LayoutFooter.container";
 import LayoutHeader from "./header/LayoutHeader.container";
+import LayoutMobileNavigation from "./mobileNavigation/LayoutMobileNavigation.container";
 
 interface ILayoutProps {
   children: ReactChild;
@@ -19,6 +20,11 @@ const Body = styled.div`
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
+  const [viewport, setViewport] = useState<SetStateAction<number>>(0);
+  useEffect(() => {
+    const viewportWidth = window.visualViewport.width;
+    setViewport(viewportWidth);
+  }, []);
 
   const NONE_FOOTER_PATHS = [
     "/login",
@@ -31,7 +37,10 @@ export default function Layout(props: ILayoutProps) {
     <Container>
       <LayoutHeader />
       <Body>{props.children}</Body>
-      {!NONE_FOOTER_PATHS.includes(router.asPath) && <LayoutFooter />}
+      {!NONE_FOOTER_PATHS.includes(router.asPath) && (
+        <LayoutFooter viewport={viewport} />
+      )}
+      {viewport <= 767 && <LayoutMobileNavigation />}
     </Container>
   );
 }

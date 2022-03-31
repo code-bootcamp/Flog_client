@@ -1,52 +1,71 @@
-import OutlinedButton01 from "../../../commons/buttons/outlined/01/OutlinedButton01.container";
-import * as Non from "./MyTripListNotUser.styles";
-import * as My from "./MyTripList.styles";
-import { IMyTripListUIProps } from "./MyTripList.types";
-import TripList from "../../tripList/TripList.container";
-import { v4 as uuid4 } from "uuid";
+import { useMutation, useQuery } from "@apollo/client";
+import MyTripListUI from "./MyTripList.presenter";
+import {
+  FETCH_SCHEDULES,
+  GET_BANNER_IMAGE_URL,
+  UPLOAD_BANNER_IMAGE,
+} from "./MyTripList.queries";
 
 export default function MyTripList(props) {
-  const Array = [1, 2, 3, 4, 5, 6];
+  const [uploadBannerImagefile] = useMutation(GET_BANNER_IMAGE_URL);
+  const [updateBannerImage] = useMutation(UPLOAD_BANNER_IMAGE);
 
-  const onClickMoveToOurTrip = () => {
-    alert("우리의 여행 보러가기 function");
+  const { data: myData, fetchMore } = useQuery(FETCH_SCHEDULES, {
+    variables: { page: 1 },
+  });
+
+  const onClickMoreMyTrip = () => {
+    if (!myData) return;
+
+    fetchMore({
+      variables: {
+        page: Math.ceil(myData.fetchSchedules.length / 12) + 1,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.fetchSchedules)
+          return { fetchSchedules: [...prev.fetchSchedules] };
+
+        return {
+          fetchSchedules: [
+            ...prev.fetchSchedules,
+            ...fetchMoreResult.fetchSchedules,
+          ],
+        };
+      },
+    });
+  };
+
+  const onChangeFile = async (event) => {
+    const file = event.target.files[0];
+    try {
+      const result = await uploadBannerImagefile({
+        variables: { file },
+      });
+      const url = result?.data?.uploadBannerImagefile;
+      // console.log(result?.data?.uploadBannerImagefile);
+      try {
+        await updateBannerImage({
+          variables: {
+            scheduleId: String(event.target.id),
+            updateBannerImageInput: {
+              url: url,
+            },
+          },
+        });
+        // console.log(imageResult?.data?.updateBannerImage);
+      } catch (error) {
+        console.log(error.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
-    <My.List>
-      {props.userData && props.myData ? (
-        <TripList
-          isMine={props.isMine}
-          myData={props.myData}
-          fetchMore={props.fetchMore}
-          onClickMore={props.onClickMore}
-        />
-      ) : (
-        <Non.Wrap>
-          <Non.Text>
-            지금까지{" "}
-            <span style={{ fontWeight: 700, color: "#58BD97" }}>16,930개</span>
-            의 여행이
-            <br />
-            기록되었어요
-          </Non.Text>
-          <Non.TripList>
-            {Array.map((el) => (
-              <Non.Image key={uuid4()}>
-                <img
-                  src={`/img/trips/notUser/trip-img${el}.png`}
-                  alt="여행이미지"
-                />
-              </Non.Image>
-            ))}
-          </Non.TripList>
-          <OutlinedButton01
-            content="우리의 여행 보러가기"
-            size="large"
-            onClick={onClickMoveToOurTrip}
-          />
-        </Non.Wrap>
-      )}
-    </My.List>
+    <MyTripListUI
+      onClickMoreMyTrip={onClickMoreMyTrip}
+      onChangeFile={onChangeFile}
+      myData={myData}
+    />
   );
 }

@@ -1,4 +1,4 @@
-import * as List from "./TripsList.styles";
+import * as List from "./MyTripList.styles";
 import { v4 as uuid4 } from "uuid";
 import { useRef } from "react";
 
@@ -34,7 +34,6 @@ export default function TripListUIItem(props) {
             id={props.el.id}
           />
         </List.EditWrap>
-
         <List.Image>
           <img
             src={
@@ -48,12 +47,13 @@ export default function TripListUIItem(props) {
         <List.Text>
           <List.Title>{props.el.title}</List.Title>
           <List.Subtitle>
-            <List.Date>
-              {props.el.startDate.slice(2, 10)} ~{" "}
-              {props.el.endDate.slice(2, 10)}
-            </List.Date>
-
-            <List.Region>{props.el.location}</List.Region>
+            <ul>
+              <li className="date">
+                {props.el.startDate.slice(2, 10)} ~{" "}
+                {props.el.endDate.slice(2, 10)}
+              </li>
+              <li className="location">{props.el.location}</li>
+            </ul>
           </List.Subtitle>
         </List.Text>
       </List.Wrapper>

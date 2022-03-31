@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const SelectButton = styled.div`
   display: flex;
@@ -38,6 +39,11 @@ export const Option = styled.div`
   background: #ffffff;
   box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
+  @media ${breakPoints.mobile} {
+    width: 100px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 
   ul {
     li {
@@ -46,6 +52,11 @@ export const Option = styled.div`
       width: 150px;
       height: 50px;
       border-radius: 8px;
+      @media ${breakPoints.mobile} {
+        width: 100px;
+      }
+      @media ${breakPoints.tablet} {
+      }
       :hover {
         color: #58bd97;
       }

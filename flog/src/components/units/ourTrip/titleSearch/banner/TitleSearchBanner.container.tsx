@@ -28,6 +28,8 @@ export default function TitleSearchBanner(props) {
           <TitleSearchBar
             doName={props.inputs.doName}
             cityName={props.inputs.cityName}
+            inputs={props.inputs}
+            setInputs={props.setInputs}
           />
         </Title.Search>
       </Title.Contents>

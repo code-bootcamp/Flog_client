@@ -13,7 +13,7 @@ interface ILoginUIProps {
 export default function LoginUI(props: ILoginUIProps) {
   return (
     <>
-    {props.modalContents ==="" ? <div/> : <Alert onClick={props.onModal} onClickSubmit={props.onModal} contents={props.modalContents}/>}
+    {props.modalContents && <Alert onClick={props.onModal} onClickSubmit={props.onModal} contents={props.modalContents}/>}
     
       <Login.Container>
         <Login.Bg>

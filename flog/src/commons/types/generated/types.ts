@@ -52,6 +52,7 @@ export type ICreateMoneyBookInput = {
   memo: Scalars['String'];
   status: ISpending_Category_Status_Enum;
   time: Scalars['String'];
+  tripdates: Scalars['String'];
 };
 
 export type ICreateScheduleInput = {
@@ -62,6 +63,7 @@ export type ICreateScheduleInput = {
   numberPeople?: InputMaybe<INumber_People_Enum>;
   startDate: Scalars['String'];
   title: Scalars['String'];
+  tripdates: Scalars['String'];
 };
 
 export type ICreateUserInput = {
@@ -112,6 +114,7 @@ export type IMoneyBook = {
   memo: Scalars['String'];
   status: ISpending_Category_Status_Enum;
   time: Scalars['String'];
+  tripdates: Scalars['String'];
 };
 
 export type IMutation = {
@@ -420,6 +423,7 @@ export type ISchedule = {
   numberPeople?: Maybe<INumber_People_Enum>;
   startDate: Scalars['String'];
   title: Scalars['String'];
+  tripdates: Scalars['String'];
   url?: Maybe<Scalars['String']>;
   user: IUser;
 };

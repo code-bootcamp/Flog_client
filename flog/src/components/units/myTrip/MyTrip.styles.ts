@@ -1,7 +1,15 @@
 import styled from "@emotion/styled";
-import { breakPoints } from "../../../../commons/styles/Media";
+import { breakPoints } from "../../../commons/styles/Media";
 
-export const Wrap = styled.div`
+export const ListWrap = styled.div`
+  width: 95%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const List = styled.div`
   padding-top: 80px;
   padding-bottom: 80px;
   display: flex;

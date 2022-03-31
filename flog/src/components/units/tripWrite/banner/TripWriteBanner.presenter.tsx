@@ -1,13 +1,19 @@
 import * as Write from "./TripWriteBanner.styles";
+import { ITripWriteBannerUIProps } from "./TripWriteBanner.types";
 
-export default function TripWriteBannerUI() {
+export default function TripWriteBannerUI(props: ITripWriteBannerUIProps) {
   return (
     <Write.Banner>
-      <Write.BgImage></Write.BgImage>
+      <Write.BgImage
+        url={props.data?.fetchSchedule?.url}
+        bucketUrl={props.bucketUrl}
+      ></Write.BgImage>
       <Write.Text>
-        <Write.Title>나홀로 6일간 떠나는 부산 여행</Write.Title>
+        <Write.Title>{props.data?.fetchSchedule?.title}</Write.Title>
         <Write.SubTitle>
-          2022.03.30 ~ 2022.04.04 <span>나홀로</span>
+          {props.data?.fetchSchedule?.startDate} ~{" "}
+          {props.data?.fetchSchedule?.endDate}{" "}
+          <span>{props.changeWordHashtag()}</span>
         </Write.SubTitle>
       </Write.Text>
     </Write.Banner>
