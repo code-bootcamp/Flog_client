@@ -8,6 +8,9 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    padding-bottom: 64px;
+  }
 `;
 export const InnerWrap = styled.div`
   width: calc(100% - 30px);
