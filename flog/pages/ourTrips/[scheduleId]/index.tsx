@@ -1,5 +1,4 @@
-import OurTripDetail from "../../../src/components/units/ourTrip/detail/OurTripDetail.container";
-
-export default function OurTripsDetailPage() {
-  return <OurTripDetail />;
+import TripWriteLog from "../../../src/components/units/tripWrite/log/TripWriteLog.container";
+export default function MyTripsWriteLogPage() {
+  return <TripWriteLog />;
 }

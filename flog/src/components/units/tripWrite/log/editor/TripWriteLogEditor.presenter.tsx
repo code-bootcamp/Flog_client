@@ -4,19 +4,9 @@ import Dompurify from "dompurify";
 export default function TripWriteLogEditorUI(props) {
   return (
     <Editor.Main>
-      <Editor.hideWrapper>
-        {props.el?.map((el, index) => (
-          <button
-            ref={props.dayRef?.[index]}
-            onClick={props.addEl(el.id, el.useTime)}
-            key={el}
-          >
-            {el.id}
-          </button>
-        ))}
-      </Editor.hideWrapper>
-
-      <Editor.EditorWrapper isShow={props.isShow}>
+   
+      <div style={{display: 'none'}} onClick={props.submitDb} ref={props.saveButtonRef}></div>
+      <Editor.EditorWrapper >
         <Editor.ReactWrapper>
           <h3>Day {props.index + 1}</h3>
           <props.ReactQuill

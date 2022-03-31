@@ -2,8 +2,11 @@ import { useMemo, useRef, useState, ChangeEvent, useEffect } from "react";
 import TripWriteLogEditorUI from "./TripWriteLogEditor.presenter";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import { UPLOAD_FILE } from "./TripWriteLogEditor.queries";
+import { UPLOAD_FILE,CREATE_BOARD,UPDATE_BOARD } from "./TripWriteLogEditor.queries";
 import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
+
+
 
 const ReactQuill = dynamic(
   async () => {
@@ -19,12 +22,54 @@ const ReactQuill = dynamic(
 
 export default function TripWriteLogEditor(props) {
   const [contents, setContents] = useState("");
+  const [boardId, setBoardId] = useState("");
   const quillRef = useRef();
+  const router = useRouter();
   const [uploadBoardImagefile] = useMutation(UPLOAD_FILE);
+  const [createBoard] = useMutation(CREATE_BOARD);
+  const [updateBoard] = useMutation(UPDATE_BOARD);
   let quillCurrent: any;
   let editor: any;
   let currentFocus: any;
 
+  const submitDb = async() => {
+    if(!boardId) {
+      try{
+        const result = await createBoard({
+          variables: {
+            createBoardInput: {
+              day: String(props.index + 1),
+              content: contents
+            },
+            scheduleId:String(router.query.scheduleId)
+          }
+        })
+        console.log(result);
+        setBoardId(result.data?.createBoard.id)
+      }
+      catch(error) {
+        alert(error.message);
+      }
+    }
+    else {
+      try{
+        const result = await updateBoard({
+          variables: {
+            updateBoardInput: {
+              content: contents
+            },
+            boardId
+          }
+        })
+        console.log(result);
+      }
+      catch(error) {
+        alert(error.message);
+      }
+    }
+    
+    
+  }
   const setRefValue = () => {
     quillCurrent = quillRef.current;
     editor = quillCurrent?.getEditor();
@@ -34,10 +79,24 @@ export default function TripWriteLogEditor(props) {
   };
 
   setRefValue();
+  useEffect(() => {
+    setRefValue()
+    if(props.selected.title !== "") {
+    console.log('d')
+    console.log(props.selected.title)
+    addEl(props.selected.title,props.selected.des)
 
-  const addEl = (name: string, des: string) => () => {
+    }
+
+    
+  },[props.selected])
+
+
+  const addEl = (name: string, des: string)  => {
+    console.log('add')
+    console.log(editor)
     if (!editor) setRefValue();
-    editor?.insertText(currentFocus.index + 1, name, {
+    editor?.insertText(currentFocus?.index + 1, name, {
       header: 1,
       background: "#F1F1F1",
       size: "large",
@@ -49,6 +108,13 @@ export default function TripWriteLogEditor(props) {
       size: "small",
       background: "#fff",
       color: " #818181",
+    });
+    currentFocus.index += des.length + 2;
+
+    editor?.insertText(currentFocus.index, "  " + " ", {
+      header: 5,
+      background: "#fff",
+      color: "black",
     });
     currentFocus.index += des.length + 6;
     console.log(name, des);
@@ -125,7 +191,7 @@ export default function TripWriteLogEditor(props) {
 
   useEffect(() => {
     setRefValue();
-  }, [imageHandler, props.isShow]);
+  }, [imageHandler]);
 
   return (
     <TripWriteLogEditorUI
@@ -139,6 +205,8 @@ export default function TripWriteLogEditor(props) {
       el={props.el}
       dayRef={props.dayRef}
       isShow={props.isShow}
+      saveButtonRef={props.saveButtonRef}
+      submitDb={submitDb}
     />
   );
 }
