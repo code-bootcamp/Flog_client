@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/Media";
 
 export const Container = styled.div``;
 export const Bg = styled.div`
@@ -9,6 +10,13 @@ export const Bg = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
+  @media ${breakPoints.mobile} {
+    background: none;
+  }
+    @media ${breakPoints.tablet} {
+   
+    }
+  
 `;
 export const LoginBox = styled.div`
   margin: 100px 0;
@@ -26,6 +34,16 @@ export const LoginBox = styled.div`
     color: #2c3131;
     margin-bottom: 30px;
   }
+  @media ${breakPoints.mobile} {
+    padding: 68px 0 63px;
+    margin: 0;
+    h3{
+      font-size: 28px;
+    }
+  }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const Lavel = styled.div``;
 export const Form = styled.form`

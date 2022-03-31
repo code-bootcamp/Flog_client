@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 100%;
@@ -11,7 +12,13 @@ export const Container = styled.div`
 export const InnerWrap = styled.div`
   width: calc(100% - 30px);
   max-width: 1200px;
-  margin: 50px 0 92px;
+  margin: 25px 0 92px;
+  @media ${breakPoints.mobile} {
+    margin: 25px 0 0;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const Navigator = styled.div`
   width: 100%;
@@ -25,6 +32,12 @@ export const Navigator = styled.div`
     &.now {
       font-weight: 600;
       cursor: default;
+    }
+    @media ${breakPoints.mobile} {
+      font-size: 18px;
+    }
+    @media ${breakPoints.tablet} {
+   
     }
   }
 `;
@@ -40,21 +53,40 @@ export const TitleText = styled.div`
     font-size: 2rem;
     color: #2c3131;
     font-weight: 500;
+    @media ${breakPoints.mobile} {
+      font-size: 24px;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
   }
 `;
 export const Contents = styled.div`
-  padding: 57px 20px 96px;
+  padding: 0 20px 96px;
   border: 1px solid #e9e9e9;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    padding: 0 0 34px;
+  }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const UserImage = styled.div`
   width: 180px;
   height: 180px;
   position: relative;
+  @media ${breakPoints.mobile} {
+    width: 140px;
+  height: 140px;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const ErrorMsg = styled.div`
   color: red;
@@ -73,6 +105,8 @@ export const NoImage = styled.div`
   border-radius: 50%;
   overflow: hidden;
   background: #eaf7f2;
+
+
 `;
 export const FileButton = styled.div`
   width: 56px;
@@ -87,6 +121,13 @@ export const FileButton = styled.div`
   bottom: 0;
   right: -6px;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 48px;
+  height: 48px;
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
   input {
     display: none;
   }
@@ -102,6 +143,12 @@ export const InputLabel = styled.div`
     color: #a9a9a9;
     font-size: 1.1rem;
   }
+  @media ${breakPoints.mobile} {
+      font-size:14px
+    }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const PhoneInput = styled.div`
   max-width: 480px;

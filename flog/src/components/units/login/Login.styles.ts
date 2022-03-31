@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/Media";
 
 export const Container = styled.div``;
 export const Bg = styled.div`
@@ -9,6 +10,12 @@ export const Bg = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
+  @media ${breakPoints.mobile} {
+    background: none;
+  }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const LoginBox = styled.div`
   margin: 100px 0;
@@ -16,6 +23,10 @@ export const LoginBox = styled.div`
   width: 800px;
   background-color: #fff;
   padding: 62px 93px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   h3 {
     font-family: "Montserrat Alternates", sans-serif;
     text-align: center;
@@ -24,11 +35,30 @@ export const LoginBox = styled.div`
     color: #58bd97;
     margin-bottom: 14px;
   }
+  @media ${breakPoints.mobile} {
+    padding: 24px 0;
+    margin:0;
+    h3{
+      margin-bottom: 16px;
+
+    }
+
+  }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const Lavel = styled.div``;
 export const Form = styled.form`
   border-bottom: 1px solid #cacaca;
   padding: 0 137px 26px;
+  @media ${breakPoints.mobile} {
+    padding: 0 21px 0;
+
+  }
+    @media ${breakPoints.tablet} {
+   
+    }
 `;
 export const FormLabel = styled.div`
   margin-bottom: 8px;
@@ -58,7 +88,7 @@ export const checkBox = styled.div`
 export const SubmitBtn = styled.button`
   width: 340px;
   height: 56px;
-  border-radius: 10px;
+  border-radius: 100px;
   background-color: #58bd97;
   color: #fff;
   font-weight: 700;
