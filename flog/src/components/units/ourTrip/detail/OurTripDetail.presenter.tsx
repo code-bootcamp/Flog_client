@@ -11,28 +11,8 @@ import * as Detail from "./OurTripDetail.styles";
 export default function OurTripDetailUI() {
   return (
     <Detail.Container>
-      <TripWriteBanner />
-      <Detail.Contents>
-        <Detail.Bar>
-          <Detail.MoveBack>
-            <img src="/img/mytrips-write-log1.png" />
-            나의 여행 목록으로
-          </Detail.MoveBack>
-
-          {/* prettier-ignore */}
-          <Detail.BtnGroup>
-            <OutlinedButton03 content="삭제" onClick={() => {"./"}} size="small"></OutlinedButton03>
-            <OutlinedButton02 content="수정"  onClick={() => { "./" }}  size="small"></OutlinedButton02>
-            <ContainedButton01 content="공유하기" onClick={() => {"./" }} size="small"></ContainedButton01>
-          </Detail.BtnGroup>
-        </Detail.Bar>
-
-        <Detail.InnerWrap>
-          <TripWriteLogList />
-        </Detail.InnerWrap>
-      </Detail.Contents>
-
-      <TripWriteBottomBar />
+      <div>asdfasdfasdfasdf</div>
     </Detail.Container>
+  
   );
 }

@@ -19,7 +19,25 @@ export const InnerWrap = styled.div`
   max-width: 1200px;
   display: flex;
   margin-top: 20px;
-  justify-content: space-between;
+  height: 1100px;
+
+
+`;
+export const PlanBox = styled.div`
+  display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
+  // height 미정
+  padding: 24px 20px;
+  margin-right: 80px;
+  width: calc(26000% / 1200);
+  border: 1px solid #fff;
+  width: 260px;
+  flex-direction: column;
+
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 `;
 export const Bar = styled.div`
   width: calc(100% - 30px);
@@ -39,40 +57,44 @@ export const BtnGroup = styled.div`
     margin-left: 10px;
   }
 `;
-export const PlanBox = styled.div`
+export const PlanBtnGroup = styled.div`
   display: flex;
-  padding: 24px 20px;
-  width: calc(260 * 100% / 1200);
-  border: 1px solid #fff;
-  flex-direction: column;
+  padding-top: 24px;
 
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
 `;
+
 
 export const DetailBox = styled.div``;
 export const PlanWrapper = styled.div`
   margin-top: 14px;
   width: 100%;
+
 `;
 
 export const DayWrapper = styled.div`
   padding-top: 10px;
+  position: relative;
 
-  span {
+
+`;
+
+export const Day = styled.span`
+   position: relative;
     font-size: 20px;
     font-weight: 500;
     padding-left: 10px;
-  }
-  img {
-    margin: 0 15px 2px;
-    width: 14px;
+`
+export const ToggleImg = styled.img`
+   top: 18px;
+    right: 135px;
+    width: 16px;
+    position: absolute;
 
     :hover {
       cursor: pointer;
     }
-  }
-`;
+`
 
 export const DayPlanWrapper = styled.div`
   margin-top: 22px;
@@ -94,3 +116,36 @@ export const DayPlanLabel = styled.div`
   font-weight: 500;
   font-size: 16px;
 `;
+export const moveBtn = styled.button`
+  width: 100%;
+  margin-bottom: 20px;
+  background: #58bd97;
+  border-radius: 40px;
+  color: #fff;
+  height: 40px;
+  border: none;
+  :hover {
+    background: #a1dac5;
+    border-color: #a1dac5;
+  }
+`;
+
+export const UserInfo = styled.div`
+  border-bottom: 1px solid #e9e9e9;
+  padding: 8px 0 24px;
+  width: 100%;
+  text-align: center;
+  img {
+    margin-bottom: 7px;
+  }
+`;
+export const Name = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+`;
+export const Email = styled.div`
+  margin-bottom: 13px;
+  font-size: 12px;
+  color: #7d7d7d;
+`;
+
