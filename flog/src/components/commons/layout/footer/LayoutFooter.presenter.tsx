@@ -1,5 +1,7 @@
+import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
 import ContainedButton03 from "../../buttons/contained/03/ContainedButton03.container";
 import WithIconInput01 from "../../inputs/withIcon/01/WIthIconInput01.container";
+import Alert from "../../modals/alert/Alert.container";
 import * as Footer from "./LayoutFooter.styles";
 import { ILayoutFooterUIProps } from "./LayoutFooter.types";
 
@@ -37,7 +39,7 @@ export default function LayoutFooterUI(props: ILayoutFooterUIProps) {
           <Footer.SiteMap>
             <Footer.SiteMapList>
               <li>
-                <span onClick={props.onClickSiteMap("/")}>Flog</span>
+                <span onClick={props.onClickSiteMap("/main")}>Flog</span>
               </li>
               <li>
                 <span onClick={props.onClickSiteMap("/myTrips")}>
@@ -71,14 +73,29 @@ export default function LayoutFooterUI(props: ILayoutFooterUIProps) {
               value={props.email}
               onChange={props.onChangeNewsletterInput}
             />
-            <ContainedButton03
-              content="보내기"
-              size="medium"
-              onClick={props.onClickNewsletterSubmit}
-            />
+            {props.viewport <= 767 ? (
+              <ContainedButton01
+                content="보내기"
+                size="medium"
+                onClick={props.onClickNewsletterSubmit}
+              />
+            ) : (
+              <ContainedButton03
+                content="보내기"
+                size="medium"
+                onClick={props.onClickNewsletterSubmit}
+              />
+            )}
           </Footer.NewsLetterInputBox>
         </Footer.RightBox>
       </Footer.InnerWrap>
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
+        />
+      )}
     </Footer.Container>
   );
 }

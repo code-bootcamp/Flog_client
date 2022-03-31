@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   position: fixed;
@@ -21,6 +22,10 @@ export const ModalWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media ${breakPoints.mobile} {
+    max-width: 90%;
+    height: 260px;
+  }
 `;
 export const Modal = styled.div`
   height: 100%;
@@ -28,6 +33,11 @@ export const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  @media ${breakPoints.mobile} {
+    button {
+      width: 50%;
+    }
+  }
 `;
 
 export const Exit = styled.div`
@@ -44,7 +54,7 @@ export const Exit = styled.div`
 
 export const Contents = styled.div`
   color: #626262;
-  font-size: 20px;
+  font-size: 1.1rem;
   line-height: 140%;
   text-align: center;
   word-break: keep-all;

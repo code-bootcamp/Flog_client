@@ -37,7 +37,9 @@ export default function Layout(props: ILayoutProps) {
     <Container>
       <LayoutHeader />
       <Body>{props.children}</Body>
-      {!NONE_FOOTER_PATHS.includes(router.asPath) && <LayoutFooter />}
+      {!NONE_FOOTER_PATHS.includes(router.asPath) && (
+        <LayoutFooter viewport={viewport} />
+      )}
       {viewport <= 767 && <LayoutMobileNavigation />}
     </Container>
   );
