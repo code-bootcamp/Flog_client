@@ -26,12 +26,12 @@ export const FETCH_HASHTAG_SEARCH = gql`
 `;
 
 export const FETCH_TITLE_SEARCH = gql`
-  query scheduleHashTagSearch($where: String!, $search: String!) {
-    scheduleHashTagSearch(where: $where, search: $search) {
+  query scheduleSearch($where: String!, $search: String!) {
+    scheduleSearch(where: $where, search: $search) {
       id
       title
-      startDate
-      endDate
+      # startDate
+      # endDate
     }
   }
 `;

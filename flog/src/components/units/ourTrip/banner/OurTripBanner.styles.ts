@@ -1,9 +1,15 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Banner = styled.div`
   width: 100%;
   height: 640px;
   position: relative;
+  @media ${breakPoints.mobile} {
+    height: 280px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const BgImage = styled.div`
@@ -17,7 +23,7 @@ export const BgImage = styled.div`
   z-index: 0;
 `;
 
-export const Contents = styled.div`
+export const InnerWrap = styled.div`
   position: relative;
   z-index: 1;
   width: 100%;
@@ -28,6 +34,11 @@ export const Contents = styled.div`
   justify-content: center;
 `;
 
+export const BannerWrap = styled.div`
+  width: 95%;
+  max-width: 1200px;
+`;
+
 export const Title = styled.div`
   font-size: 2.4rem;
   font-weight: 400;
@@ -35,14 +46,23 @@ export const Title = styled.div`
   line-height: 120%;
   text-align: center;
   margin-bottom: 60px;
+  @media ${breakPoints.mobile} {
+    font-size: 20px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
-export const Search = styled.div`
-  width: 984px;
+export const Contents = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Region = styled.div`
@@ -54,6 +74,11 @@ export const Region = styled.div`
   flex-direction: row;
   align-items: center;
   padding-left: 10px;
+  @media ${breakPoints.mobile} {
+    width: 80%;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const RegionSearch = styled.div`
@@ -66,6 +91,11 @@ export const RegionSearch = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 50px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const SearchIcon = styled.div`
@@ -87,75 +117,16 @@ export const SearchReturn = styled.div`
   font-weight: 500;
 `;
 
-export const SelectBtn = styled.div`
-  width: 160px;
-  height: 60px;
-  background: #ffffff;
-  border-radius: 10px;
-  position: relative;
+export const Search = styled.div`
+  width: 984px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding-left: 28px;
-  padding-right: 28px;
-  cursor: pointer;
-`;
-
-export const Selected = styled.div`
-  font-size: 20px;
-  font-weight: 500;
-  color: black;
-`;
-
-export const SelectIcon = styled.div`
-  width: 20px;
-  height: 12px;
-  position: relative;
-  margin-left: 7px;
-
-  img {
-    position: relative;
-    bottom: 5px;
+  margin-top: 20px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
   }
-`;
-
-export const SelectOption = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* padding: 4px 0px; */
-  position: absolute;
-  height: 83px;
-  left: 0px;
-  top: 65px;
-  background: #ffffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  ul {
-    li {
-      list-style: none;
-      text-align: center;
-      width: 160px;
-      height: 40px;
-      border-radius: 10px;
-      :hover {
-        color: #58bd97;
-      }
-      span {
-        display: block;
-        font-size: 1rem;
-        font-weight: 500;
-        padding: 12px 20px;
-        cursor: pointer;
-        text-align: center;
-      }
-    }
-    li:last-of-type {
-      span {
-        border-top: 1px solid #e9e9e9;
-      }
-    }
+  @media ${breakPoints.tablet} {
   }
 `;
 
@@ -172,5 +143,11 @@ export const SearchBox = styled.input`
   }
   :focus {
     outline: none;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 150px;
+  }
+  @media ${breakPoints.tablet} {
   }
 `;
