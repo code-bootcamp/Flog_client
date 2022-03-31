@@ -67,14 +67,8 @@ export const BackImgBox = styled.div`
 export const ImageBox = styled.div`
   position: relative;
   overflow: hidden;
-
-  width: ${(props: IBgImgProps) =>
-    props.bgImg === 1
-      ? "calc(490% * 100 / 1200)"
-      : props.bgImg === 2
-      ? "calc(500% * 100 / 1200)"
-      : "calc(510% * 100 / 1200)"};
-  aspect-ratio: 1/1;
+  width: 552px;
+  height: 539px;
   margin-left: auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -118,6 +112,13 @@ export const ImageBox = styled.div`
     color: #fff;
     display: block;
   }
+  filter: blur(2px);
+  opacity: 0;
+  transition: all 4s ease;
+  &.isActive {
+    filter: blur(0);
+    opacity: 1;
+  }
 `;
 
 export const TextGroup = styled.div`
@@ -130,11 +131,26 @@ export const TitleSub = styled.div`
   font-weight: 500;
   word-break: keep-all;
   margin-bottom: 2px;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 1.5s ease;
+  &.isActive {
+    transform: translateY(0);
+    opacity: 1;
+  }
 `;
 export const TitleMain = styled.div`
   font-size: 80px;
   font-family: "Montserrat Alternates";
   font-weight: 700;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 1.5s ease;
+  transition-delay: 0.5s;
+  &.isActive {
+    transform: translateY(0);
+    opacity: 1;
+  }
 `;
 export const Description = styled.div`
   font-weight: 500;
@@ -144,6 +160,14 @@ export const Description = styled.div`
   line-height: 1.6em;
   color: #fff;
   opacity: 0.6;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 1.5s ease;
+  transition-delay: 1s;
+  &.isActive {
+    transform: translateY(0);
+    opacity: 1;
+  }
 `;
 
 export const LookAround = styled.div`
@@ -157,15 +181,13 @@ export const LookAroundBox = styled.div`
   aspect-ratio: 61 / 50;
   margin-top: 24px;
   border-radius: 20px;
+  overflow: hidden;
   position: relative;
   color: #fff;
-  transition: 0.3s;
-  :hover {
-    transform: scale(1.03);
-  }
-  img {
-    position: absolute;
-    max-width: 100%;
+  cursor: pointer;
+
+  &:hover .bgImage {
+    transform: scale(1.1);
   }
 `;
 
@@ -192,5 +214,23 @@ export const BoxBtn = styled.button`
   :hover {
     background-color: #58bd97;
     color: #fff;
+  }
+`;
+
+export const BoxBgImage = styled.div`
+  width: 100%;
+  height: 100%;
+  background: ${(props) => `url(${props.img}) no-repeat center`};
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.6s ease;
+  :after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
   }
 `;
