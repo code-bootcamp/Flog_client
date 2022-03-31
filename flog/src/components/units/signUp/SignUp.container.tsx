@@ -61,8 +61,6 @@ export default function Signup() {
       console.log(result);  
       setModalContents("회원가입을 완료하였습니다")
 
-      moveToPage("/login");
-      router.push("/login");
     } catch (error) {
       if (error instanceof Error) {
         // if (error.message.includes("이메일")) {
@@ -83,6 +81,8 @@ export default function Signup() {
   };
   const onModal = () => {
     setModalContents("")
+    router.push("/login");
+
   }
   return (
     <SignupUI
