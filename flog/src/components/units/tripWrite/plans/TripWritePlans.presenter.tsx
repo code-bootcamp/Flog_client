@@ -6,13 +6,12 @@ import {
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
-import TripWritePlansAdd from "./add/TripWritePlansAdd.container";
 import TripWritePlansCard from "./card/TripWritePlansCard.container";
-import { SAMPLE_DATA } from "./SampleData";
 import * as Write from "./TripWritePlans.styles";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { ITripWritePlansUIProps } from "./TripWritePlans.types";
 
-export default function TripWritePlansUI(props) {
+export default function TripWritePlansUI(props: ITripWritePlansUIProps) {
   return (
     <Write.Container>
       <TripWriteBanner />

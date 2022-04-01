@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   display: block;
@@ -13,6 +14,9 @@ export const Contents = styled.div`
   justify-content: center;
   align-items: center;
   margin: 60px 0 100px 0;
+  @media ${breakPoints.mobile} {
+    margin: 0 0 70px;
+  }
 `;
 
 export const InnerWrap = styled.div`
@@ -30,6 +34,12 @@ export const Column = styled.div`
   display: block;
   width: 25%;
   padding: 11px;
+  @media ${breakPoints.tablet} {
+    width: 50%;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const TitleBox = styled.div`
@@ -39,6 +49,9 @@ export const TitleBox = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    margin-top: 26px;
+  }
 `;
 export const Title = styled.div`
   display: flex;
