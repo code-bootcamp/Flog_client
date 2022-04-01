@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import TripWritePlansAdd from "../add/TripWritePlansAdd.container";
 import * as Write from "./TripWritePlansCard.styles";
+import DetailScheduleForm from "./../../../../commons/modals/formDetailSchedule/DetailScheduleForm.container";
 
 export default function TripWritePlansCardUI(props) {
   return (
@@ -44,7 +45,13 @@ export default function TripWritePlansCardUI(props) {
             )}
           </Draggable>
         ))}
-      <TripWritePlansAdd />
+      <TripWritePlansAdd onClick={props.onClickDetailScheduleFormModal} />
+      {props.detailScheduleFormModal && (
+        <DetailScheduleForm
+          onClickExit={props.onClickExitDetailScheduleFormModal}
+          onClickSubmit={props.onClickSubmitDetailScheduleFormModal}
+        />
+      )}
     </Write.PlansBox>
   );
 }
