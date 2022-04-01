@@ -2,11 +2,13 @@ import { useMemo, useRef, useState, ChangeEvent, useEffect } from "react";
 import TripWriteLogEditorUI from "./TripWriteLogEditor.presenter";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import { UPLOAD_FILE,UPDATE_BOARD } from "./TripWriteLogEditor.queries";
+import {
+  UPLOAD_FILE,
+  UPDATE_BOARD,
+  CREATE_BOARD,
+} from "./TripWriteLogEditor.queries";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-
-
 
 const ReactQuill = dynamic(
   async () => {
@@ -27,32 +29,43 @@ export default function TripWriteLogEditor(props) {
   const router = useRouter();
   const [uploadBoardImagefile] = useMutation(UPLOAD_FILE);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [createBoard] = useMutation(CREATE_BOARD);
+
   let quillCurrent: any;
   let editor: any;
   let currentFocus: any;
 
-  const submitDb = async() => {
-   
-    
-    
-      try{
-        const result = await updateBoard({
-          variables: {
-            updateBoardInput: {
-              content: contents
-            },
-            boardId
-          }
-        })
-        console.log(result);
-      }
-      catch(error) {
-        alert(error.message);
-      }
-   
-    
-    
-  }
+  const create = async () => {
+    const result = await createBoard({
+      variables: {
+        createBoardInput: {
+          day: props.index,
+          content: contents,
+        },
+        scheduleId: String(router.query.scheduleId),
+      },
+    });
+    console.log(`create${result}`);
+  };
+  const update = async () => {
+    const result = await updateBoard({
+      variables: {
+        updateBoardInput: {
+          content: contents,
+        },
+        boardId,
+      },
+    });
+    console.log(`update${result}`);
+  };
+  const submitDb = async () => {
+    console.log("asdf");
+    console.log(props.index);
+    console.log(contents);
+    if (!contents) return;
+    if (!boardId) create();
+    else update();
+  };
   const setRefValue = () => {
     quillCurrent = quillRef.current;
     editor = quillCurrent?.getEditor();
@@ -63,21 +76,17 @@ export default function TripWriteLogEditor(props) {
 
   setRefValue();
   useEffect(() => {
-    setRefValue()
-    if(props.selected.title !== "") {
-    console.log('d')
-    console.log(props.selected.title)
-    addEl(props.selected.title,props.selected.des)
-
+    setRefValue();
+    if (props.selected.title !== "") {
+      console.log("d");
+      console.log(props.selected.title);
+      addEl(props.selected.title, props.selected.des);
     }
+  }, [props.selected]);
 
-    
-  },[props.selected])
-
-
-  const addEl = (name: string, des: string)  => {
-    console.log('add')
-    console.log(editor)
+  const addEl = (name: string, des: string) => {
+    console.log("add");
+    console.log(editor);
     if (!editor) setRefValue();
     editor?.insertText(currentFocus?.index + 1, name, {
       header: 1,
@@ -174,6 +183,7 @@ export default function TripWriteLogEditor(props) {
 
   useEffect(() => {
     setRefValue();
+    console.log(contents);
   }, [imageHandler]);
 
   return (

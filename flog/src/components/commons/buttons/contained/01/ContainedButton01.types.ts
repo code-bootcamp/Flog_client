@@ -17,6 +17,7 @@ export interface IContainedButton01UIProps {
 }
 
 export interface IContainedButton01UIEmotionProps {
+  bigBtn: boolean;
   size: string;
   onClick?: () => void;
   disabled?: boolean;

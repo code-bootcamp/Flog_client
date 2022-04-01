@@ -11,7 +11,7 @@ import { changeDatetimeToString } from "../../../../../commons/utils/getDate";
 import * as M from "./MainSchedule.styles";
 import { useRouter } from "next/router";
 import { INewTripScheduleModal } from "./MainSchedule.types";
-import Alert from "../../alert/Alert.container"
+import Alert from "../../alert/Alert.container";
 export default function NewTripScheduleModal(props: INewTripScheduleModal) {
   const [mapModal, setMapModal] = useState(true);
   const [showModal, setShowModal] = useState("");
@@ -31,7 +31,18 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
   const onClickMapModal = () => {
     setTimeout(() => setMapModal((prev) => !prev), 500);
   };
-
+  const getDateList = (startDate: Date, endDate: Date) => {
+    const diffDate = startDate.getTime() - endDate.getTime();
+    const dateDays = Math.abs(diffDate / (1000 * 3600 * 24));
+    const currDate = startDate;
+    const dateList = [];
+    for (let i = 0; i < dateDays; i++) {
+      dateList.push(changeDatetimeToString(currDate));
+      currDate.setDate(currDate.getDate() + 1);
+    }
+    dateList.push(changeDatetimeToString(currDate));
+    return dateList.join(",");
+  };
   const onClickSubmit = async () => {
     try {
       const result = await createSchedule({
@@ -44,6 +55,7 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
             numberPeople: inputs.people,
             hashtag: inputs.theme,
             mainCategoryId: "",
+            tripdates: getDateList(inputs.startDate, inputs.endDate),
           },
         },
       });
@@ -57,13 +69,19 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
     }
   };
   const closeMapModal = () => {
-    props.onClickNewScheduleModal()
-    router.push(`/myTrips/${showModal}/plans`)
-    setShowModal("")
-  }
+    props.onClickNewScheduleModal();
+    router.push(`/myTrips/${showModal}/plans`);
+    setShowModal("");
+  };
   return (
     <>
-    {showModal && <Alert contents="일정 생성이 완료되었습니다." onClickExit={closeMapModal} onClickSubmit={closeMapModal}/>}
+      {showModal && (
+        <Alert
+          contents="일정 생성이 완료되었습니다."
+          onClickExit={closeMapModal}
+          onClickSubmit={closeMapModal}
+        />
+      )}
       {mapModal ? (
         <MapModal
           onClickExit={props.onClickNewScheduleModal}
