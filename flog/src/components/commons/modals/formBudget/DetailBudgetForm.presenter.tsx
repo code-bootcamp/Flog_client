@@ -1,10 +1,23 @@
 import OutlinedInput01 from "../../inputs/outlined/01/OutlinedInput01.container";
-import * as M from "../newBudget/detailBudget/DetailBudget.styles";
+import * as M from "./DetailBudgetForm.styles";
 import OutlinedInput02 from "../../inputs/outlined/02/OutlinedInput02.container";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
-import { IDetailBudgetFormUIProps } from "./DetailBudgetForm.types";
+// import { IDetailBudgetFormUIProps } from "./DetailBudgetForm.types";
+import { FormEventHandler, MouseEventHandler, ReactNode } from "react";
+interface IDetailBudgetFormUIprops {
+  onClickExit: () => void;
+  onClickSubmit: () => void;
+  onClickCategory: (
+    index: number
+  ) => MouseEventHandler<HTMLDivElement> | undefined;
 
-export default function DetailBudgetFormUI(props) {
+  TRIP_CATEGORY: [];
+  isSelect: any;
+  register: any;
+  handleSubmit: (el: any) => FormEventHandler<HTMLFormElement> | undefined;
+  date: string;
+}
+export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
   return (
     <M.Container>
       <M.ModalWrapper>
@@ -21,19 +34,23 @@ export default function DetailBudgetFormUI(props) {
               <M.Title>여행 준비</M.Title>
               <M.Wrap>
                 <M.CategoryWrap>
-                  {props.TRIP_CATEGORY.map((el, index) => (
-                    <>
-                      <M.Category isSelect={props.isSelect[index]}>
-                        <M.CategoryIcon onClick={props.onClickCategory(index)}>
-                          <img
-                            src={`/img/icon-budget-category-${el.num}.svg`}
-                            alt="카테고리"
-                          />
-                        </M.CategoryIcon>
-                        <M.CategoryLabel>{el.label}</M.CategoryLabel>
-                      </M.Category>
-                    </>
-                  ))}
+                  {props.TRIP_CATEGORY.map(
+                    (el: { num: string; label: ReactNode }, index: number) => (
+                      <>
+                        <M.Category isSelect={props.isSelect[index]}>
+                          <M.CategoryIcon
+                            onClick={props.onClickCategory(index)}
+                          >
+                            <img
+                              src={`/img/icon-budget-category-${el.num}.svg`}
+                              alt="카테고리"
+                            />
+                          </M.CategoryIcon>
+                          <M.CategoryLabel>{el.label}</M.CategoryLabel>
+                        </M.Category>
+                      </>
+                    )
+                  )}
                 </M.CategoryWrap>
               </M.Wrap>
               <M.Wrap>

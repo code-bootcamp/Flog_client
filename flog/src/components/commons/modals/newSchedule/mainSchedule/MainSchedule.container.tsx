@@ -50,6 +50,7 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
           createScheduleInput: {
             title: inputs.title,
             location: inputs.doName + inputs.cityName,
+            // typescript-ignore
             startDate: changeDatetimeToString(inputs.startDate),
             endDate: changeDatetimeToString(inputs.endDate),
             numberPeople: inputs.people,

@@ -10,7 +10,7 @@ export default function Dropdown01() {
     setIsActive((prev) => !prev);
   };
 
-  const onClickOption = (el) => () => {
+  const onClickOption = (el: string) => () => {
     setIsSelect(el);
   };
 

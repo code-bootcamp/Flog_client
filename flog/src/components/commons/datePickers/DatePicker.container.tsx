@@ -4,7 +4,7 @@ import { ko } from "date-fns/locale";
 import * as Date from "./DatePicker.styles";
 import { IMyDatePickerProps } from "./DatePicker.types";
 
-export default function MyDatePicker(props) {
+export default function MyDatePicker(props: IMyDatePickerProps) {
   const onChange = (dates: [any, any]) => {
     const [start, end] = dates;
 

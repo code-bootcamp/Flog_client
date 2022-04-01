@@ -12,7 +12,7 @@ export default function OurTripListUI(props) {
           <Dropdown01 />
         </List.Head>
         <List.TripList>
-          {props.shareData?.fetchShareSchedules.map((el, index) => (
+          {props.shareData?.fetchShareSchedules.map((el) => (
             <List.CardWrapper key={uuid4()}>
               <List.Wrapper>
                 <List.Image>

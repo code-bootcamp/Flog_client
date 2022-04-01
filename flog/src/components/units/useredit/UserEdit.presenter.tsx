@@ -78,7 +78,7 @@ export default function UserEditUI(props: IUserEditUIProps) {
           </Edit.InputLabel>
           <Edit.EmailInput>
             <OutlinedInput01
-              type={props.pwdType && "password"}
+              type={props.pwdType ? "password" : "text"}
               id="password"
               value={props.inputs.password}
               placeholder="비밀번호를 입력해주세요."

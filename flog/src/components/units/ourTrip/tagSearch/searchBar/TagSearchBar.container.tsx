@@ -12,7 +12,7 @@ export default function TagSearchBar(props) {
   ]);
 
   const onChangeCheck = (el) => (event) => {
-    let temp = isSelect.map((el, idx) => {
+    const temp = isSelect.map((el, idx) => {
       return { ...el, checked: idx === Number(event.target.id) };
     });
     setIsSelect(temp);

@@ -24,6 +24,7 @@ export default function UserEdit() {
   const onClickMoveToMyPage = () => {
     router.push("/mypage");
   };
+
   const onClickFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
@@ -34,7 +35,7 @@ export default function UserEdit() {
       const fileUrl = result.data?.uploadProfileImagefile;
       setInputs({ ...inputs, imgUrl: fileUrl });
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) alert(error.message);
     }
   };
 
@@ -45,9 +46,16 @@ export default function UserEdit() {
     });
   };
 
+  interface AllInputs {
+    email?: string;
+    nickName?: string;
+    url?: string;
+    password?: string;
+    phoneNumber?: string;
+  }
   const onClickSubmit = async () => {
-    console.log(inputs);
-    const AllInputs = {};
+    // console.log(inputs);
+    const AllInputs: AllInputs = {};
     if (inputs.email !== "") AllInputs.email = inputs.email;
     if (inputs.name !== "") AllInputs.nickName = inputs.name;
     if (inputs.imgUrl !== "") AllInputs.url = inputs.imgUrl;
@@ -55,7 +63,7 @@ export default function UserEdit() {
     if (inputs.number1 && inputs.number2 && inputs.number3)
       AllInputs.phoneNumber = inputs.number1 + inputs.number2 + inputs.number3;
     try {
-      const result = await updateUser({
+      await updateUser({
         variables: {
           updateUserInput: AllInputs,
         },
@@ -63,8 +71,8 @@ export default function UserEdit() {
 
       alert("개인정보 수정 완료!");
       router.push("/mypage");
-    } catch (err) {
-      alert(err.message);
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
       console.log(AllInputs);
     }
   };

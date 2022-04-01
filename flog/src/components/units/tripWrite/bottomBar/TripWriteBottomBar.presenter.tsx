@@ -2,7 +2,6 @@ import * as Write from "./TripWriteBottomBar.styles";
 import ContainedButton01 from "../../../commons/buttons/contained/01/ContainedButton01.container";
 import OutlinedButton01 from "../../../commons/buttons/outlined/01/OutlinedButton01.container";
 import { ITripWriteBottomBarUIProps } from "./TripWriteBottomBar.types";
-import router from "next/router";
 
 export default function TripWriteBottomBarUI(
   props: ITripWriteBottomBarUIProps

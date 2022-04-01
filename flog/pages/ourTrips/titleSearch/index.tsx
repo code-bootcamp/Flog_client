@@ -13,8 +13,18 @@ const BodyContainer = styled.div`
   align-items: center;
 `;
 
+interface IInputs {
+  doName?: string;
+  cityName?: string;
+  title?: string;
+}
+
 export default function TitleSearchPage() {
-  const [inputs, setInputs] = useState({ doName: "", cityName: "", title: "" });
+  const [inputs, setInputs] = useState<IInputs>({
+    doName: "",
+    cityName: "",
+    title: "",
+  });
   const [where, setWhere] = useState("");
 
   const { data: titleData } = useQuery(FETCH_TITLE_SEARCH, {
@@ -30,7 +40,6 @@ export default function TitleSearchPage() {
   // 상위 컴포넌트에 넣을 내용 - MapModal
 
   const [mapModal, setMapModal] = useState(false);
-
   const onClickMapModal = () => {
     setMapModal(true);
     setInputs({ doName: "", cityName: "" });
