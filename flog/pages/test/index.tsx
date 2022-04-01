@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import Dropdown01 from "../../src/components/commons/dropdowns/01/Dropdown01.container";
-import Dropdown03 from "../../src/components/commons/dropdowns/03/Dropdown03.container";
+
 import Dropdown05 from "../../src/components/commons/dropdowns/05-start-minutes/Dropdown05.container";
-import DropdownTest from "../../src/components/commons/dropdowns/05-start-minutes/Dropdown05.container";
+
 import Dropdown06 from "../../src/components/commons/dropdowns/06-start-hour/Dropdown06.container";
 import Dropdown07 from "../../src/components/commons/dropdowns/07-taken-hour/Dropdown07.container";
-// import Dropdown02 from "../../src/components/commons/dropdowns/02/Dropdown02.container";
+
 import Point from "../../src/components/commons/modals/chargePoint/ChargePoint.container";
 import Exit from "../../src/components/commons/modals/exit/Exit.container";
 import DetailBudgetForm from "../../src/components/commons/modals/formBudget/DetailBudgetForm.container";
 import DetailScheduleForm from "../../src/components/commons/modals/formDetailSchedule/DetailScheduleForm.container";
 import MapModal from "../../src/components/commons/modals/map/MapModal.container";
 import TotalBudget from "../../src/components/commons/modals/newBudget/totalBudget/TotalBudget.container";
-
-import TripList from "../../src/components/units/tripList/TripList.container";
 
 export default function testPage() {
   // 상위 컴포넌트에 넣을 내용 - point
@@ -227,7 +225,6 @@ export default function testPage() {
         <Dropdown06 />
         <Dropdown07 />
       </div>
-      <TripList />
     </>
   );
 }

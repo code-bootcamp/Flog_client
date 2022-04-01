@@ -14,7 +14,7 @@ export const SelectButton = styled.div`
   padding-left: 24px;
   padding-right: 28px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 3;
   @media ${breakPoints.mobile} {
     width: 122px;
     height: 37px;
