@@ -1,6 +1,6 @@
+import { MouseEventHandler } from "react";
 import { useForm } from "react-hook-form";
 import DetailBudgetFormUI from "./DetailBudgetForm.presenter";
-import { IDetailBudgetFormProps } from "./DetailBudgetForm.types";
 
 // 상위 컴포넌트에 넣을 내용 - detailBudgetForm
 
@@ -83,7 +83,18 @@ import { IDetailBudgetFormProps } from "./DetailBudgetForm.types";
 //   )
 // }
 
-export default function DetailBudgetForm(props) {
+interface IDetailBudgetFormProps {
+  onClickExit: () => void;
+  onClickSubmit: () => void;
+  onClickCategory: (
+    index: number
+  ) => MouseEventHandler<HTMLDivElement> | undefined;
+  TRIP_CATEGORY: [];
+  isSelect: boolean;
+  date: string;
+}
+
+export default function DetailBudgetForm(props: IDetailBudgetFormProps) {
   const { register, handleSubmit } = useForm({
     mode: "onChange",
   });

@@ -1,6 +1,11 @@
 import { useState } from "react";
 import * as Drop from "./Dropdown02.styles";
-export default function Dropdown02(props) {
+
+interface IDorpDown02Props {
+  inputs: any;
+  setInputs: any;
+}
+export default function Dropdown02(props: IDorpDown02Props) {
   const [isThemeActive, setIsThemeActive] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const LIST = [
@@ -16,7 +21,7 @@ export default function Dropdown02(props) {
     console.log(isThemeActive);
   };
 
-  const onClickOption = (index) => () => {
+  const onClickOption = (index: number) => () => {
     setIsThemeActive((prev) => !prev);
     onClickSelectBtn();
     props.setInputs({ ...props.inputs, theme: LIST[index][1] });

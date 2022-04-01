@@ -1,8 +1,12 @@
 import { useState } from "react";
 import * as Drop from "./Dropdown05.styles";
-export default function Dropdown05(props) {
+
+interface IDropdown05Props {
+  setValue: any;
+}
+export default function Dropdown05(props: IDropdown05Props) {
   const [isMinutesActive, setIsMinutesActive] = useState(false);
-  const [isMinutesSelected, setIsMinutesSelected] = useState(null);
+  const [isMinutesSelected, setIsMinutesSelected] = useState(null || Number);
 
   let num = -1;
   const MINUTES = new Array(60).fill(1).map((el) => {
@@ -14,14 +18,12 @@ export default function Dropdown05(props) {
     setIsMinutesActive((prev) => !prev);
   };
 
-  const onClickOption = (index) => () => {
+  const onClickOption = (index: number) => () => {
     setIsMinutesActive((prev) => !prev);
     onClickSelectBtn();
     setIsMinutesSelected(MINUTES[index]);
     props.setValue("startMinutes", MINUTES[index]);
   };
-
-  // console.log(isMinutesSelected);
 
   return (
     <>

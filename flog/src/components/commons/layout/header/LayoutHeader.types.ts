@@ -8,4 +8,6 @@ export interface ILayoutHeaderUIProps {
   onClickSubmitAlertModal: () => void;
   alertModal: boolean;
   modalContents: string;
+  hbgMenuRef: any;
+  router: any;
 }

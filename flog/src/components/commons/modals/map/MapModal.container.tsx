@@ -2,7 +2,22 @@ import SvgMap from "../../../units/maps/Maps.container";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
 import * as M from "./MapModal.styles";
 
-export default function MapModal(props) {
+interface IInputs {
+  title?: string;
+  theme?: string;
+  people?: string;
+  startDate?: string;
+  endDate?: string;
+  doName?: string;
+  cityName?: string;
+}
+interface IMapModalProps {
+  onClickExit: () => void;
+  inputs: IInputs;
+  setInputs: any;
+  onClickSubmit: () => void;
+}
+export default function MapModal(props: IMapModalProps) {
   // //상위 컴포넌트에 넣을 내용 - MapModal
   // const [mapModal, setMapModal] = useState(false);
 

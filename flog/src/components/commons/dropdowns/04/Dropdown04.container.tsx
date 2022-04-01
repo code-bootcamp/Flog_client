@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import * as Drop from "./Dropdown04.styles";
-export default function Dropdown04(props) {
+export default function Dropdown04() {
   const LIST = ["전체 보기", "제목", "여행 테마"];
 
   const [isSelect, setIsSelect] = useState(LIST[0]);
@@ -13,7 +13,7 @@ export default function Dropdown04(props) {
     setIsActive((prev) => !prev);
   };
 
-  const onClickOption = (el) => () => {
+  const onClickOption = (el: string) => () => {
     setIsSelect(el);
     if (el === "전체 보기") router.push("/ourTrips");
     if (el === "제목") router.push("/ourTrips/titleSearch");

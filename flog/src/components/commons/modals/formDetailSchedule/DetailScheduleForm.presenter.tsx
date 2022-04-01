@@ -5,8 +5,17 @@ import Dropdown06 from "../../dropdowns/06-start-hour/Dropdown06.container";
 import Dropdown05 from "../../dropdowns/05-start-minutes/Dropdown05.container";
 import Dropdown07 from "../../dropdowns/07-taken-hour/Dropdown07.container";
 import Dropdown08 from "../../dropdowns/08-taken-minutes/Dropdown08.container";
-
-export default function DetailScheduleFormUI(props) {
+import { FormEventHandler } from "react";
+interface IDetailScheduleFormUIProps {
+  onClickExit: () => void;
+  onClickSubmit: () => void;
+  register: any;
+  handleSubmit: (el: any) => FormEventHandler<HTMLFormElement> | undefined;
+  setValue: any;
+}
+export default function DetailScheduleFormUI(
+  props: IDetailScheduleFormUIProps
+) {
   return (
     <M.Container>
       <M.ModalWrapper>

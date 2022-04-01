@@ -1,8 +1,12 @@
 import { useState } from "react";
 import * as Drop from "./Dropdown07.styles";
-export default function Dropdown07(props) {
+
+interface IDropdown07Props {
+  setValue: any;
+}
+export default function Dropdown07(props: IDropdown07Props) {
   const [isHourActive, setIsHourActive] = useState(false);
-  const [isHourSelected, setIsHourSelected] = useState(null);
+  const [isHourSelected, setIsHourSelected] = useState(null || Number);
 
   let num = -1;
   const HOUR = new Array(24).fill(1).map((el) => {
@@ -14,7 +18,7 @@ export default function Dropdown07(props) {
     setIsHourActive((prev) => !prev);
   };
 
-  const onClickOption = (index) => () => {
+  const onClickOption = (index: number) => () => {
     setIsHourActive((prev) => !prev);
     onClickSelectBtn();
     setIsHourSelected(HOUR[index]);

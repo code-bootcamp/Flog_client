@@ -1,6 +1,11 @@
 import { useState } from "react";
 import * as Drop from "./Dropdown03.styles";
-export default function Dropdown03(props) {
+
+interface IDropdown03Props {
+  setInputs: any;
+  inputs: any;
+}
+export default function Dropdown03(props: IDropdown03Props) {
   const [isPeopleActive, setIsPeopleActive] = useState(false);
   const [isPeopleSelected, setIsPeopleSelected] = useState("");
   const LIST = [
@@ -15,7 +20,7 @@ export default function Dropdown03(props) {
     setIsPeopleActive((prev) => !prev);
   };
 
-  const onClickOption = (index) => () => {
+  const onClickOption = (index: number) => () => {
     setIsPeopleActive((prev) => !prev);
     onClickSelectBtn();
     props.setInputs({ ...props.inputs, people: LIST[index][1] });

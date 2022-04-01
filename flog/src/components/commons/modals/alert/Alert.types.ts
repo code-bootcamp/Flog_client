@@ -1,5 +1,6 @@
 export interface IAlertProps {
-  onClickExit: () => void;
+  onClickExit?: () => void;
   onClickSubmit: () => void;
   contents: string;
+  onClick?: () => void;
 }

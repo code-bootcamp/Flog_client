@@ -37,10 +37,10 @@ export default function Login() {
       console.log(result.data?.login);
       const token = result.data?.login;
       if (token) {
-        setAccessToken(token);
+        if (setAccessToken) setAccessToken(token);
         // localStorage.setItem("accessToken", token);
       }
-      setModalContents("로그인에 성공했습니다")
+      setModalContents("로그인에 성공했습니다");
     } catch (error) {
       if (error instanceof Error) {
         if (error.message.includes("이메일")) {
@@ -50,15 +50,15 @@ export default function Login() {
         if (error.message.includes("비밀번호")) {
           setErrorMsg({ ...errorMsg, password: error.message });
           resetError(data.email, "password");
-        } 
+        }
       }
     }
   };
   const resetError = (data: string | undefined, section: string) => {
-    console.log('d')
+    console.log("d");
     watch((value) => {
-      console.log('v')
-      console.log(value)
+      console.log("v");
+      console.log(value);
       if (section === "email" && data !== value.email)
         setErrorMsg({ ...errorMsg, email: "" });
       if (section === "password" && data !== value.password)
@@ -66,10 +66,9 @@ export default function Login() {
     });
   };
   const onModal = () => {
-    setModalContents("")
+    setModalContents("");
     router.push("/myTrips");
-
-  }
+  };
   return (
     <LoginUI
       register={register}
