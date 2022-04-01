@@ -1,16 +1,17 @@
 import * as List from "./MyTripList.styles";
 import { v4 as uuid4 } from "uuid";
 import { useRef } from "react";
+import { useRouter } from "next/router";
 
 export default function TripListUIItem(props) {
   const fileRef = useRef(null);
-
+  const router = useRouter();
   const onClickUploadBanner = () => {
     fileRef.current?.click();
   };
 
   return (
-    <List.CardWrapper key={uuid4()}>
+    <List.CardWrapper key={uuid4()} onClick={() => {router.push(`/myTrips/${props.el.id}`)}}>
       <List.Wrapper>
         {props.el.isShare === "1" ? (
           <List.Mark>
