@@ -18,32 +18,119 @@ export const BgImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("/img/mytrips-banner-img1.png") no-repeat center;
-  background-size: cover;
+  background-color: #c6e8db;
   z-index: 0;
 `;
 
 export const BgImage2 = styled.div`
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: url("/img/mytrips-banner-img2.png") no-repeat center;
-  background-size: cover;
-  z-index: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(161, 218, 197, 0) 32.29%,
+    #a1dac5 100%
+  );
+  z-index: 1;
+`;
+export const Illust1 = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .airplane {
+    position: relative;
+    top: 60px;
+    @media ${breakPoints.mobile} {
+      width: 160px;
+      top: 20px;
+      right: -10px;
+    }
+    @media ${breakPoints.tablet} {
+    }
+  }
+  .cloud-small {
+    position: relative;
+    width: 10%;
+    height: 20%;
+    top: 10px;
+    left: -70px;
+    @media ${breakPoints.mobile} {
+      width: 70px;
+      top: 10px;
+      left: 0px;
+    }
+    @media ${breakPoints.tablet} {
+    }
+  }
+  .cloud-big {
+    position: relative;
+    top: 80px;
+    left: 100px;
+    @media ${breakPoints.mobile} {
+      width: 100px;
+      top: 60px;
+      left: 20px;
+    }
+    @media ${breakPoints.tablet} {
+    }
+  }
 `;
 
-export const Contents = styled.div`
+export const Illust2 = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .stack {
+    position: relative;
+    top: 60px;
+    width: 380px;
+    @media ${breakPoints.mobile} {
+      width: 180px;
+      top: 17px;
+    }
+    @media ${breakPoints.tablet} {
+    }
+  }
+`;
+
+export const InnerWrap = styled.div`
   position: relative;
   z-index: 1;
-
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
+`;
+export const UpperWrap = styled.div`
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  @media ${breakPoints.mobile} {
+    height: 140px;
+  }
+  @media ${breakPoints.tablet} {
+  }
+`;
+
+export const LowerWrap = styled.div`
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  @media ${breakPoints.mobile} {
+    height: 140px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Title = styled.div`
@@ -52,54 +139,11 @@ export const Title = styled.div`
   color: #2c3131;
   line-height: 120%;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   @media ${breakPoints.mobile} {
     font-size: 20px;
     font-weight: 400;
-  }
-  @media ${breakPoints.tablet} {
-  }
-`;
-
-export const Illust1 = styled.div`
-  margin-top: 35px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 67px;
-`;
-
-export const ImageAirplane = styled.div`
-  img {
-    position: relative;
-    top: 20px;
-  }
-  margin-top: 35px;
-`;
-
-export const ImageCloud1 = styled.div``;
-
-export const ImageCloud2 = styled.div`
-  img {
-    position: relative;
-    top: 25px;
-  }
-`;
-export const Illust2 = styled.div`
-  margin-top: 35px;
-  display: flex;
-  flex-direction: row;
-  img {
-    width: auto;
-    height: 100%;
-  }
-  @media ${breakPoints.mobile} {
-    img {
-      margin-top: 0px;
-      width: auto;
-      height: 50%;
-    }
+    margin-bottom: 20px;
   }
   @media ${breakPoints.tablet} {
   }

@@ -14,21 +14,41 @@ export const SelectButton = styled.div`
   padding-left: 24px;
   padding-right: 28px;
   cursor: pointer;
-  z-index: 999;
+  z-index: 10;
+  @media ${breakPoints.mobile} {
+    width: 100px;
+    height: 48px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Selected = styled.div`
   color: #2c3131;
   font-size: 20px;
   font-weight: 400;
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const SelectIcon = styled.div`
   width: 20px;
   height: 12px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Option = styled.div`
@@ -40,7 +60,9 @@ export const Option = styled.div`
   box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   @media ${breakPoints.mobile} {
-    width: 100px;
+    width: 98px;
+    left: 1px;
+    top: 50px;
   }
   @media ${breakPoints.tablet} {
   }
@@ -54,6 +76,7 @@ export const Option = styled.div`
       border-radius: 8px;
       @media ${breakPoints.mobile} {
         width: 100px;
+        height: 40px;
       }
       @media ${breakPoints.tablet} {
       }
@@ -68,6 +91,12 @@ export const Option = styled.div`
         cursor: pointer;
         text-align: center;
         border-bottom: 1px solid #e9e9e9;
+        @media ${breakPoints.mobile} {
+          font-size: 14px;
+          padding: 8px;
+        }
+        @media ${breakPoints.tablet} {
+        }
       }
     }
     li:last-of-type {
