@@ -36,7 +36,7 @@ export const Button = styled.button`
       border-color: #58bd97;
     }
     font-size: ${(props: IContainedButton01UIEmotionProps) => {
-      if (props.size === "large") return "20px";
+      if (props.size === "large") return "14px";
       if (props.size === "medium") return "14px";
       if (props.size === "small") return "14px";
     }};
@@ -46,10 +46,10 @@ export const Button = styled.button`
       if (props.size === "small") return "10px 18px";
     }};
     width: ${(props: IContainedButton01UIEmotionProps) => {
-      if (props.size === "large") return "100%";
+      if (props.responsive === true) return "100%";
     }};
     height: ${(props: IContainedButton01UIEmotionProps) => {
-      if (props.size === "large") return "60px";
+      if (props.responsive === true) return "60px";
     }};
   }
 `;

@@ -9,6 +9,7 @@ export default function ContainedButton01(props: IContainedButton01Props) {
       onClick={props.onClick}
       disabled={props.disabled}
       type={props.type}
+      responsive={props.responsive}
     />
   );
 }
