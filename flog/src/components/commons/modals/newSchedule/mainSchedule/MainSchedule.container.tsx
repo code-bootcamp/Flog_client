@@ -31,7 +31,18 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
   const onClickMapModal = () => {
     setTimeout(() => setMapModal((prev) => !prev), 500);
   };
-
+  const getDateList = (startDate: Date, endDate: Date) => {
+    const diffDate = startDate.getTime() - endDate.getTime();
+    const dateDays = Math.abs(diffDate / (1000 * 3600 * 24));
+    const currDate = startDate;
+    const dateList = [];
+    for (let i = 0; i < dateDays; i++) {
+      dateList.push(changeDatetimeToString(currDate));
+      currDate.setDate(currDate.getDate() + 1);
+    }
+    dateList.push(changeDatetimeToString(currDate));
+    return dateList.join(", ");
+  };
   const onClickSubmit = async () => {
     try {
       const result = await createSchedule({
@@ -44,7 +55,7 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
             numberPeople: inputs.people,
             hashtag: inputs.theme,
             mainCategoryId: "",
-            tripdates: "2020.03.10,2020.03.11,2020.03.12,2020.03.13",
+            tripdates: getDateList(inputs.startDate, inputs.endDate),
           },
         },
       });
