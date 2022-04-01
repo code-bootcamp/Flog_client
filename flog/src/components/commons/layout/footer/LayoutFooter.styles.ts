@@ -20,6 +20,9 @@ export const InnerWrap = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 50px 0 70px;
+  @media ${breakPoints.tablet} {
+    padding: 40px 0 40px;
+  }
   @media ${breakPoints.mobile} {
     flex-direction: column;
     padding: 24px 0 50px;
@@ -28,6 +31,9 @@ export const InnerWrap = styled.div`
 export const LeftBox = styled.div`
   width: 60%;
   height: 100%;
+  @media ${breakPoints.tablet} {
+    width: 50%;
+  }
   @media ${breakPoints.mobile} {
     width: 100%;
   }
@@ -35,6 +41,9 @@ export const LeftBox = styled.div`
 export const RightBox = styled.div`
   width: 40%;
   height: 100%;
+  @media ${breakPoints.tablet} {
+    width: 50%;
+  }
   @media ${breakPoints.mobile} {
     width: 100%;
   }
@@ -62,6 +71,11 @@ export const ContactUs = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 80px;
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 35px;
+  }
   @media ${breakPoints.mobile} {
     margin-bottom: 35px;
   }
@@ -74,6 +88,11 @@ export const ContactItem = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    margin-right: 25px;
+    margin-bottom: 15px;
+    word-break: keep-all;
+  }
   @media ${breakPoints.mobile} {
     margin-right: 25px;
     &:nth-of-type(2) {
@@ -111,6 +130,9 @@ export const ContactTextBox = styled.div`
 export const SiteMap = styled.div`
   width: 100%;
   height: auto;
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -151,6 +173,18 @@ export const NewsLetterInputBox = styled.div`
   button {
     margin-left: 25px;
     height: 54px;
+  }
+  @media ${breakPoints.tablet} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      width: 100%;
+    }
+    button {
+      min-width: 120px;
+    }
   }
   @media ${breakPoints.mobile} {
     display: flex;

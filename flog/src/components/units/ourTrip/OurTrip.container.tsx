@@ -14,6 +14,7 @@ export default function OurTrip(props) {
   const [mapModal, setMapModal] = useState(false);
 
   const onClickMapModal = () => {
+    setInputs({ doName: "", cityName: "" });
     setMapModal(true);
   };
 
@@ -24,7 +25,7 @@ export default function OurTrip(props) {
 
   const onClickSubmitMapModal = () => {
     setMapModal(false);
-    console.log(inputs.doName, inputs.cityName);
+    // setInputs({ doName: "", cityName: "" });
   };
 
   return (

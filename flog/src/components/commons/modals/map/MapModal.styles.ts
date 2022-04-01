@@ -80,16 +80,16 @@ export const DoName = styled.span`
   font-weight: 300;
   font-size: 22px;
   color: #a9a9a9;
-  margin-right: 7px;
+  img {
+    margin-left: 7px;
+    margin-right: 5px;
+  }
 `;
 
 export const CityName = styled.span`
   font-weight: 400;
   font-size: 22px;
   color: #626262;
-  img {
-    margin-right: 6px;
-  }
 `;
 
 export const Exit = styled.div`
