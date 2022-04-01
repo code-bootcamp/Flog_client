@@ -2,12 +2,15 @@ import { Draggable } from "react-beautiful-dnd";
 import TripWritePlansAdd from "../add/TripWritePlansAdd.container";
 import * as Write from "./TripWritePlansCard.styles";
 import DetailScheduleForm from "./../../../../commons/modals/formDetailSchedule/DetailScheduleForm.container";
+import { ITripWritePlansCardUIProps } from "./TripWritePlansCard.types";
 
-export default function TripWritePlansCardUI(props) {
+export default function TripWritePlansCardUI(
+  props: ITripWritePlansCardUIProps
+) {
   return (
     <Write.PlansBox>
       {props.content &&
-        props.content.map((el, index) => (
+        props.content.map((el: any, index: number) => (
           <Draggable
             key={String(el.id)}
             draggableId={String(el.id)}

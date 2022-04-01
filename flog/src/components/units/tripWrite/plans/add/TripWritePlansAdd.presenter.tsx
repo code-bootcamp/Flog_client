@@ -1,6 +1,7 @@
+import { ITripWritePlansCardUIProps } from "./TripWritePlansAdd.queries";
 import * as Write from "./TripWritePlansAdd.styles";
 
-export default function TripWritePlansAddUI(props) {
+export default function TripWritePlansAddUI(props: ITripWritePlansCardUIProps) {
   return (
     <Write.Card>
       <Write.AddButton onClick={props.onClick}>

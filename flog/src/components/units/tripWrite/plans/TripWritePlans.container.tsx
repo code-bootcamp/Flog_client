@@ -1,15 +1,9 @@
 import { useApolloClient, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {
-  changeStringToDatetime,
-  diffDays,
-} from "../../../../commons/utils/getDate";
-import { SAMPLE_DATA_PLANS, SAMPLE_DATA_PLANS_TITLE } from "./SampleData";
 import TripWritePlansUI from "./TripWritePlans.presenter";
 import {
   FETCH_DETAIL_SCHEDULE,
-  FETCH_DETAIL_SCHEDULES,
   FETCH_SCHEDULE,
 } from "./TripWritePlans.queries";
 
@@ -21,8 +15,6 @@ export default function TripWritePlans() {
   const [tripTotalDays, setTripTotalDays] = useState(0);
   const [tripTitleData, setTripTitleData] = useState({});
   const [tripTitleDataArray, setTripTitleDataArray] = useState([]);
-  // const [tripData, setTripData] = useState([]);
-  // const [sortedTripData, setSortedTripData] = useState([]);
   const [plansList, setPlansList] = useState([[]]);
   const { data: dataSchedule } = useQuery(FETCH_SCHEDULE, {
     variables: {
@@ -36,9 +28,9 @@ export default function TripWritePlans() {
   }, [dataSchedule]);
 
   const getTripTitleData = () => {
-    const resultArr = [];
+    const resultArr: any = [];
     if (tripTotalDays) {
-      new Array(tripTotalDays).fill(0).map((el) => {
+      new Array(tripTotalDays).fill(0).forEach((_) => {
         resultArr.push(tripTitleData);
       });
     }
@@ -74,7 +66,7 @@ export default function TripWritePlans() {
     setIsLoading(true);
   }, []);
 
-  const onDragEndReorder = (result) => {
+  const onDragEndReorder = (result: any) => {
     if (!result.destination) return;
     const currentPlansList = [...plansList];
     const startDropIndex = result.source.droppableId;
@@ -90,7 +82,7 @@ export default function TripWritePlans() {
       const restPlans = currentPlans.filter(
         (el, index) => index !== startDragIndex
       );
-      let newPlan = [];
+      const newPlan: any = [];
       if (endDragIndex === restPlans.length) {
         const tempArr = restPlans.concat(restPlans[restPlans.length - 1]);
         tempArr.forEach((el, index) => {
@@ -126,7 +118,7 @@ export default function TripWritePlans() {
     if (startDropIndex !== endDropIndex) {
       const startPlans = currentPlansList[Number(startDropIndex)];
       const endPlans = currentPlansList[Number(endDropIndex)];
-      const newPlan = [];
+      const newPlan: any = [];
       // const removePlan = startPlans.splice(startDragIndex, 1);
       const removePlan = startPlans.filter(
         (el, index) => index === startDragIndex

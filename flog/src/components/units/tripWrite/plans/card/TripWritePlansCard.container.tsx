@@ -1,20 +1,17 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import {
-  IMutation,
-  IMutationCreateDetailScheduleArgs,
-} from "../../../../../commons/types/generated/types";
-import { FETCH_DETAIL_SCHEDULE } from "../TripWritePlans.queries";
+import { SetStateAction, useState } from "react";
+import { IMutation } from "../../../../../commons/types/generated/types";
 import TripWritePlansCardUI from "./TripWritePlansCard.presenter";
 import { CREATE_DETAIL_SCHEDULE } from "./TripWritePlansCard.queries";
+import { ITripWritePlansCardProps } from "./TripWritePlansCard.types";
 
-export default function TripWritePlansCard(props) {
+export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
   const router = useRouter();
-  const [detailScheduleFormModal, setDetailScheduleFormModal] = useState(false);
+  const [detailScheduleFormModal, setDetailScheduleFormModal] =
+    useState<SetStateAction<boolean>>(false);
   const [createDetailSchedule] = useMutation<
-    Pick<IMutation, "createDetailSchedule">,
-    IMutationCreateDetailScheduleArgs
+    Pick<IMutation, "createDetailSchedule">
   >(CREATE_DETAIL_SCHEDULE);
 
   const onClickDetailScheduleFormModal = () => {
@@ -50,21 +47,28 @@ export default function TripWritePlansCard(props) {
       memo: data.memo || "",
     };
 
+    interface ICreateDetailScheduleVariables {
+      createDetailScheduleInput: {
+        date: string;
+        day: string;
+        place: string;
+        startTime: string;
+        useTime: string;
+        memo: string;
+      };
+      scheduleId: string | string[];
+    }
+
+    const createDetailScheduleVariables: ICreateDetailScheduleVariables = {
+      createDetailScheduleInput: CreateDetailScheduleInput,
+      scheduleId: router.query.scheduleId || "",
+    };
+
     try {
-      const result = await createDetailSchedule({
+      await createDetailSchedule({
         variables: {
-          createDetailScheduleInput: CreateDetailScheduleInput,
-          scheduleId: router.query.scheduleId,
+          createDetailScheduleVariables,
         },
-        // refetchQueries: [
-        //   {
-        //     query: FETCH_DETAIL_SCHEDULE,
-        //     variables: {
-        //       scheduleId: router.query.scheduleId,
-        //       day: CreateDetailScheduleInput.day,
-        //     },
-        //   },
-        // ],
       });
       alert("등록 성공~");
       router.reload();
