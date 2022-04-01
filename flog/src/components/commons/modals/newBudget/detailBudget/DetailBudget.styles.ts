@@ -83,7 +83,7 @@ export const Title = styled.div`
   text-align: center;
   margin-bottom: 30px;
   @media ${breakPoints.mobile} {
-    font-size: 20px;
+    font-size: 24px;
   }
   @media ${breakPoints.tablet} {
   }
