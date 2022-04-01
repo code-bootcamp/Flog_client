@@ -6,7 +6,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-
+  trailingSlash: true,
   reactStrictMode: true,
   async redirects() {
     return [
