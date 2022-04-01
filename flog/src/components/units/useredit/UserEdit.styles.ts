@@ -15,15 +15,20 @@ export const InnerWrap = styled.div`
   margin: 25px 0 92px;
   @media ${breakPoints.mobile} {
     margin: 25px 0 0;
-    }
-    @media ${breakPoints.tablet} {
-   
-    }
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Navigator = styled.div`
   width: 100%;
   height: auto;
   margin-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  @media ${breakPoints.tablet} {
+  }
   span {
     color: #a9a9a9;
     font-size: 1.1rem;
@@ -32,12 +37,6 @@ export const Navigator = styled.div`
     &.now {
       font-weight: 600;
       cursor: default;
-    }
-    @media ${breakPoints.mobile} {
-      font-size: 18px;
-    }
-    @media ${breakPoints.tablet} {
-   
     }
   }
 `;
@@ -57,7 +56,6 @@ export const TitleText = styled.div`
       font-size: 24px;
     }
     @media ${breakPoints.tablet} {
-   
     }
   }
 `;
@@ -71,10 +69,17 @@ export const Contents = styled.div`
   align-items: center;
   @media ${breakPoints.mobile} {
     padding: 0 0 34px;
+    border: none;
   }
-    @media ${breakPoints.tablet} {
-   
+  @media ${breakPoints.tablet} {
+  }
+  input {
+    @media ${breakPoints.mobile} {
+      height: 48px;
     }
+    @media ${breakPoints.tablet} {
+    }
+  }
 `;
 export const UserImage = styled.div`
   width: 180px;
@@ -82,11 +87,10 @@ export const UserImage = styled.div`
   position: relative;
   @media ${breakPoints.mobile} {
     width: 140px;
-  height: 140px;
-    }
-    @media ${breakPoints.tablet} {
-   
-    }
+    height: 140px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const ErrorMsg = styled.div`
   color: red;
@@ -105,8 +109,6 @@ export const NoImage = styled.div`
   border-radius: 50%;
   overflow: hidden;
   background: #eaf7f2;
-
-
 `;
 export const FileButton = styled.div`
   width: 56px;
@@ -123,17 +125,23 @@ export const FileButton = styled.div`
   cursor: pointer;
   @media ${breakPoints.mobile} {
     width: 48px;
-  height: 48px;
-    }
-    @media ${breakPoints.tablet} {
-   
-    }
+    height: 48px;
+  }
+  @media ${breakPoints.tablet} {
+  }
   input {
     display: none;
   }
 `;
 export const NameInput = styled.div`
   margin: 38px 0;
+  @media ${breakPoints.mobile} {
+    margin: 24px 0;
+  }
+  @media ${breakPoints.tablet} {
+  }
+  button {
+  }
 `;
 export const InputLabel = styled.div`
   width: 100%;
@@ -144,11 +152,13 @@ export const InputLabel = styled.div`
     font-size: 1.1rem;
   }
   @media ${breakPoints.mobile} {
-      font-size:14px
+    margin: 15px 0 8px;
+    span {
+      font-size: 14px;
     }
-    @media ${breakPoints.tablet} {
-   
-    }
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const PhoneInput = styled.div`
   max-width: 480px;
@@ -189,4 +199,8 @@ export const EmailInput = styled.div`
 `;
 export const SubmitBox = styled.div`
   margin-top: 80px;
+  button {
+    padding: 16px 137px;
+    font-size: 20px;
+  }
 `;

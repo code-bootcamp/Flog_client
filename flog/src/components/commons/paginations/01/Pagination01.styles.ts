@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Pagination = styled.div`
   width: 100%;
@@ -36,6 +37,12 @@ export const Prev = styled.div`
         center;
       border-color: #58bd97;
     }
+    @media ${breakPoints.mobile} {
+      width: 48px;
+      height: 48px;
+    }
+    @media ${breakPoints.tablet} {
+    }
   }
 `;
 export const Page = styled.div`
@@ -54,6 +61,11 @@ export const Page = styled.div`
     }
     :hover {
       background: #f4f4f4;
+    }
+    @media ${breakPoints.mobile} {
+      font-size: 18px;
+    }
+    @media ${breakPoints.tablet} {
     }
   }
 `;
@@ -82,6 +94,12 @@ export const Next = styled.div`
       background: #f6f6f6 url("/img/icon-pagination-next-green.svg") no-repeat
         center;
       border-color: #58bd97;
+    }
+    @media ${breakPoints.mobile} {
+      width: 48px;
+      height: 48px;
+    }
+    @media ${breakPoints.tablet} {
     }
   }
 `;

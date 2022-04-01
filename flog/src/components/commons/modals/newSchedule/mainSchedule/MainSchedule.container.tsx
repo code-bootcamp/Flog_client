@@ -11,7 +11,7 @@ import { changeDatetimeToString } from "../../../../../commons/utils/getDate";
 import * as M from "./MainSchedule.styles";
 import { useRouter } from "next/router";
 import { INewTripScheduleModal } from "./MainSchedule.types";
-import Alert from "../../alert/Alert.container"
+import Alert from "../../alert/Alert.container";
 export default function NewTripScheduleModal(props: INewTripScheduleModal) {
   const [mapModal, setMapModal] = useState(true);
   const [showModal, setShowModal] = useState("");
@@ -44,6 +44,7 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
             numberPeople: inputs.people,
             hashtag: inputs.theme,
             mainCategoryId: "",
+            tripdates: "2020.03.10,2020.03.11,2020.03.12,2020.03.13",
           },
         },
       });
@@ -57,13 +58,19 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
     }
   };
   const closeMapModal = () => {
-    props.onClickNewScheduleModal()
-    router.push(`/myTrips/${showModal}/plans`)
-    setShowModal("")
-  }
+    props.onClickNewScheduleModal();
+    router.push(`/myTrips/${showModal}/plans`);
+    setShowModal("");
+  };
   return (
     <>
-    {showModal && <Alert contents="일정 생성이 완료되었습니다." onClickExit={closeMapModal} onClickSubmit={closeMapModal}/>}
+      {showModal && (
+        <Alert
+          contents="일정 생성이 완료되었습니다."
+          onClickExit={closeMapModal}
+          onClickSubmit={closeMapModal}
+        />
+      )}
       {mapModal ? (
         <MapModal
           onClickExit={props.onClickNewScheduleModal}

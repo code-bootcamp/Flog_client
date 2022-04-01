@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { IOutlinedButton04UIEmotionProps } from "./OutlinedButton04.types";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Button = styled.button`
   background: transparent;
@@ -29,5 +30,11 @@ export const Button = styled.button`
   }
   &.disabled:hover {
     background: transparent;
+  }
+  @media ${breakPoints.mobile} {
+    padding: 10px 18px;
+    font-size: ${(props: IOutlinedButton04UIEmotionProps) => {
+      if (props.size === "large") return "14px";
+    }};
   }
 `;

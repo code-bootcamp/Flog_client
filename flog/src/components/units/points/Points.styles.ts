@@ -15,15 +15,20 @@ export const InnerWrap = styled.div`
   margin: 50px 0 50px;
   @media ${breakPoints.mobile} {
     margin: 25px 0 50px;
-    }
-    @media ${breakPoints.tablet} {
-   
-    }
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Navigator = styled.div`
   width: 100%;
   height: auto;
   margin-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  @media ${breakPoints.tablet} {
+  }
   span {
     color: #a9a9a9;
     font-size: 1.1rem;
@@ -32,12 +37,6 @@ export const Navigator = styled.div`
     &.now {
       font-weight: 600;
       cursor: default;
-    }
-    @media ${breakPoints.mobile} {
-      font-size: 18px;
-    }
-    @media ${breakPoints.tablet} {
-   
     }
   }
 `;
@@ -55,20 +54,17 @@ export const TitleText = styled.div`
     font-weight: 500;
     @media ${breakPoints.mobile} {
       font-size: 24px;
-
     }
     @media ${breakPoints.tablet} {
-   
     }
   }
 `;
 export const TitleDropdown = styled.div`
   @media ${breakPoints.mobile} {
-      display:none;
-    }
-    @media ${breakPoints.tablet} {
-   
-    }
+    display: none;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Contents = styled.div``;
 export const Item = styled.div`
@@ -81,21 +77,17 @@ export const Item = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   @media ${breakPoints.mobile} {
-    padding:  12px;
-    }
-    @media ${breakPoints.tablet} {
-   
-    }
- 
+    padding: 12px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Status = styled.div`
   width: 100px;
   @media ${breakPoints.mobile} {
-     width: auto;
-    
-    }
-    @media ${breakPoints.tablet} {
-   
+    width: auto;
+  }
+  @media ${breakPoints.tablet} {
   }
   span {
     font-size: 1.5rem;
@@ -114,10 +106,8 @@ export const Status = styled.div`
     }
     @media ${breakPoints.mobile} {
       font-size: 18px;
-
     }
     @media ${breakPoints.tablet} {
-   
     }
   }
 `;
@@ -129,11 +119,10 @@ export const ItemText = styled.div`
     color: #2c3131;
     margin-bottom: 5px;
     @media ${breakPoints.mobile} {
-      font-size: 18px;width: 100px;
-
+      font-size: 18px;
+      width: 120px;
     }
     @media ${breakPoints.tablet} {
-   
     }
   }
   .date {
@@ -144,11 +133,8 @@ export const ItemText = styled.div`
       width: 100px;
     }
     @media ${breakPoints.tablet} {
-   
     }
   }
-
-
 `;
 export const ItemAmount = styled.div`
   width: 200px;

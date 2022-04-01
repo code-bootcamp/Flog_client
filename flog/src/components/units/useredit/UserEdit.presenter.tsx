@@ -128,6 +128,7 @@ export default function UserEditUI(props: IUserEditUIProps) {
             <ContainedButton01
               content="저장하기"
               size="large"
+              bigBtn={true}
               onClick={props.onClickSubmit}
             />
           </Edit.SubmitBox>

@@ -41,7 +41,7 @@ export const Button = styled.button`
       if (props.size === "small") return "14px";
     }};
     padding: ${(props: IContainedButton01UIEmotionProps) => {
-      if (props.size === "large") return "10px 18px";
+      if (props.size === "large") return "10px 16px";
       if (props.size === "medium") return "10px 18px";
       if (props.size === "small") return "10px 18px";
     }};
