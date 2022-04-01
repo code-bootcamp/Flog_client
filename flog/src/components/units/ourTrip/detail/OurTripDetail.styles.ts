@@ -2,15 +2,13 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
+  background-color:red;
   height: auto;
 `;
 export const Contents = styled.div`
   width: 100%;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+ 
   margin: 15px 0 100px;
 `;
 

@@ -23,6 +23,12 @@ export const InnerWrap = styled.div`
 
 
 `;
+export const isShow = styled.div`
+  display: ${props => props.isShow ? "block": "none"}
+
+`
+
+
 export const PlanBox = styled.div`
   display: flex;
   position: sticky;
@@ -40,21 +46,42 @@ export const PlanBox = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 `;
 export const Bar = styled.div`
-  width: calc(100% - 30px);
-  max-width: 1200px;
+  padding-left:  39px ;
+  width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #E9E9E9;
 `;
 export const MoveBack = styled.div`
   font-size: 18px;
   color: #58bd97;
+  :hover {
+      cursor: pointer;
+    }
+  img{
+    margin-right: 12px;
+  }
 `;
 export const BtnGroup = styled.div`
   display: flex;
-  button {
-    margin-left: 10px;
+  div {
+
+    padding: 28px 48px;
+    border-right: 1px solid #E9E9E9;
+    :hover {
+      cursor: pointer;
+    }
+   &.share {
+     display: flex;
+     img{
+       margin-right: 12px;
+     }
+   }
+   &.delete {
+     color: #E25C5C;
+   }
   }
 `;
 export const PlanBtnGroup = styled.div`
@@ -75,6 +102,7 @@ export const PlanWrapper = styled.div`
 export const DayWrapper = styled.div`
   padding-top: 10px;
   position: relative;
+  width: 380px;
 
 
 `;
@@ -87,7 +115,7 @@ export const Day = styled.span`
 `
 export const ToggleImg = styled.img`
    top: 18px;
-    right: 135px;
+    left: 68px;
     width: 16px;
     position: absolute;
 

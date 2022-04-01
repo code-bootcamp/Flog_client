@@ -2,7 +2,7 @@ import { useMemo, useRef, useState, ChangeEvent, useEffect } from "react";
 import TripWriteLogEditorUI from "./TripWriteLogEditor.presenter";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import { UPLOAD_FILE,CREATE_BOARD,UPDATE_BOARD } from "./TripWriteLogEditor.queries";
+import { UPLOAD_FILE,UPDATE_BOARD } from "./TripWriteLogEditor.queries";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
@@ -26,32 +26,15 @@ export default function TripWriteLogEditor(props) {
   const quillRef = useRef();
   const router = useRouter();
   const [uploadBoardImagefile] = useMutation(UPLOAD_FILE);
-  const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
   let quillCurrent: any;
   let editor: any;
   let currentFocus: any;
 
   const submitDb = async() => {
-    if(!boardId) {
-      try{
-        const result = await createBoard({
-          variables: {
-            createBoardInput: {
-              day: String(props.index + 1),
-              content: contents
-            },
-            scheduleId:String(router.query.scheduleId)
-          }
-        })
-        console.log(result);
-        setBoardId(result.data?.createBoard.id)
-      }
-      catch(error) {
-        alert(error.message);
-      }
-    }
-    else {
+   
+    
+    
       try{
         const result = await updateBoard({
           variables: {
@@ -66,7 +49,7 @@ export default function TripWriteLogEditor(props) {
       catch(error) {
         alert(error.message);
       }
-    }
+   
     
     
   }

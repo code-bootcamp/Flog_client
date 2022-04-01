@@ -4,13 +4,35 @@ import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
 import TripWriteLogList from "./list/TripWriteLogList.container";
 import OurTripDetail from "../../../units/ourTrip/detail/OurTripDetail.container"
+import { useRouter } from "next/router";
+
+import OutlinedButton02 from "../../../commons/buttons/outlined/02/OutlinedButton02.container";
+
+import OutlinedButton03 from "../../../commons/buttons/outlined/03/OutlinedButton03.container";
+
+import ContainedButton01 from "../../../commons/buttons/contained/01/ContainedButton01.container";
 
 import * as Log from "./TripWriteLog.styles";
 export default function TripWriteLogUI(props) {
+  const router = useRouter();
   return (
     <Log.Container>
       <TripWriteBanner />
-      <TripWriteNavigation />
+     
+      {props.isEdit ?  <TripWriteNavigation />: <Log.Bar>
+        <Log.MoveBack onClick={() => {router.push("/myTrips")}}>
+          <img src="/img/mytrips-write-log1.png" />
+          나의 여행 목록으로
+        </Log.MoveBack>
+
+        {/* prettier-ignore */}
+        <Log.BtnGroup>
+          <div className="share" onClick={props.shareBtn}><img src="/img/mytrips-share-icon.png"/>우리의 여행에 공유하기 </div>
+          <div >수정</div>
+          <div className="delete">삭제</div>
+        </Log.BtnGroup>
+      </Log.Bar>}
+      
       <Log.Contents>
         <Log.InnerWrap>
         <Log.PlanBox>
@@ -38,12 +60,13 @@ export default function TripWriteLogUI(props) {
                 src="/img/mytrips-write-log2.png"
                 onClick={props.toggle(dayIndex)}
               />
-             {props.isShow[dayIndex] && (
-                <TripWriteLogList key={dayIndex} 
+               <Log.isShow isShow={props.isShow[dayIndex]}>
+                 <TripWriteLogList key={dayIndex} 
                 index={dayIndex}
                 isEdit={props.isEdit}
                 saveButtonRef={props.saveButtonRef}
-                />)}  
+                />
+               </Log.isShow>
           </Log.DayWrapper>))}
                   
 
