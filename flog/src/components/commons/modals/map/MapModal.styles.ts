@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   position: fixed;
@@ -21,6 +22,18 @@ export const ModalWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0px;
+    padding: 20px;
+    left: 0px;
+    top: 0px;
+    transform: translate(0, 0);
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Modal = styled.div`
   height: 100%;
@@ -30,6 +43,12 @@ export const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  @media ${breakPoints.mobile} {
+    font-size: 24px;
+    justify-content: start;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Title = styled.div`
   font-weight: 400;
@@ -38,7 +57,11 @@ export const Title = styled.div`
   display: flex;
   color: #2c3131;
   justify-content: space-between;
-  /* margin-bottom: 10px; */
+  @media ${breakPoints.mobile} {
+    font-size: 24px;
+  }
+  @media ${breakPoints.tablet} {
+  }
   img {
     width: 23px;
     :hover {
@@ -57,16 +80,16 @@ export const DoName = styled.span`
   font-weight: 300;
   font-size: 22px;
   color: #a9a9a9;
-  margin-right: 7px;
+  img {
+    margin-left: 7px;
+    margin-right: 5px;
+  }
 `;
 
 export const CityName = styled.span`
   font-weight: 400;
   font-size: 22px;
   color: #626262;
-  img {
-    margin-right: 6px;
-  }
 `;
 
 export const Exit = styled.div`

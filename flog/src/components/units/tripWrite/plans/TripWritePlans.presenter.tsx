@@ -49,8 +49,26 @@ export default function TripWritePlansUI(props) {
                           </Write.TitleText>
                         </Write.Title>
                       </Write.TitleBox>
-                      {props.plansList[index] && (
-                        <TripWritePlansCard content={props.plansList[index]} />
+                      {props.plansList[index] ? (
+                        <TripWritePlansCard
+                          content={props.plansList[index]}
+                          day={index + 1}
+                          date={
+                            props.tripTitleDataArray[0].tripdates
+                              .replace(";", "")
+                              .split("/")[index]
+                          }
+                        />
+                      ) : (
+                        <TripWritePlansCard
+                          day={String(index + 1)}
+                          content={[]}
+                          date={
+                            props.tripTitleDataArray[0].tripdates
+                              .replace(";", "")
+                              .split("/")[index]
+                          }
+                        />
                       )}
                       {provided.placeholder}
                     </Write.Column>

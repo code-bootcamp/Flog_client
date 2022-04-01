@@ -1,13 +1,20 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/Media";
 export const Main = styled.div`
-  height: 480px;
   width: 500px;
+  height: 480px;
   position: relative;
   display: flex;
   border-radius: 15px;
   flex-direction: column;
   background-color: #f1f1f1;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: 340px;
+    height: 400px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Contents = styled.div`
   display: flex;
@@ -16,6 +23,12 @@ export const Contents = styled.div`
   position: absolute;
   top: 10px;
   margin-top: 40px;
+  @media ${breakPoints.mobile} {
+    top: 0px;
+    margin-top: 0px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Text = styled.text`
@@ -52,6 +65,11 @@ export const CityWrapper = styled.div`
   position: absolute;
   opacity: 0;
   margin-top: 40px;
+  @media ${breakPoints.mobile} {
+    /* margin-top: 0px; */
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const BackBtn = styled.div`

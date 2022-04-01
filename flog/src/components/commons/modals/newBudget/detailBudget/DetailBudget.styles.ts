@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Container = styled.div`
   position: fixed;
@@ -21,6 +22,18 @@ export const ModalWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0px;
+    padding: 20px;
+    left: 0px;
+    top: 0px;
+    transform: translate(0, 0);
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Modal = styled.div`
   height: 100%;
@@ -47,16 +60,33 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    height: 100%;
+    margin-bottom: 0px;
+    justify-content: space-between;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Contents = styled.div`
   margin-bottom: 1rem;
+  @media ${breakPoints.mobile} {
+    margin-bottom: 0px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
   text-align: center;
   margin-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    font-size: 24px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Wrap = styled.div`
@@ -64,12 +94,28 @@ export const Wrap = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Label = styled.div`
   font-size: 1.1rem;
   margin-right: 34px;
   color: #626262;
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+    margin-right: 0px;
+    font-weight: 300;
+    margin-bottom: 6px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const CategoryWrap = styled.div`
@@ -77,6 +123,11 @@ export const CategoryWrap = styled.div`
   width: 100%;
   justify-content: space-between;
   margin-bottom: 10px;
+  @media ${breakPoints.mobile} {
+    margin-bottom: 0px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export interface IDetailBudgetEmotionProps {
   isSelect: boolean;
@@ -92,6 +143,13 @@ export const Category = styled.div`
   border-radius: 12px;
   background-color: ${(props: IDetailBudgetEmotionProps) =>
     props.isSelect ? "#F1F1F1" : "none"};
+
+  @media ${breakPoints.mobile} {
+    width: 50px;
+    height: 70px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const CategoryIcon = styled.div`
@@ -106,6 +164,15 @@ export const CategoryIcon = styled.div`
       cursor: pointer;
     }
   }
+  @media ${breakPoints.mobile} {
+    height: 25px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const CategoryLabel = styled.div`
@@ -113,23 +180,19 @@ export const CategoryLabel = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #818181;
-`;
-
-export const Input = styled.input`
-  width: 344px;
-  height: 56px;
-  border: 1px solid #cacaca;
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 1.1rem;
-  line-height: 150%;
-  ::-webkit-outer-spin-button,
-  ::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+  }
+  @media ${breakPoints.tablet} {
   }
 `;
+
 export const TimeInputWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;

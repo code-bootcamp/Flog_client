@@ -4,6 +4,7 @@ export interface IContainedButton01Props {
   onClick?: () => void;
   disabled?: boolean;
   type?: "button" | "submit" | "reset" | undefined;
+  responsive?: boolean;
 }
 
 export interface IContainedButton01UIProps {
@@ -12,10 +13,12 @@ export interface IContainedButton01UIProps {
   onClick?: () => void;
   disabled?: boolean;
   type?: "button" | "submit" | "reset" | undefined;
+  responsive?: boolean;
 }
 
 export interface IContainedButton01UIEmotionProps {
   size: string;
   onClick?: () => void;
   disabled?: boolean;
+  responsive?: boolean;
 }

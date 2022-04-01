@@ -7,6 +7,11 @@ export const ListWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: calc(100%-30px);
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const List = styled.div`
@@ -16,7 +21,7 @@ export const List = styled.div`
   flex-direction: column;
   align-items: center;
   @media ${breakPoints.mobile} {
-    padding-top: 30px;
+    padding: 40px 0px;
   }
   @media ${breakPoints.tablet} {
   }
@@ -26,12 +31,13 @@ export const TripList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
-  grid-gap: 30px;
+  grid-gap: 32px;
+  padding: 80px 0px;
   @media ${breakPoints.mobile} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
+    grid-column-gap: 8px;
+    grid-row-gap: 12px;
+    padding: 40px 0px;
   }
   @media ${breakPoints.tablet} {
   }
@@ -41,9 +47,7 @@ export const Head = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 70px;
   @media ${breakPoints.mobile} {
-    margin-bottom: 40px;
   }
   @media ${breakPoints.tablet} {
   }

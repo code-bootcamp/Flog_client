@@ -21,12 +21,21 @@ export default function TripWriteMoneyUI(props) {
             </Write.ProgressBar>
             <Write.BudgetText>
               <Write.AllAmount>
-                <span className="text1">예산</span>
+                <span className="text1">
+                  예산
+                  {props.viewport <= 767 && (
+                    <Write.EditButton>
+                      <img src="/img/icon-mytrip-write-money-editMobile.svg" />
+                    </Write.EditButton>
+                  )}
+                </span>
                 <span className="text2">
                   900,000원
-                  <Write.EditButton>
-                    <img src="/img/icon-mytrip-write-money-edit.svg" />
-                  </Write.EditButton>
+                  {props.viewport > 767 && (
+                    <Write.EditButton>
+                      <img src="/img/icon-mytrip-write-money-edit.svg" />
+                    </Write.EditButton>
+                  )}
                 </span>
               </Write.AllAmount>
               <Write.Amount>

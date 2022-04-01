@@ -19,6 +19,7 @@ export default function TripWriteMoney() {
   const router = useRouter();
   const client = useApolloClient();
   const [isLoading, setIsLoading] = useState(false);
+  const [viewport, setViewport] = useState(0);
   const [dailyAmount, setDailyAmount] = useState(0);
   const [moneyList, setMoneyList] = useState([]);
   const [clickDate, setClickDate] = useState("");
@@ -31,6 +32,10 @@ export default function TripWriteMoney() {
     "2022.04.02",
   ]);
   const [moneyBooks, setMoneyBooks] = useState([]);
+  useEffect(() => {
+    const viewportWidth = window.visualViewport.width;
+    setViewport(viewportWidth);
+  }, []);
 
   const { data: dataBudget } = useQuery(FETCH_BUDGET, {
     variables: {
@@ -281,6 +286,7 @@ export default function TripWriteMoney() {
       onClickCategory={onClickCategory}
       TRIP_CATEGORY={TRIP_CATEGORY}
       moneyList={moneyList}
+      viewport={viewport}
     />
   );
 }

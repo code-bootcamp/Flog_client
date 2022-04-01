@@ -72,12 +72,12 @@ export default function MyTrip(props) {
                     />
                   </Non.Image>
                 ))}
+                <OutlinedButton01
+                  content="우리의 여행 보러가기"
+                  size="large"
+                  onClick={onClickMoveToOurTrip}
+                />
               </Non.TripList>
-              <OutlinedButton01
-                content="우리의 여행 보러가기"
-                size="large"
-                onClick={onClickMoveToOurTrip}
-              />
             </Non.List>
           </Non.ListWrap>
         )}

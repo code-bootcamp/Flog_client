@@ -45,5 +45,11 @@ export const Button = styled.button`
       if (props.size === "medium") return "10px 18px";
       if (props.size === "small") return "10px 18px";
     }};
+    width: ${(props: IContainedButton01UIEmotionProps) => {
+      if (props.responsive === true) return "100%";
+    }};
+    height: ${(props: IContainedButton01UIEmotionProps) => {
+      if (props.responsive === true) return "60px";
+    }};
   }
 `;

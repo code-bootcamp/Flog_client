@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Container = styled.div`
   position: fixed;
@@ -21,6 +22,18 @@ export const ModalWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0px;
+    padding: 20px;
+    left: 0px;
+    top: 0px;
+    transform: translate(0, 0);
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Modal = styled.div`
   height: 100%;
@@ -37,7 +50,13 @@ export const Wrap = styled.div`
 `;
 
 export const Contents = styled.div`
-  /* margin-bottom: 4rem; */
+  @media ${breakPoints.mobile} {
+    height: 100%;
+    margin-bottom: 0px;
+    justify-content: space-between;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Exit = styled.div`
@@ -58,6 +77,12 @@ export const Title = styled.div`
   line-height: 53px;
   text-align: center;
   margin-bottom: 1rem;
+  @media ${breakPoints.mobile} {
+    font-size: 24px;
+    margin-bottom: 36px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Input = styled.input`
