@@ -62,7 +62,7 @@ export const Form = styled.form`
   align-items: center;
   @media ${breakPoints.mobile} {
     height: 100%;
-    margin-bottom: 00px;
+    margin-bottom: 0px;
     justify-content: space-between;
   }
   @media ${breakPoints.tablet} {
