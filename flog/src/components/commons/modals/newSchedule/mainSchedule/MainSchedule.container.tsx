@@ -41,7 +41,7 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
       currDate.setDate(currDate.getDate() + 1);
     }
     dateList.push(changeDatetimeToString(currDate));
-    return dateList.join(", ");
+    return dateList.join(",");
   };
   const onClickSubmit = async () => {
     try {
