@@ -13,7 +13,7 @@ export default function TripWriteMoneyCardUI(props) {
               ref={provided.innerRef}
               {...provided.draggableProps}
             >
-              <Write.Time>{contents.time}</Write.Time>
+              {/* <Write.Time>{contents.time}</Write.Time> */}
               <Write.Contents>
                 <Write.ContentsLeftBox>
                   <Write.IconBox>

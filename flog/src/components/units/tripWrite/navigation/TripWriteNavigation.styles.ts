@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Navigation = styled.div`
   width: 100%;
@@ -13,6 +14,11 @@ export const NavigationList = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    > div {
+      width: 33.33%;
+    }
+  }
 `;
 
 export const Item = styled.div`
