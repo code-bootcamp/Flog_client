@@ -11,6 +11,7 @@ export interface IOutlinedInput01Props {
   value?: string;
   readOnly?: boolean;
   version?: string;
+  defaultValue?: string;
 }
 export interface IInputProps {
   error?: boolean;

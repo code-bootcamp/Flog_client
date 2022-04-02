@@ -23,7 +23,7 @@ export default function TripWritePlans() {
   });
 
   useEffect(() => {
-    setTripTotalDays(dataSchedule?.fetchSchedule.tripdates.split("/").length);
+    setTripTotalDays(dataSchedule?.fetchSchedule.tripdates.split(";").length);
     setTripTitleData(dataSchedule?.fetchSchedule);
   }, [dataSchedule]);
 

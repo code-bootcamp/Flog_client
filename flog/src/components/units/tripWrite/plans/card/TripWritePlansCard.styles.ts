@@ -18,6 +18,7 @@ export const Card = styled.div`
 export const Contents = styled.div`
   width: calc(100% - 20px);
   padding-right: 10px;
+  cursor: pointer;
 `;
 export const Top = styled.div`
   margin-bottom: 8px;
@@ -58,7 +59,26 @@ export const Memo = styled.span`
 `;
 export const Handle = styled.div`
   width: 20px;
-  height: auto;
+  height: 55px;
+  position: relative;
+  :before {
+    content: "";
+    width: 20px;
+    height: 12px;
+    background: url("/img/icon-mytrip-write-card-upper.svg") no-repeat center;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  :after {
+    content: "";
+    width: 20px;
+    height: 12px;
+    background: url("/img/icon-mytrip-write-card-lower.svg") no-repeat center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 `;
 export const Upper = styled.button`
   background: transparent;

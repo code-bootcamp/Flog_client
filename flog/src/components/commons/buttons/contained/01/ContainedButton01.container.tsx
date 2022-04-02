@@ -10,6 +10,7 @@ export default function ContainedButton01(props: IContainedButton01Props) {
       disabled={props.disabled}
       type={props.type}
       responsive={props.responsive}
+      id={props.id}
     />
   );
 }
