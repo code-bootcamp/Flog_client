@@ -29,5 +29,5 @@ export default function OurTripDetail(props) {
     d(props.selected.index);
   }, [props.selected]);
 
-  return <OurTripDetailUI data={data} index={props.index} moveRef={moveRef} />;
+  return <OurTripDetailUI data={data} index={props.index} moveRef={moveRef}  isMine={props.isMine} />;
 }

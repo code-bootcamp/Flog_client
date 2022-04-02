@@ -95,7 +95,6 @@ export default function TripWriteLogEditor(props) {
     if (!editor) setRefValue();
     editor?.insertText(currentFocus?.index + 1, name, {
       header: 1,
-      background: "#F1F1F1",
       size: "large",
       color: "black",
     });
@@ -110,7 +109,6 @@ export default function TripWriteLogEditor(props) {
 
     editor?.insertText(currentFocus.index, "  " + " ", {
       header: 5,
-      background: "#fff",
       color: "black",
     });
     currentFocus.index += des.length + 6;

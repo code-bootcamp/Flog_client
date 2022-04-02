@@ -15,4 +15,16 @@ export const SHARE = gql`
       id
     }
   }
-  `
+`
+export const FETCH_SCHEDULE = gql`
+
+query fetchSchedule($scheduleId: String!) {
+  fetchSchedule(scheduleId: $scheduleId) {
+    user {
+      email
+      nickName
+    }
+    tripdates
+  }
+}
+`;

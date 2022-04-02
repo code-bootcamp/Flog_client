@@ -1,17 +1,23 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import TripWriteLogUI from "./TripWriteLog.presenter";
-import { SHARE, CREATE_BOARD } from "./TripWriteLog.queries";
+import { SHARE, FETCH_SCHEDULE } from "./TripWriteLog.queries";
 export default function TripWriteLog(props) {
+  const router = useRouter();
   const [isShow, setIsShow] = useState([false, false, false, false]);
+  const { data:userData } = useQuery(FETCH_SCHEDULE,{
+    variables: {scheduleId: String(router.query.scheduleId)}
+  });
 
   const saveButtonRef = [1, 1, 1, 1].map((x) =>
     useRef<HTMLButtonElement>(null)
   );
   const [share] = useMutation(SHARE);
 
-  const router = useRouter();
+  useEffect(() => {
+    console.log(userData)
+  },[userData])
 
   const toggle = (index: any) => () => {
     const temp = new Array(4).fill(false);
@@ -45,6 +51,7 @@ export default function TripWriteLog(props) {
       index={props.index}
       saveButtonRef={saveButtonRef}
       shareBtn={shareBtn}
+      userData={userData}
     />
   );
 }

@@ -11,7 +11,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-
+  z-index: 5;
   align-items: center;
 `;
 export const InnerWrap = styled.div`

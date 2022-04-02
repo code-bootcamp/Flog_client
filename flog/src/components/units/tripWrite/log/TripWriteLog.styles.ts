@@ -6,10 +6,9 @@ export const Container = styled.div`
 `;
 export const Contents = styled.div`
   width: 100%;
-  height: auto;
+  height: 3000px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: 15px 0 100px;
 `;
@@ -19,7 +18,8 @@ export const InnerWrap = styled.div`
   max-width: 1200px;
   display: flex;
   margin-top: 20px;
-  height: 1100px;
+  height: 2000px;
+
 
 
 `;
@@ -31,13 +31,14 @@ export const isShow = styled.div`
 
 export const PlanBox = styled.div`
   display: flex;
-  position: sticky;
-  top: 0;
+  z-index:5;
+  top: 10px;
   left: 0;
+  height:1000px;
   // height 미정
   padding: 24px 20px;
   margin-right: 80px;
-  width: calc(26000% / 1200);
+  /* width: calc(26000% / 1200); */
   border: 1px solid #fff;
   width: 260px;
   flex-direction: column;
@@ -147,14 +148,17 @@ export const DayPlanLabel = styled.div`
 export const moveBtn = styled.button`
   width: 100%;
   margin-bottom: 20px;
-  background: #58bd97;
+  background: ${props => props.isMine? "#fff": "#58bd97"};
   border-radius: 40px;
-  color: #fff;
+  color: ${props => props.isMine? "#58bd97": "#fff"}; 
   height: 40px;
-  border: none;
+ 
+  border: ${props => props.isMine? "1px solid #58bd97 ": "none"}; ;
+
   :hover {
     background: #a1dac5;
     border-color: #a1dac5;
+    color:  ${props => props.isMine? "#fff": ""}; 
   }
 `;
 

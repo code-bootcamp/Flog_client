@@ -21,7 +21,7 @@ export default function TripWriteLogListUI(props) {
           <div>{el.memo}</div>
         </List.DayPlanDetail>
       ))}
-      <List.EditorWrapper index={props.index}>
+      <List.EditorWrapper index={props.index} >
         {props.isEdit ? (
           <TripWriteLogEditor
             index={props.index}
@@ -30,7 +30,7 @@ export default function TripWriteLogListUI(props) {
             saveButtonRef={props.saveButtonRef[props.index]}
           />
         ) : (
-          <OurTripDetail index={props.index} selected={props.selected} />
+          <OurTripDetail index={props.index} selected={props.selected}  isMine={props.isMine} />
         )}
       </List.EditorWrapper>
     </List.Main>
