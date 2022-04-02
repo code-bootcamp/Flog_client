@@ -10,6 +10,7 @@ import TripWritePlansCard from "./card/TripWritePlansCard.container";
 import * as Write from "./TripWritePlans.styles";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { ITripWritePlansUIProps } from "./TripWritePlans.types";
+import Alert from "../../../commons/modals/alert/Alert.container";
 
 export default function TripWritePlansUI(props: ITripWritePlansUIProps) {
   return (
@@ -79,6 +80,13 @@ export default function TripWritePlansUI(props: ITripWritePlansUIProps) {
         </Write.InnerWrap>
       </Write.Contents>
       <TripWriteBottomBar submitDetailSchedule={props.submitDetailSchedule} />
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
+        />
+      )}
     </Write.Container>
   );
 }

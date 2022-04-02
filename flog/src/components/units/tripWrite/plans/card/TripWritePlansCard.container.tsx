@@ -6,7 +6,6 @@ import {
   IMutationCreateDetailScheduleArgs,
   IMutationUpdateDetailScheduleArgs,
 } from "../../../../../commons/types/generated/types";
-import { FETCH_DETAIL_SCHEDULE } from "../TripWritePlans.queries";
 import TripWritePlansCardUI from "./TripWritePlansCard.presenter";
 import {
   CREATE_DETAIL_SCHEDULE,
@@ -20,8 +19,18 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
     useState<SetStateAction<boolean>>(false);
   const [detailScheduleFormEditModal, setDetailScheduleFormEditModal] =
     useState(false);
-  const [content, setContent] = useState([]);
   const [editContent, setEditContent] = useState([]);
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
+
+  const onClickExitAlertModal = () => {
+    setAlertModal(false);
+  };
+
+  const onClickSubmitAlertModal = () => {
+    setAlertModal(false);
+  };
+
   const [createDetailSchedule] = useMutation<
     Pick<IMutation, "createDetailSchedule">,
     IMutationCreateDetailScheduleArgs
@@ -30,10 +39,6 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
     Pick<IMutation, "updateDetailSchedule">,
     IMutationUpdateDetailScheduleArgs
   >(UPDATE_DETAIL_SCHEDULE);
-
-  useEffect(() => {
-    setContent(props.data);
-  }, []);
 
   const onClickDetailScheduleFormModal = () => {
     setDetailScheduleFormModal(true);
@@ -48,12 +53,11 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
   };
 
   const onClickSubmitDetailScheduleFormModal = async (data: any) => {
-    if (
-      !data?.place ||
-      !data?.startHour.toString() ||
-      !data?.takenHour.toString()
-    ) {
-      alert("안 채워진 내용 있음 !!");
+    if (!data?.place || !data?.startHour || !data?.takenHour) {
+      setModalContents(
+        "장소, 시작시간, 소요시간이 모두 입력되었는지 확인해주세요."
+      );
+      setAlertModal(true);
       return;
     }
 
@@ -77,10 +81,12 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
           scheduleId: router.query.scheduleId,
         },
       });
-      alert("등록 성공~");
+      setModalContents("일정이 등록되었습니다.");
+      setAlertModal(true);
       router.reload();
     } catch (error) {
-      console.log(error);
+      setModalContents(error.message);
+      setAlertModal(true);
     }
     setDetailScheduleFormModal(false);
   };
@@ -94,17 +100,16 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
     data: any,
     indexNumber: number
   ) => {
-    if (
-      !data?.place ||
-      !data?.startHour.toString() ||
-      !data?.takenHour.toString()
-    ) {
-      alert("안 채워진 내용 있음 !!");
+    if (!data?.place || !data?.startHour || !data?.takenHour) {
+      setModalContents(
+        "장소, 시작시간, 소요시간이 모두 입력되었는지 확인해주세요."
+      );
+      setAlertModal(true);
       return;
     }
 
     try {
-      const result = await updateDetailSchedule({
+      await updateDetailSchedule({
         variables: {
           updateDetailScheduleInput: {
             day: editContent.day,
@@ -123,10 +128,12 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
           detailScheduleId: editContent.id,
         },
       });
-      alert("수정 성공~");
+      setModalContents("일정이 수정되었습니다.");
+      setAlertModal(true);
       router.reload();
     } catch (error) {
-      console.log(error);
+      setModalContents(error.message);
+      setAlertModal(true);
     }
     setDetailScheduleFormEditModal(false);
   };
@@ -149,6 +156,10 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
         onClickUpdateDetailScheduleFormModal
       }
       onClickCardContents={onClickCardContents}
+      alertModal={alertModal}
+      modalContents={modalContents}
+      onClickExitAlertModal={onClickExitAlertModal}
+      onClickSubmitAlertModal={onClickSubmitAlertModal}
     />
   );
 }
