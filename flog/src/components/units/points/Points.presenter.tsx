@@ -21,7 +21,7 @@ export default function PointsUI(props: IPointsUIProps) {
           </Points.TitleDropdown>
         </Points.Title>
         <Points.Contents>
-          {SAMPLE_DATA_POINTS.map((el, index) => (
+          { props.data?.fetchPointHistory.map((el, index) => (
             <Points.Item key={index}>
               <Points.Status>
                 {el.status === "CHARGE" && <span className="charge">충전</span>}
@@ -38,11 +38,11 @@ export default function PointsUI(props: IPointsUIProps) {
                   {el.status === "EARN" && "여행 족보 후원"}
                   {el.status === "CANCEL" && "결제 취소"}
                 </div>
-                <div className="date">{el.date}</div>
+                <div className="date">{el.createdAt.slice(0,10)}</div>
               </Points.ItemText>
               <Points.ItemAmount>
                 <div className="changed">{el.changed} P</div>
-                <div className="amount">{el.pointId.amount} P</div>
+                {/* <div className="amount">{el.pointId.amount} P</div> */}
               </Points.ItemAmount>
             </Points.Item>
           ))}

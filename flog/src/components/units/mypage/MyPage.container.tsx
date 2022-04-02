@@ -44,7 +44,7 @@ export default function MyPage() {
   const onClickSubmitPointModal = () => {
     setPointModal(false);
     const IMP = window.IMP;
-    IMP.init("imp49910675");
+    IMP.init("imp71807976");
     IMP.request_pay(
       {
         // param
