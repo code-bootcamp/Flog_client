@@ -39,13 +39,14 @@ export default function TripWriteLogEditor(props) {
     const result = await createBoard({
       variables: {
         createBoardInput: {
-          day: props.index,
+          day: String(props.index + 1),
           content: contents,
         },
         scheduleId: String(router.query.scheduleId),
       },
     });
-    console.log(`create${result}`);
+    setBoardId(result.data?.createBoard?.id);
+    
   };
   const update = async () => {
     const result = await updateBoard({
@@ -63,9 +64,15 @@ export default function TripWriteLogEditor(props) {
     console.log(props.index);
     console.log(contents);
     if (!contents) return;
-    if (!boardId) create();
-    else update();
-  };
+      try {
+        boardId? update() : create();
+        alert("저장이 완료 되었습니다")
+      }
+      catch (error) {
+        alert(error.message);
+      }
+   
+}
   const setRefValue = () => {
     quillCurrent = quillRef.current;
     editor = quillCurrent?.getEditor();
@@ -78,8 +85,6 @@ export default function TripWriteLogEditor(props) {
   useEffect(() => {
     setRefValue();
     if (props.selected.title !== "") {
-      console.log("d");
-      console.log(props.selected.title);
       addEl(props.selected.title, props.selected.des);
     }
   }, [props.selected]);

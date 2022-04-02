@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Main = styled.div`
+  width:860px;
   margin-top: 12px;
-
   h1 {
     margin-bottom: 20px;
   }

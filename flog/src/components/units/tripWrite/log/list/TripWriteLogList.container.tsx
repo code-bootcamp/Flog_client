@@ -7,7 +7,7 @@ import { FETCH_DETAIL_SCHEDULE } from "./TripWriteLogList.queries";
 export default function TripWriteLogList(props) {
   const router = useRouter();
 
-  const [selected, setSelected] = useState({ title: "", des: "" });
+  const [selected, setSelected] = useState({ title: "", des: "", index: -1 });
   const { data } = useQuery(FETCH_DETAIL_SCHEDULE, {
     variables: {
       scheduleId: String(router.query.scheduleId),

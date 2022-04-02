@@ -6,8 +6,7 @@ export default function TripWriteBottomBar(props) {
   const { moveToPage } = useMoveToPage();
   const router = useRouter();
   const onClickSubmit = () => {
-    alert("저장 클릭!");
-    props.saveButtonRef.current?.click();
+    props.saveButtonRef.forEach((x: any) => x.current?.click());
   };
 
   return (
