@@ -14,6 +14,7 @@ export default function OutlinedInput01(props: IOutlinedInput01Props) {
       value={props.value}
       readOnly={props.readOnly}
       version={props.version}
+      defaultValue={props.defaultValue}
     />
   );
 }

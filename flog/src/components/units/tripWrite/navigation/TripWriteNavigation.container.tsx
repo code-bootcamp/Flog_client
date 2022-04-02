@@ -7,9 +7,21 @@ export default function TripWriteNavigation() {
   const router = useRouter();
 
   const TRIP_WRITE_NAVIGATION = [
-    { title: "일정등록", url: `/myTrips/${router.query.scheduleId}/plans` },
-    { title: "예산/지출", url: `/myTrips/${router.query.scheduleId}/money` },
-    { title: "여행로그", url: `/myTrips/${router.query.scheduleId}/log` },
+    {
+      title: "일정등록",
+      url: `/myTrips/${router.query.scheduleId}/plans`,
+      pageName: "plans",
+    },
+    {
+      title: "예산/지출",
+      url: `/myTrips/${router.query.scheduleId}/money`,
+      pageName: "money",
+    },
+    {
+      title: "여행로그",
+      url: `/myTrips/${router.query.scheduleId}/log`,
+      pageName: "log",
+    },
   ];
 
   return (

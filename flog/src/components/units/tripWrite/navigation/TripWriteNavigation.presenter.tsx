@@ -9,7 +9,7 @@ export default function TripWriteNavigationUI(
       <Write.NavigationList>
         {props.TRIP_WRITE_NAVIGATION.map((el) => (
           <div key={el.title}>
-            {el.url === props.router.asPath ? (
+            {props.router.asPath.includes(el.pageName) ? (
               <Write.Item key={el.title} className="onNow">
                 <button onClick={props.moveToPage(el.url)}>{el.title}</button>
               </Write.Item>

@@ -3,6 +3,8 @@ import TripWritePlansAdd from "../add/TripWritePlansAdd.container";
 import * as Write from "./TripWritePlansCard.styles";
 import DetailScheduleForm from "./../../../../commons/modals/formDetailSchedule/DetailScheduleForm.container";
 import { ITripWritePlansCardUIProps } from "./TripWritePlansCard.types";
+import DetailScheduleFormEdit from "../../../../commons/modals/formDetailScheduleEdit/DetailScheduleFormEdit.container";
+import { el } from "date-fns/locale";
 
 export default function TripWritePlansCardUI(
   props: ITripWritePlansCardUIProps
@@ -18,7 +20,7 @@ export default function TripWritePlansCardUI(
           >
             {(provided, snapshot) => (
               <Write.Card ref={provided.innerRef} {...provided.draggableProps}>
-                <Write.Contents>
+                <Write.Contents onClick={props.onClickCardContents(el)}>
                   <Write.Top>
                     <Write.StartTime>{el.startTime}</Write.StartTime>
                     <Write.Time>{el.useTime} 소요</Write.Time>
@@ -30,8 +32,9 @@ export default function TripWritePlansCardUI(
                     <Write.Memo>{el.memo}</Write.Memo>
                   </Write.Bottom>
                 </Write.Contents>
+
                 <Write.Handle {...provided.dragHandleProps}>
-                  <Write.Upper {...provided.dragHandleProps}>
+                  {/* <Write.Upper {...provided.dragHandleProps}>
                     <img
                       src="/img/icon-mytrip-write-card-upper.svg"
                       alt="위 화살표 아이콘"
@@ -42,7 +45,7 @@ export default function TripWritePlansCardUI(
                       src="/img/icon-mytrip-write-card-lower.svg"
                       alt="아래 화살표 아이콘"
                     />
-                  </Write.Lower>
+                  </Write.Lower> */}
                 </Write.Handle>
               </Write.Card>
             )}
@@ -53,6 +56,13 @@ export default function TripWritePlansCardUI(
         <DetailScheduleForm
           onClickExit={props.onClickExitDetailScheduleFormModal}
           onClickSubmit={props.onClickSubmitDetailScheduleFormModal}
+        />
+      )}
+      {props.detailScheduleFormEditModal && (
+        <DetailScheduleFormEdit
+          editContent={props.editContent}
+          onClickExit={props.onClickExitDetailScheduleFormEditModal}
+          onClickSubmit={props.onClickUpdateDetailScheduleFormModal}
         />
       )}
     </Write.PlansBox>

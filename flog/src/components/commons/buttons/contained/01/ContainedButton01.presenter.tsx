@@ -10,6 +10,7 @@ export default function ContainedButton01UI(props: IContainedButton01UIProps) {
       onClick={props.onClick}
       type={props.type}
       responsive={props.responsive}
+      id={props.id}
     >
       {props.content}
     </Contained.Button>

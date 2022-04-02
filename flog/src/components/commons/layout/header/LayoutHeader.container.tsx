@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
 import { useMoveToPage } from "../../hooks/useMoveToPage/index";
 import { GlobalContext } from "../../../../../pages/_app";
@@ -32,21 +32,20 @@ export default function LayoutHeader() {
     }
   };
 
-  // useEffect(() => {
-  //   const onClickOutside = (event: MouseEvent) => {
-  //     if (
-  //       hbgMenuRef.current &&
-
-  //       !hbgMenuRef.current.contains(event.target as Node)
-  //     ) {
-  //       setIsActive((prev) => !prev);
-  //     }
-  //   };
-  //   document.addEventListener("mousedown", onClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", onClickOutside);
-  //   };
-  // }, [hbgMenuRef]);
+  useEffect(() => {
+    const onClickOutside = (event: MouseEvent) => {
+      if (
+        hbgMenuRef.current &&
+        !hbgMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsActive((prev) => !prev);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside);
+    };
+  }, [hbgMenuRef]);
 
   const onClickExitAlertModal = () => {
     setAlertModal(false);
