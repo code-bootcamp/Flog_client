@@ -108,7 +108,7 @@ export default function DetailBudgetForm(props: IDetailBudgetFormProps) {
       isSelect={props.isSelect}
       register={register}
       handleSubmit={handleSubmit}
-      date={props.date}
+      // date={props.date}
     />
   );
 }

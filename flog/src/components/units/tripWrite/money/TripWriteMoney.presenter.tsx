@@ -1,6 +1,7 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { insertCommaPrice } from "../../../../commons/utils/insertComma";
 import DetailBudgetForm from "../../../commons/modals/formBudget/DetailBudgetForm.container";
+import TotalBudget from "../../../commons/modals/newBudget/totalBudget/TotalBudget.container";
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
@@ -16,7 +17,9 @@ export default function TripWriteMoneyUI(props) {
       <Write.Contents>
         <Write.InnerWrap>
           <Write.BudgetBox>
-            <Write.ProgressBar progress={(720000 / 900000) * 100}>
+            <Write.ProgressBar
+              progress={(props.sumAmount / props.totalAmount) * 100}
+            >
               <div className="progress"></div>
             </Write.ProgressBar>
             <Write.BudgetText>
@@ -24,15 +27,15 @@ export default function TripWriteMoneyUI(props) {
                 <span className="text1">
                   예산
                   {props.viewport <= 767 && (
-                    <Write.EditButton>
+                    <Write.EditButton onClick={props.onClickTotalBudgetModal}>
                       <img src="/img/icon-mytrip-write-money-editMobile.svg" />
                     </Write.EditButton>
                   )}
                 </span>
                 <span className="text2">
-                  900,000원
+                  {insertCommaPrice(props.totalAmount)}원
                   {props.viewport > 767 && (
-                    <Write.EditButton>
+                    <Write.EditButton onClick={props.onClickTotalBudgetModal}>
                       <img src="/img/icon-mytrip-write-money-edit.svg" />
                     </Write.EditButton>
                   )}
@@ -40,7 +43,9 @@ export default function TripWriteMoneyUI(props) {
               </Write.AllAmount>
               <Write.Amount>
                 <span className="text1">총 지출</span>
-                <span className="text2">720,000원</span>
+                <span className="text2">
+                  {insertCommaPrice(props.sumAmount)}원
+                </span>
               </Write.Amount>
             </Write.BudgetText>
           </Write.BudgetBox>
@@ -93,6 +98,14 @@ export default function TripWriteMoneyUI(props) {
           onClickCategory={props.onClickCategory}
           TRIP_CATEGORY={props.TRIP_CATEGORY}
           isSelect={props.isSelect}
+        />
+      )}
+      {props.totalBudgetModal && (
+        <TotalBudget
+          onClickExit={props.onClickExitTotalBudgetModal}
+          onClickSubmit={props.onClickSubmitTotalBudgetModal}
+          onChangeTotalBudget={props.onChangeTotalBudget}
+          budgetSelect={props.budgetSelect}
         />
       )}
     </Write.Container>
