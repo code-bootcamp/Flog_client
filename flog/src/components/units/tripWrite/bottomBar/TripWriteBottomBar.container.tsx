@@ -8,12 +8,29 @@ export default function TripWriteBottomBar(props) {
   const onClickSubmit = () => {
     props.saveButtonRef.forEach((x: any) => x.current?.click());
   };
+  const onClickNextPlans = () => {
+    props.submitDetailSchedule();
+    // router.push(`/myTrips/${router.query.scheduleId}/money`);
+  };
+  const onClickBackMoney = () => {
+    router.push(`/myTrips/${router.query.scheduleId}/plans`);
+  };
+  const onClickNextMoney = () => {
+    router.push(`/myTrips/${router.query.scheduleId}/log`);
+  };
+  const onClickBackLog = () => {
+    router.push(`/myTrips/${router.query.scheduleId}/money`);
+  };
 
   return (
     <TripWriteBottomBarUI
       router={router}
       onClickSubmit={onClickSubmit}
       moveToPage={moveToPage}
+      onClickNextPlans={onClickNextPlans}
+      onClickBackMoney={onClickBackMoney}
+      onClickNextMoney={onClickNextMoney}
+      onClickBackLog={onClickBackLog}
     />
   );
 }

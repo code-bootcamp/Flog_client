@@ -19,9 +19,7 @@ export default function TripWriteBottomBarUI(
             <ContainedButton01
               content="다음"
               size="small"
-              onClick={props.moveToPage(
-                `/myTrips/${props.router.query.scheduleId}/money`
-              )}
+              onClick={props.onClickNextPlans}
             />
           )}
           {props.router.asPath.includes("money") && (
@@ -29,16 +27,12 @@ export default function TripWriteBottomBarUI(
               <OutlinedButton01
                 content="이전"
                 size="small"
-                onClick={props.moveToPage(
-                  `/myTrips/${props.router.query.scheduleId}/plans`
-                )}
+                onClick={props.onClickBackMoney}
               />
               <ContainedButton01
                 content="다음"
                 size="small"
-                onClick={props.moveToPage(
-                  `/myTrips/${props.router.query.scheduleId}/log`
-                )}
+                onClick={props.onClickNextMoney}
               />
             </>
           )}
@@ -47,9 +41,7 @@ export default function TripWriteBottomBarUI(
               <OutlinedButton01
                 content="이전"
                 size="small"
-                onClick={props.moveToPage(
-                  `/myTrips/${props.router.query.scheduleId}/money`
-                )}
+                onClick={props.onClickBackLog}
               />
               <ContainedButton01
                 content="저장하기"

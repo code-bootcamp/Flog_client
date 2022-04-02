@@ -124,36 +124,7 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
         },
       });
       alert("수정 성공~");
-      // router.reload();
-      // const editContentCard = () => {
-      //   const temp = [...content];
-      //   const editCardIndex = temp
-      //     .map((el, i) => {
-      //       return { id: el.id, index: i };
-      //     })
-      //     .filter((el) => el.id === editContent.id)[0].index;
-
-      //   temp[editCardIndex] = {
-      //     __typename: "DetailSchedule",
-      //     date: result.data.updateDetailSchedule.date,
-      //     day: result.data.updateDetailSchedule.day,
-      //     id: result.data.updateDetailSchedule.id,
-      //     startTime: `${data.startHour.toString().padStart(2, "0")}:${
-      //       data.startMinutes
-      //         ? data.startMinutes.toString().padStart(2, "0")
-      //         : "00"
-      //     }`,
-      //     useTime: `${data.takenHour && data.takenHour.toString() + "시간"}${
-      //       data.takenMinutes ? " " + data.takenMinutes.toString() + "분" : ""
-      //     }`,
-      //     place: data.place.toString(),
-      //     memo: data.memo.toString() || "",
-      //   };
-
-      //   console.log("temp is", temp);
-      //   setContent(temp);
-      // };
-      // editContentCard();
+      router.reload();
     } catch (error) {
       console.log(error);
     }
