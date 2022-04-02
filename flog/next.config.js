@@ -8,6 +8,14 @@ const nextConfig = {
   },
   trailingSlash: true,
   reactStrictMode: true,
+  generateBuildId: () => "flog",
+  exportPathMap: () => ({
+    "/signUp": { page: "/signUp" },
+    "/login": { page: "/login" },
+    "/main": { page: "/main" },
+    "/404": { page: "/404" },
+  }),
+
   async redirects() {
     return [
       {
