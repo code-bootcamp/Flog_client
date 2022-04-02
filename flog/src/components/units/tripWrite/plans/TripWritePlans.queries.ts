@@ -39,3 +39,26 @@ export const FETCH_SCHEDULE = gql`
     }
   }
 `;
+
+export const DELETE_DETAIL_SCHEDULE = gql`
+  mutation deleteDetailSchedule($detailScheduleId: String!) {
+    deleteDetailSchedule(detailScheduleId: $detailScheduleId)
+  }
+`;
+
+export const CREATE_DETAIL_SCHEDULE = gql`
+  mutation createDetailSchedule(
+    $createDetailScheduleInput: CreateDetailScheduleInput!
+    $scheduleId: String!
+  ) {
+    createDetailSchedule(
+      createDetailScheduleInput: $createDetailScheduleInput
+      scheduleId: $scheduleId
+    ) {
+      id
+      day
+      date
+      place
+    }
+  }
+`;

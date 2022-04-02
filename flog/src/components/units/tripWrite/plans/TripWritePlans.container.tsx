@@ -1,8 +1,10 @@
-import { useApolloClient, useQuery } from "@apollo/client";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import TripWritePlansUI from "./TripWritePlans.presenter";
 import {
+  CREATE_DETAIL_SCHEDULE,
+  DELETE_DETAIL_SCHEDULE,
   FETCH_DETAIL_SCHEDULE,
   FETCH_SCHEDULE,
 } from "./TripWritePlans.queries";
@@ -15,12 +17,16 @@ export default function TripWritePlans() {
   const [tripTotalDays, setTripTotalDays] = useState(0);
   const [tripTitleData, setTripTitleData] = useState({});
   const [tripTitleDataArray, setTripTitleDataArray] = useState([]);
+  const [originList, setOriginList] = useState([[]]);
   const [plansList, setPlansList] = useState([[]]);
+  const [endDropIndex, setEndDropIndex] = useState("");
   const { data: dataSchedule } = useQuery(FETCH_SCHEDULE, {
     variables: {
       scheduleId: router.query.scheduleId,
     },
   });
+  const [deleteDetailSchedule] = useMutation(DELETE_DETAIL_SCHEDULE);
+  const [createDetailSchedule] = useMutation(CREATE_DETAIL_SCHEDULE);
 
   useEffect(() => {
     setTripTotalDays(dataSchedule?.fetchSchedule.tripdates.split(";").length);
@@ -50,6 +56,7 @@ export default function TripWritePlans() {
         return result.data?.fetchDetailSchedule;
       })
     );
+    setOriginList(TotalResult);
     setPlansList(TotalResult);
   };
   useEffect(() => {
@@ -73,6 +80,7 @@ export default function TripWritePlans() {
     const endDropIndex = result.destination.droppableId;
     const startDragIndex = result.source.index;
     const endDragIndex = result.destination.index;
+    setEndDropIndex(endDropIndex);
 
     if (startDropIndex === endDropIndex) {
       const currentPlans = currentPlansList[Number(startDropIndex)];
@@ -159,8 +167,115 @@ export default function TripWritePlans() {
       tempList[Number(endDropIndex)] = newPlan;
       setPlansList(tempList);
     }
+  };
 
-    console.log(plansList);
+  const submitDetailSchedule = () => {
+    alert("test alert");
+    const currentList = [...plansList];
+    const startList = [...originList];
+    const startIds = [[], [], [], []];
+    const currentIds = [[], [], [], []];
+    const targetIds = [];
+
+    // 두 배열의 id값만 뽑아서 push
+    const makeIdsList = () => {
+      startList.forEach((startEl, startIndex) => {
+        startEl.forEach((startEl2, startIndex2) => {
+          startIds[startIndex].push(startEl2.id);
+        });
+      });
+      currentList.forEach((currentEl, currentIndex) => {
+        currentEl.forEach((currenEl2, curerntIndex2) => {
+          currentIds[currentIndex].push(
+            currentList[currentIndex][curerntIndex2]?.id
+          );
+        });
+      });
+    };
+    makeIdsList();
+
+    // 두 배열을 비교해서 current에 없는 객체 제거
+    const deleteMovedItem = () => {
+      currentIds.forEach((el, index) => {
+        el.forEach((el2, index2) => {
+          startIds.forEach(async (startEl, startIndex) => {
+            if (index === startIndex) {
+              if (!startEl.includes(el2) && el2 !== undefined) {
+                try {
+                  await deleteDetailSchedule({
+                    variables: {
+                      detailScheduleId: el2,
+                    },
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
+              }
+            }
+          });
+        });
+      });
+    };
+    deleteMovedItem();
+
+    // 두 배열을 비교해서 current에 있지만 start에는 없는 객체 제거
+    const createMovedItem = () => {
+      console.log("startIds is", startIds);
+      console.log("currentIds is", currentIds);
+      startIds.forEach((el, index) => {
+        el.forEach((el2, index2) => {
+          currentIds.forEach((currentEl, currentIndex) => {
+            if (index === currentIndex) {
+              if (!currentEl.includes(el2) && el2 !== undefined) {
+                targetIds.push({
+                  day: String(Number(endDropIndex) + 1),
+                  id: el2,
+                });
+              }
+            }
+          });
+        });
+      });
+
+      const creatMovedCard = () => {
+        console.log("creaMovedCard 함수 안에서 보는 targetIds is", targetIds);
+        const targetData = [];
+
+        currentList.forEach((el, index) => {
+          el.forEach((el2, index2) => {
+            targetIds.forEach((targetEl, targetIndex) => {
+              if (targetEl.id.includes(el2.id)) {
+                targetData.push(el2);
+              }
+            });
+          });
+        });
+
+        targetData.forEach(async (el, index) => {
+          try {
+            await createDetailSchedule({
+              variables: {
+                createDetailScheduleInput: {
+                  day: targetIds[index].day,
+                  date: dataSchedule?.fetchSchedule.tripdates.split(";")[
+                    Number(targetIds[index].day) - 1
+                  ],
+                  startTime: el.startTime,
+                  useTime: el.useTime,
+                  place: el.place,
+                  memo: el.memo,
+                },
+                scheduleId: router.query.scheduleId,
+              },
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      };
+      creatMovedCard();
+    };
+    createMovedItem();
   };
 
   return (
@@ -170,6 +285,7 @@ export default function TripWritePlans() {
       onDragEndReorder={onDragEndReorder}
       isLoading={isLoading}
       plansList={plansList}
+      submitDetailSchedule={submitDetailSchedule}
     />
   );
 }

@@ -28,16 +28,16 @@ export default function Layout(props: ILayoutProps) {
 
   const NONE_FOOTER_PATHS = [
     "/login",
-    `/myTrips/${router.query.scheduleId}/plans`,
-    `/myTrips/${router.query.scheduleId}/money`,
-    `/myTrips/${router.query.scheduleId}/log`,
+    `/myTrips/[scheduleId]/plans`,
+    `/myTrips/[scheduleId]/money`,
+    `/myTrips/[scheduleId]/log`,
   ];
 
   return (
     <Container>
       <LayoutHeader />
       <Body>{props.children}</Body>
-      {!NONE_FOOTER_PATHS.includes(router.asPath) && (
+      {!NONE_FOOTER_PATHS.includes(router.pathname) && (
         <LayoutFooter viewport={viewport} />
       )}
       {viewport <= 767 && <LayoutMobileNavigation />}

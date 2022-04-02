@@ -78,7 +78,7 @@ export default function TripWritePlansUI(props: ITripWritePlansUIProps) {
           )}
         </Write.InnerWrap>
       </Write.Contents>
-      <TripWriteBottomBar />
+      <TripWriteBottomBar submitDetailSchedule={props.submitDetailSchedule} />
     </Write.Container>
   );
 }
