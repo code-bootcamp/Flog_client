@@ -2,13 +2,14 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  background-color:red;
+  position: absolute;
+  top: -190px;
+  padding-top: 30px;
   height: auto;
 `;
 export const Contents = styled.div`
-  width: 100%;
+  padding: 0 0 33px 10px;
   height: auto;
- 
   margin: 15px 0 100px;
 `;
 
@@ -18,6 +19,52 @@ export const InnerWrap = styled.div`
   display: flex;
   margin-top: 20px;
   justify-content: space-between;
+`;
+export const Day = styled.div`
+  margin: 0 0 10px 20px;
+  display: flex;
+  font-size: 24px;
+  font-weight: 500;
+  div {
+    margin-right: 10px;
+  }
+`;
+export const Line = styled.div`
+  height: 500px;
+`;
+
+export const DayContents = styled.div`
+  font-size: 16px;
+  border-left: 2px solid #58bd97;
+  position: relative;
+ 
+  .ql-size-large {
+    font-size: 24px;
+    background-color: #fff !important;
+    display: inline-block;
+    margin: 43px 10px 26px 50px !important;
+    :before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #58bd97;
+      position: absolute;
+      left: -11px;
+      margin-right: 60px;
+    }
+  }
+  img {
+    width: 300px;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    
+  }
+  .ql-size-small {
+    font-size: 18px;
+    color: #818181;
+  }
 `;
 export const Bar = styled.div`
   width: calc(100% - 30px);

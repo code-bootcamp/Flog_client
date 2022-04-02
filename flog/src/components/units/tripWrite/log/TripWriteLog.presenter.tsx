@@ -3,7 +3,6 @@ import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
 import TripWriteLogList from "./list/TripWriteLogList.container";
-import OurTripDetail from "../../../units/ourTrip/detail/OurTripDetail.container";
 import { useRouter } from "next/router";
 
 import * as Log from "./TripWriteLog.styles";
@@ -74,7 +73,6 @@ export default function TripWriteLogUI(props) {
               ))}
             </Log.PlanWrapper>
           </Log.PlanBox>
-          {props.isEdit || <OurTripDetail />}
         </Log.InnerWrap>
       </Log.Contents>
 

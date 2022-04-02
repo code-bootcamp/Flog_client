@@ -116,6 +116,8 @@ export const EditWrap = styled.div`
     position: relative;
     top: 21px;
     width: 1.5rem;
+    z-index: 10;
+ 
     :hover {
       cursor: pointer;
     }

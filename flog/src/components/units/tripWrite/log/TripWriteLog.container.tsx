@@ -6,7 +6,9 @@ import { SHARE, CREATE_BOARD } from "./TripWriteLog.queries";
 export default function TripWriteLog(props) {
   const [isShow, setIsShow] = useState([false, false, false, false]);
 
-  const saveButtonRef = useRef<HTMLButtonElement>(null);
+  const saveButtonRef = [1, 1, 1, 1].map((x) =>
+    useRef<HTMLButtonElement>(null)
+  );
   const [share] = useMutation(SHARE);
 
   const router = useRouter();
