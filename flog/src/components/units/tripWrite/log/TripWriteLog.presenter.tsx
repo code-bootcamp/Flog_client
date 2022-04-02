@@ -26,32 +26,34 @@ export default function TripWriteLogUI(props) {
           </Log.MoveBack>
 
           {/* prettier-ignore */}
-          <Log.BtnGroup>
-          <div className="share" onClick={props.shareBtn}><img src="/img/mytrips-share-icon.png"/>우리의 여행에 공유하기 </div>
-          <div >수정</div>
-          <div className="delete">삭제</div>
-        </Log.BtnGroup>
+          {props.isMine && <Log.BtnGroup>
+            <div className="share" onClick={props.shareBtn}><img src="/img/mytrips-share-icon.png"/>우리의 여행에 공유하기 </div>
+            <div >수정</div>
+            <div className="delete">삭제</div>
+          </Log.BtnGroup> }
+          
         </Log.Bar>
       )}
 
       <Log.Contents>
         <Log.InnerWrap>
           <Log.PlanBox>
-            {props.isMine || props.isEdit || (
-              <Log.UserInfo>
+            { props.isEdit || (
+              <>
+              <Log.UserInfo  >
                 <img src="/img/ourtrips-detail-usericon.png" />
-                <Log.Name>사용자 이름</Log.Name>
-                <Log.Email>test@gmail.com</Log.Email>
+                <Log.Name>{props.userData?.fetchSchedule?.user.nickName}</Log.Name>
+                <Log.Email>{props.userData?.fetchSchedule?.user.email}</Log.Email>
                 {/* prettier-ignore */}
-                <ContainedButton03 content="포인트 후원하기" size="small"onClick={() => { "/";}}
-            />
-              </Log.UserInfo>
-            )}
-            {props.isEdit || (
+                {props.isMine || <ContainedButton03 content="포인트 후원하기" size="small"onClick={() => { "/";}}/> }
+            </Log.UserInfo>
+            
               <Log.PlanBtnGroup>
-                <Log.moveBtn>전체 일정</Log.moveBtn>
-                <Log.moveBtn>전체 예산</Log.moveBtn>
+                <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
+                <Log.moveBtn isMine={props.isMine}>전체 예산</Log.moveBtn>
               </Log.PlanBtnGroup>
+              </>
+              
             )}
             <Log.PlanWrapper>
               {[1, 1, 1, 1].map((_, dayIndex) => (
@@ -66,6 +68,7 @@ export default function TripWriteLogUI(props) {
                       key={dayIndex}
                       index={dayIndex}
                       isEdit={props.isEdit}
+                      isMine={props.isMine}
                       saveButtonRef={props.saveButtonRef}
                     />
                   </Log.isShow>

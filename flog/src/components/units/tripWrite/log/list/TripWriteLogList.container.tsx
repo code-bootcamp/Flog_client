@@ -18,13 +18,12 @@ export default function TripWriteLogList(props) {
   useEffect(() => {
     console.log(data);
   }, [data]);
-  const isMine = false;
 
   return (
     <TripWriteLogListUI
       data={data}
       isEdit={props.isEdit}
-      isMine={isMine}
+      isMine={props.isMine}
       index={props.index}
       setSelected={setSelected}
       selected={selected}

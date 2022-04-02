@@ -2,8 +2,10 @@ import Dropdown01 from "../../../commons/dropdowns/01/Dropdown01.container";
 import * as List from "./OurTripList.styles";
 import { v4 as uuid4 } from "uuid";
 import OutlinedButton01 from "../../../commons/buttons/outlined/01/OutlinedButton01.container";
+import { useRouter } from "next/router";
 
 export default function OurTripListUI(props) {
+  const router = useRouter();
   return (
     <List.ListWrap>
       <List.List>
@@ -17,6 +19,7 @@ export default function OurTripListUI(props) {
               <List.Wrapper>
                 <List.Image>
                   <img
+                  onClick={() =>router.push(`/ourTrips/${el.id}`)}
                     src={
                       el.url
                         ? `https://storage.cloud.google.com/${el.url}`
