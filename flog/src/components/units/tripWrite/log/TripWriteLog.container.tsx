@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import TripWriteLogUI from "./TripWriteLog.presenter";
@@ -20,11 +20,12 @@ export default function TripWriteLog(props) {
     variables: { scheduleId: String(router.query.scheduleId) },
   });
   const { data: myData } = useQuery(FETCH_USER);
+
   const saveButtonRef = [1, 1, 1, 1].map((el) =>
+
     useRef<HTMLButtonElement>(null)
   );
-  const [share] = useMutation(UPDATE_SHARE);
-  const [paymentPointTransaction] = useMutation(PAYMENT_POINT_TRANSACTION);
+  const [share] = useMutation( UPDATE_SHARE);
 
   const [viewport, setViewport] = useState(0);
   useEffect(() => {
@@ -41,6 +42,18 @@ export default function TripWriteLog(props) {
     }
   }, [userData]);
 
+  const router = useRouter();
+    
+    const [isShow, setIsShow] = useState([false, false, false, false]);
+    
+  const toggle = (index: any) => () => {
+    const temp = new Array(4).fill(false);
+    if (isShow[index]) return setIsShow(temp);
+    else {
+      temp[index] = true;
+      setIsShow(temp);
+    }
+  };
   const shareBtn = async () => {
     console.log("as");
     try {
@@ -54,10 +67,6 @@ export default function TripWriteLog(props) {
     } catch (error) {
       alert(error.message);
     }
-  };
-  const onChangePoint = (event) => {
-    setPoint(event.target.value);
-    setPointSelect(false);
   };
 
   const donation = async () => {
@@ -73,12 +82,17 @@ export default function TripWriteLog(props) {
       alert(error.message);
     }
   };
+
   return (
     <TripWriteLogUI
       isMine={props.isMine}
+      isShow={isShow}
+      toggle={toggle}
       isEdit={props.isEdit}
+      index={props.index}
       saveButtonRef={saveButtonRef}
       shareBtn={shareBtn}
+
       userData={userData}
       pointModal={pointModal}
       setPointModal={setPointModal}
@@ -89,6 +103,7 @@ export default function TripWriteLog(props) {
       sharing={sharing}
       setSharing={setSharing}
       viewport={viewport}
+
     />
   );
 }

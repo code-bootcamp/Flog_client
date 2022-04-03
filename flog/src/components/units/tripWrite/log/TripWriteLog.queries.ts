@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-
 export const PAYMENT_POINT_TRANSACTION = gql`
   mutation paymentPointTransaction($userId: String!, $point: Float!) {
     paymentPointTransaction(userId: $userId, point: $point) {
@@ -36,3 +35,4 @@ export const FETCH_USER = gql`
     }
   }
 `;
+

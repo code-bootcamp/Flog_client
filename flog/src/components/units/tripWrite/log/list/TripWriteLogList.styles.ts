@@ -17,6 +17,18 @@ export const PlanBtnGroup = styled.div`
 
 export const EditorWrapper = styled.div`
   width: 860px;
+
+  position: absolute;
+  top: ${(props) =>
+    props.index === 0
+      ? "-45px"
+      : props.index === 1
+      ? "-79px"
+      : props.index === 2
+      ? "-113px"
+      : "-147px"};
+  right: 0;
+
 `;
 
 export const Container = styled.div`
@@ -44,6 +56,8 @@ export const DayPlanWrapper = styled.div`
 `;
 
 export const DayPlanDetail = styled.div`
+
+  width: 220px;
   padding: 8px 16px;
   background-color: #f1f1f1;
   border-radius: 12px;
@@ -61,6 +75,7 @@ export const DayPlanLabel = styled.div`
   font-weight: 500;
   font-size: 16px;
 `;
+
 
 export const isShow = styled.div`
   display: ${(props) => (props.isShow ? "block" : "none")};
@@ -196,3 +211,4 @@ export const InnerWrap = styled.div`
   margin-top: 20px;
   height: 1500px;
 `;
+
