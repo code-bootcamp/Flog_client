@@ -67,7 +67,7 @@ export default function TripWriteLogUI(props) {
               <div className="delete">삭제</div>
             </Log.BtnGroup>
           )}
-=
+
         </Log.Bar>
       )}
       <Log.Contents>
@@ -75,21 +75,22 @@ export default function TripWriteLogUI(props) {
 
         <Log.InnerWrap>
           <Log.PlanBox>
-            {props.isMine || props.isEdit || (
+            { props.isEdit || (
+              <>
               <Log.UserInfo>
-                <img src="/img/ourtrips-detail-usericon.png" />
-                <Log.Name>사용자 이름</Log.Name>
-                <Log.Email>test@gmail.com</Log.Email>
+                <img src={props.userData?.fetchSchedule?.user.url? `https://storage.cloud.google.com/${props.userData?.fetchSchedule?.user.url}`: "/img/ourtrips-detail-usericon.png"} />
+                <Log.Name>{props.userData?.fetchSchedule?.user.nickName}</Log.Name>
+                <Log.Email>{props.userData?.fetchSchedule?.user.email}</Log.Email>
                 {/* prettier-ignore */}
-                <ContainedButton03 content="포인트 후원하기" size="small"onClick={props.setPointModal(true)}
-            />
-              </Log.UserInfo>
-            )}
-            {props.isEdit || (
-              <Log.PlanBtnGroup>
-                <Log.moveBtn>전체 일정</Log.moveBtn>
-                <Log.moveBtn>전체 예산</Log.moveBtn>
+               {props.isMine ||  <ContainedButton03 content="포인트 후원하기" size="small"onClick={() => props.setPointModal(true)} />} 
+               <Log.PlanBtnGroup>
+                <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
+                <Log.moveBtn isMine={props.isMine} >전체 예산</Log.moveBtn>
               </Log.PlanBtnGroup>
+              </Log.UserInfo>
+             
+              </>
+              
             )}
             <Log.PlanWrapper>
               {[1, 1, 1, 1].map((_, dayIndex) => (

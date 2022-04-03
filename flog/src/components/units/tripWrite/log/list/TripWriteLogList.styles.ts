@@ -4,7 +4,6 @@ export const Main = styled.div`
   position: relative;
   padding: 19px 0 0;
   width: 1000px;
-
   @media ${breakPoints.mobile} {
   }
 `;

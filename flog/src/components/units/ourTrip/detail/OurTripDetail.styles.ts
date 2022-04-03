@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   position: absolute;
   
-  top: -190px;
+  top: -370px;
   padding-top: 30px;
   height: auto;
 `;
@@ -41,9 +41,8 @@ export const DayContents = styled.div`
  
   .ql-size-large {
     font-size: 24px;
-    background-color: #fff !important;
     display: inline-block;
-    margin: 43px 10px 26px 50px !important;
+    margin: 43px 10px 26px 0 !important;
     :before {
       content: "";
       width: 20px;
@@ -54,9 +53,15 @@ export const DayContents = styled.div`
       left: -11px;
       margin-right: 60px;
     }
+    
+  }
+  .ql-size-large.focused {
+    background-color:#D1EAE1;
+  }
+  p {
+    padding-left: 68px;
   }
   img {
-    width: 300px;
     text-align: center;
     display: block;
     margin: 10px auto;

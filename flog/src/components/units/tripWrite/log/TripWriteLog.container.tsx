@@ -84,7 +84,6 @@ export default function TripWriteLog(props) {
     }
   };
 
-
   const onChangePoint = (event) => {
     setPoint(event.target.value);
     setPointSelect(false);
