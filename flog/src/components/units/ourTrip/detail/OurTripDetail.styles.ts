@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100%;
   position: relative  !important;
-  top: ${props => props.isMine? "-190px  " :' -400px'};
-
+  top: -400px;
   padding-top: 30px;
   height: auto;
 `;

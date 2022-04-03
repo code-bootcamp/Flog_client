@@ -26,7 +26,6 @@ export default function Login() {
     mode: "onChange",
   });
   const onclickSubmit = async (data: FormValues) => {
-    console.log(data);
     try {
       const result = await login({
         variables: {
@@ -34,7 +33,6 @@ export default function Login() {
           password: data.password,
         },
       });
-      console.log(result.data?.login);
       const token = result.data?.login;
       if (token) {
         if (setAccessToken) setAccessToken(token);
@@ -55,10 +53,7 @@ export default function Login() {
     }
   };
   const resetError = (data: string | undefined, section: string) => {
-    console.log("d");
     watch((value) => {
-      console.log("v");
-      console.log(value);
       if (section === "email" && data !== value.email)
         setErrorMsg({ ...errorMsg, email: "" });
       if (section === "password" && data !== value.password)

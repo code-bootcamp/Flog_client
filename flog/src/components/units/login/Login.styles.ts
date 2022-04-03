@@ -3,7 +3,7 @@ import { breakPoints } from "../../../commons/styles/Media";
 
 export const Container = styled.div``;
 export const Bg = styled.div`
-  background-image: url("./img/login-bg-img1.jpg");
+  background-image: url("/img/login-bg-img1.jpg");
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;

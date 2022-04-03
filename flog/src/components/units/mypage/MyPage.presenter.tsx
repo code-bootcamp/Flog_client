@@ -24,7 +24,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
         <My.UserImage>
           {props.data?.fetchUser?.url ? (
             <div>
-              <img src={props.data?.fetchUser?.url} />
+              <img src={`https://storage.cloud.google.com/${props.data?.fetchUser?.url}`} />
             </div>
           ) : (
             <My.NoImage>

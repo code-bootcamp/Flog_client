@@ -45,7 +45,6 @@ export default function Signup() {
   const { moveToPage } = useMoveToPage();
   const router = useRouter();
   const onclickSubmit = async (data: FormValues) => {
-    console.log(data);
 
     try {
       const result = await createUser({
@@ -58,19 +57,11 @@ export default function Signup() {
           },
         },
       });
-      console.log(result);  
       setModalContents("회원가입을 완료하였습니다")
 
     } catch (error) {
       if (error instanceof Error) {
-        // if (error.message.includes("이메일")) {
-        //   setErrorMsg({ ...errorMsg, email: error.message });
-        //   resetError(data.email, "email");
-        // }
-        // if (error.message.includes("비밀번호")) {
-        //   setErrorMsg({ ...errorMsg, password: error.message });
-        //   resetError(data.email, "password");
-        // }
+      
         setModalContents(error.message)
 
       }
