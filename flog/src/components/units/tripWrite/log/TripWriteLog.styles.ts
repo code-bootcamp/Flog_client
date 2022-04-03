@@ -20,7 +20,7 @@ export const InnerWrap = styled.div`
   max-width: 1200px;
   display: flex;
   margin-top: 20px;
-  height: 1100px;
+  height: auto;
 
 `;
 
@@ -36,7 +36,7 @@ export const PlanBox = styled.div`
   z-index: 5;
   top: 10px;
   left: 0;
-  height: 1000px;
+  height: auto;
 
   // height 미정
   padding: 24px 20px;
@@ -169,8 +169,12 @@ export const UserInfo = styled.div`
   padding: 8px 0 24px;
   width: 100%;
   text-align: center;
+  overflow: hidden;
   img {
     margin-bottom: 7px;
+    width: 98px;
+    height:98px;
+    border-radius:50%
   }
 `;
 export const Name = styled.div`

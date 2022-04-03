@@ -64,6 +64,20 @@ export default function Login() {
     setModalContents("");
     router.push("/myTrips");
   };
+  const nonMember = async () => {
+    const result = await login({
+      variables: {
+        email: "test123@test.com",
+        password: "test123!"
+      },
+    });
+    const token = result.data?.login;
+    if (token) {
+      if (setAccessToken) setAccessToken(token);
+      // localStorage.setItem("accessToken", token);
+    }
+    setModalContents("비회원으로 시작하기");
+  }
   return (
     <LoginUI
       register={register}
@@ -73,6 +87,7 @@ export default function Login() {
       moveToPage={moveToPage}
       onModal={onModal}
       modalContents={modalContents}
+      nonMember={nonMember}
     />
   );
 }

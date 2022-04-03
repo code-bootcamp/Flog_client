@@ -3,7 +3,6 @@ import { breakPoints } from "../../../../../commons/styles/Media";
 export const Main = styled.div`
   position: relative;
   padding: 19px 0 0;
-
   width: 1200px;
   @media ${breakPoints.mobile} {
   }
