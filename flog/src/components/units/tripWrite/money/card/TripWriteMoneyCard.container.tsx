@@ -40,12 +40,14 @@ export default function TripWriteMoneyCard(props) {
 
   const onClickSubmitDetailBudgetEditFormModal = async (data: any) => {
     if (!data?.contents || !data?.budget || !category) {
-      alert("데이터없음!!");
+      props.setModalContents(
+        "카테고리, 내용, 금액이 모두 입력되었는지 확인해주세요."
+      );
+      props.setAlertModal(true);
       setIsSelect([false, false, false, false, false, false]);
       setCategory("");
       return;
     }
-    console.log(data, category, clickContents);
 
     try {
       await updateMoneybook({
@@ -62,10 +64,10 @@ export default function TripWriteMoneyCard(props) {
           moneyBookId: clickContents.id,
         },
       });
-      alert("수정이 완료되었습니다.");
       router.reload();
     } catch (error) {
-      console.log(error);
+      props.setModalContents(error.message);
+      props.setAlertModal(true);
     }
     setIsSelect([false, false, false, false, false, false]);
     setCategory("");

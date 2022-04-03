@@ -1,5 +1,6 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { insertCommaPrice } from "../../../../commons/utils/insertComma";
+import Alert from "../../../commons/modals/alert/Alert.container";
 import DetailBudgetForm from "../../../commons/modals/formBudget/DetailBudgetForm.container";
 import TotalBudget from "../../../commons/modals/newBudget/totalBudget/TotalBudget.container";
 import TripWriteBanner from "../banner/TripWriteBanner.container";
@@ -78,6 +79,8 @@ export default function TripWriteMoneyUI(props) {
                             el={el}
                             tripDates={props.tripDates}
                             budgetId={props.budgetId}
+                            setAlertModal={props.setAlertModal}
+                            setModalContents={props.setModalContents}
                           />
                         </Write.MoneyBookCards>
                         <TripWriteMoneyAdd
@@ -110,6 +113,13 @@ export default function TripWriteMoneyUI(props) {
           onClickSubmit={props.onClickSubmitTotalBudgetModal}
           onChangeTotalBudget={props.onChangeTotalBudget}
           budgetSelect={props.budgetSelect}
+        />
+      )}
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
         />
       )}
     </Write.Container>
