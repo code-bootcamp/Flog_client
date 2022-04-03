@@ -64,6 +64,7 @@ export default function TripWriteLogUI(props) {
                   <img src="/img/mytrips-shared-icon.svg" />
                   우리의 여행에 공유됨
                 </div>
+
               ) : (
                 <div className="share" onClick={props.shareBtn}>
                   <img src="/img/mytrips-unshared-icon.svg" />
@@ -77,45 +78,31 @@ export default function TripWriteLogUI(props) {
               >
                 수정
               </div>
-              <div className="delete">삭제</div>
+              <div className="delete"><span>삭제</span></div>
             </Log.BtnGroup>
           )}
         </Log.Bar>
       )}
       <Log.Contents>
-        <Log.InnerWrap isEdit={props.isEdit}>
-          <Log.PlanBox>
-            {props.isEdit || (
+        <Log.ToggleResponsive  onClick={() =>props.setResponsiveToggle(prev => !prev)}/>
+        <Log.InnerWrap isEdit={props.isEdit} isShow={props.responsiveToggle}>
+          <Log.PlanBox >
+            { props.isEdit || (
               <>
-                <Log.UserInfo>
-                  <img
-                    src={
-                      props.userData?.fetchSchedule?.user.url
-                        ? `https://storage.cloud.google.com/${props.userData?.fetchSchedule?.user.url}`
-                        : "/img/ourtrips-detail-usericon.png"
-                    }
-                  />
-                  <Log.Name>
-                    {props.userData?.fetchSchedule?.user.nickName}
-                  </Log.Name>
-                  <Log.Email>
-                    {props.userData?.fetchSchedule?.user.email}
-                  </Log.Email>
-                  {/* prettier-ignore */}
-                  {props.isMine || (
-                    <ContainedButton03
-                      content="포인트 후원하기"
-                      size="small"
-                      onClick={() => props.setPointModal(true)}
-                    />
-                  )}
-                </Log.UserInfo>
-                <Log.PlanBtnGroup>
-                  <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
-                  <Log.moveBtn onClick={() => props.setTotalMoney(true)}>
-                    전체 예산
-                  </Log.moveBtn>
-                </Log.PlanBtnGroup>
+               {props.viewport < 767 && (<Log.XButton onClick={() =>props.setResponsiveToggle(prev => !prev)}>X</Log.XButton>)}
+              <Log.UserInfo>
+                <img src={props.userData?.fetchSchedule?.user.url? `https://storage.cloud.google.com/${props.userData?.fetchSchedule?.user.url}`: "/img/ourtrips-detail-usericon.png"} />
+                <Log.Name>{props.userData?.fetchSchedule?.user.nickName}</Log.Name>
+                <Log.Email>{props.userData?.fetchSchedule?.user.email}</Log.Email>
+                {/* prettier-ignore */}
+               {props.isMine ||  <ContainedButton03 content="포인트 후원하기" size="small"onClick={() => props.setPointModal(true)} />} 
+               
+              </Log.UserInfo>
+              <Log.PlanBtnGroup>
+                <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
+                <Log.moveBtnon Click={() => props.setTotalMoney(true)} >전체 예산</Log.moveBtn>
+              </Log.PlanBtnGroup>
+
               </>
             )}
             <Log.PlanWrapper>

@@ -13,6 +13,7 @@ export default function TripWriteLog(props) {
   const router = useRouter();
   const [pointModal, setPointModal] = useState(false);
   const [point, setPoint] = useState(0);
+  const [responsiveToggle, setResponsiveToggle] = useState(false);
   const [pointSelect, setPointSelect] = useState(true);
   const [sharing, setSharing] = useState(false);
   const [alertModal, setAlertModal] = useState(false);
@@ -44,6 +45,7 @@ export default function TripWriteLog(props) {
   const onClickSubmitTotalMoneyModal = () => {
     setTotalMoney(false);
   };
+
 
   const { data: userData } = useQuery(FETCH_SCHEDULE, {
     variables: { scheduleId: String(router.query.scheduleId) },
@@ -134,6 +136,8 @@ export default function TripWriteLog(props) {
       onChangePoint={onChangePoint}
       pointSelect={pointSelect}
       donation={donation}
+      setResponsiveToggle={setResponsiveToggle}
+      responsiveToggle={responsiveToggle}
       myData={myData}
       sharing={sharing}
       setSharing={setSharing}
