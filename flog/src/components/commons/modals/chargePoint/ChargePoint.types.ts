@@ -7,4 +7,5 @@ export interface IPointProps {
   onClickSubmit: () => void;
   userName: string;
   userPoint: string;
+  donation?: boolean | undefined;
 }

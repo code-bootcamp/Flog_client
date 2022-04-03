@@ -56,7 +56,7 @@ export default function LoginUI(props: ILoginUIProps) {
               <Login.SubmitBtn
                 className="google"
                 type="button"
-                onClick={props.onclickSubmit}
+                onClick={props.moveToPage("https://flog.today/login/google")}
               >
                 <img src="/img/login-google.png" /> Google로 시작하기
               </Login.SubmitBtn>

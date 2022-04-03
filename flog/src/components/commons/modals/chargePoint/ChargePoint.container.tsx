@@ -50,7 +50,7 @@ export default function Point(props: IPointProps) {
             />
           </M.Exit>
           <M.Contents>
-            <M.Title>포인트 충전하기</M.Title>
+            <M.Title>{props.donation? "포인트 후원하기" : "포인트충전하기"}</M.Title>
             <M.UserPoint>
               현재 {props.userName}님의 포인트는{" "}
               <span style={{ color: "#58BD97" }}>
@@ -74,7 +74,7 @@ export default function Point(props: IPointProps) {
             </M.Wrap>
           </M.Contents>
           <ContainedButton01
-            content="충전하기"
+            content={props.donation? "후원하기" : "충전하기"}
             size="large"
             onClick={props.onClickSubmit}
             disabled={props.pointSelect}

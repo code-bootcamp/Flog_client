@@ -3,7 +3,7 @@ import { v4 as uuid4 } from "uuid";
 
 import * as Detail from "./OurTripDetail.styles";
 export default function OurTripDetailUI(props) {
-  console.log(props.isOurs)
+  console.log(props.isMine)
   return (
     <Detail.Container ref={props.moveRef} isMine={props.isMine}>
       {props.data?.fetchBoard[props.index] ? <Detail.Day>{props.index + 1}일차</Detail.Day> : <></>}

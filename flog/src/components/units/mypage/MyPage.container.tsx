@@ -8,7 +8,7 @@ import { CREATE_POINT_TRANSACTION, FETCH_USER } from "./MyPage.queries";
 
 export default function MyPage() {
   const router = useRouter();
-  const { data } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER);
+  const { data,refetch } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER);
   const [pointModal, setPointModal] = useState(false);
   const [point, setPoint] = useState(0);
   const [pointSelect, setPointSelect] = useState(true);
@@ -64,12 +64,14 @@ export default function MyPage() {
           paymentSubmit(rsp);
           setAlertModal(true);
           setModalContents(`${point} 포인트가 충전되었습니다.`);
+        
         } else {
           setAlertModal(true);
           setModalContents("결제가 취소되었습니다.");
         }
       }
     );
+    refetch()
   };
 
   const onChangePoint = (event) => {

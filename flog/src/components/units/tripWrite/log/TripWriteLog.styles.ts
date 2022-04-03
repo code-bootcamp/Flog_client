@@ -96,6 +96,8 @@ export const PlanBtnGroup = styled.div`
 export const DetailBox = styled.div``;
 export const PlanWrapper = styled.div`
   margin-top: 14px;
+  position: sticky;
+  top: 20px;  
   width: 100%;
 
 `;
