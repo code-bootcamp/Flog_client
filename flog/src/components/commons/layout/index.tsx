@@ -31,7 +31,9 @@ export default function Layout(props: ILayoutProps) {
     `/myTrips/[scheduleId]/plans`,
     `/myTrips/[scheduleId]/money`,
     `/myTrips/[scheduleId]/log`,
+    "/signUp",
   ];
+  const NONE_MOBILE_NAVI_PATHS = ["/login", "/signUp"];
 
   return (
     <Container>
@@ -40,7 +42,9 @@ export default function Layout(props: ILayoutProps) {
       {!NONE_FOOTER_PATHS.includes(router.pathname) && (
         <LayoutFooter viewport={viewport} />
       )}
-      {viewport <= 767 && <LayoutMobileNavigation />}
+      {viewport <= 767 && !NONE_MOBILE_NAVI_PATHS.includes(router.pathname) && (
+        <LayoutMobileNavigation />
+      )}
     </Container>
   );
 }
