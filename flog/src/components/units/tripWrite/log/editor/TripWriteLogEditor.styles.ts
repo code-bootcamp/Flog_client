@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Main = styled.div`
-  width: 860px;
-  height: 700px;
-  margin-top: 12px;
+  width: 100%;
+  height: 100%;
   h1 {
     margin-bottom: 20px;
   }
@@ -15,13 +14,24 @@ export const hideWrapper = styled.div`
 export const EditorWrapper = styled.div``;
 
 export const ReactWrapper = styled.div`
-  width: 860px;
+  /* width: 860px; */
   display: flex;
   flex-direction: column;
 
   .ql-editor {
     height: 570px;
-    overflow: scroll;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background: #eeeeee;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#58bd97, #58bd97);
+    }
   }
 
   .ql-editor img {

@@ -3,7 +3,7 @@ import { breakPoints } from "../../../commons/styles/Media";
 
 export const Container = styled.div``;
 export const Bg = styled.div`
-  background-image: url("./img/login-bg-img1.jpg");
+  background-image: url("/img/login-bg-img1.jpg");
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,7 +30,7 @@ export const LoginBox = styled.div`
   h3 {
     text-align: center;
     font-size: 44px;
-    font-weight: 400;
+    font-weight: 500;
     color: #2c3131;
     margin-bottom: 30px;
   }

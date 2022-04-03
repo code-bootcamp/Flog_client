@@ -48,14 +48,15 @@ export default function TripWriteLogUI(props) {
             <Log.BtnGroup>
               {props.sharing ? (
                 <div className="share" onClick={props.shareBtn}>
-                  <img src="/img/mytrips-unshared-icon.svg" />
-                  우리의 여행에 공유하기
-                </div>
+                <img src="/img/mytrips-shared-icon.svg" />
+                우리의 여행에 공유됨
+              </div>
+               
               ) : (
                 <div className="share" onClick={props.shareBtn}>
-                  <img src="/img/mytrips-shared-icon.svg" />
-                  우리의 여행에 공유됨
-                </div>
+                <img src="/img/mytrips-unshared-icon.svg" />
+                우리의 여행에 공유하기
+              </div>
               )}
               <div
                 onClick={() => {
@@ -73,8 +74,8 @@ export default function TripWriteLogUI(props) {
       <Log.Contents>
 
 
-        <Log.InnerWrap>
-          <Log.PlanBox>
+        <Log.InnerWrap isEdit={props.isEdit}>
+          <Log.PlanBox >
             { props.isEdit || (
               <>
               <Log.UserInfo>
@@ -83,11 +84,12 @@ export default function TripWriteLogUI(props) {
                 <Log.Email>{props.userData?.fetchSchedule?.user.email}</Log.Email>
                 {/* prettier-ignore */}
                {props.isMine ||  <ContainedButton03 content="포인트 후원하기" size="small"onClick={() => props.setPointModal(true)} />} 
-               <Log.PlanBtnGroup>
+               
+              </Log.UserInfo>
+              <Log.PlanBtnGroup>
                 <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
                 <Log.moveBtn isMine={props.isMine} >전체 예산</Log.moveBtn>
               </Log.PlanBtnGroup>
-              </Log.UserInfo>
              
               </>
               

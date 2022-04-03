@@ -3,10 +3,22 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100%;
   position: absolute;
-  
+  overflow-y: scroll;
   top: -370px;
   padding-top: 30px;
-  height: auto;
+  height: 700px;
+  ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background: #eeeeee;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#58bd97, #58bd97);
+    }
+
 `;
 export const Contents = styled.div`
   padding: 0 0 33px 10px;
@@ -64,6 +76,7 @@ export const DayContents = styled.div`
   img {
     text-align: center;
     display: block;
+    width: 400px;
     margin: 10px auto;
     
   }

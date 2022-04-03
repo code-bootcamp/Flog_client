@@ -17,6 +17,7 @@ export const Contents = styled.div`
 export const InnerWrap = styled.div`
   width: 95%;
   max-width: 1200px;
+  height: ${(props) => props.isEdit? "700px": "auto"};
   display: flex;
   margin-top: 40px;
 
@@ -31,7 +32,7 @@ export const PlanBox = styled.div`
   z-index: 5;
   top: 10px;
   left: 0;
-  height: 700px;
+  /* height: ${(props) => props.isEdit? "700px": "auto"} */
 
   // height 미정
   padding: 24px 20px;
@@ -46,7 +47,7 @@ export const PlanBox = styled.div`
 export const Bar = styled.div`
   padding-left: 39px;
   width: 100%;
-  /* height: 80px; */
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
