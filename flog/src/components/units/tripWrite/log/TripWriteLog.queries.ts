@@ -8,9 +8,9 @@ export const PAYMENT_POINT_TRANSACTION = gql`
   }
 `
 
-export const SHARE = gql`
-  mutation share($scheduleId: String! ) {
-    share(scheduleId: $scheduleId ) {
+export const UPDATE_SHARE = gql`
+  mutation updateShare($scheduleId: String! ) {
+    updateShare(scheduleId: $scheduleId ) {
       id
     }
   }

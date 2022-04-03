@@ -30,7 +30,7 @@ export default function TripWriteLogUI(props) {
           {/* prettier-ignore */}
           {props.isMine && <Log.BtnGroup>
             <div className="share" onClick={props.shareBtn}><img src="/img/mytrips-share-icon.png"/>우리의 여행에 공유하기 </div>
-            <div >수정</div>
+            <div onClick={() => {router.push(`/myTrips/${router.query.scheduleId}/plans`);}}>수정</div>
             <div className="delete">삭제</div>
           </Log.BtnGroup> }
           
@@ -38,7 +38,8 @@ export default function TripWriteLogUI(props) {
       )}
 
       <Log.Contents>
-        <TripWriteLogList  isMine={props.isMine} isEdit={props.isEdit} tripdates={props.userData?.fetchSchedule?.tripdates}/>
+        <TripWriteLogList  userData={props.userData} isMine={props.isMine} isEdit={props.isEdit}  saveButtonRef={props.saveButtonRef}  setPointModal={props.setPointModal}
+/>
       </Log.Contents>
 
       <TripWriteBottomBar saveButtonRef={props.saveButtonRef} />

@@ -13,10 +13,7 @@ export const PlanBtnGroup = styled.div`
 
 export const EditorWrapper = styled.div`
   width: 860px;
-  position: absolute;
-  
-  right: 0;
-  display: ${props => props.isShow? "block": "none"};
+
 `;
 
 export const Container = styled.div`
@@ -47,7 +44,6 @@ export const DayPlanWrapper = styled.div`
 
 export const DayPlanDetail = styled.div`
  
-  width: 220px;
   padding: 8px 16px;
   background-color: #f1f1f1;
   border-radius: 12px;
@@ -68,8 +64,13 @@ export const DayPlanLabel = styled.div`
 
 
 export const isShow = styled.div`
-  display: ${props => props.isShow ? "block": "none"}
-
+  display: ${props => props.isShow ? "block": "none"};
+  margin-top: 24px;
+  max-height: 200px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none; 
+}
 `
 
 
@@ -78,13 +79,12 @@ export const PlanBox = styled.div`
   z-index:5;
   top: 10px;
   left: 0;
-  height:1000px;
-  // height 미정
+  position:sticky;
+  height: 1000px;
   padding: 24px 20px;
   margin-right: 80px;
-  /* width: calc(26000% / 1200); */
+  width: calc(26000% / 1200);
   border: 1px solid #fff;
-  width: 260px;
   flex-direction: column;
 
   border-radius: 20px;
@@ -134,20 +134,22 @@ export const BtnGroup = styled.div`
 export const DayWrapper = styled.div`
   padding-top: 10px;
   position: relative;
-  width: 380px;
-
 
 `;
 
-export const Day = styled.span`
+export const Day = styled.div`
    position: relative;
+    padding:10px 0 ;
     font-size: 20px;
+
     font-weight: 500;
     padding-left: 10px;
+    border-bottom: 1px solid #F1F1F1;
+    border-top: 1px solid #F1F1F1;
 `
 export const ToggleImg = styled.img`
-   top: 18px;
-    left: 68px;
+   top: 28px;
+    right: 10px;
     width: 16px;
     position: absolute;
 
@@ -199,8 +201,7 @@ export const InnerWrap = styled.div`
   max-width: 1200px;
   display: flex;
   margin-top: 20px;
-  height: 2000px;
-
+  height:1500px;
 
 
 `;

@@ -9,7 +9,7 @@ export default function TripWriteLogList(props) {
   const [isShow, setIsShow] = useState([false,false,false,false]);
 
 
-  const [selected, setSelected] = useState({ title: "", des: "", index: -1 });
+  const [selected, setSelected] = useState({ title: "", des: "", dayIndex: -1, detailIndex: -1 });
   const { data:data1 } = useQuery(FETCH_DETAIL_SCHEDULE, {
     variables: {
       scheduleId: String(router.query.scheduleId),
@@ -60,6 +60,10 @@ export default function TripWriteLogList(props) {
       saveButtonRef={props.saveButtonRef}
       toggle={toggle}
       isShow={isShow}
+      setPointModal={props.setPointModal}
+      userData={props.userData}
+
+
     />
   );
 }

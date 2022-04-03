@@ -84,7 +84,7 @@ export default function TripWriteLogEditor(props) {
   setRefValue();
   useEffect(() => {
     setRefValue();
-    if (props.selected.title !== "") {
+    if (props.selected.title !== "" && props.selected.dayIndex === props.index) {
       addEl(props.selected.title, props.selected.des);
     }
   }, [props.selected]);
@@ -92,7 +92,7 @@ export default function TripWriteLogEditor(props) {
   const addEl = (name: string, des: string) => {
     console.log("add");
     console.log(editor);
-    if (!editor) setRefValue();
+     setRefValue();
     editor?.insertText(currentFocus?.index + 1, name, {
       header: 1,
       size: "large",
@@ -109,11 +109,13 @@ export default function TripWriteLogEditor(props) {
 
     editor?.insertText(currentFocus.index, "  " + " ", {
       header: 5,
+      size: "medium",
       color: "black",
     });
-    currentFocus.index += des.length + 6;
+    currentFocus.index += des.length + 7;
     console.log(name, des);
     editor.setSelection(currentFocus.index, 0, 0);
+    editor.focus();
   };
 
   const imageHandler = () => {
@@ -187,7 +189,7 @@ export default function TripWriteLogEditor(props) {
   useEffect(() => {
     setRefValue();
     console.log(contents);
-  }, [imageHandler]);
+  }, [imageHandler,addEl]);
 
   return (
     <TripWriteLogEditorUI
