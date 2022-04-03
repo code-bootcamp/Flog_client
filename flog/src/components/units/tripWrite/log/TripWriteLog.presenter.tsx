@@ -1,5 +1,3 @@
-
-
 import ContainedButton03 from "../../../commons/buttons/contained/03/ContainedButton03.container";
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
@@ -9,12 +7,20 @@ import { useRouter } from "next/router";
 
 import * as Log from "./TripWriteLog.styles";
 import Point from "../../../commons/modals/chargePoint/ChargePoint.container";
+import Alert from "../../../commons/modals/alert/Alert.container";
+import TotalMoneyModal from "../../../commons/modals/ourTrips/totalMoney/TotalMoney.container";
 export default function TripWriteLogUI(props) {
   const router = useRouter();
   return (
     <Log.Container>
       <TripWriteBanner />
-
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
+        />
+      )}
       {props.pointModal && (
         <Point
           donation={true}
@@ -24,6 +30,13 @@ export default function TripWriteLogUI(props) {
           onChangePoint={props.onChangePoint}
           onClickExit={() => props.setPointModal(false)}
           onClickSubmit={props.donation}
+        />
+      )}
+
+      {props.totalMoneyModal && (
+        <TotalMoneyModal
+          onClickExit={props.onClickExitTotalMoneyModal}
+          onClickSubmit={props.onClickSubmitTotalMoneyModal}
         />
       )}
 
@@ -48,15 +61,14 @@ export default function TripWriteLogUI(props) {
             <Log.BtnGroup>
               {props.sharing ? (
                 <div className="share" onClick={props.shareBtn}>
-                <img src="/img/mytrips-shared-icon.svg" />
-                우리의 여행에 공유됨
-              </div>
-               
+                  <img src="/img/mytrips-shared-icon.svg" />
+                  우리의 여행에 공유됨
+                </div>
               ) : (
                 <div className="share" onClick={props.shareBtn}>
-                <img src="/img/mytrips-unshared-icon.svg" />
-                우리의 여행에 공유하기
-              </div>
+                  <img src="/img/mytrips-unshared-icon.svg" />
+                  우리의 여행에 공유하기
+                </div>
               )}
               <div
                 onClick={() => {
@@ -68,31 +80,43 @@ export default function TripWriteLogUI(props) {
               <div className="delete">삭제</div>
             </Log.BtnGroup>
           )}
-
         </Log.Bar>
       )}
       <Log.Contents>
-
-
         <Log.InnerWrap isEdit={props.isEdit}>
-          <Log.PlanBox >
-            { props.isEdit || (
+          <Log.PlanBox>
+            {props.isEdit || (
               <>
-              <Log.UserInfo>
-                <img src={props.userData?.fetchSchedule?.user.url? `https://storage.cloud.google.com/${props.userData?.fetchSchedule?.user.url}`: "/img/ourtrips-detail-usericon.png"} />
-                <Log.Name>{props.userData?.fetchSchedule?.user.nickName}</Log.Name>
-                <Log.Email>{props.userData?.fetchSchedule?.user.email}</Log.Email>
-                {/* prettier-ignore */}
-               {props.isMine ||  <ContainedButton03 content="포인트 후원하기" size="small"onClick={() => props.setPointModal(true)} />} 
-               
-              </Log.UserInfo>
-              <Log.PlanBtnGroup>
-                <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
-                <Log.moveBtn isMine={props.isMine} >전체 예산</Log.moveBtn>
-              </Log.PlanBtnGroup>
-             
+                <Log.UserInfo>
+                  <img
+                    src={
+                      props.userData?.fetchSchedule?.user.url
+                        ? `https://storage.cloud.google.com/${props.userData?.fetchSchedule?.user.url}`
+                        : "/img/ourtrips-detail-usericon.png"
+                    }
+                  />
+                  <Log.Name>
+                    {props.userData?.fetchSchedule?.user.nickName}
+                  </Log.Name>
+                  <Log.Email>
+                    {props.userData?.fetchSchedule?.user.email}
+                  </Log.Email>
+                  {/* prettier-ignore */}
+                  {props.isMine || (
+                    <ContainedButton03
+                      content="포인트 후원하기"
+                      size="small"
+                      onClick={() => props.setPointModal(true)}
+                    />
+                  )}
+                </Log.UserInfo>
+                <Log.PlanBtnGroup>
+                  <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
+                  <Log.moveBtn onClick={() => props.setTotalMoney(true)}>
+                    전체 예산
+                  </Log.moveBtn>
+                </Log.PlanBtnGroup>
               </>
-              
             )}
             <Log.PlanWrapper>
               {[1, 1, 1, 1].map((_, dayIndex) => (
@@ -116,7 +140,9 @@ export default function TripWriteLogUI(props) {
           </Log.PlanBox>
         </Log.InnerWrap>
       </Log.Contents>
-      <TripWriteBottomBar saveButtonRef={props.saveButtonRef} />
+      {props.isEdit && (
+        <TripWriteBottomBar saveButtonRef={props.saveButtonRef} />
+      )}
     </Log.Container>
   );
 }

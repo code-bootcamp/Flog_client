@@ -15,6 +15,35 @@ export default function TripWriteLog(props) {
   const [point, setPoint] = useState(0);
   const [pointSelect, setPointSelect] = useState(true);
   const [sharing, setSharing] = useState(false);
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
+  const [totalMoney, setTotalMoney] = useState(false);
+
+  const onClickAlertModal = () => {
+    setModalContents("flog 여행을 위한 후원 감사합니다!");
+    setAlertModal(true);
+  };
+
+  const onClickExitAlertModal = () => {
+    setAlertModal(false);
+  };
+
+  const onClickSubmitAlertModal = () => {
+    setAlertModal(false);
+  };
+
+  // const onClickTotalMoneyModal = () => {
+  //   setTotalMoney(true);
+  //   console.log("모달입니다");
+  // };
+
+  const onClickExitTotalMoneyModal = () => {
+    setTotalMoney(false);
+  };
+
+  const onClickSubmitTotalMoneyModal = () => {
+    setTotalMoney(false);
+  };
 
   const { data: userData } = useQuery(FETCH_SCHEDULE, {
     variables: { scheduleId: String(router.query.scheduleId) },
@@ -22,11 +51,10 @@ export default function TripWriteLog(props) {
   const { data: myData } = useQuery(FETCH_USER);
 
   const saveButtonRef = [1, 1, 1, 1].map((el) =>
-
     useRef<HTMLButtonElement>(null)
   );
-  const [share] = useMutation( UPDATE_SHARE);
-  const [paymentPointTransaction] = useMutation( PAYMENT_POINT_TRANSACTION);
+  const [share] = useMutation(UPDATE_SHARE);
+  const [paymentPointTransaction] = useMutation(PAYMENT_POINT_TRANSACTION);
 
   const [viewport, setViewport] = useState(0);
   useEffect(() => {
@@ -44,10 +72,8 @@ export default function TripWriteLog(props) {
     }
   }, [userData]);
 
+  const [isShow, setIsShow] = useState([false, false, false, false]);
 
-    
-    const [isShow, setIsShow] = useState([false, false, false, false]);
-    
   const toggle = (index: any) => () => {
     const temp = new Array(4).fill(false);
     if (isShow[index]) return setIsShow(temp);
@@ -79,7 +105,10 @@ export default function TripWriteLog(props) {
           point: Number(point),
         },
       });
-      console.log(result);
+      setPointModal(false);
+      setTimeout(() => {
+        onClickAlertModal();
+      }, 500);
     } catch (error) {
       alert(error.message);
     }
@@ -99,7 +128,6 @@ export default function TripWriteLog(props) {
       index={props.index}
       saveButtonRef={saveButtonRef}
       shareBtn={shareBtn}
-
       userData={userData}
       pointModal={pointModal}
       setPointModal={setPointModal}
@@ -110,7 +138,14 @@ export default function TripWriteLog(props) {
       sharing={sharing}
       setSharing={setSharing}
       viewport={viewport}
-
+      onClickExitAlertModal={onClickExitAlertModal}
+      onClickSubmitAlertModal={onClickSubmitAlertModal}
+      modalContents={modalContents}
+      alertModal={alertModal}
+      onClickExitTotalMoneyModal={onClickExitTotalMoneyModal}
+      onClickSubmitTotalMoneyModal={onClickSubmitTotalMoneyModal}
+      totalMoney={totalMoney}
+      setTotalMoney={setTotalMoney}
     />
   );
 }
