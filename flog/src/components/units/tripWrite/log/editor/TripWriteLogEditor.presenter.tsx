@@ -18,16 +18,7 @@ export default function TripWriteLogEditorUI(props) {
             theme="snow"
           />
         </Editor.ReactWrapper>
-        {process.browser && (
-          <div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: Dompurify.sanitize(String(props.contents)),
-              }}
-            />
-            <div>{props.contents}</div>
-          </div>
-        )}
+        
       </Editor.EditorWrapper>
     </Editor.Main>
   );

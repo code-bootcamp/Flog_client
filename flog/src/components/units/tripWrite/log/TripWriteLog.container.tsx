@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import TripWriteLogUI from "./TripWriteLog.presenter";
@@ -26,6 +26,7 @@ export default function TripWriteLog(props) {
     useRef<HTMLButtonElement>(null)
   );
   const [share] = useMutation( UPDATE_SHARE);
+  const [paymentPointTransaction] = useMutation( PAYMENT_POINT_TRANSACTION);
 
   const [viewport, setViewport] = useState(0);
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function TripWriteLog(props) {
     }
   }, [userData]);
 
-  const router = useRouter();
+
     
     const [isShow, setIsShow] = useState([false, false, false, false]);
     
@@ -81,6 +82,12 @@ export default function TripWriteLog(props) {
     } catch (error) {
       alert(error.message);
     }
+  };
+
+
+  const onChangePoint = (event) => {
+    setPoint(event.target.value);
+    setPointSelect(false);
   };
 
   return (

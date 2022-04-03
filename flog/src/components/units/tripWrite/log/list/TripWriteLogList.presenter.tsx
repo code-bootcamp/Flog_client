@@ -5,6 +5,7 @@ import OurTripDetail from "../../../../units/ourTrip/detail/OurTripDetail.contai
 export default function TripWriteLogListUI(props) {
   return (
     <List.Main>
+      <List.ScrollWrap>
       {props.data?.fetchDetailSchedule?.map((el, elIndex) => (
         <List.DayPlanDetail
           key={elIndex}
@@ -21,6 +22,9 @@ export default function TripWriteLogListUI(props) {
           <div>{el.memo}</div>
         </List.DayPlanDetail>
       ))}
+      </List.ScrollWrap>
+      
+
       <List.EditorWrapper index={props.index}>
         {props.isEdit ? (
           <TripWriteLogEditor

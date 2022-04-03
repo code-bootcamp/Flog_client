@@ -7,9 +7,7 @@ export const FETCH_POINT_HISTORY = gql`
       changed
       createdAt
       status
-      user { 
-        point
-      }
+     current
       
     }
   }
