@@ -7,15 +7,34 @@ export const Container = styled.div`
 `;
 export const Contents = styled.div`
   width: 100%;
+  background-color:yellow;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+  @media ${breakPoints.mobile} {
+    align-items: flex-end;
 
+  }
+`;
+export const ToggleResponsive = styled.div`
+  background-image: url("/img/mytrips-responsive.png");
+  width: 56px;
+  height: 56px;
+`;
 export const InnerWrap = styled.div`
   width: 95%;
+  @media ${breakPoints.mobile} {
+    position: fixed;
+    /* display:none; */
+    width: 70%;
+    z-index:6;
+    background-color:#fff;
+    top: 0;
+    overflow: hidden;
+    display: ${(props) => (props.isShow ? "block" : "none")}
+  }
   max-width: 1200px;
   height: ${(props) => props.isEdit? "700px": "auto"};
   display: flex;
@@ -25,10 +44,12 @@ export const InnerWrap = styled.div`
 
 export const isShow = styled.div`
   display: ${(props) => (props.isShow ? "block" : "none")};
+
 `;
 
 export const PlanBox = styled.div`
   display: flex;
+
   z-index: 5;
   top: 10px;
   left: 0;
@@ -43,6 +64,14 @@ export const PlanBox = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   margin-bottom: 100px;
 `;
+export const XButton = styled.div`
+  font-size:21px;
+  position:absolute;
+  z-index: 20;
+  right: 20px;
+  top: 20px;
+  color: #626262;
+`;
 
 export const Bar = styled.div`
   padding-left: 39px;
@@ -52,6 +81,9 @@ export const Bar = styled.div`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #e9e9e9;
+  @media ${breakPoints.mobile} {
+    padding-left: 0;
+  }
 `;
 export const MoveBack = styled.div`
   font-size: 18px;
@@ -67,16 +99,36 @@ export const MoveBack = styled.div`
 `;
 export const BtnGroup = styled.div`
   display: flex;
+  height:60px;
+      text-align:center;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+  
   div {
-    padding: 28px 48px;
+    @media ${breakPoints.mobile} {
+    /* width: 100%; */
+  }
+    height:60px;
+    text-align:center;
+    display: flex;
+    padding:0 16px;
+    align-items: center;
     border-right: 1px solid #e9e9e9;
+
     :hover {
       cursor: pointer;
     }
     &.share {
       display: flex;
+      @media ${breakPoints.mobile} {
+        flex-grow: 1;
+      }
       img {
         margin-right: 12px;
+        width: 17px;
+        height: 20px;
       }
     }
     &.delete {

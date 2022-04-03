@@ -26,6 +26,12 @@ export const EditorWrapper = styled.div`
       ? "-113px"
       : "-147px"};
   right: 0;
+  @media ${breakPoints.mobile} {
+    left: -240px;
+    width: -300px;
+    z-index: 13;
+
+  }
   
 `;
 
