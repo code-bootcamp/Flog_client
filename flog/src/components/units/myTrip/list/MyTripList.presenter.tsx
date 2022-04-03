@@ -25,12 +25,12 @@ export default function MyTripListUI(props) {
             </Fragment>
           ))}
         </List.TripList>
-        <OutlinedButton01
-          content="더보기"
-          size="large"
-          onClick={props.onClickMoreMyTrip}
-        />
       </List.List>
+      <OutlinedButton01
+        content="더보기"
+        size="large"
+        onClick={props.onClickMoreMyTrip}
+      />
     </List.ListWrap>
   );
 }

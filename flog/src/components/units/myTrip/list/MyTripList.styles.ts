@@ -7,24 +7,21 @@ export const ListWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
   @media ${breakPoints.mobile} {
     width: calc(100%-30px);
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   @media ${breakPoints.tablet} {
   }
 `;
 
 export const List = styled.div`
-  padding-top: 80px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media ${breakPoints.mobile} {
-    padding: 40px 0px;
-  }
-  @media ${breakPoints.tablet} {
-  }
 `;
 
 export const TripList = styled.div`
@@ -117,7 +114,7 @@ export const EditWrap = styled.div`
     top: 21px;
     width: 1.5rem;
     z-index: 10;
- 
+
     :hover {
       cursor: pointer;
     }
