@@ -10,15 +10,14 @@ export default function TripWriteBottomBar(props) {
   };
   const onClickNextPlans = () => {
     props.submitDetailSchedule();
-    // router.push(`/myTrips/${router.query.scheduleId}/money`);
   };
   const onClickBackMoney = () => {
     props.submitDetailBudget();
-    // router.push(`/myTrips/${router.query.scheduleId}/plans`);
+    router.push(`/myTrips/${router.query.scheduleId}/plans`);
   };
   const onClickNextMoney = () => {
     props.submitDetailBudget();
-    // router.push(`/myTrips/${router.query.scheduleId}/log`);
+    router.push(`/myTrips/${router.query.scheduleId}/log`);
   };
   const onClickBackLog = () => {
     router.push(`/myTrips/${router.query.scheduleId}/money`);

@@ -11,6 +11,7 @@ import {
   FETCH_MONEY_BOOK,
   FETCH_SCHEDULE,
   UPDATE_BUDGET,
+  UPDATE_MONEYBOOK,
 } from "./TripWriteMoney.queries";
 
 export default function TripWriteMoney() {
@@ -33,6 +34,7 @@ export default function TripWriteMoney() {
   const [totalBudget, setTotalBudget] = useState(0);
   const [budgetSelect, setBudgetSelect] = useState(true);
   const [mutationTripdates, setMutationTripdates] = useState("");
+  const [endDropIndex, setEndDropIndex] = useState("");
   const { data: dataBudget } = useQuery(FETCH_BUDGET, {
     variables: {
       scheduleId: router.query.scheduleId,
@@ -46,6 +48,7 @@ export default function TripWriteMoney() {
   const [createBudget] = useMutation(CREATE_BUDGET);
   const [updateBudget] = useMutation(UPDATE_BUDGET);
   const [createMoneyBook] = useMutation(CREATE_MONEYBOOK);
+  const [updateMoneyBook] = useMutation(UPDATE_MONEYBOOK);
 
   useEffect(() => {
     const viewportWidth = window.visualViewport.width;
@@ -142,7 +145,7 @@ export default function TripWriteMoney() {
         contents: el,
       });
     });
-    setOriginList(resultArray);
+    setOriginList(TotalMoneyBook);
     setMoneyList(resultArray);
   };
 
@@ -200,6 +203,7 @@ export default function TripWriteMoney() {
     const endDropIndex = result.destination.droppableId;
     const startDragIndex = result.source.index;
     const endDragIndex = result.destination.index;
+    setEndDropIndex(endDropIndex);
 
     if (startDropIndex === endDropIndex) {
       const currentMoneys = currentMoneyList[Number(startDropIndex)].contents;
@@ -364,10 +368,122 @@ export default function TripWriteMoney() {
   };
 
   const submitDetailBudget = () => {
-    // const currentList = [...moneyList];
-    // const startList = [...originList];
-    console.log("currentList is", moneyList);
-    console.log("startList is", originList);
+    const currentList = [...moneyList];
+    const originListContents = originList;
+    const startList = originListContents.map((el, index) => {
+      return { date: tripDates[index], contents: el };
+    });
+
+    const currentIds = [[], [], [], [], []];
+    const startIds = [[], [], [], [], []];
+    const targetIds = [];
+
+    // 두 배열의 id값만 뽑아서 push
+    const makeIdsList = () => {
+      startList.forEach((startEl, startIndex) => {
+        startEl.contents.forEach((startEl2) => {
+          startIds[startIndex].push(startEl2.id);
+        });
+      });
+      currentList.forEach((currentEl, currentIndex) => {
+        currentEl.contents.forEach((currentEl2, curerntIndex2) => {
+          currentIds[currentIndex].push(currentEl2.id);
+        });
+      });
+
+      console.log("startIds is", startIds);
+      console.log("currentIds is", currentIds);
+    };
+    makeIdsList();
+
+    // 두 배열을 비교해서 current에 없는 객체 제거
+    // delete 메소드가 없어서.. update로 date를 삭제데이터<로 수정할 것
+    const deleteMovedItem = () => {
+      currentList.forEach((el, index) => {
+        el.contents.forEach((el2, index2) => {
+          startIds.forEach(async (startEl, startIndex) => {
+            if (index === startIndex) {
+              if (!startEl.includes(el2.id) && el2.id !== undefined) {
+                try {
+                  await updateMoneyBook({
+                    variables: {
+                      budgetId: budgetId,
+                      moneyBookId: el2.id,
+                      updateMoneyBookInput: {
+                        date: "delete",
+                        status: el2.status,
+                        amount: el2.amount,
+                        time: el2.time,
+                        context: el2.context,
+                        memo: el2.memo,
+                      },
+                    },
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
+              }
+            }
+          });
+        });
+      });
+    };
+    deleteMovedItem();
+
+    // 두 배열을 비교해서 current에 있지만 start에는 없는 객체 추가
+    const createMovedItem = () => {
+      startIds.forEach((el, index) => {
+        el.forEach((el2) => {
+          currentIds.forEach((currentEl, currentIndex) => {
+            if (index === currentIndex) {
+              if (!currentEl.includes(el2) && el2 !== undefined) {
+                targetIds.push({
+                  date: tripDates[Number(endDropIndex)],
+                  id: el2,
+                });
+              }
+            }
+          });
+        });
+      });
+
+      const creatMovedCard = () => {
+        const targetData = [];
+
+        currentList.forEach((el) => {
+          el.contents.forEach((el2) => {
+            targetIds.forEach((targetEl) => {
+              if (targetEl.id.includes(el2.id)) {
+                targetData.push(el2);
+              }
+            });
+          });
+        });
+
+        targetData.forEach(async (el, index) => {
+          try {
+            await createMoneyBook({
+              variables: {
+                createMoneyBookInput: {
+                  date: targetIds[index].date,
+                  status: el.status,
+                  time: el.time,
+                  context: el.context,
+                  memo: el.memo,
+                  tripdates: tripDates.join(",").replace("ready,", ""),
+                },
+                budgetId: budgetId,
+                amount: el.amount,
+              },
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      };
+      creatMovedCard();
+    };
+    createMovedItem();
   };
 
   return (

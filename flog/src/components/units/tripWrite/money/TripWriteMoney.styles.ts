@@ -44,6 +44,10 @@ export const BudgetBox = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.tablet} {
+    width: 180px;
+    padding: 40px 20px;
+  }
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 95px;
@@ -58,6 +62,9 @@ export const BudgetBox = styled.div`
 export const MoneyBookBox = styled.div`
   width: calc(100% - 260px);
   padding-left: 42px;
+  @media ${breakPoints.tablet} {
+    width: calc(100% - 180px);
+  }
   @media ${breakPoints.mobile} {
     width: 100%;
     padding-left: 0;
@@ -81,6 +88,12 @@ export const ProgressBar = styled.div`
     left: 0;
     background: linear-gradient(to top, #baedbc, #58bd97);
   }
+
+  @media ${breakPoints.tablet} {
+    height: 320px;
+    width: 20px;
+  }
+
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 10px;
@@ -98,6 +111,9 @@ export const BudgetText = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   padding-left: 20px;
+  @media ${breakPoints.tablet} {
+    height: 320px;
+  }
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 100%;
@@ -119,6 +135,9 @@ export const AllAmount = styled.div`
   font-size: 20px;
   line-height: 1.5em;
   order: 2;
+  @media ${breakPoints.tablet} {
+    font-size: 18px;
+  }
   @media ${breakPoints.mobile} {
     font-size: 14px;
     align-items: flex-end;
@@ -143,6 +162,9 @@ export const Amount = styled.div`
   align-items: flex-start;
   font-size: 20px;
   line-height: 1.5em;
+  @media ${breakPoints.tablet} {
+    font-size: 18px;
+  }
   @media ${breakPoints.mobile} {
     font-size: 14px;
     align-items: flex-start;

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   position: sticky;
@@ -13,6 +14,10 @@ export const Container = styled.div`
   justify-content: center;
   z-index: 5;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    bottom: 63px;
+    height: 60px;
+  }
 `;
 export const InnerWrap = styled.div`
   width: calc(100% - 30px);
@@ -24,6 +29,9 @@ export const InnerWrap = styled.div`
 `;
 export const ExitBox = styled.div`
   padding-left: 30px;
+  @media ${breakPoints.mobile} {
+    padding-left: 0;
+  }
 `;
 export const ExitButton = styled.button`
   padding: 10px 20px;
@@ -37,6 +45,9 @@ export const ExitButton = styled.button`
   }
   :hover {
     background: #f6f6f6;
+  }
+  @media ${breakPoints.mobile} {
+    padding-left: 0;
   }
 `;
 export const SubmitBox = styled.div`

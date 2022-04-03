@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 import { ITipWriteBannerUIEmotionProps } from "./TripWriteBanner.types";
 
 export const Banner = styled.div`
@@ -40,15 +41,27 @@ export const Text = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 15px;
+  text-align: center;
 `;
 export const Title = styled.div`
   font-size: 1.8rem;
   font-weight: 500;
   color: #ffffff;
   margin-bottom: 5px;
+  @media ${breakPoints.mobile} {
+    font-size: 24px;
+    word-break: keep-all;
+    margin-bottom: 10px;
+  }
 `;
 export const SubTitle = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;
+  @media ${breakPoints.mobile} {
+    font-size: 16px;
+    word-break: keep-all;
+    font-weight: 400;
+  }
 `;
