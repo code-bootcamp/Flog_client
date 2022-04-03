@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import * as Drop from "./Dropdown04.styles";
 export default function Dropdown04() {
-  const LIST = ["전체 보기", "제목", "여행 테마"];
+  const LIST = ["전체 보기", "제목", "태그"];
 
   const [isSelect, setIsSelect] = useState(LIST[0]);
   const [isActive, setIsActive] = useState(false);
@@ -17,12 +17,12 @@ export default function Dropdown04() {
     setIsSelect(el);
     if (el === "전체 보기") router.push("/ourTrips");
     if (el === "제목") router.push("/ourTrips/titleSearch");
-    if (el === "여행 테마") router.push("/ourTrips/tagSearch");
+    if (el === "태그") router.push("/ourTrips/tagSearch");
   };
 
   useEffect(() => {
     if (router.asPath.includes("/tagSearch")) {
-      setIsSelect("여행 테마");
+      setIsSelect("태그");
     }
     if (router.asPath.includes("/titleSearch")) {
       setIsSelect("제목");

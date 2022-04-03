@@ -1,10 +1,13 @@
-import Dropdown01 from "../../../../commons/dropdowns/01/Dropdown01.container";
 import * as List from "./TagSearchList.styles";
+import { v4 as uuid4 } from "uuid";
+import { useRouter } from "next/router";
+import OutlinedButton01 from "../../../../commons/buttons/outlined/01/OutlinedButton01.container";
+import Dropdown01 from "../../../../commons/dropdowns/01/Dropdown01.container";
 
-export default function TagSearchList(props) {
-  // console.log(props.hashTagData);
+export default function OurTripListUI(props) {
+  const router = useRouter();
   return (
-    <>
+    <List.ListWrap>
       <List.List>
         <List.Head>
           <List.Label>여행 족보</List.Label>
@@ -12,29 +15,40 @@ export default function TagSearchList(props) {
         </List.Head>
         <List.TripList>
           {props.hashTagData?.scheduleHashTagSearch.map((el, index) => (
-            <>
-              <List.CardWrapper key={el.id}>
-                <List.Wrapper>
-                  <List.Image>
-                    <img
-                      src={`/img/trips/user/trip-img${index + 1}.jpg`}
-                      alt="여행이미지"
-                    />
-                  </List.Image>
-                  <List.Text>
-                    <List.Title>{el.title}</List.Title>
-                    <List.Subtitle>
-                      <List.Date>{el.startDate} ~ </List.Date>
-                      <List.Date>{el.endDate}</List.Date>
-                      <List.Region>| {el.location}</List.Region>
-                    </List.Subtitle>
-                  </List.Text>
-                </List.Wrapper>
-              </List.CardWrapper>
-            </>
+            <List.CardWrapper key={uuid4()}>
+              <List.Wrapper>
+                <List.Image>
+                  <img
+                    onClick={() => router.push(`/ourTrips/${el.id}`)}
+                    src={
+                      el.url
+                        ? `https://storage.cloud.google.com/${el.url}`
+                        : `/img/trips/user/trip-img${1}.jpg`
+                    }
+                    alt="여행이미지"
+                  />
+                </List.Image>
+                <List.Text>
+                  <List.Title>{el.title}</List.Title>
+                  <List.Subtitle>
+                    <ul>
+                      <li className="date">
+                        {el.startDate.slice(2, 10)} ~ {el.endDate.slice(2, 10)}
+                      </li>
+                      <li className="location">{el.location}</li>
+                    </ul>
+                  </List.Subtitle>
+                </List.Text>
+              </List.Wrapper>
+            </List.CardWrapper>
           ))}
         </List.TripList>
+        <OutlinedButton01
+          content="더보기"
+          size="large"
+          onClick={props.onClickMoreOurTrip}
+        />
       </List.List>
-    </>
+    </List.ListWrap>
   );
 }

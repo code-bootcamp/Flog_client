@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Container = styled.div`
   position: fixed;
@@ -15,26 +16,37 @@ export const ModalWrapper = styled.div`
   background-color: #ffffff;
   border-radius: 20px;
   width: 600px;
-  height: 790px;
+  height: 700px;
   padding: 44px;
   border: none;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0px;
+    padding: 20px;
+    left: 0px;
+    top: 0px;
+    transform: translate(0, 0);
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Modal = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
 `;
 
 export const Exit = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 2rem;
   img {
     width: 23px;
     :hover {
@@ -45,63 +57,53 @@ export const Exit = styled.div`
 
 export const Contents = styled.div`
   margin-bottom: 3rem;
+  @media ${breakPoints.mobile} {
+    height: 100%;
+    margin-bottom: 0px;
+    justify-content: space-between;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Title = styled.div`
   font-size: 2rem;
   line-height: 53px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 60px;
+  @media ${breakPoints.mobile} {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1.4rem;
+  margin-bottom: 24px;
+
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Label = styled.div`
   font-size: 1.1rem;
   margin-right: 34px;
   color: #626262;
-`;
-
-export const Input = styled.input`
-  width: 485px;
-  height: 56px;
-  border: 1px solid #58bd97;
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 0.9rem;
-  line-height: 150%;
-`;
-
-export const Select = styled.select`
-  width: 338px;
-  height: 56px;
-  border: 1px solid #a9a9a9;
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 16px;
-  line-height: 150%;
-  background: url("/img/icon-modal-dropdown.svg") no-repeat 95% 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  color: #626262;
-  select::-ms-expand {
-    display: none;
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+    margin-right: 0px;
+    font-weight: 300;
+    margin-bottom: 6px;
   }
-
-  :focus {
-    border: 1px solid #58bd97;
-    outline: none;
-    color: #2c3131;
+  @media ${breakPoints.tablet} {
   }
-`;
-
-export const Option = styled.option``;
-
-export const ButtonWrap = styled.div`
-  margin-top: 100px;
 `;

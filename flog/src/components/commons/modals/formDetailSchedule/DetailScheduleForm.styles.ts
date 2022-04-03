@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   position: fixed;
@@ -21,6 +22,18 @@ export const ModalWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0px;
+    padding: 20px;
+    left: 0px;
+    top: 0px;
+    transform: translate(0, 0);
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Modal = styled.div`
   height: 100%;
@@ -28,13 +41,6 @@ export const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: start;
-`;
-
-export const Head = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 60px;
 `;
 
 export const Exit = styled.div`
@@ -49,20 +55,39 @@ export const Exit = styled.div`
   }
 `;
 
-export const Title = styled.div`
-  font-size: 2rem;
-  line-height: 53px;
-  text-align: center;
-`;
-
 export const Form = styled.form`
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    height: 100%;
+    margin-bottom: 0px;
+    justify-content: space-between;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Contents = styled.div`
   margin-bottom: 40px;
+  @media ${breakPoints.mobile} {
+    margin-bottom: 0px;
+  }
+  @media ${breakPoints.tablet} {
+  }
+`;
+export const Title = styled.div`
+  font-size: 2rem;
+  line-height: 53px;
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 400;
+  @media ${breakPoints.mobile} {
+    font-size: 24px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Wrap = styled.div`
@@ -86,71 +111,30 @@ export const Wrap = styled.div`
   &.memo {
     z-index: 1;
   }
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const Label = styled.div`
   font-size: 1.1rem;
   margin-right: 34px;
   color: #626262;
-`;
-
-export const CategoryWrap = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-bottom: 10px;
-`;
-export interface IDetailBudgetEmotionProps {
-  isSelect: boolean;
-}
-
-export const Category = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 90px;
-  border-radius: 12px;
-  background-color: ${(props: IDetailBudgetEmotionProps) =>
-    props.isSelect ? "#F1F1F1" : "none"};
-`;
-
-export const CategoryIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-  width: 48px;
-  height: 38px;
-  img {
-    :hover {
-      cursor: pointer;
-    }
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+    margin-right: 0px;
+    font-weight: 300;
+    margin-bottom: 6px;
+  }
+  @media ${breakPoints.tablet} {
   }
 `;
 
-export const CategoryLabel = styled.div`
-  text-align: center;
-  font-size: 16px;
-  line-height: 19px;
-  color: #818181;
-`;
-
-export const Input = styled.input`
-  width: 344px;
-  height: 56px;
-  border: 1px solid #cacaca;
-  border-radius: 8px;
-  padding-left: 24px;
-  font-size: 1.1rem;
-  line-height: 150%;
-  ::-webkit-outer-spin-button,
-  ::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-`;
 export const TimeInputWrap = styled.div`
   display: flex;
   justify-content: space-between;

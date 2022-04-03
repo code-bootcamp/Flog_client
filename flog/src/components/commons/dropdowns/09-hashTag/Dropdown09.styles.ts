@@ -2,18 +2,18 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/Media";
 
 export const SelectButton = styled.div`
+  position: relative;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 338px;
-  height: 56px;
-  border: 1px solid #a9a9a9;
-  border-radius: 8px;
-  line-height: 150%;
-  position: relative;
-  padding-left: 24px;
-  padding-right: 28px;
-  cursor: pointer;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0 24px;
+  border: none;
+  margin-left: 10px;
+  width: 230px;
+  height: 48px;
 `;
 
 export const Selected = styled.div`
@@ -32,29 +32,21 @@ export const SelectIcon = styled.div`
 
 export const Option = styled.div`
   position: absolute;
-  width: 338px;
-  left: 0px;
-  top: 60px;
+  width: 220px;
+  left: 3px;
+  top: 50px;
   background: #ffffff;
   box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
-  height: 200px;
+  height: 150px;
   overflow-y: scroll;
-  @media ${breakPoints.mobile} {
-    height: 150px;
-    overflow-y: scroll;
-  }
-  @media ${breakPoints.tablet} {
-  }
-
   ul {
     li {
       list-style: none;
       text-align: left;
-      width: 320px;
+      width: 200px;
       height: 50px;
       border-radius: 8px;
-
       cursor: pointer;
 
       span {

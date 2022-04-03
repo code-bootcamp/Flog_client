@@ -137,6 +137,7 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
                 content="생성하기"
                 size="large"
                 onClick={onClickSubmit}
+                responsive={true}
                 disabled={
                   !(
                     inputs.title &&

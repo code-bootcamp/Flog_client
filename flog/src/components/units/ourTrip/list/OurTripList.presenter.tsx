@@ -19,7 +19,7 @@ export default function OurTripListUI(props) {
               <List.Wrapper>
                 <List.Image>
                   <img
-                  onClick={() =>router.push(`/ourTrips/${el.id}`)}
+                    onClick={() => router.push(`/ourTrips/${el.id}`)}
                     src={
                       el.url
                         ? `https://storage.cloud.google.com/${el.url}`

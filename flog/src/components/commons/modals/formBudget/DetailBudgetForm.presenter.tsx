@@ -96,7 +96,12 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
                 />
               </M.Wrap>
             </M.Contents>
-            <ContainedButton01 content="생성하기" size="large" type="submit" />
+            <ContainedButton01
+              content="생성하기"
+              size="large"
+              type="submit"
+              responsive={true}
+            />
           </M.Form>
         </M.Modal>
       </M.ModalWrapper>

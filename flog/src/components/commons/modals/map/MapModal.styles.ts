@@ -16,7 +16,7 @@ export const ModalWrapper = styled.div`
   background-color: #ffffff;
   border-radius: 20px;
   width: 560px;
-  height: 750px;
+  height: 700px;
   padding: 25px;
   border: none;
   left: 50%;
@@ -39,17 +39,18 @@ export const Modal = styled.div`
   height: 100%;
   position: relative;
   display: flex;
-  padding: 10px 20px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  @media ${breakPoints.mobile} {
-    font-size: 24px;
-    justify-content: start;
-  }
-  @media ${breakPoints.tablet} {
-  }
 `;
+
+export const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  width: 100%;
+`;
+
 export const Title = styled.div`
   font-weight: 400;
   font-size: 30px;
@@ -67,13 +68,27 @@ export const Title = styled.div`
     :hover {
       cursor: pointer;
     }
+    @media ${breakPoints.mobile} {
+      width: 18px;
+    }
+    @media ${breakPoints.tablet} {
+    }
   }
 `;
 
 export const Subtitle = styled.div`
   width: 100%;
+  position: absolute;
   z-index: 9;
   align-items: flex-start;
+  top: 50px;
+  left: 0px;
+  @media ${breakPoints.mobile} {
+    top: 37px;
+    left: 0px;
+  }
+  @media ${breakPoints.tablet} {
+  }
 `;
 
 export const DoName = styled.span`

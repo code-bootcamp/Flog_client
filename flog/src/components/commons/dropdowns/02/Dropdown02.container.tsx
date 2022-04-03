@@ -9,7 +9,6 @@ export default function Dropdown02(props: IDorpDown02Props) {
   const [isThemeActive, setIsThemeActive] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const LIST = [
-    ["테마를 선택해주세요"],
     ["혼자 여행", "ALONE"],
     ["우정 여행", "FRIEND"],
     ["커플 여행", "COUPLE"],

@@ -1,15 +1,91 @@
-import ContainedButton03 from "../../../commons/buttons/contained/03/ContainedButton03.container";
-import * as Search from "./TitleSearch.styles";
+import { useQuery } from "@apollo/client";
+import styled from "@emotion/styled";
+import { useState } from "react";
+import MapModal from "../../../commons/modals/map/MapModal.container";
+import { FETCH_TITLE_SEARCH } from "../OurTrip.queries";
+import TitleSearchBanner from "./banner/TitleSearchBanner.container";
+import TitleSearchList from "./list/TitleSearchList.container";
 
-export default function TitleSearch(props) {
+const BodyContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+interface IInputs {
+  doName?: string;
+  cityName?: string;
+  title?: string;
+}
+
+export default function TitleSearch() {
+  const [inputs, setInputs] = useState<IInputs>({
+    doName: "",
+    cityName: "",
+    title: "",
+  });
+  const [where, setWhere] = useState("");
+
+  const { data: titleData } = useQuery(FETCH_TITLE_SEARCH, {
+    variables: {
+      where: where,
+
+      search: inputs.title,
+    },
+  });
+
+  console.log(titleData);
+
+  // 상위 컴포넌트에 넣을 내용 - MapModal
+
+  const [mapModal, setMapModal] = useState(false);
+  const onClickMapModal = () => {
+    setMapModal(true);
+    setInputs({ doName: "", cityName: "" });
+  };
+
+  const onClickExitMapModal = () => {
+    setMapModal(false);
+    setInputs({ doName: "", cityName: "" });
+  };
+
+  let newWhere = "";
+  const onClickSubmitMapModal = () => {
+    if (inputs.doName && !inputs.cityName) {
+      setWhere(`${inputs.doName}`);
+    }
+
+    if (inputs.doName && inputs.cityName) {
+      newWhere = `${inputs.doName}.${inputs.cityName}`;
+      if (newWhere.includes(" ")) {
+        newWhere = newWhere.replace(" ", "");
+        setWhere(newWhere);
+      }
+    }
+    setMapModal(false);
+  };
+
   return (
-    <Search.Search>
-      <Search.SearchBox
-        type="text"
-        placeholder="검색어를 입력해주세요."
-        onChange={props.onChangeTitle}
-      />
-      <ContainedButton03 content="검색" size="large" />
-    </Search.Search>
+    <>
+      {mapModal && (
+        <MapModal
+          onClickExit={onClickExitMapModal}
+          onClickSubmit={onClickSubmitMapModal}
+          inputs={inputs}
+          setInputs={setInputs}
+        />
+      )}
+      <BodyContainer>
+        <TitleSearchBanner
+          onClickMapModal={onClickMapModal}
+          onClickExit={onClickExitMapModal}
+          onClickSubmit={onClickSubmitMapModal}
+          inputs={inputs}
+          setInputs={setInputs}
+        />
+        <TitleSearchList titleData={titleData} />
+      </BodyContainer>
+    </>
   );
 }

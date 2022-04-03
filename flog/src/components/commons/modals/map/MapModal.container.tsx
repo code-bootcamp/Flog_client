@@ -68,6 +68,8 @@ export default function MapModal(props: IMapModalProps) {
             content="다음"
             size="large"
             onClick={props.onClickSubmit}
+            disabled={!props.inputs.doName}
+            responsive={true}
           />
         </M.Modal>
       </M.ModalWrapper>

@@ -7,6 +7,7 @@ import Dropdown07 from "../../dropdowns/07-taken-hour/Dropdown07.container";
 import Dropdown08 from "../../dropdowns/08-taken-minutes/Dropdown08.container";
 import { FormEventHandler } from "react";
 interface IDetailScheduleFormUIProps {
+  viewport: number;
   onClickExit: () => void;
   onClickSubmit: () => void;
   register: any;
@@ -20,19 +21,17 @@ export default function DetailScheduleFormUI(
     <M.Container>
       <M.ModalWrapper>
         <M.Modal>
-          <M.Head>
-            <M.Exit>
-              <img
-                src="/img/icon-modal-exit.svg"
-                alt="나가기버튼"
-                onClick={props.onClickExit}
-              />
-            </M.Exit>
-            <M.Title>세부 일정 생성</M.Title>
-          </M.Head>
+          <M.Exit>
+            <img
+              src="/img/icon-modal-exit.svg"
+              alt="나가기버튼"
+              onClick={props.onClickExit}
+            />
+          </M.Exit>
 
           <M.Form onSubmit={props.handleSubmit(props.onClickSubmit)}>
             <M.Contents>
+              <M.Title>세부 일정 생성</M.Title>
               <M.Wrap>
                 <M.Label>장소</M.Label>
                 <OutlinedInput01
@@ -41,24 +40,55 @@ export default function DetailScheduleFormUI(
                   register={props.register("place")}
                 />
               </M.Wrap>
-              <M.TimeInputWrap>
-                <M.Wrap className="start-hour">
+
+              {props.viewport <= 767 ? (
+                <>
                   <M.Label>시작</M.Label>
-                  <Dropdown06 setValue={props.setValue} />
-                </M.Wrap>
-                <M.Wrap className="start-minutes">
-                  <Dropdown05 setValue={props.setValue} />
-                </M.Wrap>
-              </M.TimeInputWrap>
-              <M.TimeInputWrap>
-                <M.Wrap className="taken-hour">
+                  <M.TimeInputWrap>
+                    <M.Wrap className="start-hour">
+                      <Dropdown06 setValue={props.setValue} />
+                    </M.Wrap>
+                    <M.Wrap className="start-minutes">
+                      <Dropdown05 setValue={props.setValue} />
+                    </M.Wrap>
+                  </M.TimeInputWrap>
+                </>
+              ) : (
+                <M.TimeInputWrap>
+                  <M.Wrap className="start-hour">
+                    <M.Label>시작</M.Label>
+                    <Dropdown06 setValue={props.setValue} />
+                  </M.Wrap>
+                  <M.Wrap className="start-minutes">
+                    <Dropdown05 setValue={props.setValue} />
+                  </M.Wrap>
+                </M.TimeInputWrap>
+              )}
+
+              {props.viewport <= 767 ? (
+                <>
                   <M.Label>소요</M.Label>
-                  <Dropdown07 setValue={props.setValue} />
-                </M.Wrap>
-                <M.Wrap className="taken-minutes">
-                  <Dropdown08 setValue={props.setValue} />
-                </M.Wrap>
-              </M.TimeInputWrap>
+                  <M.TimeInputWrap>
+                    <M.Wrap className="taken-hour">
+                      <Dropdown07 setValue={props.setValue} />
+                    </M.Wrap>
+                    <M.Wrap className="taken-minutes">
+                      <Dropdown08 setValue={props.setValue} />
+                    </M.Wrap>
+                  </M.TimeInputWrap>
+                </>
+              ) : (
+                <M.TimeInputWrap>
+                  <M.Wrap className="taken-hour">
+                    <M.Label>소요</M.Label>
+                    <Dropdown07 setValue={props.setValue} />
+                  </M.Wrap>
+                  <M.Wrap className="taken-minutes">
+                    <Dropdown08 setValue={props.setValue} />
+                  </M.Wrap>
+                </M.TimeInputWrap>
+              )}
+
               <M.Wrap className="memo">
                 <M.Label style={{ visibility: "hidden" }}>메모</M.Label>
                 <OutlinedInput01
@@ -69,7 +99,12 @@ export default function DetailScheduleFormUI(
                 />
               </M.Wrap>
             </M.Contents>
-            <ContainedButton01 content="생성하기" size="large" type="submit" />
+            <ContainedButton01
+              content="생성하기"
+              size="large"
+              type="submit"
+              responsive={true}
+            />
           </M.Form>
         </M.Modal>
       </M.ModalWrapper>
