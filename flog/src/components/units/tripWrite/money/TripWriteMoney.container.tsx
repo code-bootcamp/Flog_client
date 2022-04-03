@@ -1,17 +1,12 @@
 import { useApolloClient, useMutation, useQuery } from "@apollo/client";
-import { forEach } from "lodash";
+import { result } from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {
-  changeStringToDatetime,
-  diffDays,
-  getDateString,
-  getMonthString,
-} from "../../../../commons/utils/getDate";
-import { SAMPLE_DATA_MONEY } from "./SampleDataMoney";
+import { string } from "yup";
 import TripWriteMoneyUI from "./TripWriteMoney.presenter";
 import {
   CREATE_BUDGET,
+  CREATE_MONEYBOOK,
   FETCH_BUDGET,
   FETCH_MONEY_BOOK,
   FETCH_SCHEDULE,
@@ -28,7 +23,8 @@ export default function TripWriteMoney() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [dailyAmount, setDailyAmount] = useState(0);
   const [sumAmount, setSumAmount] = useState(0);
-  const [moneyList, setMoneyList] = useState([]);
+  const [moneyList, setMoneyList] = useState([{ date: "", contents: [] }]);
+  const [originList, setOriginList] = useState([{ date: "", contents: [] }]);
   const [clickDate, setClickDate] = useState("");
   const [budgetId, setBudgetId] = useState("");
   const [tripDates, setTripDates] = useState(["ready"]);
@@ -36,7 +32,7 @@ export default function TripWriteMoney() {
   const [totalBudgetModal, setTotalBudgetModal] = useState(false);
   const [totalBudget, setTotalBudget] = useState(0);
   const [budgetSelect, setBudgetSelect] = useState(true);
-
+  const [mutationTripdates, setMutationTripdates] = useState("");
   const { data: dataBudget } = useQuery(FETCH_BUDGET, {
     variables: {
       scheduleId: router.query.scheduleId,
@@ -49,6 +45,7 @@ export default function TripWriteMoney() {
   });
   const [createBudget] = useMutation(CREATE_BUDGET);
   const [updateBudget] = useMutation(UPDATE_BUDGET);
+  const [createMoneyBook] = useMutation(CREATE_MONEYBOOK);
 
   useEffect(() => {
     const viewportWidth = window.visualViewport.width;
@@ -58,6 +55,7 @@ export default function TripWriteMoney() {
   useEffect(() => {
     if (dataSchedule) {
       const dateArray = dataSchedule?.fetchSchedule?.tripdates.split(";");
+      setMutationTripdates(dataSchedule?.fetchSchedule?.tripdates);
       const temp = ["ready"].concat(dateArray);
       setTripDates(temp);
       setTripTotalDays(dateArray.length);
@@ -134,14 +132,18 @@ export default function TripWriteMoney() {
             budgetId: budgetId,
           },
         });
-        return {
-          date: tripDates[index],
-          contents: result.data?.fetchMoneyBook,
-        };
+        return result.data?.fetchMoneyBook;
       })
     );
-    console.log("TotalMoneyBook is", TotalMoneyBook);
-    setMoneyList(TotalMoneyBook);
+    const resultArray = [];
+    TotalMoneyBook.forEach((el, index) => {
+      resultArray.push({
+        date: tripDates[index],
+        contents: el,
+      });
+    });
+    setOriginList(resultArray);
+    setMoneyList(resultArray);
   };
 
   useEffect(() => {
@@ -312,39 +314,60 @@ export default function TripWriteMoney() {
     setDetailBudgetFormModal(false);
   };
 
-  const onClickSubmitDetailBudgetFormModal = (data: any) => {
-    if (
-      !data?.contents ||
-      !data?.budget ||
-      !data?.hour ||
-      !data?.minutes ||
-      !category
-    ) {
+  const onClickSubmitDetailBudgetFormModal = async (data: any) => {
+    if (!data?.contents || !data?.budget || !category) {
       alert("데이터없음!!");
       setIsSelect([false, false, false, false, false, false]);
       setCategory("");
       return;
     }
     console.log(data, category, clickDate);
+    try {
+      const result = await createMoneyBook({
+        variables: {
+          createMoneyBookInput: {
+            date: clickDate,
+            status: category,
+            time: "",
+            context: data.contents,
+            memo: data.memo,
+            tripdates: mutationTripdates,
+          },
+          budgetId: budgetId,
+          amount: Number(data.budget),
+        },
+      });
+      console.log("result is", result);
+      router.reload();
+    } catch (error) {
+      console.log(error);
+    }
     setIsSelect([false, false, false, false, false, false]);
     setCategory("");
     setDetailBudgetFormModal(false);
   };
 
   const TRIP_CATEGORY = [
-    { num: 1, label: "식비" },
-    { num: 2, label: "쇼핑" },
-    { num: 3, label: "교통" },
-    { num: 4, label: "관광" },
-    { num: 5, label: "숙박" },
-    { num: 6, label: "기타" },
+    { num: 1, label: "식비", enum: "FOOD" },
+    { num: 2, label: "쇼핑", enum: "SHOPPING" },
+    { num: 3, label: "교통", enum: "TRANSPORTATION" },
+    { num: 4, label: "관광", enum: "TOURISM" },
+    { num: 5, label: "숙박", enum: "STAY" },
+    { num: 6, label: "기타", enum: "ETC" },
   ];
 
   const onClickCategory = (index: number) => () => {
     const temp = [false, false, false, false, false, false];
     temp[index] = true;
     setIsSelect([...temp]);
-    setCategory(TRIP_CATEGORY[index].label);
+    setCategory(TRIP_CATEGORY[index].enum);
+  };
+
+  const submitDetailBudget = () => {
+    // const currentList = [...moneyList];
+    // const startList = [...originList];
+    console.log("currentList is", moneyList);
+    console.log("startList is", originList);
   };
 
   return (
@@ -370,6 +393,9 @@ export default function TripWriteMoney() {
       onClickSubmitTotalBudgetModal={onClickSubmitTotalBudgetModal}
       onChangeTotalBudget={onChangeTotalBudget}
       sumAmount={sumAmount}
+      tripDates={tripDates}
+      budgetId={budgetId}
+      submitDetailBudget={submitDetailBudget}
     />
   );
 }

@@ -1,5 +1,6 @@
 import { Draggable } from "react-beautiful-dnd";
 import { insertCommaPrice } from "../../../../../commons/utils/insertComma";
+import DetailBudgetEditForm from "../../../../commons/modals/formBudgetEdit/DetailBudgetEditForm.container";
 import * as Write from "./TripWriteMoneyCard.styles";
 
 export default function TripWriteMoneyCardUI(props) {
@@ -13,8 +14,9 @@ export default function TripWriteMoneyCardUI(props) {
               ref={provided.innerRef}
               {...provided.draggableProps}
             >
-              {/* <Write.Time>{contents.time}</Write.Time> */}
-              <Write.Contents>
+              <Write.Contents
+                onClick={props.onClickCardContents(contents, index)}
+              >
                 <Write.ContentsLeftBox>
                   <Write.IconBox>
                     <img src={props.selectStatusIcon(contents.status)} />
@@ -29,17 +31,22 @@ export default function TripWriteMoneyCardUI(props) {
                 </Write.Amount>
               </Write.Contents>
               <Write.Handle {...provided.dragHandleProps}>
-                <Write.Upper>
-                  <img src="/img/icon-mytrip-write-money-upper.svg" />
-                </Write.Upper>
-                <Write.Lower>
-                  <img src="/img/icon-mytrip-write-money-lower.svg" />
-                </Write.Lower>
+                드래그 앤 드롭 핸들
               </Write.Handle>
             </Write.Card>
           )}
         </Draggable>
       ))}
+      {props.detailBudgetEditFormModal && (
+        <DetailBudgetEditForm
+          onClickExit={props.onClickExitDetailBudgetEditFormModal}
+          onClickSubmit={props.onClickSubmitDetailBudgetEditFormModal}
+          onClickCategory={props.onClickCategory}
+          TRIP_CATEGORY={props.TRIP_CATEGORY}
+          isSelect={props.isSelect}
+          clickContents={props.clickContents}
+        />
+      )}
     </Write.MoneyBox>
   );
 }

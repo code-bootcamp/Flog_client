@@ -1,4 +1,4 @@
-import { ITripWritePlansCardUIProps } from "./TripWritePlansAdd.queries";
+import { ITripWritePlansCardUIProps } from "./TripWritePlansAdd.types";
 import * as Write from "./TripWritePlansAdd.styles";
 
 export default function TripWritePlansAddUI(props: ITripWritePlansCardUIProps) {

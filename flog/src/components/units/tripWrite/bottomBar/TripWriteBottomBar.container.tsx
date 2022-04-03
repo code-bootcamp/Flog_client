@@ -13,10 +13,12 @@ export default function TripWriteBottomBar(props) {
     // router.push(`/myTrips/${router.query.scheduleId}/money`);
   };
   const onClickBackMoney = () => {
-    router.push(`/myTrips/${router.query.scheduleId}/plans`);
+    props.submitDetailBudget();
+    // router.push(`/myTrips/${router.query.scheduleId}/plans`);
   };
   const onClickNextMoney = () => {
-    router.push(`/myTrips/${router.query.scheduleId}/log`);
+    props.submitDetailBudget();
+    // router.push(`/myTrips/${router.query.scheduleId}/log`);
   };
   const onClickBackLog = () => {
     router.push(`/myTrips/${router.query.scheduleId}/money`);

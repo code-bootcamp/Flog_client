@@ -55,3 +55,25 @@ export const FETCH_SCHEDULE = gql`
     }
   }
 `;
+
+export const CREATE_MONEYBOOK = gql`
+  mutation createMoneyBook(
+    $createMoneyBookInput: CreateMoneyBookInput!
+    $budgetId: String!
+    $amount: Float!
+  ) {
+    createMoneyBook(
+      createMoneyBookInput: $createMoneyBookInput
+      budgetId: $budgetId
+      amount: $amount
+    ) {
+      id
+      date
+      status
+      context
+      memo
+      amount
+      tripdates
+    }
+  }
+`;
