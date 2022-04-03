@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 export const Contents = styled.div`
   width: 100%;
-  background-color:yellow;
+  /* background-color: yellow; */
   height: auto;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,6 @@ export const Contents = styled.div`
   align-items: center;
   @media ${breakPoints.mobile} {
     align-items: flex-end;
-
   }
 `;
 export const ToggleResponsive = styled.div`
@@ -29,22 +28,20 @@ export const InnerWrap = styled.div`
     position: fixed;
     /* display:none; */
     width: 70%;
-    z-index:6;
-    background-color:#fff;
+    z-index: 6;
+    background-color: #fff;
     top: 0;
     overflow: hidden;
-    display: ${(props) => (props.isShow ? "block" : "none")}
+    display: ${(props) => (props.isShow ? "block" : "none")};
   }
   max-width: 1200px;
-  height: ${(props) => props.isEdit? "700px": "auto"};
+  height: ${(props) => (props.isEdit ? "700px" : "auto")};
   display: flex;
   margin-top: 40px;
-
 `;
 
 export const isShow = styled.div`
   display: ${(props) => (props.isShow ? "block" : "none")};
-
 `;
 
 export const PlanBox = styled.div`
@@ -53,7 +50,7 @@ export const PlanBox = styled.div`
   z-index: 5;
   top: 10px;
   left: 0;
-  /* height: ${(props) => props.isEdit? "700px": "auto"} */
+  /* height: ${(props) => (props.isEdit ? "700px" : "auto")} */
 
   // height 미정
   padding: 24px 20px;
@@ -65,8 +62,8 @@ export const PlanBox = styled.div`
   margin-bottom: 100px;
 `;
 export const XButton = styled.div`
-  font-size:21px;
-  position:absolute;
+  font-size: 21px;
+  position: absolute;
   z-index: 20;
   right: 20px;
   top: 20px;
@@ -99,21 +96,21 @@ export const MoveBack = styled.div`
 `;
 export const BtnGroup = styled.div`
   display: flex;
-  height:60px;
-      text-align:center;
+  height: 60px;
+  text-align: center;
 
   @media ${breakPoints.mobile} {
     width: 100%;
   }
-  
+
   div {
     @media ${breakPoints.mobile} {
-    /* width: 100%; */
-  }
-    height:60px;
-    text-align:center;
+      /* width: 100%; */
+    }
+    height: 60px;
+    text-align: center;
     display: flex;
-    padding:0 16px;
+    padding: 0 16px;
     align-items: center;
     border-right: 1px solid #e9e9e9;
 
@@ -220,8 +217,8 @@ export const UserInfo = styled.div`
   img {
     margin-bottom: 7px;
     width: 98px;
-    height:98px;
-    border-radius:50%
+    height: 98px;
+    border-radius: 50%;
   }
 `;
 export const Name = styled.div`
