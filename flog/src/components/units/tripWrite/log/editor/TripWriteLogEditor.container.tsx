@@ -46,7 +46,6 @@ export default function TripWriteLogEditor(props) {
       },
     });
     setBoardId(result.data?.createBoard?.id);
-    
   };
   const update = async () => {
     const result = await updateBoard({
@@ -57,22 +56,15 @@ export default function TripWriteLogEditor(props) {
         boardId,
       },
     });
-    console.log(`update${result}`);
   };
   const submitDb = async () => {
-    console.log("asdf");
-    console.log(props.index);
-    console.log(contents);
     if (!contents) return;
-      try {
-        boardId? update() : create();
-        alert("저장이 완료 되었습니다")
-      }
-      catch (error) {
-        alert(error.message);
-      }
-   
-}
+    try {
+      boardId ? update() : create();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   const setRefValue = () => {
     quillCurrent = quillRef.current;
     editor = quillCurrent?.getEditor();

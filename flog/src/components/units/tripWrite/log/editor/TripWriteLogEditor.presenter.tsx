@@ -4,9 +4,12 @@ import Dompurify from "dompurify";
 export default function TripWriteLogEditorUI(props) {
   return (
     <Editor.Main>
-   
-      <div style={{display: 'none'}} onClick={props.submitDb} ref={props.saveButtonRef}></div>
-      <Editor.EditorWrapper >
+      <div
+        style={{ display: "none" }}
+        onClick={props.submitDb}
+        ref={props.saveButtonRef}
+      ></div>
+      <Editor.EditorWrapper>
         <Editor.ReactWrapper>
           <h3>Day {props.index + 1}</h3>
           <props.ReactQuill
@@ -18,7 +21,6 @@ export default function TripWriteLogEditorUI(props) {
             theme="snow"
           />
         </Editor.ReactWrapper>
-        
       </Editor.EditorWrapper>
     </Editor.Main>
   );
