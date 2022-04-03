@@ -2,19 +2,15 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  position: relative  !important;
-  padding-top: 15px;
+  position: absolute;
+  top: -190px;
+  padding-top: 30px;
   height: auto;
 `;
 export const Contents = styled.div`
   padding: 0 0 33px 10px;
   height: auto;
   margin: 15px 0 100px;
-  position:relative;
-`;
-export const Wrapper = styled.div`
-  position: absolute;
-  display: ${props => props.isShow? "block" : "none"};
 `;
 
 export const InnerWrap = styled.div`
@@ -25,9 +21,9 @@ export const InnerWrap = styled.div`
   justify-content: space-between;
 `;
 export const Day = styled.div`
-  margin: 0 0 8px 12px;
+  margin: 0 0 10px 20px;
   display: flex;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 500;
   div {
     margin-right: 10px;
@@ -36,24 +32,17 @@ export const Day = styled.div`
 export const Line = styled.div`
   height: 500px;
 `;
-export const Empty = styled.div`
-  color:  #58BD97;
-  font-size: 20px;
-  margin: 100px 0 0 150px;
 
-`;
 export const DayContents = styled.div`
   font-size: 16px;
   border-left: 2px solid #58bd97;
   position: relative;
-  p {
-    padding-left:60px;
-  }
+ 
   .ql-size-large {
     font-size: 24px;
+    background-color: #fff !important;
     display: inline-block;
-    margin: 43px 10px 26px 0 !important;
-    
+    margin: 43px 10px 26px 50px !important;
     :before {
       content: "";
       width: 20px;
@@ -64,12 +53,6 @@ export const DayContents = styled.div`
       left: -11px;
       margin-right: 60px;
     }
-  }
-  .focused {
-      background-color: #D1EAE1 !important;
-      display: inline-block;
-      
-
   }
   img {
     width: 300px;

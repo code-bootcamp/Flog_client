@@ -12,27 +12,22 @@ export default function OurTripDetail(props) {
       scheduleId: String(router.query.scheduleId),
     },
   });
-  const moveRef = [useRef(null),useRef(null),useRef(null),useRef(null)];
+  const moveRef = useRef(null);
   let prevIndex = 0
-  const d = (dayIndex: number,index:number) =>{
-    moveRef[dayIndex]?.current?.querySelectorAll(`.ql-size-large`)[prevIndex].classList.remove('focused')
-    moveRef[dayIndex]?.current?.querySelectorAll(`.ql-size-large`)[index]?.scrollIntoView({
+  const d = (index: number) => {
+    moveRef.current?.querySelectorAll(`.ql-size-large`)[prevIndex].classList.remove('focused')
+    moveRef.current?.querySelectorAll(`.ql-size-large`)[index].scrollIntoView({
       block: "center",
       behavior: "smooth",
     });
-    moveRef[dayIndex]?.current?.querySelectorAll(`.ql-size-large`)[index].classList.add('focused')
-    console.log(props.selected)
+    moveRef.current?.querySelectorAll(`.ql-size-large`)[index].classList.add('focused')
     prevIndex = index
- 
   };
   useEffect(() => {
-    if (props.selected.dayIndex === -1) return;
+    if (props.selected.index === -1) return;
 
-    d(props.selected.dayIndex,props.selected.detailIndex);
+    d(props.selected.index);
   }, [props.selected]);
-  useEffect(() => {
-    console.log(data)
 
-  },[data])
-  return <OurTripDetailUI data={data} moveRef={moveRef}  isMine={props.isMine} isShow={props.isShow}/>;
+  return <OurTripDetailUI data={data} index={props.index} moveRef={moveRef} />;
 }
