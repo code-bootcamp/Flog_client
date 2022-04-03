@@ -3,8 +3,8 @@ import { breakPoints } from "../../../../../commons/styles/Media";
 export const Main = styled.div`
   position: relative;
   padding: 19px 0 0;
-  width: 95%;
-  max-width: 1200px;
+
+  width: 1200px;
   @media ${breakPoints.mobile} {
   }
 `;
@@ -14,10 +14,12 @@ export const PlanBtnGroup = styled.div`
 
   flex-direction: column;
 `;
+export const ScrollWrap = styled.div`
 
+
+`;
 export const EditorWrapper = styled.div`
   width: 860px;
-
   position: absolute;
   top: ${(props) =>
     props.index === 0

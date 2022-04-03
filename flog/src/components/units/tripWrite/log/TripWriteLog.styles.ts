@@ -20,10 +20,15 @@ export const InnerWrap = styled.div`
   max-width: 1200px;
   display: flex;
   margin-top: 20px;
-
   height: 1100px;
 
 `;
+
+export const isShow = styled.div`
+  display: ${props => props.isShow ? "block": "none"};
+
+  
+`
 
 export const PlanBox = styled.div`
   display: flex;
