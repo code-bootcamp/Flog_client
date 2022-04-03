@@ -220,7 +220,7 @@ export default function TripWritePlans() {
     };
     deleteMovedItem();
 
-    // 두 배열을 비교해서 current에 있지만 start에는 없는 객체 제거
+    // 두 배열을 비교해서 current에 있지만 start에는 없는 객체 추가
     const createMovedItem = () => {
       startIds.forEach((el, index) => {
         el.forEach((el2) => {
