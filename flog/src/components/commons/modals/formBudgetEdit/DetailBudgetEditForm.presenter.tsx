@@ -1,5 +1,5 @@
 import OutlinedInput01 from "../../inputs/outlined/01/OutlinedInput01.container";
-import * as M from "./DetailBudgetForm.styles";
+import * as M from "./DetailBudgetEditForm.styles";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
 // import { IDetailBudgetFormUIProps } from "./DetailBudgetForm.types";
 import {
@@ -21,7 +21,9 @@ interface IDetailBudgetFormUIprops {
   register: any;
   handleSubmit: (el: any) => FormEventHandler<HTMLFormElement> | undefined;
 }
-export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
+export default function DetailBudgetEditFormUI(
+  props: IDetailBudgetFormUIprops
+) {
   return (
     <M.Container>
       <M.ModalWrapper>
@@ -35,7 +37,7 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
           </M.Exit>
           <M.Form onSubmit={props.handleSubmit(props.onClickSubmit)}>
             <M.Contents>
-              <M.Title>여행 준비</M.Title>
+              <M.Title>지출 수정</M.Title>
               <M.Wrap>
                 <M.CategoryWrap>
                   {props.TRIP_CATEGORY.map(
@@ -63,6 +65,7 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
                   placeholder="내용을 입력하세요."
                   type="text"
                   register={props.register("contents")}
+                  defaultValue={props.clickContents.context}
                 />
               </M.Wrap>
 
@@ -72,6 +75,7 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
                   placeholder="금액을 입력하세요."
                   type="number"
                   register={props.register("budget")}
+                  defaultValue={props.clickContents.amount}
                 />
               </M.Wrap>
               {/* <M.TimeInputWrap>
@@ -97,11 +101,12 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
                   placeholder="(선택) 메모를 입력해주세요"
                   type="text"
                   register={props.register("memo")}
+                  defaultValue={props.clickContents.memo}
                 />
               </M.Wrap>
             </M.Contents>
             <ContainedButton01
-              content="생성하기"
+              content="수정하기"
               size="large"
               type="submit"
               responsive={true}

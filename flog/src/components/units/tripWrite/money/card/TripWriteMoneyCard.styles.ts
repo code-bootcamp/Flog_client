@@ -33,6 +33,7 @@ export const Contents = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
   @media ${breakPoints.mobile} {
     padding: 8px 20px;
     min-height: 54px;
@@ -40,13 +41,38 @@ export const Contents = styled.div`
 `;
 export const Handle = styled.div`
   width: 50px;
-  height: auto;
+  height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  text-indent: -9999px;
+  :before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 12px;
+    background: url("/img/icon-mytrip-write-money-upper.svg");
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  :after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 12px;
+    background: url("/img/icon-mytrip-write-money-lower.svg");
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
   @media ${breakPoints.mobile} {
     width: 40px;
+    height: 42px;
   }
 `;
 export const ContentsLeftBox = styled.div`

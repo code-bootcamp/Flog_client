@@ -74,6 +74,7 @@ export const ProgressBar = styled.div`
   .progress {
     width: 100%;
     height: ${(props) => props.progress + "%"};
+    max-height: 100%;
     border-radius: 20px;
     position: absolute;
     bottom: 0;
