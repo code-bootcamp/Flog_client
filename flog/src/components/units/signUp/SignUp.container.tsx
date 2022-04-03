@@ -45,7 +45,6 @@ export default function Signup() {
   const { moveToPage } = useMoveToPage();
   const router = useRouter();
   const onclickSubmit = async (data: FormValues) => {
-
     try {
       const result = await createUser({
         variables: {
@@ -53,17 +52,14 @@ export default function Signup() {
             nickName: data.name,
             email: data.email,
             password: data.password,
-            mainCategoryId: "asdf",
+            mainCategoryName: "MINE",
           },
         },
       });
-      setModalContents("회원가입을 완료하였습니다")
-
+      setModalContents("회원가입을 완료하였습니다");
     } catch (error) {
       if (error instanceof Error) {
-      
-        setModalContents(error.message)
-
+        setModalContents(error.message);
       }
     }
   };
@@ -71,10 +67,9 @@ export default function Signup() {
     setPwdType((prev) => !prev);
   };
   const onModal = () => {
-    setModalContents("")
+    setModalContents("");
     router.push("/login");
-
-  }
+  };
   return (
     <SignupUI
       register={register}
