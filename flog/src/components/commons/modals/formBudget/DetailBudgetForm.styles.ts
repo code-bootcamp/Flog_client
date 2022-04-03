@@ -82,6 +82,7 @@ export const Title = styled.div`
   line-height: 53px;
   text-align: center;
   margin-bottom: 30px;
+  font-weight: 400;
   @media ${breakPoints.mobile} {
     font-size: 24px;
   }
@@ -129,6 +130,7 @@ export const CategoryWrap = styled.div`
   @media ${breakPoints.tablet} {
   }
 `;
+
 export interface IDetailBudgetEmotionProps {
   isSelect: boolean;
 }

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Search = styled.div`
   display: flex;
@@ -17,6 +18,17 @@ export const SearchBox = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: 230px;
+    height: 48px;
+    margin-left: 10px;
+    ::placeholder {
+      font-weight: 400;
+      font-size: 15px;
+    }
+  }
+  @media ${breakPoints.tablet} {
+  }
 
   // 체크박스 인풋은 숨김처리
   .checkbox input {

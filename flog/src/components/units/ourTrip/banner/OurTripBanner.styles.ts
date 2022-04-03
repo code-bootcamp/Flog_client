@@ -38,7 +38,7 @@ export const InnerWrap = styled.div`
   width: 95%;
   max-width: 1200px;
   @media ${breakPoints.mobile} {
-    width: calc(100%-30px);
+    /* width: calc(100%-30px); */
   }
   @media ${breakPoints.tablet} {
   }

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const SelectButton = styled.div`
   display: flex;
@@ -38,12 +39,19 @@ export const Option = styled.div`
   box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   z-index: 2;
+  overflow-y: scroll;
+  @media ${breakPoints.mobile} {
+    height: 200px;
+    overflow-y: scroll;
+  }
+  @media ${breakPoints.tablet} {
+  }
 
   ul {
     li {
       list-style: none;
       text-align: left;
-      width: 338px;
+      width: 320px;
       height: 50px;
       border-radius: 8px;
       cursor: pointer;

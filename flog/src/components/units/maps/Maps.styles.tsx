@@ -2,16 +2,15 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/Media";
 export const Main = styled.div`
   width: 500px;
-  height: 480px;
+  height: 430px;
   position: relative;
   display: flex;
-  border-radius: 15px;
   flex-direction: column;
   background-color: #f1f1f1;
   align-items: center;
   @media ${breakPoints.mobile} {
-    width: 340px;
-    height: 400px;
+    width: 100vw;
+    height: 440px;
   }
   @media ${breakPoints.tablet} {
   }
@@ -21,10 +20,10 @@ export const Contents = styled.div`
   fill: #fff;
   flex-direction: column;
   position: absolute;
-  top: 10px;
+  top: -20px;
   margin-top: 40px;
   @media ${breakPoints.mobile} {
-    top: 0px;
+    top: 20px;
     margin-top: 0px;
   }
   @media ${breakPoints.tablet} {
@@ -64,9 +63,11 @@ export const CityWrapper = styled.div`
   display: none;
   position: absolute;
   opacity: 0;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   @media ${breakPoints.mobile} {
-    /* margin-top: 0px; */
+    margin-top: 0px;
+    /* left: -90px; */
+    /* width: 80%; */
   }
   @media ${breakPoints.tablet} {
   }
