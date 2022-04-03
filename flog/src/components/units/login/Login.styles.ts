@@ -13,9 +13,8 @@ export const Bg = styled.div`
   @media ${breakPoints.mobile} {
     background: none;
   }
-    @media ${breakPoints.tablet} {
-   
-    }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const LoginBox = styled.div`
   margin: 100px 0;
@@ -37,16 +36,13 @@ export const LoginBox = styled.div`
   }
   @media ${breakPoints.mobile} {
     padding: 24px 0;
-    margin:0;
-    h3{
+    margin: 0;
+    h3 {
       margin-bottom: 16px;
-
     }
-
   }
-    @media ${breakPoints.tablet} {
-   
-    }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Lavel = styled.div``;
 export const Form = styled.form`
@@ -54,11 +50,9 @@ export const Form = styled.form`
   padding: 0 137px 26px;
   @media ${breakPoints.mobile} {
     padding: 0 21px 0;
-
   }
-    @media ${breakPoints.tablet} {
-   
-    }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const FormLabel = styled.div`
   margin-bottom: 8px;
@@ -126,5 +120,31 @@ export const MoveSignUp = styled.span`
 
   :hover {
     cursor: pointer;
+  }
+`;
+
+export const NonSubmitBtn = styled.button`
+  width: 340px;
+  height: 56px;
+  border-radius: 100px;
+  background: transparent;
+  color: #58bd97;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 40px;
+  border: 2px solid #58bd97;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover {
+    color: #ffffff;
+    background: #58bd97;
+  }
+  &.disabled {
+    color: #a9a9a9;
+    border-color: #cacaca;
+    cursor: default;
+  }
+  &.disabled:hover {
+    background: transparent;
   }
 `;

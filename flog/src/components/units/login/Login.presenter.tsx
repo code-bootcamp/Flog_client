@@ -60,8 +60,9 @@ export default function LoginUI(props: ILoginUIProps) {
               >
                 <img src="/img/login-google.png" /> Google로 시작하기
               </Login.SubmitBtn>
-              <Login.SubmitBtn type="button" onClick={props.nonMember}>비회원으로 시작하기</Login.SubmitBtn>
-
+              <Login.NonSubmitBtn type="button" onClick={props.nonMember}>
+                비회원으로 시작하기
+              </Login.NonSubmitBtn>
             </Login.Form>
             <Login.SignUp>
               계정이 아직 없으신가요?
