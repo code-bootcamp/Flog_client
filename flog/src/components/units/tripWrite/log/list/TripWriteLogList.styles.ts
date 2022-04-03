@@ -3,8 +3,8 @@ import { breakPoints } from "../../../../../commons/styles/Media";
 export const Main = styled.div`
   position: relative;
   padding: 19px 0 0;
+  width: 1000px;
 
-  width: 1200px;
   @media ${breakPoints.mobile} {
   }
 `;
@@ -14,12 +14,9 @@ export const PlanBtnGroup = styled.div`
 
   flex-direction: column;
 `;
-export const ScrollWrap = styled.div`
-
-
-`;
+export const ScrollWrap = styled.div``;
 export const EditorWrapper = styled.div`
-  width: 860px;
+  width: 700px;
   position: absolute;
   top: ${(props) =>
     props.index === 0
@@ -30,7 +27,6 @@ export const EditorWrapper = styled.div`
       ? "-113px"
       : "-147px"};
   right: 0;
-
 `;
 
 export const Container = styled.div`
@@ -58,7 +54,6 @@ export const DayPlanWrapper = styled.div`
 `;
 
 export const DayPlanDetail = styled.div`
-
   width: 220px;
   padding: 8px 16px;
   background-color: #f1f1f1;
@@ -78,7 +73,6 @@ export const DayPlanLabel = styled.div`
   font-size: 16px;
 `;
 
-
 export const isShow = styled.div`
   display: ${(props) => (props.isShow ? "block" : "none")};
   margin-top: 24px;
@@ -95,7 +89,7 @@ export const PlanBox = styled.div`
   top: 10px;
   left: 0;
   position: sticky;
-  height: 1000px;
+  height: 600px;
   padding: 24px 20px;
   margin-right: 80px;
   width: calc(26000% / 1200);
@@ -213,4 +207,3 @@ export const InnerWrap = styled.div`
   margin-top: 20px;
   height: 1500px;
 `;
-

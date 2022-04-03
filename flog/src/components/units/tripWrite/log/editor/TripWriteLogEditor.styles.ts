@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Main = styled.div`
-  width:860px;
+  width: 860px;
+  height: 700px;
   margin-top: 12px;
   h1 {
     margin-bottom: 20px;
@@ -11,15 +12,20 @@ export const hideWrapper = styled.div`
   display: none;
 `;
 
-export const EditorWrapper = styled.div`
+export const EditorWrapper = styled.div``;
 
-`;  
 export const ReactWrapper = styled.div`
   width: 860px;
   display: flex;
   flex-direction: column;
+
+  .ql-editor {
+    height: 570px;
+    overflow: scroll;
+  }
+
   .ql-editor img {
-    max-width: 200px !important;
+    max-width: 400px !important;
   }
   h3 {
     font-size: 24px;
@@ -32,9 +38,9 @@ export const ReactWrapper = styled.div`
     font-size: 18px;
   }
   padding: 0;
-  margin:0;
+  margin: 0;
 
-    /* .ql-snow .ql-picker-label {
+  /* .ql-snow .ql-picker-label {
       font-size: 14px;
     } */
 `;
@@ -46,14 +52,12 @@ export const AddBtn = styled.div`
     cursor: pointer;
     background-color: yellow;
   }
-`
-
+`;
 
 export const PlanWrapper = styled.div`
   margin-top: 14px;
   width: 100%;
 `;
-
 
 export const DayPlanWrapper = styled.div`
   margin-top: 22px;
