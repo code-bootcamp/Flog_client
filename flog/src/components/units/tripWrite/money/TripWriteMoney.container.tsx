@@ -1,4 +1,5 @@
-import { useApolloClient, useQuery } from "@apollo/client";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
+import { forEach } from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {
@@ -10,101 +11,154 @@ import {
 import { SAMPLE_DATA_MONEY } from "./SampleDataMoney";
 import TripWriteMoneyUI from "./TripWriteMoney.presenter";
 import {
+  CREATE_BUDGET,
   FETCH_BUDGET,
   FETCH_MONEY_BOOK,
   FETCH_SCHEDULE,
+  UPDATE_BUDGET,
 } from "./TripWriteMoney.queries";
 
 export default function TripWriteMoney() {
   const router = useRouter();
   const client = useApolloClient();
   const [isLoading, setIsLoading] = useState(false);
+  const [isDataLoading, setIsDataLoading] = useState(false);
+  const [isDataLoading2, setIsDataLoading2] = useState(false);
   const [viewport, setViewport] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
   const [dailyAmount, setDailyAmount] = useState(0);
+  const [sumAmount, setSumAmount] = useState(0);
   const [moneyList, setMoneyList] = useState([]);
   const [clickDate, setClickDate] = useState("");
   const [budgetId, setBudgetId] = useState("");
-  const [tripDates, setTripDates] = useState([
-    "ready",
-    "2022.03.30",
-    "2022.03.31",
-    "2022.04.01",
-    "2022.04.02",
-  ]);
-  const [moneyBooks, setMoneyBooks] = useState([]);
-  useEffect(() => {
-    const viewportWidth = window.visualViewport.width;
-    setViewport(viewportWidth);
-  }, []);
+  const [tripDates, setTripDates] = useState(["ready"]);
+  const [tripTotalDays, setTripTotalDays] = useState(0);
+  const [totalBudgetModal, setTotalBudgetModal] = useState(false);
+  const [totalBudget, setTotalBudget] = useState(0);
+  const [budgetSelect, setBudgetSelect] = useState(true);
 
   const { data: dataBudget } = useQuery(FETCH_BUDGET, {
     variables: {
       scheduleId: router.query.scheduleId,
     },
   });
-
   const { data: dataSchedule } = useQuery(FETCH_SCHEDULE, {
     variables: {
       scheduleId: router.query.scheduleId,
     },
   });
-
-  // 여행 일정 dates가 모여있는 배열 반환
-  // useEffect(() => {
-  //   if (dataSchedule) {
-  //     const makeTripDates = () => {
-  //       const data = dataSchedule.fetchSchedule;
-  //       const startDate = changeStringToDatetime(data.startDate);
-  //       const endDate = changeStringToDatetime(data.endDate);
-  //       const tempArr = new Array(diffDays(startDate, endDate)).fill(0);
-  //       const result = tempArr.map((el, index) => {
-  //         return `${startDate.getFullYear()}.${getMonthString(
-  //           data.startDate,
-  //           index
-  //         )}.${getDateString(data.startDate, index)}`;
-  //       });
-  //       setTripDates((prev) => [...prev, ...result]);
-  //     };
-  //     makeTripDates();
-  //     console.log("tripDates is ", tripDates);
-  //   }
-  // }, [dataSchedule]);
-  // useEffect(() => {
-  //   setBudgetId(dataBudget?.fetchBudget[0].id);
-  // }, [dataBudget]);
+  const [createBudget] = useMutation(CREATE_BUDGET);
+  const [updateBudget] = useMutation(UPDATE_BUDGET);
 
   useEffect(() => {
-    sortMoneyBooks();
-  }, [budgetId]);
+    const viewportWidth = window.visualViewport.width;
+    setViewport(viewportWidth);
+  }, []);
 
-  const dataMoneyBookList = [];
-  const sortMoneyBooks = async () => {
-    if (!budgetId) return;
-    tripDates.forEach(async (el, index) => {
-      const result = await client.query({
-        query: FETCH_MONEY_BOOK,
-        variables: {
-          date: tripDates[index],
-          budgetId: budgetId,
-        },
-      });
-      console.log(`${index}번째 루프 `, result.data.fetchMoneyBook[0]);
-    });
+  useEffect(() => {
+    if (dataSchedule) {
+      const dateArray = dataSchedule?.fetchSchedule?.tripdates.split(";");
+      const temp = ["ready"].concat(dateArray);
+      setTripDates(temp);
+      setTripTotalDays(dateArray.length);
+    }
+  }, [dataSchedule]);
+
+  useEffect(() => {
+    if (dataBudget && dataBudget.fetchBudget.length === 0) {
+      console.log("=====================================");
+      console.log("해당 유저 정보에 Budget이 존재하지 않습니다.");
+      const createBudgetFunction = async () => {
+        try {
+          const result = await createBudget({
+            variables: {
+              totalAmount: 0,
+              scheduleId: router.query.scheduleId,
+            },
+          });
+          console.log("신규 Budget 생성 완료");
+          console.log("=====================================");
+          setBudgetId(result.data.createBudget.id);
+          setTotalAmount(result.data.createBudget.totalAmount);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      createBudgetFunction();
+    }
+    if (dataBudget && dataBudget.fetchBudget.length >= 1) {
+      console.log("=====================================");
+      console.log("해당 유저의 Budget을 불러옵니다.");
+      console.log("=====================================");
+      setBudgetId(dataBudget.fetchBudget[0].id);
+      setTotalAmount(dataBudget.fetchBudget[0].totalAmount);
+    }
+  }, [dataBudget]);
+
+  const onClickTotalBudgetModal = () => {
+    setTotalBudgetModal(true);
   };
 
-  // dataMoneyBookList.push({
-  //   dates: tripDates[0],
-  //   contents: result0.data.fetchMoneyBook,
-  // });
+  const onClickExitTotalBudgetModal = () => {
+    setTotalBudgetModal(false);
+  };
 
-  const moneyData = SAMPLE_DATA_MONEY;
+  const onChangeTotalBudget = (event) => {
+    setTotalBudget(event.target.value);
+    setBudgetSelect(false);
+  };
+
+  const onClickSubmitTotalBudgetModal = async () => {
+    try {
+      const result = await updateBudget({
+        variables: {
+          totalAmount: Number(totalBudget),
+          scheduleId: router.query.scheduleId,
+        },
+      });
+      console.log("result is", result);
+      setTotalAmount(result.data.updateBudget.totalAmount);
+    } catch (error) {
+      console.log(error);
+    }
+    setTotalBudgetModal(false);
+  };
+
+  const sortMoneyBooks = async () => {
+    const TotalMoneyBook = await Promise.all(
+      new Array(tripTotalDays + 1).fill(0).map(async (el, index) => {
+        const result = await client.query({
+          query: FETCH_MONEY_BOOK,
+          variables: {
+            date: tripDates[index],
+            budgetId: budgetId,
+          },
+        });
+        return {
+          date: tripDates[index],
+          contents: result.data?.fetchMoneyBook,
+        };
+      })
+    );
+    console.log("TotalMoneyBook is", TotalMoneyBook);
+    setMoneyList(TotalMoneyBook);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(function () {
+      setIsDataLoading((prev) => !prev);
+    }, 300);
+    setTimeout(function () {
+      setIsDataLoading2((prev) => !prev);
+    }, 600);
+  }, []);
 
   const sumDailyAmount = () => {
     let resultArr = [];
-    for (let i = 0; i < moneyData.length; i++) {
-      // console.log(moneyData[i].contents);
-      const moneyList = moneyData[i].contents;
-      const moneyAmount = moneyList.map((el) => el.amount);
+    for (let i = 0; i < moneyList.length; i++) {
+      const moneyListContents = moneyList[i].contents;
+      const moneyAmount = moneyListContents.map((el) => el.amount);
       if (moneyAmount.length === 0) {
         resultArr.push(0);
       }
@@ -115,15 +169,27 @@ export default function TripWriteMoney() {
         resultArr.push(result);
       }
     }
+    let resultSum = 0;
+    resultArr.forEach((el) => {
+      if (el === undefined) {
+        resultSum += 0;
+      } else {
+        resultSum += el;
+      }
+    });
+    setSumAmount(resultSum);
     return resultArr;
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    setMoneyList(moneyData);
+    sortMoneyBooks();
+  }, [isDataLoading]);
+
+  useEffect(() => {
     const daily = sumDailyAmount();
     setDailyAmount(daily);
-  }, []);
+    console.log("dailyAmount is", dailyAmount);
+  }, [isDataLoading2]);
 
   const onDragEndReorder = (result) => {
     if (!result.destination) return;
@@ -135,12 +201,15 @@ export default function TripWriteMoney() {
 
     if (startDropIndex === endDropIndex) {
       const currentMoneys = currentMoneyList[Number(startDropIndex)].contents;
-      const removeMoney = currentMoneys.splice(startDragIndex, 1);
+      const removeMoney = currentMoneys.filter(
+        (el, index) => index === startDragIndex
+      );
+      const restMoneys = currentMoneys.filter(
+        (el, index) => index !== startDragIndex
+      );
       let newMoneys = [];
-      if (endDragIndex === currentMoneys.length) {
-        const tempArr = currentMoneys.concat(
-          currentMoneys[currentMoneys.length - 1]
-        );
+      if (endDragIndex === restMoneys.length) {
+        const tempArr = restMoneys.concat(restMoneys[restMoneys.length - 1]);
         tempArr.forEach((el, index) => {
           if (index < endDragIndex) {
             newMoneys.push(el);
@@ -154,7 +223,7 @@ export default function TripWriteMoney() {
           }
         });
       } else {
-        currentMoneys.forEach((el, index) => {
+        restMoneys.forEach((el, index) => {
           if (index < endDragIndex) {
             newMoneys.push(el);
           }
@@ -175,7 +244,12 @@ export default function TripWriteMoney() {
       const startMoneys = currentMoneyList[Number(startDropIndex)].contents;
       const endMoneys = currentMoneyList[Number(endDropIndex)].contents;
       const newMoneys = [];
-      const removeMoney = startMoneys.splice(startDragIndex, 1);
+      const removeMoney = startMoneys.filter(
+        (el, index) => index === startDragIndex
+      );
+      const restStartMoneys = startMoneys.filter(
+        (el, index) => index !== startDragIndex
+      );
       if (endDragIndex === endMoneys.length) {
         const tempArr = endMoneys.concat(endMoneys[endMoneys.length - 1]);
         tempArr.forEach((el, index) => {
@@ -205,13 +279,13 @@ export default function TripWriteMoney() {
         });
       }
       const tempList = currentMoneyList;
-      tempList[Number(startDropIndex)].contents = startMoneys;
+      tempList[Number(startDropIndex)].contents = restStartMoneys;
       tempList[Number(endDropIndex)].contents = newMoneys;
       setMoneyList(tempList);
     }
+    const daily = sumDailyAmount();
+    setDailyAmount(daily);
   };
-
-  const makeCard = (date, contents) => {};
 
   // 상위 컴포넌트에 넣을 내용 - detailBudgetForm
   const [detailBudgetFormModal, setDetailBudgetFormModal] = useState(false);
@@ -278,6 +352,7 @@ export default function TripWriteMoney() {
       onDragEndReorder={onDragEndReorder}
       isLoading={isLoading}
       dailyAmount={dailyAmount}
+      totalAmount={totalAmount}
       detailBudgetFormModal={detailBudgetFormModal}
       isSelect={isSelect}
       onClickDetailBudgetFormModal={onClickDetailBudgetFormModal}
@@ -287,6 +362,14 @@ export default function TripWriteMoney() {
       TRIP_CATEGORY={TRIP_CATEGORY}
       moneyList={moneyList}
       viewport={viewport}
+      totalBudgetModal={totalBudgetModal}
+      totalBudget={totalBudget}
+      budgetSelect={budgetSelect}
+      onClickTotalBudgetModal={onClickTotalBudgetModal}
+      onClickExitTotalBudgetModal={onClickExitTotalBudgetModal}
+      onClickSubmitTotalBudgetModal={onClickSubmitTotalBudgetModal}
+      onChangeTotalBudget={onChangeTotalBudget}
+      sumAmount={sumAmount}
     />
   );
 }

@@ -70,7 +70,7 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
                   register={props.register("budget")}
                 />
               </M.Wrap>
-              <M.TimeInputWrap>
+              {/* <M.TimeInputWrap>
                 <M.Wrap>
                   <M.Label>시간</M.Label>
                   <OutlinedInput02
@@ -86,7 +86,7 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
                     register={props.register("minutes")}
                   />
                 </M.Wrap>
-              </M.TimeInputWrap>
+              </M.TimeInputWrap> */}
               <M.Wrap>
                 <M.Label style={{ visibility: "hidden" }}>메모</M.Label>
                 <OutlinedInput01

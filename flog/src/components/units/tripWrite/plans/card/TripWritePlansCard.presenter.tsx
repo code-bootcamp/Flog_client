@@ -5,6 +5,7 @@ import DetailScheduleForm from "./../../../../commons/modals/formDetailSchedule/
 import { ITripWritePlansCardUIProps } from "./TripWritePlansCard.types";
 import DetailScheduleFormEdit from "../../../../commons/modals/formDetailScheduleEdit/DetailScheduleFormEdit.container";
 import { el } from "date-fns/locale";
+import Alert from "../../../../commons/modals/alert/Alert.container";
 
 export default function TripWritePlansCardUI(
   props: ITripWritePlansCardUIProps
@@ -63,6 +64,13 @@ export default function TripWritePlansCardUI(
           editContent={props.editContent}
           onClickExit={props.onClickExitDetailScheduleFormEditModal}
           onClickSubmit={props.onClickUpdateDetailScheduleFormModal}
+        />
+      )}
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
         />
       )}
     </Write.PlansBox>

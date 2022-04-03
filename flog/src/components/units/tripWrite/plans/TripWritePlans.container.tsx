@@ -20,6 +20,8 @@ export default function TripWritePlans() {
   const [originList, setOriginList] = useState([[]]);
   const [plansList, setPlansList] = useState([[]]);
   const [endDropIndex, setEndDropIndex] = useState("");
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
   const { data: dataSchedule } = useQuery(FETCH_SCHEDULE, {
     variables: {
       scheduleId: router.query.scheduleId,
@@ -170,7 +172,6 @@ export default function TripWritePlans() {
   };
 
   const submitDetailSchedule = () => {
-    alert("test alert");
     const currentList = [...plansList];
     const startList = [...originList];
     const startIds = [[], [], [], []];
@@ -180,12 +181,12 @@ export default function TripWritePlans() {
     // 두 배열의 id값만 뽑아서 push
     const makeIdsList = () => {
       startList.forEach((startEl, startIndex) => {
-        startEl.forEach((startEl2, startIndex2) => {
+        startEl.forEach((startEl2) => {
           startIds[startIndex].push(startEl2.id);
         });
       });
       currentList.forEach((currentEl, currentIndex) => {
-        currentEl.forEach((currenEl2, curerntIndex2) => {
+        currentEl.forEach((_, curerntIndex2) => {
           currentIds[currentIndex].push(
             currentList[currentIndex][curerntIndex2]?.id
           );
@@ -208,7 +209,8 @@ export default function TripWritePlans() {
                     },
                   });
                 } catch (error) {
-                  console.log(error);
+                  setModalContents(error.message);
+                  setAlertModal(true);
                 }
               }
             }
@@ -220,10 +222,8 @@ export default function TripWritePlans() {
 
     // 두 배열을 비교해서 current에 있지만 start에는 없는 객체 제거
     const createMovedItem = () => {
-      console.log("startIds is", startIds);
-      console.log("currentIds is", currentIds);
       startIds.forEach((el, index) => {
-        el.forEach((el2, index2) => {
+        el.forEach((el2) => {
           currentIds.forEach((currentEl, currentIndex) => {
             if (index === currentIndex) {
               if (!currentEl.includes(el2) && el2 !== undefined) {
@@ -238,12 +238,11 @@ export default function TripWritePlans() {
       });
 
       const creatMovedCard = () => {
-        console.log("creaMovedCard 함수 안에서 보는 targetIds is", targetIds);
         const targetData = [];
 
-        currentList.forEach((el, index) => {
-          el.forEach((el2, index2) => {
-            targetIds.forEach((targetEl, targetIndex) => {
+        currentList.forEach((el) => {
+          el.forEach((el2, inx2) => {
+            targetIds.forEach((targetEl) => {
               if (targetEl.id.includes(el2.id)) {
                 targetData.push(el2);
               }
@@ -269,13 +268,23 @@ export default function TripWritePlans() {
               },
             });
           } catch (error) {
-            console.log(error);
+            setModalContents(error.message);
+            setAlertModal(true);
           }
         });
       };
       creatMovedCard();
     };
     createMovedItem();
+    router.push(`/myTrips/${router.query.scheduleId}/money`);
+  };
+
+  const onClickExitAlertModal = () => {
+    setAlertModal(false);
+  };
+
+  const onClickSubmitAlertModal = () => {
+    setAlertModal(false);
   };
 
   return (
@@ -286,6 +295,10 @@ export default function TripWritePlans() {
       isLoading={isLoading}
       plansList={plansList}
       submitDetailSchedule={submitDetailSchedule}
+      onClickExitAlertModal={onClickExitAlertModal}
+      onClickSubmitAlertModal={onClickSubmitAlertModal}
+      alertModal={alertModal}
+      modalContents={modalContents}
     />
   );
 }
