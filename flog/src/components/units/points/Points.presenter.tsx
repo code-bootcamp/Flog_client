@@ -42,7 +42,7 @@ export default function PointsUI(props: IPointsUIProps) {
               </Points.ItemText>
               <Points.ItemAmount>
                 <div className="changed">{el.changed} P</div>
-                {/* <div className="amount">{el.pointId.amount} P</div> */}
+                <div className="amount">{el.user.point} P</div>
               </Points.ItemAmount>
             </Points.Item>
           ))}

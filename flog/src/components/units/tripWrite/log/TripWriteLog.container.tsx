@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import TripWriteLogUI from "./TripWriteLog.presenter";
-import { SHARE, FETCH_SCHEDULE,PAYMENT_POINT_TRANSACTION, FETCH_USER } from "./TripWriteLog.queries";
+import { UPDATE_SHARE, FETCH_SCHEDULE,PAYMENT_POINT_TRANSACTION, FETCH_USER } from "./TripWriteLog.queries";
 
 export default function TripWriteLog(props) {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function TripWriteLog(props) {
   const saveButtonRef = [1, 1, 1, 1].map((el) =>
     useRef<HTMLButtonElement>(null)
   );
-  const [share] = useMutation(SHARE);
+  const [share] = useMutation(UPDATE_SHARE);
   const [paymentPointTransaction] = useMutation(PAYMENT_POINT_TRANSACTION);
 
   useEffect(() => {

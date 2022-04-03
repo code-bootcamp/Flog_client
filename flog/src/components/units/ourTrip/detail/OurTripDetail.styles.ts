@@ -3,14 +3,18 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100%;
   position: relative  !important;
-  top: -400px;
-  padding-top: 30px;
+  padding-top: 15px;
   height: auto;
 `;
 export const Contents = styled.div`
   padding: 0 0 33px 10px;
   height: auto;
   margin: 15px 0 100px;
+  position:relative;
+`;
+export const Wrapper = styled.div`
+  position: absolute;
+  display: ${props => props.isShow? "block" : "none"};
 `;
 
 export const InnerWrap = styled.div`

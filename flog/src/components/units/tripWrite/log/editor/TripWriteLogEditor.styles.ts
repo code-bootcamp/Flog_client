@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const Main = styled.div`
   width:860px;
+  position:relative;
   margin-top: 12px;
   h1 {
     margin-bottom: 20px;
@@ -12,6 +13,9 @@ export const hideWrapper = styled.div`
 `;
 
 export const EditorWrapper = styled.div`
+  display: ${props => props.isShow? "block" : "none"};
+  position: absolute;
+  
 
 `;  
 export const ReactWrapper = styled.div`
