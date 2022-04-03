@@ -222,6 +222,7 @@ export const TitleSub = styled.div`
   }
   @media ${breakPoints.mobile} {
     font-size: 20px;
+    transform: translateY(40px);
   }
 `;
 export const TitleMain = styled.div`
@@ -241,6 +242,7 @@ export const TitleMain = styled.div`
   }
   @media ${breakPoints.mobile} {
     font-size: 36px;
+    transform: translateY(40px);
   }
 `;
 export const Description = styled.div`
@@ -266,6 +268,8 @@ export const Description = styled.div`
   @media ${breakPoints.mobile} {
     font-size: 14px;
     margin-top: 14px;
+    transform: translateY(30px);
+    font-weight: 400;
   }
 `;
 
@@ -362,6 +366,8 @@ export const BoxBgImage = styled.div`
   top: 0;
   left: 0;
   transition: all 0.6s ease;
+  border-radius: 20px;
+  overflow: hidden;
   :after {
     content: "";
     display: block;
