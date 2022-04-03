@@ -23,8 +23,23 @@ export const ModalWrapper = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   @media ${breakPoints.mobile} {
-    max-width: 90%;
+    max-width: calc(100% + 2px);
     height: 260px;
+    bottom: 0;
+    top: auto;
+    transform: translate(-50%, 0);
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    animation: translateUp 0.4s;
+
+    @keyframes translateUp {
+      0% {
+        transform: translate(-50%, 100%);
+      }
+      100% {
+        transform: translate(-50%, 0);
+      }
+    }
   }
 `;
 export const Modal = styled.div`
@@ -35,7 +50,8 @@ export const Modal = styled.div`
   justify-content: space-between;
   @media ${breakPoints.mobile} {
     button {
-      width: 50%;
+      width: 100%;
+      font-size: 16px;
     }
   }
 `;
