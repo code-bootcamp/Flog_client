@@ -35,7 +35,8 @@ export default function TripWriteLog(props) {
   }, []);
 
   useEffect(() => {
-    // console.log(userData);
+    console.log(userData);
+    console.log(sharing);
 
     if (!userData) return;
     if (userData?.fetchSchedule?.isShare === "1") {

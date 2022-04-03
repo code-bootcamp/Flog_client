@@ -3,7 +3,7 @@ import { breakPoints } from "../../../../../commons/styles/Media";
 export const Main = styled.div`
   position: relative;
   padding: 19px 0 0;
-  width: 1000px;
+  width: 1200px;
   @media ${breakPoints.mobile} {
   }
 `;
@@ -15,7 +15,7 @@ export const PlanBtnGroup = styled.div`
 `;
 export const ScrollWrap = styled.div``;
 export const EditorWrapper = styled.div`
-  width: 700px;
+  width: 900px;
   position: absolute;
   top: ${(props) =>
     props.index === 0
@@ -26,6 +26,7 @@ export const EditorWrapper = styled.div`
       ? "-113px"
       : "-147px"};
   right: 0;
+  
 `;
 
 export const Container = styled.div`
