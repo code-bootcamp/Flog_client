@@ -2,20 +2,52 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import TripWriteLogUI from "./TripWriteLog.presenter";
-import { SHARE, CREATE_BOARD } from "./TripWriteLog.queries";
-export default function TripWriteLog(props) {
-  const [isShow, setIsShow] = useState([false, false, false, false]);
+import {
+  UPDATE_SHARE,
+  FETCH_SCHEDULE,
+  PAYMENT_POINT_TRANSACTION,
+  FETCH_USER,
+} from "./TripWriteLog.queries";
 
-  const saveButtonRef = [1, 1, 1, 1].map((x) =>
+export default function TripWriteLog(props) {
+  const router = useRouter();
+  const [pointModal, setPointModal] = useState(false);
+  const [point, setPoint] = useState(0);
+  const [pointSelect, setPointSelect] = useState(true);
+  const [sharing, setSharing] = useState(false);
+
+  const { data: userData } = useQuery(FETCH_SCHEDULE, {
+    variables: { scheduleId: String(router.query.scheduleId) },
+  });
+  const { data: myData } = useQuery(FETCH_USER);
+
+  const saveButtonRef = [1, 1, 1, 1].map((el) =>
+
     useRef<HTMLButtonElement>(null)
   );
-  const [share] = useMutation(SHARE);
+  const [share] = useMutation( UPDATE_SHARE);
+
+  const [viewport, setViewport] = useState(0);
+  useEffect(() => {
+    const viewportWidth = window.visualViewport.width;
+    setViewport(viewportWidth);
+  }, []);
+
+  useEffect(() => {
+    // console.log(userData);
+
+    if (!userData) return;
+    if (userData?.fetchSchedule?.isShare === "1") {
+      setSharing(true);
+    }
+  }, [userData]);
 
   const router = useRouter();
-
+    
+    const [isShow, setIsShow] = useState([false, false, false, false]);
+    
   const toggle = (index: any) => () => {
     const temp = new Array(4).fill(false);
-
     if (isShow[index]) return setIsShow(temp);
     else {
       temp[index] = true;
@@ -28,6 +60,21 @@ export default function TripWriteLog(props) {
       const result = await share({
         variables: {
           scheduleId: String(router.query.scheduleId),
+        },
+      });
+      setSharing((prev) => !prev);
+      // console.log(result);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const donation = async () => {
+    try {
+      const result = await paymentPointTransaction({
+        variables: {
+          userId: userData?.fetchSchedule.user.id,
+          point: Number(point),
         },
       });
       console.log(result);
@@ -45,6 +92,18 @@ export default function TripWriteLog(props) {
       index={props.index}
       saveButtonRef={saveButtonRef}
       shareBtn={shareBtn}
+
+      userData={userData}
+      pointModal={pointModal}
+      setPointModal={setPointModal}
+      onChangePoint={onChangePoint}
+      pointSelect={pointSelect}
+      donation={donation}
+      myData={myData}
+      sharing={sharing}
+      setSharing={setSharing}
+      viewport={viewport}
+
     />
   );
 }

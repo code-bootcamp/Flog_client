@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 100%;
@@ -19,21 +20,19 @@ export const InnerWrap = styled.div`
   max-width: 1200px;
   display: flex;
   margin-top: 20px;
+
   height: 1100px;
 
-
 `;
-export const isShow = styled.div`
-  display: ${props => props.isShow ? "block": "none"}
-
-`
-
 
 export const PlanBox = styled.div`
   display: flex;
-  position: sticky;
-  top: 0;
+
+  z-index: 5;
+  top: 10px;
   left: 0;
+  height: 1000px;
+
   // height 미정
   padding: 24px 20px;
   margin-right: 80px;
@@ -41,49 +40,51 @@ export const PlanBox = styled.div`
   border: 1px solid #fff;
   width: 260px;
   flex-direction: column;
-
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 `;
+
 export const Bar = styled.div`
-  padding-left:  39px ;
+  padding-left: 39px;
   width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #E9E9E9;
+  border-bottom: 1px solid #e9e9e9;
 `;
 export const MoveBack = styled.div`
   font-size: 18px;
   color: #58bd97;
   :hover {
-      cursor: pointer;
-    }
-  img{
+    cursor: pointer;
+  }
+  img {
     margin-right: 12px;
+  }
+  @media ${breakPoints.mobile} {
   }
 `;
 export const BtnGroup = styled.div`
   display: flex;
   div {
-
     padding: 28px 48px;
-    border-right: 1px solid #E9E9E9;
+    border-right: 1px solid #e9e9e9;
     :hover {
       cursor: pointer;
     }
-   &.share {
-     display: flex;
-     img{
-       margin-right: 12px;
-     }
-   }
-   &.delete {
-     color: #E25C5C;
-   }
+    &.share {
+      display: flex;
+      img {
+        margin-right: 12px;
+      }
+    }
+    &.delete {
+      color: #e25c5c;
+    }
   }
 `;
+
 export const PlanBtnGroup = styled.div`
   display: flex;
   padding-top: 24px;
@@ -91,38 +92,34 @@ export const PlanBtnGroup = styled.div`
   flex-direction: column;
 `;
 
-
 export const DetailBox = styled.div``;
 export const PlanWrapper = styled.div`
   margin-top: 14px;
   width: 100%;
-
 `;
 
 export const DayWrapper = styled.div`
   padding-top: 10px;
   position: relative;
   width: 380px;
-
-
 `;
 
 export const Day = styled.span`
-   position: relative;
-    font-size: 20px;
-    font-weight: 500;
-    padding-left: 10px;
-`
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 10px;
+`;
 export const ToggleImg = styled.img`
-   top: 18px;
-    left: 68px;
-    width: 16px;
-    position: absolute;
+  top: 18px;
+  left: 68px;
+  width: 16px;
+  position: absolute;
 
-    :hover {
-      cursor: pointer;
-    }
-`
+  :hover {
+    cursor: pointer;
+  }
+`;
 
 export const DayPlanWrapper = styled.div`
   margin-top: 22px;
@@ -147,14 +144,18 @@ export const DayPlanLabel = styled.div`
 export const moveBtn = styled.button`
   width: 100%;
   margin-bottom: 20px;
-  background: #58bd97;
+  background: ${(props) => (props.isMine ? "#fff" : "#58bd97")};
   border-radius: 40px;
-  color: #fff;
+  color: ${(props) => (props.isMine ? "#58bd97" : "#fff")};
   height: 40px;
-  border: none;
+
+  border: ${(props) => (props.isMine ? "1px solid #58bd97 " : "none")};
+
   :hover {
     background: #a1dac5;
     border-color: #a1dac5;
+    color: ${(props) => (props.isMine ? "#fff" : "")};
+
   }
 `;
 
@@ -176,4 +177,3 @@ export const Email = styled.div`
   font-size: 12px;
   color: #7d7d7d;
 `;
-

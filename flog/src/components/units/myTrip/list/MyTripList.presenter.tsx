@@ -1,6 +1,5 @@
 import * as List from "./MyTripList.styles";
 import { v4 as uuid4 } from "uuid";
-
 import { Fragment } from "react";
 import OutlinedButton01 from "../../../commons/buttons/outlined/01/OutlinedButton01.container";
 import Dropdown01 from "../../../commons/dropdowns/01/Dropdown01.container";

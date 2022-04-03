@@ -17,9 +17,9 @@ const FETCH_HASHTAG_SEARCH = gql`
     scheduleHashTagSearch(where: $where, hashTag: $hashTag) {
       id
       title
+      location
       startDate
       endDate
-      location
     }
   }
 `;
@@ -29,6 +29,7 @@ export default function TagSearch() {
 
   const [inputs, setInputs] = useState({ doName: "", cityName: "" });
   const [mapModal, setMapModal] = useState(false);
+  const [where, setWhere] = useState("");
 
   const onClickMapModal = () => {
     setMapModal(true);
@@ -39,22 +40,34 @@ export default function TagSearch() {
     setInputs({ doName: "", cityName: "" });
   };
 
-  const onClickSubmitMapModal = () => {
-    setMapModal(false);
-    // console.log(inputs.doName, inputs.cityName);
-  };
-
   const [hashTag, setHashTag] = useState("");
 
   const { data: hashTagData, refetch } = useQuery(FETCH_HASHTAG_SEARCH, {
     variables: {
-      where: `${inputs.doName}${inputs.cityName}`,
+      where: where,
       hashTag: String(hashTag),
     },
   });
 
+  let newWhere = "";
+  const onClickSubmitMapModal = () => {
+    if (inputs.doName && !inputs.cityName) {
+      setWhere(`${inputs.doName}`);
+    }
+
+    if (inputs.doName && inputs.cityName) {
+      newWhere = `${inputs.doName}.${inputs.cityName}`;
+      if (newWhere.includes(" ")) {
+        newWhere = newWhere.replace(" ", "");
+        setWhere(newWhere);
+      }
+    }
+    setMapModal(false);
+  };
+
   useEffect(() => {
     console.log(hashTagData);
+    console.log(inputs, where);
     refetch();
   }, [hashTagData]);
 
