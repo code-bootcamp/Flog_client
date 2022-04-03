@@ -21,6 +21,7 @@ export const FETCH_SCHEDULE = gql`
         id
         email
         nickName
+        url
       }
       tripdates
       isShare
