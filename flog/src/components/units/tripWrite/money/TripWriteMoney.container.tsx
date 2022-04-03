@@ -1,8 +1,6 @@
 import { useApolloClient, useMutation, useQuery } from "@apollo/client";
-import { result } from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { string } from "yup";
 import TripWriteMoneyUI from "./TripWriteMoney.presenter";
 import {
   CREATE_BUDGET,
@@ -35,6 +33,8 @@ export default function TripWriteMoney() {
   const [budgetSelect, setBudgetSelect] = useState(true);
   const [mutationTripdates, setMutationTripdates] = useState("");
   const [endDropIndex, setEndDropIndex] = useState("");
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
   const { data: dataBudget } = useQuery(FETCH_BUDGET, {
     variables: {
       scheduleId: router.query.scheduleId,
@@ -82,7 +82,8 @@ export default function TripWriteMoney() {
           setBudgetId(result.data.createBudget.id);
           setTotalAmount(result.data.createBudget.totalAmount);
         } catch (error) {
-          console.log(error);
+          setModalContents(error.message);
+          setAlertModal(true);
         }
       };
       createBudgetFunction();
@@ -117,10 +118,10 @@ export default function TripWriteMoney() {
           scheduleId: router.query.scheduleId,
         },
       });
-      console.log("result is", result);
       setTotalAmount(result.data.updateBudget.totalAmount);
     } catch (error) {
-      console.log(error);
+      setModalContents(error.message);
+      setAlertModal(true);
     }
     setTotalBudgetModal(false);
   };
@@ -193,7 +194,6 @@ export default function TripWriteMoney() {
   useEffect(() => {
     const daily = sumDailyAmount();
     setDailyAmount(daily);
-    console.log("dailyAmount is", dailyAmount);
   }, [isDataLoading2]);
 
   const onDragEndReorder = (result) => {
@@ -320,12 +320,14 @@ export default function TripWriteMoney() {
 
   const onClickSubmitDetailBudgetFormModal = async (data: any) => {
     if (!data?.contents || !data?.budget || !category) {
-      alert("데이터없음!!");
+      setModalContents(
+        "카테고리, 내용, 금액이 모두 입력되었는지 확인해주세요."
+      );
+      setAlertModal(true);
       setIsSelect([false, false, false, false, false, false]);
       setCategory("");
       return;
     }
-    console.log(data, category, clickDate);
     try {
       const result = await createMoneyBook({
         variables: {
@@ -341,10 +343,10 @@ export default function TripWriteMoney() {
           amount: Number(data.budget),
         },
       });
-      console.log("result is", result);
       router.reload();
     } catch (error) {
-      console.log(error);
+      setModalContents(error.message);
+      setAlertModal(true);
     }
     setIsSelect([false, false, false, false, false, false]);
     setCategory("");
@@ -390,9 +392,6 @@ export default function TripWriteMoney() {
           currentIds[currentIndex].push(currentEl2.id);
         });
       });
-
-      console.log("startIds is", startIds);
-      console.log("currentIds is", currentIds);
     };
     makeIdsList();
 
@@ -420,7 +419,8 @@ export default function TripWriteMoney() {
                     },
                   });
                 } catch (error) {
-                  console.log(error);
+                  setModalContents(error.message);
+                  setAlertModal(true);
                 }
               }
             }
@@ -477,13 +477,22 @@ export default function TripWriteMoney() {
               },
             });
           } catch (error) {
-            console.log(error);
+            setModalContents(error.message);
+            setAlertModal(true);
           }
         });
       };
       creatMovedCard();
     };
     createMovedItem();
+  };
+
+  const onClickExitAlertModal = () => {
+    setAlertModal(false);
+  };
+
+  const onClickSubmitAlertModal = () => {
+    setAlertModal(false);
   };
 
   return (
@@ -512,6 +521,12 @@ export default function TripWriteMoney() {
       tripDates={tripDates}
       budgetId={budgetId}
       submitDetailBudget={submitDetailBudget}
+      onClickExitAlertModal={onClickExitAlertModal}
+      onClickSubmitAlertModal={onClickSubmitAlertModal}
+      alertModal={alertModal}
+      modalContents={modalContents}
+      setAlertModal={setAlertModal}
+      setModalContents={setModalContents}
     />
   );
 }

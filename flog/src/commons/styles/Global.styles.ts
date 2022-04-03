@@ -114,6 +114,13 @@ export const GlobalStyle = css`
     padding: 0;
     word-break: break-all;
   }
+  button {
+    color: #000000;
+  }
+  a {
+    color: #000000;
+    text-decoration: none;
+  }
 
   /* rem 기준 설정 */
   html {
