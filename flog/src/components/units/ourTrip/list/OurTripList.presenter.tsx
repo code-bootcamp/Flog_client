@@ -43,12 +43,12 @@ export default function OurTripListUI(props) {
             </List.CardWrapper>
           ))}
         </List.TripList>
-        <OutlinedButton01
-          content="더보기"
-          size="large"
-          onClick={props.onClickMoreOurTrip}
-        />
       </List.List>
+      <OutlinedButton01
+        content="더보기"
+        size="large"
+        onClick={props.onClickMoreOurTrip}
+      />
     </List.ListWrap>
   );
 }
