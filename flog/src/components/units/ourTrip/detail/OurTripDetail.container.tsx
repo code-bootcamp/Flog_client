@@ -13,15 +13,19 @@ export default function OurTripDetail(props) {
     },
   });
   const moveRef = useRef(null);
-  let prevIndex = 0
+  let prevIndex = 0;
   const d = (index: number) => {
-    moveRef.current?.querySelectorAll(`.ql-size-large`)[prevIndex].classList.remove('focused')
+    moveRef.current
+      ?.querySelectorAll(`.ql-size-large`)
+      [prevIndex].classList.remove("focused");
     moveRef.current?.querySelectorAll(`.ql-size-large`)[index].scrollIntoView({
       block: "center",
       behavior: "smooth",
     });
-    moveRef.current?.querySelectorAll(`.ql-size-large`)[index].classList.add('focused')
-    prevIndex = index
+    moveRef.current
+      ?.querySelectorAll(`.ql-size-large`)
+      [index].classList.add("focused");
+    prevIndex = index;
   };
   useEffect(() => {
     if (props.selected.index === -1) return;
