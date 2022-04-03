@@ -36,16 +36,28 @@ export const BgImage2 = styled.div`
   z-index: 1;
 `;
 export const Illust1 = styled.div`
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  @media ${breakPoints.tablet} {
+  }
 
   .airplane {
     position: relative;
     top: 60px;
+    width: 292px;
+    height: 186px;
     @media ${breakPoints.mobile} {
-      width: 160px;
+      width: 150px;
+      height: 100px;
       top: 20px;
       right: -10px;
     }
@@ -54,12 +66,13 @@ export const Illust1 = styled.div`
   }
   .cloud-small {
     position: relative;
-    width: 10%;
-    height: 20%;
+    width: 135px;
+    height: 100px;
     top: 10px;
-    left: -70px;
+    left: -90px;
     @media ${breakPoints.mobile} {
       width: 70px;
+      height: 55px;
       top: 10px;
       left: 0px;
     }
@@ -68,12 +81,15 @@ export const Illust1 = styled.div`
   }
   .cloud-big {
     position: relative;
+    width: 220px;
+    height: 168px;
     top: 80px;
     left: 100px;
     @media ${breakPoints.mobile} {
       width: 100px;
-      top: 60px;
-      left: 20px;
+      height: 90px;
+      top: 40px;
+      left: 40px;
     }
     @media ${breakPoints.tablet} {
     }
