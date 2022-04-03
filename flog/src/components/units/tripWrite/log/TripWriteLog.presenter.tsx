@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 
 
 import ContainedButton03 from "../../../commons/buttons/contained/03/ContainedButton03.container";
@@ -49,8 +50,8 @@ export default function TripWriteLogUI(props) {
               {props.sharing ? (
                 <div className="share" onClick={props.shareBtn}>
                 <img src="/img/mytrips-shared-icon.svg" />
-                우리의 여행에 공유됨
-              </div>
+                  우리의 여행에 공유됨
+                </div>
                
               ) : (
                 <div className="share" onClick={props.shareBtn}>
@@ -65,7 +66,7 @@ export default function TripWriteLogUI(props) {
               >
                 수정
               </div>
-              <div className="delete">삭제</div>
+              <div className="delete"><span>삭제</span></div>
             </Log.BtnGroup>
           )}
 
@@ -73,11 +74,12 @@ export default function TripWriteLogUI(props) {
       )}
       <Log.Contents>
 
-
-        <Log.InnerWrap isEdit={props.isEdit}>
+        <Log.ToggleResponsive  onClick={() =>props.setResponsiveToggle(prev => !prev)}/>
+        <Log.InnerWrap isEdit={props.isEdit} isShow={props.responsiveToggle}>
           <Log.PlanBox >
             { props.isEdit || (
               <>
+               {props.viewport < 767 && (<Log.XButton onClick={() =>props.setResponsiveToggle(prev => !prev)}>X</Log.XButton>)}
               <Log.UserInfo>
                 <img src={props.userData?.fetchSchedule?.user.url? `https://storage.cloud.google.com/${props.userData?.fetchSchedule?.user.url}`: "/img/ourtrips-detail-usericon.png"} />
                 <Log.Name>{props.userData?.fetchSchedule?.user.nickName}</Log.Name>
