@@ -7,6 +7,7 @@ import {
   FETCH_SCHEDULE,
   PAYMENT_POINT_TRANSACTION,
   FETCH_USER,
+  DELETE_BOARD,
 } from "./TripWriteLog.queries";
 
 export default function TripWriteLog(props) {
@@ -50,6 +51,8 @@ export default function TripWriteLog(props) {
     useRef<HTMLButtonElement>(null)
   );
   const [share] = useMutation(UPDATE_SHARE);
+  const [deleteBoard] = useMutation(DELETE_BOARD);
+
   const [paymentPointTransaction] = useMutation(PAYMENT_POINT_TRANSACTION);
 
   const [viewport, setViewport] = useState(0);
@@ -84,7 +87,8 @@ export default function TripWriteLog(props) {
       });
       setSharing((prev) => !prev);
     } catch (error) {
-      alert(error.message);
+      setModalContents(error.message);
+      setAlertModal(true);
     }
   };
 
@@ -101,9 +105,29 @@ export default function TripWriteLog(props) {
         onClickAlertModal();
       }, 500);
     } catch (error) {
-      alert(error.message);
+      setModalContents(error.message);
+      setAlertModal(true);
     }
   };
+  const onClickDelete = async () => {
+    console.log('delete')
+
+    try {
+      const result = await deleteBoard({
+        variables: {
+          scheduleId: String(router.query.scheduleId),
+        },
+      });
+      setModalContents("삭제가 완료되었습니다.");
+      setAlertModal(true);
+    } catch (error) {
+      setModalContents(error.message);
+      setAlertModal(true);
+    }
+  }
+  useEffect(() => {
+    console.log(userData)
+  },[userData])
 
   return (
     <TripWriteLogUI
@@ -135,6 +159,7 @@ export default function TripWriteLog(props) {
       onClickSubmitTotalMoneyModal={onClickSubmitTotalMoneyModal}
       totalMoney={totalMoney}
       setTotalMoney={setTotalMoney}
+      onClickDelete={onClickDelete}
     />
   );
 }

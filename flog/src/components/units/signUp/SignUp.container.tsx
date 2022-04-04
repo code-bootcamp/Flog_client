@@ -70,6 +70,14 @@ export default function Signup() {
     setModalContents("");
     router.push("/login");
   };
+  if(process.browser) {
+    document.addEventListener('keydown', function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+      };
+    }, true);
+  }
+  
   return (
     <SignupUI
       register={register}
