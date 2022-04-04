@@ -55,7 +55,7 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
             endDate: changeDatetimeToString(inputs.endDate),
             numberPeople: inputs.people,
             hashtag: inputs.theme,
-            mainCategoryName: "",
+            mainCategoryName: "MINE",
             tripdates: getDateList(inputs.startDate, inputs.endDate),
           },
         },
