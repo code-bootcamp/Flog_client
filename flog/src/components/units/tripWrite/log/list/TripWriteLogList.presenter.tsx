@@ -6,23 +6,21 @@ export default function TripWriteLogListUI(props) {
   return (
     <List.Main>
       <List.ScrollWrap>
-        {props.viewport >= 767 &&
-          props.data?.fetchDetailSchedule?.map((el, elIndex) => (
-            <List.DayPlanDetail
-              key={elIndex}
-              onClick={() => {
-                props.setSelected({
-                  title: el.place,
-                  des: el.memo,
-                  index: elIndex,
-                });
-                console.log(props.selected);
-              }}
-            >
-              <List.DayPlanLabel>{el.place}</List.DayPlanLabel>
-              <div>{el.memo}</div>
-            </List.DayPlanDetail>
-          ))}
+        {props.data?.fetchDetailSchedule?.map((el, elIndex) => (
+          <List.DayPlanDetail
+            key={elIndex}
+            onClick={() => {
+              props.setSelected({
+                title: el.place,
+                des: el.memo,
+                index: elIndex,
+              });
+            }}
+          >
+            <List.DayPlanLabel>{el.place}</List.DayPlanLabel>
+            <div>{el.memo}</div>
+          </List.DayPlanDetail>
+        ))}
       </List.ScrollWrap>
 
       <List.EditorWrapper index={props.index}>

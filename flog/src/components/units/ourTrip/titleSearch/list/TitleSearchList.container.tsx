@@ -25,7 +25,7 @@ export default function OurTripListUI(props) {
                     src={
                       el.url
                         ? `https://storage.cloud.google.com/${el.url}`
-                        : `/img/trips/user/trip-img${1}.jpg`
+                        : `/img/tripList-default.jpg`
                     }
                     alt="여행이미지"
                   />

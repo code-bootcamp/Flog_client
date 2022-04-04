@@ -25,8 +25,6 @@ export default function Dropdown07(props: IDropdown07Props) {
     props.setValue("takenHour", HOUR[index]);
   };
 
-  console.log(isHourSelected);
-
   return (
     <>
       <Drop.SelectButton onClick={onClickSelectBtn}>

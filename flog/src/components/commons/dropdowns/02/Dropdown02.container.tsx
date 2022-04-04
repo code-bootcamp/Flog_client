@@ -17,7 +17,6 @@ export default function Dropdown02(props: IDorpDown02Props) {
   ];
   const onClickSelectBtn = () => {
     setIsThemeActive((prev) => !prev);
-    console.log(isThemeActive);
   };
 
   const onClickOption = (index: number) => () => {

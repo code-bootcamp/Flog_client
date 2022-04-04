@@ -82,11 +82,13 @@ export default function MyPageUI(props: IMyPageUIProps) {
       {props.pointModal && (
         <Point
           onClickExit={props.onClickExitPointModal}
-          onClickSubmit={props.onClickSubmitPointModal}
-          onChangePoint={props.onChangePoint}
+          onClickSubmitPointModal={props.onClickSubmitPointModal}
+          // onChangePoint={props.onChangePoint}
           pointSelect={props.pointSelect}
           userName={props.data?.fetchUser?.nickName}
           userPoint={props.data?.fetchUser?.point}
+          setPoint={props.setPoint}
+          setPointSelect={props.setPointSelect}
         />
       )}
       {props.alertModal && (

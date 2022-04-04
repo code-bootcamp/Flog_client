@@ -82,8 +82,6 @@ export default function TripWriteLogEditor(props) {
   }, [props.selected]);
 
   const addEl = (name: string, des: string) => {
-    console.log("add");
-    console.log(editor);
     if (!editor) setRefValue();
     editor?.insertText(currentFocus?.index + 1, name, {
       header: 1,
@@ -104,7 +102,6 @@ export default function TripWriteLogEditor(props) {
       color: "black",
     });
     currentFocus.index += des.length + 6;
-    console.log(name, des);
     editor.setSelection(currentFocus.index, 0, 0);
   };
 
@@ -118,7 +115,6 @@ export default function TripWriteLogEditor(props) {
     input.click();
     input.onchange = async (event: ChangeEvent<HTMLInputElement>) => {
       if (!editor) {
-        console.log("에디터가 없습니다");
         setRefValue();
       }
       editor.focus();
@@ -126,8 +122,6 @@ export default function TripWriteLogEditor(props) {
       const file = event.target.files?.[0];
       const result = await uploadBoardImagefile({ variables: { file } });
       const fileUrl = result.data?.uploadBoardImagefile;
-      console.log(result);
-
       editor.insertEmbed(
         quillCurrent.getEditorSelection().index,
         "image",
@@ -177,7 +171,6 @@ export default function TripWriteLogEditor(props) {
 
   useEffect(() => {
     setRefValue();
-    console.log(contents);
   }, [imageHandler]);
 
   return (

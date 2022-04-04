@@ -72,7 +72,7 @@ export default function DetailScheduleFormEditUI(
                 />
               </M.Wrap>
             </M.Contents>
-            <ContainedButton01 content="생성하기" size="large" type="submit" />
+            <ContainedButton01 content="수정하기" size="large" type="submit" />
           </M.Form>
         </M.Modal>
       </M.ModalWrapper>

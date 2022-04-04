@@ -78,6 +78,9 @@ export const DayPlanDetail = styled.div`
   :hover {
     background-color: #58bd97;
   }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const DayPlanLabel = styled.div`
