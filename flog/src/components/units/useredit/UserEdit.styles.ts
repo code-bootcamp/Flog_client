@@ -60,7 +60,7 @@ export const TitleText = styled.div`
   }
 `;
 export const Contents = styled.div`
-  padding: 0 20px 96px;
+  padding: 60px 20px 96px;
   border: 1px solid #e9e9e9;
   border-radius: 20px;
   display: flex;
@@ -137,10 +137,9 @@ export const NameInput = styled.div`
   margin: 38px 0;
   @media ${breakPoints.mobile} {
     margin: 24px 0;
-  }
-  @media ${breakPoints.tablet} {
-  }
-  button {
+    input {
+      max-width: calc(100vw - 50px);
+    }
   }
 `;
 export const InputLabel = styled.div`
@@ -200,7 +199,12 @@ export const EmailInput = styled.div`
 export const SubmitBox = styled.div`
   margin-top: 80px;
   button {
-    padding: 16px 137px;
+    width: 345px;
+    max-width: 100%;
+    padding: 16px;
     font-size: 20px;
+  }
+  @media ${breakPoints.mobile} {
+    max-width: calc(100vw - 30px);
   }
 `;
