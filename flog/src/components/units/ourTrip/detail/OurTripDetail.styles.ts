@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
   width: 100%;
@@ -8,22 +9,35 @@ export const Container = styled.div`
   padding-top: 30px;
   height: 700px;
   ::-webkit-scrollbar {
-      width: 10px;
-    }
+    width: 10px;
+  }
 
-    ::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background: #eeeeee;
-    }
+  }
 
-    ::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background: linear-gradient(#58bd97, #58bd97);
-    }
-
+  }
+  @media ${breakPoints.mobile} {
+    position: relative;
+    width: 100%;
+    top: auto;
+    height: auto;
+    padding: 0 10px 0 0;
+    overflow: auto;
+  }
 `;
 export const Contents = styled.div`
   padding: 0 0 33px 10px;
   height: auto;
   margin: 15px 0 100px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    margin: 0;
+    padding: 15px 0 15px;
+    border-left: 2px solid #58bd97;
+  }
 `;
 
 export const InnerWrap = styled.div`
@@ -41,6 +55,11 @@ export const Day = styled.div`
   div {
     margin-right: 10px;
   }
+  @media ${breakPoints.mobile} {
+    margin: 0;
+    padding: 0 0 10px 20px;
+    border-left: 2px solid #58bd97;
+  }
 `;
 export const Line = styled.div`
   height: 500px;
@@ -50,7 +69,7 @@ export const DayContents = styled.div`
   font-size: 16px;
   border-left: 2px solid #58bd97;
   position: relative;
- 
+
   .ql-size-large {
     font-size: 24px;
     display: inline-block;
@@ -65,10 +84,9 @@ export const DayContents = styled.div`
       left: -11px;
       margin-right: 60px;
     }
-    
   }
   .ql-size-large.focused {
-    background-color:#D1EAE1;
+    background-color: #d1eae1;
   }
   p {
     padding-left: 68px;
@@ -76,13 +94,39 @@ export const DayContents = styled.div`
   img {
     text-align: center;
     display: block;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     margin: 10px auto;
-    
   }
   .ql-size-small {
     font-size: 18px;
     color: #818181;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    border-left: none;
+    p {
+      padding-left: 20px;
+      position: relative;
+    }
+    .ql-size-large {
+      font-size: 18px;
+      margin-bottom: 0;
+      margin: 20px 10px 10px 0 !important;
+      :before {
+        content: "";
+        width: 6px;
+        height: 2px;
+        background-color: #58bd97;
+        position: absolute;
+        left: 0;
+        top: 32px;
+        margin-right: 60px;
+      }
+    }
+    .ql-size-small {
+      font-size: 14px;
+    }
   }
 `;
 export const Bar = styled.div`
