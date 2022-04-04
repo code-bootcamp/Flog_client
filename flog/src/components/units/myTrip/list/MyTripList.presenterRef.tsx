@@ -11,7 +11,7 @@ export default function TripListUIItem(props) {
   };
 
   return (
-    <List.CardWrapper key={uuid4()} >
+    <List.CardWrapper key={uuid4()}>
       <List.Wrapper>
         {props.el.isShare === "1" ? (
           <List.Mark>
@@ -22,7 +22,6 @@ export default function TripListUIItem(props) {
         )}
         <List.EditWrap>
           <img
-            
             src="/img/icon-body-edit.svg"
             alt="여행이미지 수정"
             onClick={onClickUploadBanner}
@@ -38,11 +37,13 @@ export default function TripListUIItem(props) {
         </List.EditWrap>
         <List.Image>
           <img
-            onClick={() => {router.push(`/myTrips/${props.el.id}`)}}
+            onClick={() => {
+              router.push(`/myTrips/${props.el.id}`);
+            }}
             src={
               props.el.url
                 ? `https://storage.cloud.google.com/${props.el.url}`
-                : `/img/trips/user/trip-img${1}.jpg`
+                : `/img/tripList-default.jpg`
             }
             alt="여행이미지"
           />

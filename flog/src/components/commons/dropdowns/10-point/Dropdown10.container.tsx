@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as Drop from "./Dropdown10.styles";
 export default function Dropdown10(props) {
-  const LIST = ["500", "1,000", "2,000", "3,000", "4,000", "5,000", "10000"];
+  const LIST = ["500", "1000", "2000", "3000", "4000", "5000", "10000"];
   const [isSelect, setIsSelect] = useState("금액을 선택해주세요");
   const [isActive, setIsActive] = useState(false);
 

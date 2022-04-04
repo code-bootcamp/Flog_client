@@ -7,14 +7,12 @@ export const Container = styled.div`
 `;
 export const Contents = styled.div`
   width: 100%;
-  /* background-color: yellow; */
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @media ${breakPoints.mobile} {
-    /* align-items: flex-end; */
   }
 `;
 export const ToggleResponsive = styled.div`
@@ -178,6 +176,9 @@ export const DayWrapper = styled.div`
   padding-top: 10px;
   position: relative;
   width: 380px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const Day = styled.span`

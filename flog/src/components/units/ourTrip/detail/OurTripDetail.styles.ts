@@ -127,8 +127,13 @@ export const DayContents = styled.div`
     .ql-size-small {
       font-size: 14px;
     }
+    img {
+      margin: 0;
+      width: calc(100% - 30px);
+    }
   }
 `;
+
 export const Bar = styled.div`
   width: calc(100% - 30px);
   max-width: 1200px;

@@ -65,7 +65,7 @@ export default function TripWriteLog(props) {
     }
   }, [userData]);
 
-  const [isShow, setIsShow] = useState([false, false, false, false]);
+  const [isShow, setIsShow] = useState([true, false, false, false]);
 
   const toggle = (index: any) => () => {
     const temp = new Array(4).fill(false);
@@ -88,7 +88,7 @@ export default function TripWriteLog(props) {
     }
   };
 
-  const donation = async () => {
+  const donationFunction = async () => {
     try {
       const result = await paymentPointTransaction({
         variables: {
@@ -120,7 +120,7 @@ export default function TripWriteLog(props) {
       pointModal={pointModal}
       setPointModal={setPointModal}
       pointSelect={pointSelect}
-      donation={donation}
+      donationFunction={donationFunction}
       setResponsiveToggle={setResponsiveToggle}
       responsiveToggle={responsiveToggle}
       myData={myData}
