@@ -44,11 +44,7 @@ export default function OurTripBannerUI(props) {
                 disabled={true}
               />
               {props.viewport > 767 && (
-                <ContainedButton03
-                  content="검색"
-                  size="large"
-                  onClick={props.onClickSearch}
-                />
+                <ContainedButton03 content="검색" size="large" />
               )}
             </Our.Search>
           </Our.Contents>

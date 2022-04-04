@@ -2,31 +2,6 @@ import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.cont
 import * as M from "./Exit.styles";
 import { IExitProps } from "./Exit.types";
 
-// //상위 컴포넌트에 넣을 내용 - exit
-// const [exitModal, setExitModal] = useState(false);
-
-// const onClickExitModal = () => {
-//   setExitModal(true);
-// };
-
-// const onClickExitExitModal = () => {
-//   setExitModal(false);
-// };
-
-// const onClickSubmitExitModal = () => {
-//   setExitModal(false);
-// };
-
-// return (
-// <button onClick={onClickExitModal}>exit</button>
-//    {exitModal && (
-//       <Exit
-//         onClickExit={onClickExitExitModal}
-//         onClickSubmit={onClickSubmitExitModal}
-//       />
-//     )}
-// )
-
 export default function Exit(props: IExitProps) {
   return (
     <M.Container>

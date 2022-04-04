@@ -3,31 +3,6 @@ import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.c
 import * as M from "./TotalMoney.styles";
 
 export default function TotalMoneyModal(props) {
-  // // 상위 컴포넌트에 넣을 내용 - MapModal
-  // const [totalMoney, setTotalMoney] = useState(false);
-
-  // const onClickTotalMoneyModal = () => {
-  //   setTotalMoney(true);
-  // };
-
-  // const onClickExitTotalMoneyModal = () => {
-  //   setTotalMoney(false);
-  // };
-
-  // const onClickSubmitTotalMoneyModal = () => {
-  //   setTotalMoney(false);
-  // };
-
-  // return (
-  // <button onClick={onClickTotalMoneyModal}>map</button>
-  //    {totalMoneyModal && (
-  //       <TotalMoneyModal
-  //         onClickExit={onClickExitTotalMoneyModal}
-  //         onClickSubmit={onClickSubmitTotalMoneyModal}
-  //       />
-  //     )}
-  // )
-
   return (
     <M.Container>
       <M.ModalWrapper>

@@ -65,8 +65,6 @@ export default function MainUI(props: IMainUIProps) {
               img={"/img/landing-lookAround.png"}
               className="bgImage"
             ></Main.BoxBgImage>
-            {/* <img src="/img/landing-lookAround.png" />
-            <img src="/img/landing-lookAround-bg.png" /> */}
             <Main.Text>
               <Main.BoxDescription>
                 여행을 하며 추억을 담는 가이드북
@@ -87,8 +85,6 @@ export default function MainUI(props: IMainUIProps) {
               img={"/img/landing-lookAround2.png"}
               className="bgImage"
             ></Main.BoxBgImage>
-            {/* <img src="/img/landing-lookAround2.png" />
-            <img src="/img/landing-lookAround-bg.png" /> */}
             <Main.Text>
               <Main.BoxDescription>
                 내 경험을 나누며 즐기는 공유 공간

@@ -2,7 +2,6 @@ import Dropdown01 from "../../commons/dropdowns/01/Dropdown01.container";
 import Pagination01 from "../../commons/paginations/01/Pagination01.container";
 import * as Points from "./Points.styles";
 import { IPointsUIProps } from "./Points.types";
-import { SAMPLE_DATA_POINTS } from "./SampleDataPoints";
 
 export default function PointsUI(props: IPointsUIProps) {
   return (
@@ -21,7 +20,7 @@ export default function PointsUI(props: IPointsUIProps) {
           </Points.TitleDropdown>
         </Points.Title>
         <Points.Contents>
-          { props.data?.fetchPointHistory.map((el, index) => (
+          {props.data?.fetchPointHistory.map((el, index) => (
             <Points.Item key={index}>
               <Points.Status>
                 {el.status === "CHARGE" && <span className="charge">충전</span>}
@@ -38,7 +37,7 @@ export default function PointsUI(props: IPointsUIProps) {
                   {el.status === "EARN" && "여행 족보 후원"}
                   {el.status === "CANCEL" && "결제 취소"}
                 </div>
-                <div className="date">{el.createdAt.slice(0,10)}</div>
+                <div className="date">{el.createdAt.slice(0, 10)}</div>
               </Points.ItemText>
               <Points.ItemAmount>
                 <div className="changed">{el.changed} P</div>

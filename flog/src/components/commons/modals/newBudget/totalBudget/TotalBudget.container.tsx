@@ -2,39 +2,6 @@ import ContainedButton01 from "../../../buttons/contained/01/ContainedButton01.c
 import * as M from "./TotalBudget.styles";
 import { ITotalBudget } from "./TotalBudget.types";
 
-//  // 상위 컴포넌트에 넣을 내용 - total Budget
-//  const [totalBudgetModal, setTotalBudgetModal] = useState(false);
-//  const [totalBuget, setTotalBudget] = useState(0);
-//  const [budgetSelect, setBudgetSelect] = useState(true);
-
-//  const onClickTotalBudgetModal = () => {
-//    setTotalBudgetModal(true);
-//  };
-
-//  const onClickExitTotalBudgetModal = () => {
-//    setTotalBudgetModal(false);
-//  };
-
-//  const onClickSubmitTotalBudgetModal = () => {
-//    setTotalBudgetModal(false);
-//  };
-
-//  const onChangeTotalBudget = (event) => {
-//    setTotalBudget(event.target.value);
-//    setBudgetSelect(false);
-//  };
-
-// return(
-// <button onClick={onClickTotalBudgetModal}>예산 설정하기</button>
-// {totalBudgetModal && (
-//   <TotalBudget
-//     onClickExit={onClickExitTotalBudgetModal}
-//     onClickSubmit={onClickSubmitTotalBudgetModal}
-//     onChangeTotalBudget={onChangeTotalBudget}
-//     budgetSelect={budgetSelect}
-//   />
-// )}
-
 export default function TotalBudget(props: ITotalBudget) {
   return (
     <M.Container>

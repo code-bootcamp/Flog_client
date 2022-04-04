@@ -1,7 +1,7 @@
 import OutlinedInput01 from "../../inputs/outlined/01/OutlinedInput01.container";
 import * as M from "./DetailBudgetForm.styles";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
-// import { IDetailBudgetFormUIProps } from "./DetailBudgetForm.types";
+
 import {
   FormEventHandler,
   Fragment,
@@ -74,23 +74,6 @@ export default function DetailBudgetFormUI(props: IDetailBudgetFormUIprops) {
                   register={props.register("budget")}
                 />
               </M.Wrap>
-              {/* <M.TimeInputWrap>
-                <M.Wrap>
-                  <M.Label>시간</M.Label>
-                  <OutlinedInput02
-                    placeholder="시"
-                    type="number"
-                    register={props.register("hour")}
-                  />
-                </M.Wrap>
-                <M.Wrap>
-                  <OutlinedInput02
-                    placeholder="분"
-                    type="number"
-                    register={props.register("minutes")}
-                  />
-                </M.Wrap>
-              </M.TimeInputWrap> */}
               <M.Wrap>
                 <M.Label style={{ visibility: "hidden" }}>메모</M.Label>
                 <OutlinedInput01

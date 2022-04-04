@@ -36,7 +36,6 @@ export default function Login() {
       const token = result.data?.login;
       if (token) {
         if (setAccessToken) setAccessToken(token);
-        // localStorage.setItem("accessToken", token);
       }
       setModalContents("로그인에 성공했습니다");
     } catch (error) {
@@ -68,16 +67,15 @@ export default function Login() {
     const result = await login({
       variables: {
         email: "test123@test.com",
-        password: "test123!"
+        password: "test123!",
       },
     });
     const token = result.data?.login;
     if (token) {
       if (setAccessToken) setAccessToken(token);
-      // localStorage.setItem("accessToken", token);
     }
     setModalContents("비회원으로 시작하기");
-  }
+  };
   return (
     <LoginUI
       register={register}

@@ -25,8 +25,6 @@ const FETCH_HASHTAG_SEARCH = gql`
 `;
 
 export default function TagSearch() {
-  // 상위 컴포넌트에 넣을 내용 - MapModal
-
   const [inputs, setInputs] = useState({ doName: "", cityName: "" });
   const [mapModal, setMapModal] = useState(false);
   const [where, setWhere] = useState("");

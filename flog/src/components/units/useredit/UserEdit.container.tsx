@@ -54,7 +54,6 @@ export default function UserEdit() {
     phoneNumber?: string;
   }
   const onClickSubmit = async () => {
-    // console.log(inputs);
     const AllInputs: AllInputs = {};
     if (inputs.email !== "") AllInputs.email = inputs.email;
     if (inputs.name !== "") AllInputs.nickName = inputs.name;
@@ -73,7 +72,6 @@ export default function UserEdit() {
       router.push("/mypage");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
-      console.log(AllInputs);
     }
   };
   const pwdToggle = () => {

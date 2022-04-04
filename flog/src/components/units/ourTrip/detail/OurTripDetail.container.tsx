@@ -1,7 +1,6 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
-import { DayContents } from "./OurTripDetail.styles";
 import OurTripDetailUI from "./OurTripDetail.presenter";
 import { FETCH_BOARD, SHARE } from "./OurTripDetail.queries";
 

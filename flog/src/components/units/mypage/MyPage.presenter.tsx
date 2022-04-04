@@ -7,7 +7,6 @@ import * as My from "./MyPage.styles";
 import { IMyPageUIProps } from "./MyPage.types";
 
 export default function MyPageUI(props: IMyPageUIProps) {
-  console.log(props.data);
   return (
     <My.Container>
       <My.Banner>
@@ -24,7 +23,9 @@ export default function MyPageUI(props: IMyPageUIProps) {
         <My.UserImage>
           {props.data?.fetchUser?.url ? (
             <div>
-              <img src={`https://storage.cloud.google.com/${props.data?.fetchUser?.url}`} />
+              <img
+                src={`https://storage.cloud.google.com/${props.data?.fetchUser?.url}`}
+              />
             </div>
           ) : (
             <My.NoImage>
