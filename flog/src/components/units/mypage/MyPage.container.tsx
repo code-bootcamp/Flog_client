@@ -29,21 +29,7 @@ export default function MyPage() {
     }
   };
 
-  const onClickCoverChange = () => {
-    alert("커버 변경 클릭!");
-  };
-
-  const onClickPointModal = () => {
-    setPointModal(true);
-  };
-
-  const onClickExitPointModal = () => {
-    setPointModal(false);
-  };
-
   const onClickSubmitPointModal = () => {
-    console.log("충전하기입니다", Number(point));
-
     setPointModal(false);
     const IMP = window.IMP;
     IMP.init("imp71807976");
@@ -75,6 +61,19 @@ export default function MyPage() {
     refetch();
   };
 
+  const onClickNoLink = () => {
+    setModalContents("서비스 준비 중입니다");
+    setAlertModal(true);
+  };
+
+  const onClickPointModal = () => {
+    setPointModal(true);
+  };
+
+  const onClickExitPointModal = () => {
+    setPointModal(false);
+  };
+
   const onChangePoint = (event) => {
     setPoint(event.target.value);
     setPointSelect(false);
@@ -93,9 +92,6 @@ export default function MyPage() {
   const onClickMoveToDetail = (url: string) => () => {
     router.push(url);
   };
-  const onClickNoLink = () => {
-    alert("준비중입니다.");
-  };
 
   return (
     <>
@@ -110,9 +106,8 @@ export default function MyPage() {
         ></script>
       </Head>
       <MyPageUI
-        onClickCoverChange={onClickCoverChange}
-        onClickMoveToDetail={onClickMoveToDetail}
         onClickNoLink={onClickNoLink}
+        onClickMoveToDetail={onClickMoveToDetail}
         data={data}
         pointModal={pointModal}
         point={point}

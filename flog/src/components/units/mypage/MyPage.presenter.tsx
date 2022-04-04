@@ -15,7 +15,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
           <OutlinedButton04
             content="커버 변경"
             size="large"
-            onClick={props.onClickCoverChange}
+            onClick={props.onClickNoLink}
           />
         </My.BannerButton>
       </My.Banner>
@@ -83,7 +83,6 @@ export default function MyPageUI(props: IMyPageUIProps) {
         <Point
           onClickExit={props.onClickExitPointModal}
           onClickSubmitPointModal={props.onClickSubmitPointModal}
-          // onChangePoint={props.onChangePoint}
           pointSelect={props.pointSelect}
           userName={props.data?.fetchUser?.nickName}
           userPoint={props.data?.fetchUser?.point}
