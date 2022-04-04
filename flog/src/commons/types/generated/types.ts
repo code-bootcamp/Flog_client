@@ -59,7 +59,7 @@ export type ICreateScheduleInput = {
   endDate: Scalars['String'];
   hashtag: IHashtag;
   location: Scalars['String'];
-  mainCategoryId: Scalars['String'];
+  mainCategoryName: IMaincategory_Enum;
   numberPeople?: InputMaybe<INumber_People_Enum>;
   startDate: Scalars['String'];
   title: Scalars['String'];
@@ -68,7 +68,7 @@ export type ICreateScheduleInput = {
 
 export type ICreateUserInput = {
   email: Scalars['String'];
-  mainCategoryId: Scalars['String'];
+  mainCategoryName: IMaincategory_Enum;
   nickName: Scalars['String'];
   password: Scalars['String'];
 };
@@ -123,6 +123,7 @@ export type IMutation = {
   createBoard: IBoard;
   createBudget: IBudget;
   createDetailSchedule: IDetailSchedule;
+  createMainCategory: IMainCategory;
   createMoneyBook: IMoneyBook;
   createPointTransaction: IPointTransaction;
   createSchedule: ISchedule;
@@ -137,13 +138,12 @@ export type IMutation = {
   logout: Scalars['String'];
   paymentPointTransaction: IPointTransaction;
   restoreAccessToken: Scalars['String'];
-  share: ISchedule;
-  unshare: ISchedule;
   updateBannerImage: ISchedule;
   updateBoard: IBoard;
   updateBudget: IBudget;
   updateDetailSchedule: IDetailSchedule;
   updateMoneyBook: IMoneyBook;
+  updateShare: ISchedule;
   updateUser: IUser;
   uploadBannerImagefile: Scalars['String'];
   uploadBoardImagefile: Scalars['String'];
@@ -171,6 +171,11 @@ export type IMutationCreateBudgetArgs = {
 export type IMutationCreateDetailScheduleArgs = {
   createDetailScheduleInput: ICreateDetailScheduleInput;
   scheduleId: Scalars['String'];
+};
+
+
+export type IMutationCreateMainCategoryArgs = {
+  name: IMaincategory_Enum;
 };
 
 
@@ -239,16 +244,6 @@ export type IMutationPaymentPointTransactionArgs = {
 };
 
 
-export type IMutationShareArgs = {
-  scheduleId: Scalars['String'];
-};
-
-
-export type IMutationUnshareArgs = {
-  scheduleId: Scalars['String'];
-};
-
-
 export type IMutationUpdateBannerImageArgs = {
   scheduleId: Scalars['String'];
   updateBannerImageInput: IUpdateBannerImageInput;
@@ -277,6 +272,11 @@ export type IMutationUpdateMoneyBookArgs = {
   budgetId: Scalars['String'];
   moneyBookId: Scalars['String'];
   updateMoneyBookInput: IUpdateMoneyBookInput;
+};
+
+
+export type IMutationUpdateShareArgs = {
+  scheduleId: Scalars['String'];
 };
 
 
@@ -318,17 +318,22 @@ export type IPointHistory = {
   __typename?: 'PointHistory';
   changed: Scalars['Int'];
   createdAt: Scalars['DateTime'];
+  current: Scalars['Int'];
   id: Scalars['String'];
   mainCategory: IMainCategory;
   pointId: IPointTransaction;
   status: IPoint_Transaction_Status_Enum;
+  user: IUser;
 };
 
 export type IPointTransaction = {
   __typename?: 'PointTransaction';
   amount: Scalars['Int'];
+  historyId: IPointHistory;
   id: Scalars['String'];
   impUid: Scalars['String'];
+  mainCategory: IMainCategory;
+  user: IUser;
 };
 
 export type IQuery = {
@@ -342,6 +347,7 @@ export type IQuery = {
   fetchPointHistory: Array<IPointHistory>;
   fetchSchedule: ISchedule;
   fetchSchedules: Array<ISchedule>;
+  fetchShareBoard: Array<IBoard>;
   fetchShareSchedules: Array<ISchedule>;
   fetchUser: IUser;
   scheduleHashTagSearch: Array<ISchedule>;
@@ -383,6 +389,11 @@ export type IQueryFetchScheduleArgs = {
 
 export type IQueryFetchSchedulesArgs = {
   page?: InputMaybe<Scalars['Float']>;
+};
+
+
+export type IQueryFetchShareBoardArgs = {
+  scheduleId: Scalars['String'];
 };
 
 
@@ -433,10 +444,12 @@ export type IUpdateBoardInput = {
 };
 
 export type IUpdateDetailScheduleInput = {
-  date: Scalars['String'];
+  date?: InputMaybe<Scalars['String']>;
+  day?: InputMaybe<Scalars['String']>;
   memo?: InputMaybe<Scalars['String']>;
-  place: Scalars['String'];
-  useTime: Scalars['String'];
+  place?: InputMaybe<Scalars['String']>;
+  startTime?: InputMaybe<Scalars['String']>;
+  useTime?: InputMaybe<Scalars['String']>;
 };
 
 export type IUpdateMoneyBookInput = {
