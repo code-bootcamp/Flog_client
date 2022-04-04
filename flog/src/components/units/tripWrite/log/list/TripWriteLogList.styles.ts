@@ -5,6 +5,7 @@ export const Main = styled.div`
   padding: 19px 0 0;
   width: 1200px;
   @media ${breakPoints.mobile} {
+    width: 100%;
   }
 `;
 export const PlanBtnGroup = styled.div`
@@ -27,12 +28,17 @@ export const EditorWrapper = styled.div`
       : "-147px"};
   right: 0;
   @media ${breakPoints.mobile} {
-    left: -240px;
-    width: -300px;
-    z-index: 13;
-
+    position: relative;
+    width: 100%;
+    top: ${(props) =>
+      props.index === 0
+        ? "0"
+        : props.index === 1
+        ? "0"
+        : props.index === 2
+        ? "0"
+        : "0"};
   }
-  
 `;
 
 export const Container = styled.div`

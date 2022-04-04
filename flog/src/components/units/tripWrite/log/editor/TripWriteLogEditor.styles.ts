@@ -26,11 +26,11 @@ export const ReactWrapper = styled.div`
     }
 
     ::-webkit-scrollbar-track {
-    background: #eeeeee;
+      background: #eeeeee;
     }
 
     ::-webkit-scrollbar-thumb {
-    background: linear-gradient(#58bd97, #58bd97);
+      background: linear-gradient(#58bd97, #58bd97);
     }
   }
 

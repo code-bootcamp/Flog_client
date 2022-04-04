@@ -92,8 +92,8 @@ export default function TripWriteLogUI(props) {
             onClick={() => props.setResponsiveToggle((prev) => !prev)}
           />
         )}
-
         <Log.InnerWrap isEdit={props.isEdit} isShow={props.responsiveToggle}>
+          {props.viewport < 767 && <Log.DimBg></Log.DimBg>}
           <Log.PlanBox>
             {props.isEdit || (
               <>
@@ -149,6 +149,7 @@ export default function TripWriteLogUI(props) {
                       index={dayIndex}
                       isEdit={props.isEdit}
                       saveButtonRef={props.saveButtonRef}
+                      viewport={props.viewport}
                     />
                   </Log.isShow>
                 </Log.DayWrapper>
