@@ -14,30 +14,36 @@ export const Contents = styled.div`
   justify-content: center;
   align-items: center;
   @media ${breakPoints.mobile} {
-    align-items: flex-end;
+    /* align-items: flex-end; */
   }
 `;
 export const ToggleResponsive = styled.div`
   background-image: url("/img/mytrips-responsive.png");
   width: 56px;
   height: 56px;
+  position: relative;
+  z-index: 12;
+  display: none;
 `;
 export const InnerWrap = styled.div`
   width: 95%;
   @media ${breakPoints.mobile} {
-    position: fixed;
+    /* position: fixed; */
     /* display:none; */
-    width: 70%;
+    /* width: 70%;
     z-index: 6;
     background-color: #fff;
     top: 0;
     overflow: hidden;
-    display: ${(props) => (props.isShow ? "block" : "none")};
+    display: ${(props) => (props.isShow ? "block" : "none")}; */
   }
   max-width: 1200px;
   height: ${(props) => (props.isEdit ? "700px" : "auto")};
   display: flex;
-  margin-top: 40px;
+  margin: 40px 0 120px;
+  @media ${breakPoints.mobile} {
+    margin-bottom: 0;
+  }
 `;
 
 export const isShow = styled.div`
@@ -60,7 +66,23 @@ export const PlanBox = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   margin-bottom: 100px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding: 20px 15px;
+  }
 `;
+
+export const DimBg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11;
+  display: none;
+`;
+
 export const XButton = styled.div`
   font-size: 21px;
   position: absolute;
@@ -146,6 +168,10 @@ export const DetailBox = styled.div``;
 export const PlanWrapper = styled.div`
   margin-top: 14px;
   width: 100%;
+  @media ${breakPoints.mobile} {
+    position: relative;
+    z-index: 10;
+  }
 `;
 
 export const DayWrapper = styled.div`
@@ -229,4 +255,9 @@ export const Email = styled.div`
   margin-bottom: 13px;
   font-size: 12px;
   color: #7d7d7d;
+`;
+
+export const SelectBox = styled.div`
+  @media ${breakPoints.mobile} {
+  }
 `;
