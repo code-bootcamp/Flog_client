@@ -1,5 +1,6 @@
 import ContainedButton01 from "../../commons/buttons/contained/01/ContainedButton01.container";
 import OutlinedInput01 from "../../commons/inputs/outlined/01/OutlinedInput01.container";
+import Alert from "../../commons/modals/alert/Alert.container";
 import * as Edit from "./UserEdit.styles";
 import { IUserEditUIProps } from "./UserEdit.types";
 
@@ -134,6 +135,13 @@ export default function UserEditUI(props: IUserEditUIProps) {
           </Edit.SubmitBox>
         </Edit.Contents>
       </Edit.InnerWrap>
+      {props.alertModal && (
+        <Alert
+          onClickExit={props.onClickExitAlertModal}
+          onClickSubmit={props.onClickSubmitAlertModal}
+          contents={props.modalContents}
+        />
+      )}
     </Edit.Container>
   );
 }
