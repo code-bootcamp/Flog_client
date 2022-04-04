@@ -7,18 +7,13 @@ import Alert from "../modals/alert/Alert.container";
 const withAuth = (Component) => (props) => {
   const router = useRouter();
   const { accessToken } = useContext(GlobalContext);
-
-  // 상위 컴포넌트에 넣을 내용 - alert
   const [alertModal, setAlertModal] = useState(false);
-
   const onClickExitAlertModal = () => {
     router.push("/login");
   };
-
   const onClickSubmitAlertModal = () => {
     router.push("/login");
   };
-
   useEffect(() => {
     if (!accessToken) {
       setAlertModal(true);

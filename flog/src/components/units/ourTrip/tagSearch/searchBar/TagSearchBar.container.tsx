@@ -19,10 +19,6 @@ export default function TagSearchBar(props) {
     props.setHashTag(el.value);
   };
 
-  const onClickTagSearch = () => {
-    alert("태그 검색하기");
-  };
-
   return (
     <Search.Search>
       <Search.SearchBox>
@@ -32,7 +28,6 @@ export default function TagSearchBar(props) {
               type="checkbox"
               id={idx}
               onChange={onChangeCheck(el)}
-              // onChange={onChangeCheck(el, index)}
               checked={Boolean(el.checked)}
             />
             <span className="checkbox_icon"></span>
@@ -40,11 +35,7 @@ export default function TagSearchBar(props) {
           </label>
         ))}
       </Search.SearchBox>
-      <ContainedButton03
-        content="검색"
-        size="large"
-        onClick={onClickTagSearch}
-      />
+      <ContainedButton03 content="검색" size="large" />
     </Search.Search>
   );
 }

@@ -78,23 +78,6 @@ export default function DetailBudgetEditFormUI(
                   defaultValue={props.clickContents.amount}
                 />
               </M.Wrap>
-              {/* <M.TimeInputWrap>
-                <M.Wrap>
-                  <M.Label>시간</M.Label>
-                  <OutlinedInput02
-                    placeholder="시"
-                    type="number"
-                    register={props.register("hour")}
-                  />
-                </M.Wrap>
-                <M.Wrap>
-                  <OutlinedInput02
-                    placeholder="분"
-                    type="number"
-                    register={props.register("minutes")}
-                  />
-                </M.Wrap>
-              </M.TimeInputWrap> */}
               <M.Wrap>
                 <M.Label style={{ visibility: "hidden" }}>메모</M.Label>
                 <OutlinedInput01

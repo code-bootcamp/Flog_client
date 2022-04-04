@@ -13,15 +13,12 @@ export const Bg = styled.div`
   @media ${breakPoints.mobile} {
     background: none;
   }
-    @media ${breakPoints.tablet} {
-   
-    }
-  
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const LoginBox = styled.div`
   margin: 100px 0;
   border-radius: 20px;
-  /* width: 800px; */
   background-color: #fff;
   padding: 74px 230px 63px;
   display: flex;
@@ -37,13 +34,12 @@ export const LoginBox = styled.div`
   @media ${breakPoints.mobile} {
     padding: 68px 0 63px;
     margin: 0;
-    h3{
+    h3 {
       font-size: 28px;
     }
   }
-    @media ${breakPoints.tablet} {
-   
-    }
+  @media ${breakPoints.tablet} {
+  }
 `;
 export const Lavel = styled.div``;
 export const Form = styled.form`
@@ -99,9 +95,6 @@ export const SubmitBtn = styled.button`
   :hover {
     border-color: #a1dac5;
     background: #a1dac5;
-  }
- 
-  
   }
 `;
 export const GoogleBtn = styled.button``;

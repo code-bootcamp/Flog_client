@@ -32,7 +32,6 @@ export default function LoginUI(props: ILoginUIProps) {
               <Login.FormLabel>이메일</Login.FormLabel>
               <OutlinedInput01
                 type="text"
-                // id="email"
                 register={props.register("email")}
                 placeholder="이메일을 입력하세요"
                 error={props.errorMsg.email !== ""}
@@ -42,7 +41,6 @@ export default function LoginUI(props: ILoginUIProps) {
               <Login.FormLabel>비밀번호</Login.FormLabel>
               <OutlinedInput01
                 type="password"
-                // id="password"
                 register={props.register("password")}
                 placeholder="비밀번호를 입력하세요"
                 error={props.errorMsg.password !== ""}

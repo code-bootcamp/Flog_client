@@ -3,9 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import MapsUI from "./Maps.presenter";
 
 export default function SvgMap(props) {
-  // const [doName, setDoName] = useState("");
-  // const [cityName, setCityName] = useState("");
-
   const selectDo = (event) => {
     const selected = document.getElementById(event.target.id + "Selected");
 

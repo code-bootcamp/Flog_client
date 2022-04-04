@@ -15,7 +15,6 @@ export default function TitleSearchBanner(props) {
 
   const onChangeTitle = (event) => {
     getDebounce(event.target.value);
-    // console.log(props.inputs);
   };
 
   const [viewport, setViewport] = useState<SetStateAction<number>>(0);

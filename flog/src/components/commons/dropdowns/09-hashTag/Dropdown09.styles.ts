@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { breakPoints } from "../../../../commons/styles/Media";
 
 export const SelectButton = styled.div`
   position: relative;

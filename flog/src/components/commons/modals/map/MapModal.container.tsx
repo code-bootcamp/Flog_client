@@ -18,31 +18,6 @@ interface IMapModalProps {
   onClickSubmit: () => void;
 }
 export default function MapModal(props: IMapModalProps) {
-  // //상위 컴포넌트에 넣을 내용 - MapModal
-  // const [mapModal, setMapModal] = useState(false);
-
-  // const onClickMapModal = () => {
-  //   setMapModal(true);
-  // };
-
-  // const onClickExitMapModal = () => {
-  //   setMapModal(false);
-  // };
-
-  // const onClickSubmitMapModal = () => {
-  //   setMapModal(false);
-  // };
-
-  // return (
-  // <button onClick={onClickMapModal}>map</button>
-  //    {mapModal && (
-  //       <MapModal
-  //         onClickExit={onClickExitMapModal}
-  //         onClickSubmit={onClickSubmitMapModal}
-  //       />
-  //     )}
-  // )
-
   return (
     <M.Container>
       <M.ModalWrapper>

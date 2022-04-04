@@ -42,7 +42,6 @@ export default function MyTripList(props) {
         variables: { file },
       });
       const url = result?.data?.uploadBannerImagefile;
-      // console.log(result?.data?.uploadBannerImagefile);
       try {
         await updateBannerImage({
           variables: {
@@ -52,7 +51,6 @@ export default function MyTripList(props) {
             },
           },
         });
-        // console.log(imageResult?.data?.updateBannerImage);
       } catch (error) {
         console.log(error.message);
       }

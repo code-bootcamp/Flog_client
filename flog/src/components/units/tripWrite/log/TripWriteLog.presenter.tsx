@@ -29,9 +29,10 @@ export default function TripWriteLogUI(props) {
           userName={props.myData?.fetchUser.nickName}
           userPoint={props.myData?.fetchUser.point}
           pointSelect={props.pointSelect}
-          onChangePoint={props.onChangePoint}
           onClickExit={() => props.setPointModal(false)}
           onClickSubmit={props.donation}
+          setPoint={props.setPoint}
+          setPointSelect={props.setPointSelect}
         />
       )}
 

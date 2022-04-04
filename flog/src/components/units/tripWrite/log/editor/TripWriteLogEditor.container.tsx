@@ -118,13 +118,12 @@ export default function TripWriteLogEditor(props) {
     input.click();
     input.onchange = async (event: ChangeEvent<HTMLInputElement>) => {
       if (!editor) {
-        console.log("에디터가 없어용");
+        console.log("에디터가 없습니다");
         setRefValue();
       }
       editor.focus();
 
       const file = event.target.files?.[0];
-      // console.log(file);
       const result = await uploadBoardImagefile({ variables: { file } });
       const fileUrl = result.data?.uploadBoardImagefile;
       console.log(result);

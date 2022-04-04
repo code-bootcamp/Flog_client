@@ -40,25 +40,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
-    // 1. 에러를 캐치
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        // 2. 해당 에러가 토큰만료 에러인지 체크(UNAUTHENTICATED)
         if (err.extensions.code === "UNAUTHENTICATED") {
-          // 3. refreshToken으로 accessToken을 재발급 받기
           getAccessToken().then((newAccessToken) => {
-            // 4. 재발급 받은 accessToken 저장하기
             setAccessToken(newAccessToken);
-
-            // 5. 재발급 받은 accessToken으로 방금 실패한 쿼리 재요청하기
-            // operation에 실패한 쿼리들 들어가있음
             operation.setContext({
               headers: {
                 ...operation.getContext().headers,
                 Authorization: `Bearer ${newAccessToken}`,
               },
-            }); // 설정 변경(accessToken만!! 바꿔치기)
-            return forward(operation); // 변경된 operation 재요청하기!!
+            });
+            return forward(operation);
           });
         }
       }

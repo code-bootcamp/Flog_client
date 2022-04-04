@@ -33,11 +33,6 @@ export default function TripWriteLog(props) {
     setAlertModal(false);
   };
 
-  // const onClickTotalMoneyModal = () => {
-  //   setTotalMoney(true);
-  //   console.log("모달입니다");
-  // };
-
   const onClickExitTotalMoneyModal = () => {
     setTotalMoney(false);
   };
@@ -45,7 +40,6 @@ export default function TripWriteLog(props) {
   const onClickSubmitTotalMoneyModal = () => {
     setTotalMoney(false);
   };
-
 
   const { data: userData } = useQuery(FETCH_SCHEDULE, {
     variables: { scheduleId: String(router.query.scheduleId) },
@@ -65,9 +59,6 @@ export default function TripWriteLog(props) {
   }, []);
 
   useEffect(() => {
-    console.log(userData);
-    console.log(sharing);
-
     if (!userData) return;
     if (userData?.fetchSchedule?.isShare === "1") {
       setSharing(true);
@@ -85,7 +76,6 @@ export default function TripWriteLog(props) {
     }
   };
   const shareBtn = async () => {
-    console.log("as");
     try {
       const result = await share({
         variables: {
@@ -93,7 +83,6 @@ export default function TripWriteLog(props) {
         },
       });
       setSharing((prev) => !prev);
-      // console.log(result);
     } catch (error) {
       alert(error.message);
     }
@@ -116,13 +105,10 @@ export default function TripWriteLog(props) {
     }
   };
 
-  const onChangePoint = (event) => {
-    setPoint(event.target.value);
-    setPointSelect(false);
-  };
-
   return (
     <TripWriteLogUI
+      setPoint={setPoint}
+      setPointSelect={setPointSelect}
       isMine={props.isMine}
       isShow={isShow}
       toggle={toggle}
@@ -133,7 +119,6 @@ export default function TripWriteLog(props) {
       userData={userData}
       pointModal={pointModal}
       setPointModal={setPointModal}
-      onChangePoint={onChangePoint}
       pointSelect={pointSelect}
       donation={donation}
       setResponsiveToggle={setResponsiveToggle}
