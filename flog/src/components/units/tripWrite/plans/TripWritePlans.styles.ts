@@ -25,7 +25,7 @@ export const InnerWrap = styled.div`
   min-height: calc(100vh - 560px);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
 `;

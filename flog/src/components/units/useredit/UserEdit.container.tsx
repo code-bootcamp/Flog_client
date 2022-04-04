@@ -6,6 +6,8 @@ import { useMutation, useQuery } from "@apollo/client";
 import { checkFileValidation } from "../../../commons/utils/checkFileValidation";
 
 export default function UserEdit() {
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
   const fileUpload = useRef<HTMLInputElement>(null);
   const [uploadProfileImagefile] = useMutation(UPLOAD_FILE);
   const [pwdType, setPwdType] = useState(true);
@@ -35,7 +37,8 @@ export default function UserEdit() {
       const fileUrl = result.data?.uploadProfileImagefile;
       setInputs({ ...inputs, imgUrl: fileUrl });
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) setModalContents(error.message);
+      setAlertModal(true);
     }
   };
 
@@ -67,15 +70,26 @@ export default function UserEdit() {
           updateUserInput: AllInputs,
         },
       });
-
-      alert("개인정보 수정 완료!");
-      router.push("/mypage");
+      setModalContents("계정 정보 수정이 완료되었습니다.");
+      setAlertModal(true);
+      setTimeout(() => {
+        router.push("/mypage");
+      }, 1500);
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) setModalContents(error.message);
+      setAlertModal(true);
     }
   };
   const pwdToggle = () => {
     setPwdType((prev) => !prev);
+  };
+
+  const onClickExitAlertModal = () => {
+    setAlertModal(false);
+  };
+
+  const onClickSubmitAlertModal = () => {
+    setAlertModal(false);
   };
   return (
     <UserEditUI
@@ -88,6 +102,10 @@ export default function UserEdit() {
       inputs={inputs}
       pwdType={pwdType}
       pwdToggle={pwdToggle}
+      alertModal={alertModal}
+      modalContents={modalContents}
+      onClickExitAlertModal={onClickExitAlertModal}
+      onClickSubmitAlertModal={onClickSubmitAlertModal}
     />
   );
 }

@@ -36,4 +36,8 @@ export const FETCH_USER = gql`
     }
   }
 `;
-
+export const DELETE_BOARD = gql`
+  mutation deleteBoard($scheduleId: String!) {
+    deleteBoard 
+  }
+`;
