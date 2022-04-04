@@ -42,7 +42,7 @@ export default function TripWriteLogUI(props) {
           onClickSubmit={props.onClickSubmitTotalMoneyModal}
         />
       )}
-
+      
       {props.isEdit ? (
         <TripWriteNavigation />
       ) : (
@@ -80,7 +80,7 @@ export default function TripWriteLogUI(props) {
               >
                 수정
               </div>
-              <div className="delete">
+              <div className="delete" onClick={props.onClickDelete}>
                 <span>삭제</span>
               </div>
             </Log.BtnGroup>
@@ -137,7 +137,7 @@ export default function TripWriteLogUI(props) {
               </>
             )}
             <Log.PlanWrapper>
-              {[1, 1, 1, 1].map((_, dayIndex) => (
+              {props.userData?.fetchSchedule?.tripdates.split(',').map((_, dayIndex) => (
                 <Log.DayWrapper key={dayIndex}>
                   <Log.Day>{dayIndex + 1}일차</Log.Day>
                   <Log.ToggleImg

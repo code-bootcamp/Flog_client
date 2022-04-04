@@ -39,17 +39,20 @@ export default function NewTripScheduleModal(props: INewTripScheduleModal) {
     for (let i = 0; i < dateDays; i++) {
       dateList.push(changeDatetimeToString(currDate));
       currDate.setDate(currDate.getDate() + 1);
+
     }
+
     dateList.push(changeDatetimeToString(currDate));
     return dateList.join(",");
   };
   const onClickSubmit = async () => {
+ 
     try {
       const result = await createSchedule({
         variables: {
           createScheduleInput: {
             title: inputs.title,
-            location: inputs.doName + inputs.cityName,
+            location: inputs.doName +'.'+inputs.cityName.trim(),
             // typescript-ignore
             startDate: changeDatetimeToString(inputs.startDate),
             endDate: changeDatetimeToString(inputs.endDate),

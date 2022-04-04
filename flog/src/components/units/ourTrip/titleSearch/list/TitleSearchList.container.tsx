@@ -35,7 +35,7 @@ export default function OurTripListUI(props) {
                   <List.Subtitle>
                     <ul>
                       <li className="date">
-                        {/* {el.startDate.slice(2, 10)} ~ {el.endDate.slice(2, 10)} */}
+                        {el.startDate.slice(2, 10)} ~ {el.endDate.slice(2, 10)}
                       </li>
                       <li className="location">{el.location}</li>
                     </ul>

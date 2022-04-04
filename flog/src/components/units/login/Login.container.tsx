@@ -76,6 +76,14 @@ export default function Login() {
     }
     setModalContents("비회원으로 시작하기");
   };
+  if(process.browser) {
+    document.addEventListener('keydown', function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+      };
+    }, true);
+  }
+ 
   return (
     <LoginUI
       register={register}

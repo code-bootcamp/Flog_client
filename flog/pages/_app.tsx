@@ -37,6 +37,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     getAccessToken().then((newAccessToken) => {
       setAccessToken(newAccessToken);
     });
+    //  window.scrollTo({left:0,top:0, behavior: "smooth"})
+    window.scroll({left:0,top:0,behavior: "smooth"})
+
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
