@@ -21,6 +21,8 @@ export const FETCH_HASHTAG_SEARCH = gql`
       title
       startDate
       endDate
+      location
+      url
     }
   }
 `;
@@ -30,8 +32,10 @@ export const FETCH_TITLE_SEARCH = gql`
     scheduleSearch(where: $where, search: $search) {
       id
       title
-      # startDate
-      # endDate
+      startDate
+      endDate
+      location
+      url
     }
   }
 `;
