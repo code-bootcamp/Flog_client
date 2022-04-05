@@ -33,40 +33,49 @@ function MyApp({ Component, pageProps }: AppProps) {
     accessToken,
     setAccessToken,
   };
+  // 1. 발표용 임시 로그인 세팅 (localStorage 이용)
   useEffect(() => {
-    getAccessToken().then((newAccessToken) => {
-      setAccessToken(newAccessToken);
-    });
-    //  window.scrollTo({left:0,top:0, behavior: "smooth"})
-    window.scroll({left:0,top:0,behavior: "smooth"})
-
+    if (localStorage.getItem("accessToken")) {
+      setAccessToken(localStorage.getItem("accessToken") || "");
+    }
   }, []);
 
-  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
-    if (graphQLErrors) {
-      for (const err of graphQLErrors) {
-        if (err.extensions.code === "UNAUTHENTICATED") {
-          getAccessToken().then((newAccessToken) => {
-            setAccessToken(newAccessToken);
-            operation.setContext({
-              headers: {
-                ...operation.getContext().headers,
-                Authorization: `Bearer ${newAccessToken}`,
-              },
-            });
-            return forward(operation);
-          });
-        }
-      }
-    }
-  });
+  // 2. restoreToken API 이용한 로그인 방식 (원래 방식)
+  // useEffect(() => {
+  //   getAccessToken().then((newAccessToken) => {
+  //     setAccessToken(newAccessToken);
+  //   });
+  // }, []);
+
+  // const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+  //   if (graphQLErrors) {
+  //     for (const err of graphQLErrors) {
+  //       if (err.extensions.code === "UNAUTHENTICATED") {
+  //         getAccessToken().then((newAccessToken) => {
+  //           setAccessToken(newAccessToken);
+  //           operation.setContext({
+  //             headers: {
+  //               ...operation.getContext().headers,
+  //               Authorization: `Bearer ${newAccessToken}`,
+  //             },
+  //           });
+  //           return forward(operation);
+  //         });
+  //       }
+  //     }
+  //   }
+  // });
+
   const uploadLink = createUploadLink({
     uri: "https://gyeoriii.shop/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
   const client = new ApolloClient({
-    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
+    // 1. 발표용 임시 로그인 세팅 (localStorage 이용)
+    link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
+    // 2. restoreToken API 이용한 로그인 방식 (원래 방식)
+    // link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
 
