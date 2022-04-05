@@ -56,7 +56,9 @@ export default function TripListUIItem(props) {
                 {props.el.startDate.slice(2, 10)} ~{" "}
                 {props.el.endDate.slice(2, 10)}
               </li>
-              <li className="location">{props.el.location}</li>
+              <li className="location">
+                {props.el.location.split(".").join(" ")}
+              </li>
             </ul>
           </List.Subtitle>
         </List.Text>
