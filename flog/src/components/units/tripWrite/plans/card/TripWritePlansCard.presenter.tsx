@@ -34,20 +34,7 @@ export default function TripWritePlansCardUI(
                   </Write.Bottom>
                 </Write.Contents>
 
-                <Write.Handle {...provided.dragHandleProps}>
-                  {/* <Write.Upper {...provided.dragHandleProps}>
-                    <img
-                      src="/img/icon-mytrip-write-card-upper.svg"
-                      alt="위 화살표 아이콘"
-                    />
-                  </Write.Upper>
-                  <Write.Lower {...provided.dragHandleProps}>
-                    <img
-                      src="/img/icon-mytrip-write-card-lower.svg"
-                      alt="아래 화살표 아이콘"
-                    />
-                  </Write.Lower> */}
-                </Write.Handle>
+                <Write.Handle {...provided.dragHandleProps}></Write.Handle>
               </Write.Card>
             )}
           </Draggable>
