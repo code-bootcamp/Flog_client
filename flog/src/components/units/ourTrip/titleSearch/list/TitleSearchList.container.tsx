@@ -5,8 +5,6 @@ import Dropdown01 from "../../../../commons/dropdowns/01/Dropdown01.container";
 import OutlinedButton01 from "../../../../commons/buttons/outlined/01/OutlinedButton01.container";
 
 export default function OurTripListUI(props) {
-  console.log(props.titleData?.scheduleSearch);
-
   const router = useRouter();
   return (
     <List.ListWrap>
