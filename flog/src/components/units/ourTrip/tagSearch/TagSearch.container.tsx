@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import MapModal from "../../../commons/modals/map/MapModal.container";
+import { FETCH_HASHTAG_SEARCH } from "../OurTrip.queries";
 import TagSearchBanner from "./banner/TagSearchBanner.container";
 import TagSearchList from "./list/TagSearchList.container";
 const BodyContainer = styled.div`
@@ -10,18 +11,6 @@ const BodyContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 100px;
-`;
-
-const FETCH_HASHTAG_SEARCH = gql`
-  query scheduleHashTagSearch($where: String!, $hashTag: String!) {
-    scheduleHashTagSearch(where: $where, hashTag: $hashTag) {
-      id
-      title
-      location
-      startDate
-      endDate
-    }
-  }
 `;
 
 export default function TagSearch() {
@@ -62,12 +51,6 @@ export default function TagSearch() {
     }
     setMapModal(false);
   };
-
-  useEffect(() => {
-    console.log(hashTagData);
-    console.log(inputs, where);
-    refetch();
-  }, [hashTagData]);
 
   return (
     <>

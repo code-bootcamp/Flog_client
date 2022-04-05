@@ -12,8 +12,6 @@ export const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media ${breakPoints.mobile} {
-  }
 `;
 export const ToggleResponsive = styled.div`
   background-image: url("/img/mytrips-responsive.png");
@@ -25,18 +23,9 @@ export const ToggleResponsive = styled.div`
 `;
 export const InnerWrap = styled.div`
   width: 95%;
-  @media ${breakPoints.mobile} {
-    /* position: fixed; */
-    /* display:none; */
-    /* width: 70%;
-    z-index: 6;
-    background-color: #fff;
-    top: 0;
-    overflow: hidden;
-    display: ${(props) => (props.isShow ? "block" : "none")}; */
-  }
   max-width: 1200px;
-  height: ${(props) => (props.isEdit ? "700px" : "auto")};
+  height: ${(props) => (props.isEdit ? "auto" : "auto")};
+  min-height: 700px;
   display: flex;
   margin: 40px 0 120px;
   @media ${breakPoints.mobile} {
@@ -50,20 +39,16 @@ export const isShow = styled.div`
 
 export const PlanBox = styled.div`
   display: flex;
-
   z-index: 5;
   top: 10px;
   left: 0;
-  /* height: ${(props) => (props.isEdit ? "700px" : "auto")} */
-
-  // height 미정
   padding: 24px 20px;
   border: 1px solid #fff;
   width: 260px;
+  height: auto;
   flex-direction: column;
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  margin-bottom: 100px;
   @media ${breakPoints.mobile} {
     width: 100%;
     padding: 20px 15px;
@@ -111,8 +96,6 @@ export const MoveBack = styled.div`
   img {
     margin-right: 12px;
   }
-  @media ${breakPoints.mobile} {
-  }
 `;
 export const BtnGroup = styled.div`
   display: flex;
@@ -124,9 +107,6 @@ export const BtnGroup = styled.div`
   }
 
   div {
-    @media ${breakPoints.mobile} {
-      /* width: 100%; */
-    }
     height: 60px;
     text-align: center;
     display: flex;
@@ -175,7 +155,8 @@ export const PlanWrapper = styled.div`
 export const DayWrapper = styled.div`
   padding-top: 10px;
   position: relative;
-  width: 380px;
+  height: auto;
+  width: 220px;
   @media ${breakPoints.mobile} {
     width: 100%;
   }
@@ -192,7 +173,6 @@ export const ToggleImg = styled.img`
   left: 68px;
   width: 16px;
   position: absolute;
-
   :hover {
     cursor: pointer;
   }
@@ -225,9 +205,7 @@ export const moveBtn = styled.button`
   border-radius: 40px;
   color: ${(props) => (props.isMine ? "#58bd97" : "#fff")};
   height: 40px;
-
   border: ${(props) => (props.isMine ? "1px solid #58bd97 " : "none")};
-
   :hover {
     background: #a1dac5;
     border-color: #a1dac5;
@@ -258,7 +236,4 @@ export const Email = styled.div`
   color: #7d7d7d;
 `;
 
-export const SelectBox = styled.div`
-  @media ${breakPoints.mobile} {
-  }
-`;
+export const SelectBox = styled.div``;
