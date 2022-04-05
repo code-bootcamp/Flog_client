@@ -21,7 +21,10 @@ export default function LayoutHeader() {
   };
   const onClickLogout = () => {
     try {
-      logout();
+      // localStorage 이용 방식
+      localStorage.removeItem("accessToken");
+      // restoreToken 이용 방식
+      // logout();
       setAlertModal(true);
       setModalContents("성공적으로 로그아웃 되었습니다.");
       setIsActive((prev) => !prev);
