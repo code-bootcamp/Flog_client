@@ -86,7 +86,8 @@ export const DayContents = styled.div`
     }
   }
   .ql-size-large.focused {
-    background-color: #d1eae1;
+    font-weight: 600;
+    color: #58bd97 !important;
   }
   p {
     padding-left: 68px;

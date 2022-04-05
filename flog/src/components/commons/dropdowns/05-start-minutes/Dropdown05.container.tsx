@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Drop from "./Dropdown05.styles";
 
 interface IDropdown05Props {
@@ -24,6 +24,13 @@ export default function Dropdown05(props: IDropdown05Props) {
     setIsMinutesSelected(MINUTES[index]);
     props.setValue("startMinutes", MINUTES[index]);
   };
+
+  useEffect(() => {
+    if (props.defaultValue) {
+      setIsMinutesSelected(props.defaultValue);
+      props.setValue("startMinutes", props.defaultValue);
+    }
+  }, []);
 
   return (
     <>

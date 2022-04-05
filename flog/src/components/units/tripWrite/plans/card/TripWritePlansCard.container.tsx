@@ -53,10 +53,13 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
   };
 
   const onClickSubmitDetailScheduleFormModal = async (data: any) => {
-    if (!data?.place || !data?.startHour || !data?.takenHour) {
-      setModalContents(
-        "장소, 시작시간, 소요시간이 모두 입력되었는지 확인해주세요."
-      );
+    if (!data?.place || !data?.startHour) {
+      setModalContents("장소, 시작시간이 모두 입력되었는지 확인해주세요.");
+      setAlertModal(true);
+      return;
+    }
+    if (!data?.takenHour && !data?.takenMinutes) {
+      setModalContents("소요시간이 입력되었는지 확인해주세요.");
       setAlertModal(true);
       return;
     }
@@ -100,10 +103,13 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
     data: any,
     indexNumber: number
   ) => {
-    if (!data?.place || !data?.startHour || !data?.takenHour) {
-      setModalContents(
-        "장소, 시작시간, 소요시간이 모두 입력되었는지 확인해주세요."
-      );
+    if (!data?.place || !data?.startHour) {
+      setModalContents("장소, 시작시간이 모두 입력되었는지 확인해주세요.");
+      setAlertModal(true);
+      return;
+    }
+    if (!data?.takenHour && !data?.takenMinutes) {
+      setModalContents("소요시간이 입력되었는지 확인해주세요.");
       setAlertModal(true);
       return;
     }
@@ -119,7 +125,9 @@ export default function TripWritePlansCard(props: ITripWritePlansCardProps) {
                 ? data.startMinutes.toString().padStart(2, "0")
                 : "00"
             }`,
-            useTime: `${data.takenHour && data.takenHour.toString() + "시간"}${
+            useTime: `${
+              data.takenHour ? data.takenHour.toString() + "시간" : ""
+            }${
               data.takenMinutes ? " " + data.takenMinutes.toString() + "분" : ""
             }`,
             place: data.place.toString(),

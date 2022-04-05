@@ -42,7 +42,7 @@ export default function TripWriteLogUI(props) {
           onClickSubmit={props.onClickSubmitTotalMoneyModal}
         />
       )}
-      
+
       {props.isEdit ? (
         <TripWriteNavigation />
       ) : (
@@ -137,24 +137,26 @@ export default function TripWriteLogUI(props) {
               </>
             )}
             <Log.PlanWrapper>
-              {props.userData?.fetchSchedule?.tripdates.split(',').map((_, dayIndex) => (
-                <Log.DayWrapper key={dayIndex}>
-                  <Log.Day>{dayIndex + 1}일차</Log.Day>
-                  <Log.ToggleImg
-                    src="/img/mytrips-write-log2.png"
-                    onClick={props.toggle(dayIndex)}
-                  />
-                  <Log.isShow isShow={props.isShow[dayIndex]}>
-                    <TripWriteLogList
-                      key={dayIndex}
-                      index={dayIndex}
-                      isEdit={props.isEdit}
-                      saveButtonRef={props.saveButtonRef}
-                      viewport={props.viewport}
+              {props.userData?.fetchSchedule?.tripdates
+                .split(";")
+                .map((_, dayIndex) => (
+                  <Log.DayWrapper key={dayIndex}>
+                    <Log.Day>{dayIndex + 1}일차</Log.Day>
+                    <Log.ToggleImg
+                      src="/img/mytrips-write-log2.png"
+                      onClick={props.toggle(dayIndex)}
                     />
-                  </Log.isShow>
-                </Log.DayWrapper>
-              ))}
+                    <Log.isShow isShow={props.isShow[dayIndex]}>
+                      <TripWriteLogList
+                        key={dayIndex}
+                        index={dayIndex}
+                        isEdit={props.isEdit}
+                        saveButtonRef={props.saveButtonRef}
+                        viewport={props.viewport}
+                      />
+                    </Log.isShow>
+                  </Log.DayWrapper>
+                ))}
             </Log.PlanWrapper>
           </Log.PlanBox>
         </Log.InnerWrap>

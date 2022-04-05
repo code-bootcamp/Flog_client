@@ -46,19 +46,45 @@ export default function DetailScheduleFormEditUI(
               <M.TimeInputWrap>
                 <M.Wrap className="start-hour">
                   <M.Label>시작</M.Label>
-                  <Dropdown06 setValue={props.setValue} />
+                  <Dropdown06
+                    setValue={props.setValue}
+                    defaultValue={Number(
+                      props.editContent?.startTime.slice(0, 2)
+                    )}
+                  />
                 </M.Wrap>
                 <M.Wrap className="start-minutes">
-                  <Dropdown05 setValue={props.setValue} />
+                  <Dropdown05
+                    setValue={props.setValue}
+                    defaultValue={Number(
+                      props.editContent?.startTime.slice(3, 5)
+                    )}
+                  />
                 </M.Wrap>
               </M.TimeInputWrap>
               <M.TimeInputWrap>
                 <M.Wrap className="taken-hour">
                   <M.Label>소요</M.Label>
-                  <Dropdown07 setValue={props.setValue} />
+                  <Dropdown07
+                    setValue={props.setValue}
+                    defaultValue={Number(
+                      props.editContent?.useTime.split("시간")[0]
+                    )}
+                  />
                 </M.Wrap>
                 <M.Wrap className="taken-minutes">
-                  <Dropdown08 setValue={props.setValue} />
+                  <Dropdown08
+                    setValue={props.setValue}
+                    defaultValue={
+                      props.editContent?.useTime.includes("시간")
+                        ? Number(
+                            props.editContent?.useTime
+                              .split("시간")[1]
+                              .replace("분", "")
+                          )
+                        : Number(props.editContent?.useTime.replace("분", ""))
+                    }
+                  />
                 </M.Wrap>
               </M.TimeInputWrap>
               <M.Wrap className="memo">
