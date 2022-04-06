@@ -71,8 +71,8 @@ export default function Login() {
   const nonMember = async () => {
     const result = await login({
       variables: {
-        email: "test123@test.com",
-        password: "test123!",
+        email: "user@u.com",
+        password: "user",
       },
     });
     const token = result.data?.login;

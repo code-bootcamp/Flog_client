@@ -47,7 +47,7 @@ export default function TitleSearch() {
   let newWhere = "";
   const onClickSubmitMapModal = () => {
     if (inputs.doName && !inputs.cityName) {
-      setWhere(`${inputs.doName}`);
+      setWhere(`${inputs.doName}.`);
     }
 
     if (inputs.doName && inputs.cityName) {
