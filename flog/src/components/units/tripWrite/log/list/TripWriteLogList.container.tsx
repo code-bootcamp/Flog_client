@@ -26,6 +26,7 @@ export default function TripWriteLogList(props) {
       setSelected={setSelected}
       selected={selected}
       saveButtonRef={props.saveButtonRef}
+      BoardData={props.BoardData}
     />
   );
 }

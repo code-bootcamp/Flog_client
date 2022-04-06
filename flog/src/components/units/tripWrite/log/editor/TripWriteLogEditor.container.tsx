@@ -23,13 +23,16 @@ const ReactQuill = dynamic(
 );
 
 export default function TripWriteLogEditor(props) {
-  const [contents, setContents] = useState("");
-  const [boardId, setBoardId] = useState("");
+  const [contents, setContents] = useState(props.BoardData?.content || "");
+  const [boardId, setBoardId] = useState(props.BoardData?.id || "");
   const quillRef = useRef();
   const router = useRouter();
   const [uploadBoardImagefile] = useMutation(UPLOAD_FILE);
   const [updateBoard] = useMutation(UPDATE_BOARD);
   const [createBoard] = useMutation(CREATE_BOARD);
+  useEffect(() => {
+    setContents(props.BoardData)
+  },[props.BoardData])
 
   let quillCurrent: any;
   let editor: any;
@@ -48,19 +51,20 @@ export default function TripWriteLogEditor(props) {
     setBoardId(result.data?.createBoard?.id);
   };
   const update = async () => {
+
     const result = await updateBoard({
       variables: {
         updateBoardInput: {
-          content: contents,
+          content: String(contents),
         },
-        boardId,
+        boardId: boardId || props.BoardData?.id
       },
     });
   };
   const submitDb = async () => {
     if (!contents) return;
     try {
-      boardId ? update() : create();
+      boardId || props.BoardData ? update() : create();
     } catch (error) {
       alert(error.message);
     }
@@ -173,6 +177,7 @@ export default function TripWriteLogEditor(props) {
     setRefValue();
   }, [imageHandler]);
 
+
   return (
     <TripWriteLogEditorUI
       ReactQuill={ReactQuill}
@@ -187,6 +192,7 @@ export default function TripWriteLogEditor(props) {
       isShow={props.isShow}
       saveButtonRef={props.saveButtonRef}
       submitDb={submitDb}
+      BoardData={props.BoardData}
     />
   );
 }

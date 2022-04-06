@@ -30,9 +30,10 @@ export default function TripWriteLogListUI(props) {
             data={props.data}
             selected={props.selected}
             saveButtonRef={props.saveButtonRef[props.index]}
+            BoardData={props.BoardData}
           />
         ) : (
-          <OurTripDetail index={props.index} selected={props.selected} />
+          <OurTripDetail index={props.index} selected={props.selected} BoardData={props.BoardData} />
         )}
       </List.EditorWrapper>
     </List.Main>
