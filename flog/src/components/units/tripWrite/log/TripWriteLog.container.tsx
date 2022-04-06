@@ -8,6 +8,7 @@ import {
   PAYMENT_POINT_TRANSACTION,
   FETCH_USER,
   DELETE_BOARD,
+  FETCH_BOARD
 } from "./TripWriteLog.queries";
 
 export default function TripWriteLog(props) {
@@ -46,6 +47,9 @@ export default function TripWriteLog(props) {
     variables: { scheduleId: String(router.query.scheduleId) },
   });
   const { data: myData } = useQuery(FETCH_USER);
+  const { data: BoardData } = useQuery(FETCH_BOARD, {
+    variables: { scheduleId: String(router.query.scheduleId) },
+  });
 
   const saveButtonRef = [1, 1, 1, 1].map((el) =>
     useRef<HTMLButtonElement>(null)
@@ -110,7 +114,6 @@ export default function TripWriteLog(props) {
     }
   };
   const onClickDelete = async () => {
-    console.log('delete')
 
     try {
       const result = await deleteBoard({
@@ -118,16 +121,14 @@ export default function TripWriteLog(props) {
           scheduleId: String(router.query.scheduleId),
         },
       });
-      setModalContents("삭제가 완료되었습니다.");
+      setModalContents("여행 로그 삭제가 완료되었습니다.");
       setAlertModal(true);
     } catch (error) {
       setModalContents(error.message);
       setAlertModal(true);
     }
   }
-  useEffect(() => {
-    console.log(userData)
-  },[userData])
+
 
   return (
     <TripWriteLogUI
@@ -160,6 +161,7 @@ export default function TripWriteLog(props) {
       totalMoney={totalMoney}
       setTotalMoney={setTotalMoney}
       onClickDelete={onClickDelete}
+      BoardData={BoardData}
     />
   );
 }

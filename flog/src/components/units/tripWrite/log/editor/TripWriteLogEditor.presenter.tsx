@@ -16,7 +16,7 @@ export default function TripWriteLogEditorUI(props) {
             forwardedRef={props.quillRef}
             onChange={props.handleChange}
             placeholder={"상세 일정을 작성해 보세요"}
-            value={props.contents}
+            defaultValue={props.BoardData? props.BoardData.content : ""}
             modules={props.modules}
             theme="snow"
           />
