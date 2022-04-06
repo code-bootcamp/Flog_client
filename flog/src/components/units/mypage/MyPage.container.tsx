@@ -48,7 +48,6 @@ export default function MyPage() {
       },
       (rsp) => {
         if (rsp.success) {
-          console.log(rsp);
           paymentSubmit(rsp);
           setAlertModal(true);
           setModalContents(`${point} 포인트가 충전되었습니다.`);

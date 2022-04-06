@@ -77,6 +77,11 @@ export default function Login() {
     });
     const token = result.data?.login;
     if (token) {
+      // 임시 추가 부분
+      if (process.browser) {
+        localStorage.setItem("accessToken", token);
+      }
+      // 원래는 하단 라인만 있으면 됨
       if (setAccessToken) setAccessToken(token);
     }
     setModalContents("비회원으로 시작하기");
