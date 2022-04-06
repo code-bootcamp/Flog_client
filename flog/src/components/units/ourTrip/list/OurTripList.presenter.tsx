@@ -25,6 +25,7 @@ export default function OurTripListUI(props) {
                         ? `https://storage.cloud.google.com/${el.url}`
                         : `/img/tripList-default.jpg`
                     }
+                    onError={props.onErrorImg}
                     alt="여행이미지"
                   />
                 </List.Image>
