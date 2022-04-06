@@ -7,18 +7,15 @@ export default function OurTripDetailUI(props) {
     <Detail.Container ref={props.moveRef}>
       <Detail.Day>Day {props.index + 1}</Detail.Day>
       <Detail.Contents>
-        {props.data ? (
-          props.data?.fetchBoard
-            .filter((x) => x.day === String(props.index + 1))
-            .map((el: any) => (
-              <div key={uuid4()}>
+        {props.BoardData ? (
+           
+              <div>
                 <Detail.DayContents
                   dangerouslySetInnerHTML={{
-                    __html: Dompurify.sanitize(String(el.content)),
+                    __html: Dompurify.sanitize(String(props.BoardData.content)),
                   }}
                 />
               </div>
-            ))
         ) : (
           <div>여행 로그가 없습니다.</div>
         )}

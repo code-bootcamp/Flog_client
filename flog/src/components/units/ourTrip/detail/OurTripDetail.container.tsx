@@ -2,15 +2,10 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import OurTripDetailUI from "./OurTripDetail.presenter";
-import { FETCH_BOARD, SHARE } from "./OurTripDetail.queries";
 
 export default function OurTripDetail(props) {
   const router = useRouter();
-  const { data } = useQuery(FETCH_BOARD, {
-    variables: {
-      scheduleId: String(router.query.scheduleId),
-    },
-  });
+  
   const moveRef = useRef(null);
   let prevIndex = 0;
   const d = (index: number) => {
@@ -32,5 +27,6 @@ export default function OurTripDetail(props) {
     d(props.selected.index);
   }, [props.selected]);
 
-  return <OurTripDetailUI data={data} index={props.index} moveRef={moveRef} />;
+
+  return <OurTripDetailUI BoardData={props.BoardData} index={props.index} moveRef={moveRef} />;
 }

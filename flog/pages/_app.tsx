@@ -40,6 +40,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+
   // 2. restoreToken API 이용한 로그인 방식 (원래 방식)
   // useEffect(() => {
   //   getAccessToken().then((newAccessToken) => {

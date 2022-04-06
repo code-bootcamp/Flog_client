@@ -153,6 +153,7 @@ export default function TripWriteLogUI(props) {
                         isEdit={props.isEdit}
                         saveButtonRef={props.saveButtonRef}
                         viewport={props.viewport}
+                        BoardData={props.BoardData?.fetchBoard?.[dayIndex]}
                       />
                     </Log.isShow>
                   </Log.DayWrapper>

@@ -38,6 +38,15 @@ export const FETCH_USER = gql`
 `;
 export const DELETE_BOARD = gql`
   mutation deleteBoard($scheduleId: String!) {
-    deleteBoard 
+    deleteBoard(scheduleId: $scheduleId)
+  }
+`;
+export const FETCH_BOARD = gql`
+  query fetchBoard ($scheduleId: String!){
+    fetchBoard(scheduleId: $scheduleId) {
+      id
+      day
+      content
+    }
   }
 `;

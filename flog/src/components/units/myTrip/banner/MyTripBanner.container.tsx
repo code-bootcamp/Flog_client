@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import ContainedButton01UI from "../../../commons/buttons/contained/01/ContainedButton01.presenter";
 import * as My from "./MyTripBanner.styles";
 import { IMyTripsBannerUIProps } from "./MyTripBanner.types";
 
 export default function MyTripBanner(props) {
+  const router = useRouter();
   return (
     <My.Banner>
       <My.BgImage />
@@ -38,12 +40,21 @@ export default function MyTripBanner(props) {
               </>
             )}
           </My.Title>
-          <ContainedButton01UI
-            content="새로운 여행 만들기"
-            size="large"
-            onClick={props.onClickMapModal}
-            disabled={false}
-          />
+          {props.userData && props.myData ? (
+            <ContainedButton01UI
+              content="새로운 여행 만들기"
+              size="large"
+              onClick={props.onClickMapModal}
+              disabled={false}
+            />
+          ) : (
+            <ContainedButton01UI
+              content="새로운 여행 만들기"
+              size="large"
+              onClick={() => router.push("/login")}
+              disabled={false}
+            />
+          )}
         </My.UpperWrap>
         <My.LowerWrap></My.LowerWrap>
       </My.InnerWrap>
