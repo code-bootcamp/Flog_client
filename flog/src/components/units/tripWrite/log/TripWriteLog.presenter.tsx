@@ -16,30 +16,29 @@ export default function TripWriteLogUI(props) {
   return (
     <Log.Container>
       <TripWriteBanner />
-      {props.alertModal && (
+      {props.modalContents && (
         <Alert
-          onClickExit={props.onClickExitAlertModal}
-          onClickSubmit={props.onClickSubmitAlertModal}
+          onClickExit={() => props.setModalContents("")}
+          onClickSubmit={() => props.setModalContents("")}
           contents={props.modalContents}
         />
       )}
-      {props.pointModal && (
+      {props.togglePRST[0] && (
         <Point
           donation={true}
           userName={props.myData?.fetchUser.nickName}
           userPoint={props.myData?.fetchUser.point}
-          pointSelect={props.pointSelect}
-          onClickExit={() => props.setPointModal(false)}
+          onClickExit={() => props.changePRST(0)}
           onClickSubmitDonation={props.donationFunction}
           setPoint={props.setPoint}
-          setPointSelect={props.setPointSelect}
+          point={props.point}
         />
       )}
 
-      {props.totalMoneyModal && (
+      {props.togglePRST[3] && (
         <TotalMoneyModal
-          onClickExit={props.onClickExitTotalMoneyModal}
-          onClickSubmit={props.onClickSubmitTotalMoneyModal}
+          onClickExit={() => props.changePRST(3)}
+          onClickSubmit={() => props.changePRST(3)}
         />
       )}
 
@@ -62,7 +61,7 @@ export default function TripWriteLogUI(props) {
 
           {props.isMine && (
             <Log.BtnGroup>
-              {props.sharing ? (
+              {props.togglePRST[2] ? (
                 <div className="share" onClick={props.shareBtn}>
                   <img src="/img/mytrips-shared-icon.svg" />
                   우리의 여행에 공유됨
@@ -93,15 +92,13 @@ export default function TripWriteLogUI(props) {
             onClick={() => props.setResponsiveToggle((prev) => !prev)}
           />
         )}
-        <Log.InnerWrap isEdit={props.isEdit} isShow={props.responsiveToggle}>
+        <Log.InnerWrap isEdit={props.isEdit} isShow={props.togglePRST[1]}>
           {props.viewport < 767 && <Log.DimBg></Log.DimBg>}
           <Log.PlanBox>
             {props.isEdit || (
               <>
                 {props.viewport < 767 && (
-                  <Log.XButton
-                    onClick={() => props.setResponsiveToggle((prev) => !prev)}
-                  >
+                  <Log.XButton onClick={() => props.changePRST(1)}>
                     X
                   </Log.XButton>
                 )}
@@ -124,13 +121,13 @@ export default function TripWriteLogUI(props) {
                     <ContainedButton03
                       content="포인트 후원하기"
                       size="small"
-                      onClick={() => props.setPointModal(true)}
+                      onClick={() => props.changePRST(0)}
                     />
                   )}
                 </Log.UserInfo>
                 <Log.PlanBtnGroup>
                   <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
-                  <Log.moveBtn onClick={() => props.setTotalMoney(true)}>
+                  <Log.moveBtn onClick={() => props.changePRST(3)}>
                     전체 예산
                   </Log.moveBtn>
                 </Log.PlanBtnGroup>
