@@ -11,6 +11,8 @@ import * as Log from "./TripWriteLog.styles";
 import Point from "../../../commons/modals/chargePoint/ChargePoint.container";
 import Alert from "../../../commons/modals/alert/Alert.container";
 import TotalMoneyModal from "../../../commons/modals/ourTrips/totalMoney/TotalMoney.container";
+import TripWriteLogEditor from "./editor/TripWriteLogEditor.container";
+import OurTripDetail from "../../ourTrip/detail/OurTripDetail.container";
 export default function TripWriteLogUI(props) {
   const router = useRouter();
   return (
@@ -56,9 +58,6 @@ export default function TripWriteLogUI(props) {
               나의 여행 목록으로
             </Log.MoveBack>
           )}
-
-          {/* prettier-ignore */}
-
           {props.isMine && (
             <Log.BtnGroup>
               {props.togglePRST[2] ? (
@@ -92,73 +91,47 @@ export default function TripWriteLogUI(props) {
             onClick={() => props.setResponsiveToggle((prev) => !prev)}
           />
         )}
-        <Log.InnerWrap isEdit={props.isEdit} isShow={props.togglePRST[1]}>
+        <Log.InnerWrap isShow={props.togglePRST[1]}>
           {props.viewport < 767 && <Log.DimBg></Log.DimBg>}
-          <Log.PlanBox>
-            {props.isEdit || (
-              <>
-                {props.viewport < 767 && (
-                  <Log.XButton onClick={() => props.changePRST(1)}>
-                    X
-                  </Log.XButton>
-                )}
-                <Log.UserInfo>
-                  <img
-                    src={
-                      props.userData?.fetchSchedule?.user.url
-                        ? `https://storage.cloud.google.com/${props.userData?.fetchSchedule?.user.url}`
-                        : "/img/ourtrips-detail-usericon.png"
-                    }
-                  />
-                  <Log.Name>
-                    {props.userData?.fetchSchedule?.user.nickName}
-                  </Log.Name>
-                  <Log.Email>
-                    {props.userData?.fetchSchedule?.user.email}
-                  </Log.Email>
-                  {/* prettier-ignore */}
-                  {props.isMine || (
-                    <ContainedButton03
-                      content="포인트 후원하기"
-                      size="small"
-                      onClick={() => props.changePRST(0)}
+          <Log.LogListWrapper>
+            <TripWriteLogList
+              changePRST={props.changePRST}
+              isMine={props.isMine}
+              isEdit={props.isEdit}
+              setIsShow={props.setIsShow}
+              userData={props.userData}
+              isShow={props.isShow}
+              setSelected={props.setSelected}
+            />
+          </Log.LogListWrapper>
+
+          <Log.EditorWrapper>
+            {props.userData?.fetchSchedule?.tripdates
+              .split(";")
+              .map((el: any, index: number) => (
+                <>
+                  {props.isEdit ? (
+                    <TripWriteLogEditor
+                      index={index}
+                      isShow={props.isShow[index]}
+                      saveButtonRef={props.saveButtonRef}
+                      BoardData={props.BoardData?.fetchBoard[index]}
+                      selected={props.selected[index]}
+                    />
+                  ) : (
+                    <OurTripDetail
+                      index={index}
+                      isShow={props.isShow[index]}
+                      BoardData={props.BoardData?.fetchBoard[index]}
+                      selected={props.selected[index]}
                     />
                   )}
-                </Log.UserInfo>
-                <Log.PlanBtnGroup>
-                  <Log.moveBtn isMine={props.isMine}>전체 일정</Log.moveBtn>
-                  <Log.moveBtn onClick={() => props.changePRST(3)}>
-                    전체 예산
-                  </Log.moveBtn>
-                </Log.PlanBtnGroup>
-              </>
-            )}
-            <Log.PlanWrapper>
-              {props.userData?.fetchSchedule?.tripdates
-                .split(";")
-                .map((_, dayIndex) => (
-                  <Log.DayWrapper key={dayIndex}>
-                    <Log.Day>{dayIndex + 1}일차</Log.Day>
-                    <Log.ToggleImg
-                      src="/img/mytrips-write-log2.png"
-                      onClick={props.toggle(dayIndex)}
-                    />
-                    <Log.isShow isShow={props.isShow[dayIndex]}>
-                      <TripWriteLogList
-                        key={dayIndex}
-                        index={dayIndex}
-                        isEdit={props.isEdit}
-                        saveButtonRef={props.saveButtonRef}
-                        viewport={props.viewport}
-                        BoardData={props.BoardData?.fetchBoard?.[dayIndex]}
-                      />
-                    </Log.isShow>
-                  </Log.DayWrapper>
-                ))}
-            </Log.PlanWrapper>
-          </Log.PlanBox>
+                </>
+              ))}
+          </Log.EditorWrapper>
         </Log.InnerWrap>
       </Log.Contents>
+
       {props.isEdit && (
         <TripWriteBottomBar saveButtonRef={props.saveButtonRef} />
       )}

@@ -4,11 +4,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import TripWriteLogUI from "./TripWriteLog.presenter";
 import {
   UPDATE_SHARE,
-  FETCH_SCHEDULE,
   PAYMENT_POINT_TRANSACTION,
   FETCH_USER,
   DELETE_BOARD,
   FETCH_BOARD,
+  FETCH_SCHEDULE,
 } from "./TripWriteLog.queries";
 
 export default function TripWriteLog(props) {
@@ -19,22 +19,22 @@ export default function TripWriteLog(props) {
   const router = useRouter();
   const [point, setPoint] = useState(0);
   const [viewport, setViewport] = useState(0);
-  // Point ResponsiveToggle Sharing TotalMoney Modal
+  // Point ResponsiveToggle Sharing TotalMoney
   const [togglePRST, setTogglePRST] = useState([false, false, false, false]);
   const [modalContents, setModalContents] = useState("");
-  const [isShow, setIsShow] = useState([true, false, false, false]);
+  const [isShow, setIsShow] = useState([true]);
+  const [selected, setSelected] = useState([[]]);
 
-  const { data: userData } = useQuery(FETCH_SCHEDULE, {
-    variables: { scheduleId: String(router.query.scheduleId) },
-  });
   const { data: myData } = useQuery(FETCH_USER);
   const { data: BoardData } = useQuery(FETCH_BOARD, {
     variables: { scheduleId: String(router.query.scheduleId) },
   });
 
-  const saveButtonRef = [1, 1, 1, 1].map((el) =>
-    useRef<HTMLButtonElement>(null)
-  );
+  const { data: userData } = useQuery(FETCH_SCHEDULE, {
+    variables: { scheduleId: String(router.query.scheduleId) },
+  });
+  const saveButtonRef = useRef([]);
+
   const changePRST = (index: number) => {
     const temp = [...togglePRST];
 
@@ -51,21 +51,6 @@ export default function TripWriteLog(props) {
     setViewport(viewportWidth);
   }, []);
 
-  useEffect(() => {
-    if (!userData) return;
-    if (userData?.fetchSchedule?.isShare === "1") {
-      setTogglePRST([false, false, true, false]);
-    }
-  }, [userData]);
-
-  const toggle = (index: any) => () => {
-    const temp = new Array(4).fill(false);
-    if (isShow[index]) return setIsShow(temp);
-    else {
-      temp[index] = true;
-      setIsShow(temp);
-    }
-  };
   const shareBtn = async () => {
     try {
       await share({
@@ -112,20 +97,22 @@ export default function TripWriteLog(props) {
       setModalContents(error.message);
     }
   };
+  useEffect(() => {
+    console.log(BoardData);
+  }, [BoardData]);
 
   return (
     <TripWriteLogUI
+      selected={selected}
+      setSelected={setSelected}
       changePRST={changePRST}
       togglePRST={togglePRST}
       point={point}
       setPoint={setPoint}
       isMine={props.isMine}
-      isShow={isShow}
-      toggle={toggle}
       isEdit={props.isEdit}
       saveButtonRef={saveButtonRef}
       shareBtn={shareBtn}
-      userData={userData}
       donationFunction={donationFunction}
       myData={myData}
       viewport={viewport}
@@ -133,6 +120,9 @@ export default function TripWriteLog(props) {
       setModalContents={setModalContents}
       onClickDelete={onClickDelete}
       BoardData={BoardData}
+      userData={userData}
+      isShow={isShow}
+      setIsShow={setIsShow}
     />
   );
 }
