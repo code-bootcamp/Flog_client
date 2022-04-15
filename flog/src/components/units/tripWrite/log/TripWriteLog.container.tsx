@@ -80,6 +80,7 @@ export default function TripWriteLog(props) {
       }, 500);
     } catch (error) {
       setModalContents(error.message);
+      changePRST(0);
     }
   };
   const onClickDelete = async () => {

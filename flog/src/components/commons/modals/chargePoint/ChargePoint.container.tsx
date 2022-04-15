@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { insertCommaPrice } from "../../../../commons/utils/insertComma";
 import ContainedButton01 from "../../buttons/contained/01/ContainedButton01.container";
 import Dropdown10 from "../../dropdowns/10-point/Dropdown10.container";
@@ -40,7 +39,7 @@ export default function Point(props: IPointProps) {
                 ? props.onClickSubmitDonation
                 : props.onClickSubmitPointModal
             }
-            disabled={props.point}
+            disabled={!props.point}
             responsive={true}
           />
         </M.Modal>
