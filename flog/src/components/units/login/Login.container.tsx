@@ -4,7 +4,7 @@ import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
 
 import { LOGIN } from "./Login.queries";
 import { useMutation } from "@apollo/client";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { GlobalContext } from "../../../../pages/_app";
 interface FormValues {
@@ -22,7 +22,7 @@ export default function Login() {
   const { moveToPage } = useMoveToPage();
   const router = useRouter();
   const [login] = useMutation(LOGIN);
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit } = useForm({
     mode: "onChange",
   });
   const onclickSubmit = async (data: FormValues) => {
@@ -47,23 +47,14 @@ export default function Login() {
       if (error instanceof Error) {
         if (error.message.includes("이메일")) {
           setErrorMsg({ ...errorMsg, email: error.message });
-          resetError(data.email, "email");
         }
         if (error.message.includes("비밀번호")) {
           setErrorMsg({ ...errorMsg, password: error.message });
-          resetError(data.email, "password");
         }
       }
     }
   };
-  const resetError = (data: string | undefined, section: string) => {
-    watch((value) => {
-      if (section === "email" && data !== value.email)
-        setErrorMsg({ ...errorMsg, email: "" });
-      if (section === "password" && data !== value.password)
-        setErrorMsg({ ...errorMsg, password: "" });
-    });
-  };
+
   const onModal = () => {
     setModalContents("");
     router.push("/myTrips");
@@ -97,7 +88,12 @@ export default function Login() {
       true
     );
   }
-
+  const reset = (section: string) => () => {
+    if (section === "email" && errorMsg.email)
+      setErrorMsg({ ...errorMsg, email: "" });
+    if (section === "password" && errorMsg.password)
+      setErrorMsg({ ...errorMsg, password: "" });
+  };
   return (
     <LoginUI
       register={register}
@@ -108,6 +104,7 @@ export default function Login() {
       onModal={onModal}
       modalContents={modalContents}
       nonMember={nonMember}
+      reset={reset}
     />
   );
 }

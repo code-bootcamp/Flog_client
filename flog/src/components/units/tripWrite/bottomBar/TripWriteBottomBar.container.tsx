@@ -25,8 +25,8 @@ export default function TripWriteBottomBar(props) {
   };
 
   const onClickSubmit = () => {
-    props.saveButtonRef.forEach((x: any) => x.current?.click());
-
+    props.saveButtonRef.current.forEach((x: any) => x.click());
+    console.log(props.saveButtonRef);
     setModalContents("저장이 완료되었습니다");
     setAlertModal(true);
   };

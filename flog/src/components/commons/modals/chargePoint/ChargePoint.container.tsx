@@ -28,10 +28,7 @@ export default function Point(props: IPointProps) {
               입니다
             </M.UserPoint>
             <M.Wrap>
-              <Dropdown10
-                setPoint={props.setPoint}
-                setPointSelect={props.setPointSelect}
-              />
+              <Dropdown10 setPoint={props.setPoint} />
             </M.Wrap>
           </M.Contents>
           <ContainedButton01
@@ -42,7 +39,7 @@ export default function Point(props: IPointProps) {
                 ? props.onClickSubmitDonation
                 : props.onClickSubmitPointModal
             }
-            disabled={props.pointSelect}
+            disabled={!props.point}
             responsive={true}
           />
         </M.Modal>

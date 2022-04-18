@@ -12,7 +12,6 @@ export default function Dropdown10(props) {
   const onClickOption = (el: string) => () => {
     setIsSelect(el);
     props.setPoint(Number(el));
-    props.setPointSelect(false);
   };
   return (
     <>
