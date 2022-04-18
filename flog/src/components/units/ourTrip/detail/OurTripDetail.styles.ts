@@ -2,11 +2,10 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
-  width: 100%;
-  position: absolute;
+  width: 820px;
   overflow-y: scroll;
-  top: -370px;
-  padding-top: 30px;
+  display: ${(props) => (props.isShow ? "block" : "none")};
+  margin-top: 30px;
   height: 700px;
   ::-webkit-scrollbar {
     width: 10px;

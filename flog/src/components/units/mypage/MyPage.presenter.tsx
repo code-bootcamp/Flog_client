@@ -87,6 +87,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
           userName={props.data?.fetchUser?.nickName}
           userPoint={props.data?.fetchUser?.point}
           setPoint={props.setPoint}
+          point={props.point}
           setPointSelect={props.setPointSelect}
         />
       )}

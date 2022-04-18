@@ -1,167 +1,129 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import TripWriteLogUI from "./TripWriteLog.presenter";
 import {
   UPDATE_SHARE,
-  FETCH_SCHEDULE,
   PAYMENT_POINT_TRANSACTION,
   FETCH_USER,
   DELETE_BOARD,
-  FETCH_BOARD
+  FETCH_BOARD,
+  FETCH_SCHEDULE,
 } from "./TripWriteLog.queries";
 
 export default function TripWriteLog(props) {
+  const [share] = useMutation(UPDATE_SHARE);
+  const [deleteBoard] = useMutation(DELETE_BOARD);
+  const [paymentPointTransaction] = useMutation(PAYMENT_POINT_TRANSACTION);
+
   const router = useRouter();
-  const [pointModal, setPointModal] = useState(false);
   const [point, setPoint] = useState(0);
-  const [responsiveToggle, setResponsiveToggle] = useState(false);
-  const [pointSelect, setPointSelect] = useState(true);
-  const [sharing, setSharing] = useState(false);
-  const [alertModal, setAlertModal] = useState(false);
+  const [viewport, setViewport] = useState(0);
+  // Point ResponsiveToggle Sharing TotalMoney
+  const [togglePRST, setTogglePRST] = useState([false, false, false, false]);
   const [modalContents, setModalContents] = useState("");
-  const [totalMoney, setTotalMoney] = useState(false);
+  const [isShow, setIsShow] = useState([true]);
+  const [selected, setSelected] = useState([[]]);
 
-  const onClickAlertModal = () => {
-    setModalContents("flog 여행을 위한 후원 감사합니다!");
-    setAlertModal(true);
-  };
-
-  const onClickExitAlertModal = () => {
-    setAlertModal(false);
-  };
-
-  const onClickSubmitAlertModal = () => {
-    setAlertModal(false);
-  };
-
-  const onClickExitTotalMoneyModal = () => {
-    setTotalMoney(false);
-  };
-
-  const onClickSubmitTotalMoneyModal = () => {
-    setTotalMoney(false);
-  };
-
-  const { data: userData } = useQuery(FETCH_SCHEDULE, {
-    variables: { scheduleId: String(router.query.scheduleId) },
-  });
   const { data: myData } = useQuery(FETCH_USER);
   const { data: BoardData } = useQuery(FETCH_BOARD, {
     variables: { scheduleId: String(router.query.scheduleId) },
   });
 
-  const saveButtonRef = [1, 1, 1, 1].map((el) =>
-    useRef<HTMLButtonElement>(null)
-  );
-  const [share] = useMutation(UPDATE_SHARE);
-  const [deleteBoard] = useMutation(DELETE_BOARD);
+  const { data: userData } = useQuery(FETCH_SCHEDULE, {
+    variables: { scheduleId: String(router.query.scheduleId) },
+  });
+  const saveButtonRef = useRef([]);
 
-  const [paymentPointTransaction] = useMutation(PAYMENT_POINT_TRANSACTION);
+  const changePRST = (index: number) => {
+    const temp = [...togglePRST];
 
-  const [viewport, setViewport] = useState(0);
+    if (temp[index]) temp[index] = false;
+    else temp[index] = true;
+    console.log("d");
+    console.log(temp);
+    console.log(index);
+
+    setTogglePRST(temp);
+  };
   useEffect(() => {
     const viewportWidth = window.visualViewport.width;
     setViewport(viewportWidth);
   }, []);
 
-  useEffect(() => {
-    if (!userData) return;
-    if (userData?.fetchSchedule?.isShare === "1") {
-      setSharing(true);
-    }
-  }, [userData]);
-
-  const [isShow, setIsShow] = useState([true, false, false, false]);
-
-  const toggle = (index: any) => () => {
-    const temp = new Array(4).fill(false);
-    if (isShow[index]) return setIsShow(temp);
-    else {
-      temp[index] = true;
-      setIsShow(temp);
-    }
-  };
   const shareBtn = async () => {
     try {
-      const result = await share({
+      await share({
         variables: {
           scheduleId: String(router.query.scheduleId),
         },
       });
-      setSharing((prev) => !prev);
+      changePRST(2);
+      if (!togglePRST[2]) setModalContents("여행 로그 공유가 완료되었습니다");
+      else setModalContents("여행로그 공유가 취소되었습니다");
     } catch (error) {
       setModalContents(error.message);
-      setAlertModal(true);
     }
   };
 
   const donationFunction = async () => {
     try {
-      const result = await paymentPointTransaction({
+      await paymentPointTransaction({
         variables: {
           userId: userData?.fetchSchedule.user.id,
           point: Number(point),
         },
       });
-      setPointModal(false);
+      changePRST(0);
       setTimeout(() => {
-        onClickAlertModal();
+        setModalContents("flog 여행을 위한 후원 감사합니다!");
       }, 500);
     } catch (error) {
       setModalContents(error.message);
-      setAlertModal(true);
+      changePRST(0);
     }
   };
   const onClickDelete = async () => {
-
     try {
       const result = await deleteBoard({
         variables: {
           scheduleId: String(router.query.scheduleId),
         },
       });
-      setModalContents("여행 로그 삭제가 완료되었습니다.");
-      setAlertModal(true);
+      console.log(result);
+      if (result.data?.deleteBoard)
+        setModalContents("여행 로그 삭제가 완료되었습니다.");
+      else setModalContents("여행 로그가 없습니다.");
     } catch (error) {
       setModalContents(error.message);
-      setAlertModal(true);
     }
-  }
-
+  };
+  useEffect(() => {
+    console.log(BoardData);
+  }, [BoardData]);
 
   return (
     <TripWriteLogUI
+      selected={selected}
+      setSelected={setSelected}
+      changePRST={changePRST}
+      togglePRST={togglePRST}
+      point={point}
       setPoint={setPoint}
-      setPointSelect={setPointSelect}
       isMine={props.isMine}
-      isShow={isShow}
-      toggle={toggle}
       isEdit={props.isEdit}
-      index={props.index}
       saveButtonRef={saveButtonRef}
       shareBtn={shareBtn}
-      userData={userData}
-      pointModal={pointModal}
-      setPointModal={setPointModal}
-      pointSelect={pointSelect}
       donationFunction={donationFunction}
-      setResponsiveToggle={setResponsiveToggle}
-      responsiveToggle={responsiveToggle}
       myData={myData}
-      sharing={sharing}
-      setSharing={setSharing}
       viewport={viewport}
-      onClickExitAlertModal={onClickExitAlertModal}
-      onClickSubmitAlertModal={onClickSubmitAlertModal}
       modalContents={modalContents}
-      alertModal={alertModal}
-      onClickExitTotalMoneyModal={onClickExitTotalMoneyModal}
-      onClickSubmitTotalMoneyModal={onClickSubmitTotalMoneyModal}
-      totalMoney={totalMoney}
-      setTotalMoney={setTotalMoney}
+      setModalContents={setModalContents}
       onClickDelete={onClickDelete}
       BoardData={BoardData}
+      userData={userData}
+      isShow={isShow}
+      setIsShow={setIsShow}
     />
   );
 }

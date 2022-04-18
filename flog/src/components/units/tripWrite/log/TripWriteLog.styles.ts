@@ -22,15 +22,21 @@ export const ToggleResponsive = styled.div`
   display: none;
 `;
 export const InnerWrap = styled.div`
-  width: 95%;
-  max-width: 1200px;
-  height: ${(props) => (props.isEdit ? "auto" : "auto")};
+  width: 1200px;
   min-height: 700px;
+  //position sticky 때문에 높이 지정
+  height: 1200px;
   display: flex;
   margin: 40px 0 120px;
   @media ${breakPoints.mobile} {
     margin-bottom: 0;
   }
+`;
+export const LogListWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  width: calc(26000% / 1200);
+  margin-right: 80px;
 `;
 
 export const isShow = styled.div`
@@ -152,22 +158,6 @@ export const PlanWrapper = styled.div`
   }
 `;
 
-export const DayWrapper = styled.div`
-  padding-top: 10px;
-  position: relative;
-  height: auto;
-  width: 220px;
-  @media ${breakPoints.mobile} {
-    width: 100%;
-  }
-`;
-
-export const Day = styled.span`
-  position: relative;
-  font-size: 20px;
-  font-weight: 500;
-  padding-left: 10px;
-`;
 export const ToggleImg = styled.img`
   top: 18px;
   left: 68px;
@@ -178,62 +168,5 @@ export const ToggleImg = styled.img`
   }
 `;
 
-export const DayPlanWrapper = styled.div`
-  margin-top: 22px;
-`;
-
-export const DayPlanDetail = styled.div`
-  width: 100%;
-  padding: 8px 16px;
-  background-color: #f1f1f1;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  div {
-    color: #818181;
-    font-size: 12px;
-  }
-`;
-
-export const DayPlanLabel = styled.div`
-  font-weight: 500;
-  font-size: 16px;
-`;
-export const moveBtn = styled.button`
-  width: 100%;
-  margin-bottom: 20px;
-  background: ${(props) => (props.isMine ? "#fff" : "#58bd97")};
-  border-radius: 40px;
-  color: ${(props) => (props.isMine ? "#58bd97" : "#fff")};
-  height: 40px;
-  border: ${(props) => (props.isMine ? "1px solid #58bd97 " : "none")};
-  :hover {
-    background: #a1dac5;
-    border-color: #a1dac5;
-    color: ${(props) => (props.isMine ? "#fff" : "")};
-  }
-`;
-
-export const UserInfo = styled.div`
-  border-bottom: 1px solid #e9e9e9;
-  padding: 8px 0 24px;
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-  img {
-    margin-bottom: 7px;
-    width: 98px;
-    height: 98px;
-    border-radius: 50%;
-  }
-`;
-export const Name = styled.div`
-  font-size: 16px;
-  font-weight: 700;
-`;
-export const Email = styled.div`
-  margin-bottom: 13px;
-  font-size: 12px;
-  color: #7d7d7d;
-`;
-
 export const SelectBox = styled.div``;
+export const EditorWrapper = styled.div``;

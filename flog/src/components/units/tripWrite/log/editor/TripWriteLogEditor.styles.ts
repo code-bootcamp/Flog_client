@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Main = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   h1 {
     margin-bottom: 20px;
   }
@@ -11,7 +11,10 @@ export const hideWrapper = styled.div`
   display: none;
 `;
 
-export const EditorWrapper = styled.div``;
+export const EditorWrapper = styled.div`
+  position: absolute;
+  display: ${(props) => (props.isShow ? "block" : "none")};
+`;
 
 export const ReactWrapper = styled.div`
   /* width: 860px; */
