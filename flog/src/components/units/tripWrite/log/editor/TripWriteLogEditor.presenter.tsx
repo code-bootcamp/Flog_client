@@ -7,16 +7,16 @@ export default function TripWriteLogEditorUI(props) {
       <div
         style={{ display: "none" }}
         onClick={props.submitDb}
-        ref={props.saveButtonRef}
+        ref={(el) => (props.saveButtonRef.current?.[props.index] = el)}
       ></div>
-      <Editor.EditorWrapper>
+      <Editor.EditorWrapper isShow={props.isShow}>
         <Editor.ReactWrapper>
           <h3>Day {props.index + 1}</h3>
           <props.ReactQuill
             forwardedRef={props.quillRef}
             onChange={props.handleChange}
             placeholder={"상세 일정을 작성해 보세요"}
-            defaultValue={props.BoardData? props.BoardData.content : ""}
+            defaultValue={props.BoardData ? props.BoardData.content : ""}
             modules={props.modules}
             theme="snow"
           />

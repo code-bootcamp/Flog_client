@@ -33,6 +33,7 @@ export default function LoginUI(props: ILoginUIProps) {
               <OutlinedInput01
                 type="text"
                 register={props.register("email")}
+                onChange={props.reset("email")}
                 placeholder="이메일을 입력하세요"
                 error={props.errorMsg.email !== ""}
               ></OutlinedInput01>
@@ -41,6 +42,7 @@ export default function LoginUI(props: ILoginUIProps) {
               <Login.FormLabel>비밀번호</Login.FormLabel>
               <OutlinedInput01
                 type="password"
+                onChange={props.reset("password")}
                 register={props.register("password")}
                 placeholder="비밀번호를 입력하세요"
                 error={props.errorMsg.password !== ""}

@@ -31,8 +31,8 @@ export default function TripWriteLogEditor(props) {
   const [updateBoard] = useMutation(UPDATE_BOARD);
   const [createBoard] = useMutation(CREATE_BOARD);
   useEffect(() => {
-    setContents(props.BoardData)
-  },[props.BoardData])
+    setContents(props.BoardData);
+  }, [props.BoardData]);
 
   let quillCurrent: any;
   let editor: any;
@@ -51,17 +51,18 @@ export default function TripWriteLogEditor(props) {
     setBoardId(result.data?.createBoard?.id);
   };
   const update = async () => {
-
     const result = await updateBoard({
       variables: {
         updateBoardInput: {
           content: String(contents),
         },
-        boardId: boardId || props.BoardData?.id
+        boardId: boardId || props.BoardData?.id,
       },
     });
   };
   const submitDb = async () => {
+    console.log("저장");
+    console.log(props.index);
     if (!contents) return;
     try {
       boardId || props.BoardData ? update() : create();
@@ -80,8 +81,10 @@ export default function TripWriteLogEditor(props) {
   setRefValue();
   useEffect(() => {
     setRefValue();
-    if (props.selected.title !== "") {
-      addEl(props.selected.title, props.selected.des);
+    // eslint-disable-next-line no-useless-return
+    if (props.selected?.length !== 3) return;
+    else {
+      addEl(props.selected[0], props.selected[1]);
     }
   }, [props.selected]);
 
@@ -105,7 +108,7 @@ export default function TripWriteLogEditor(props) {
       header: 5,
       color: "black",
     });
-    currentFocus.index += des.length + 6;
+    currentFocus.index += des.length + 8;
     editor.setSelection(currentFocus.index, 0, 0);
   };
 
@@ -176,7 +179,6 @@ export default function TripWriteLogEditor(props) {
   useEffect(() => {
     setRefValue();
   }, [imageHandler]);
-
 
   return (
     <TripWriteLogEditorUI
