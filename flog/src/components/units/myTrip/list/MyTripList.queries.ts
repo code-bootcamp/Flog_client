@@ -9,7 +9,8 @@ export const FETCH_SCHEDULES = gql`
       startDate
       endDate
       isShare
-      url
+      thumbnailUrl
+      # url
     }
   }
 `;
@@ -30,6 +31,7 @@ export const UPLOAD_BANNER_IMAGE = gql`
     ) {
       id
       url
+      thumbnailUrl
       title
     }
   }

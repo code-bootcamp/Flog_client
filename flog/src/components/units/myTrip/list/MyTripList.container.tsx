@@ -5,6 +5,8 @@ import {
   GET_BANNER_IMAGE_URL,
   UPLOAD_BANNER_IMAGE,
 } from "./MyTripList.queries";
+import imageCompression from "browser-image-compression";
+import { useEffect } from "react";
 
 export default function MyTripList(props) {
   const [uploadBannerImagefile] = useMutation(GET_BANNER_IMAGE_URL);
@@ -37,20 +39,45 @@ export default function MyTripList(props) {
 
   const onChangeFile = async (event) => {
     const file = event.target.files[0];
+
+    // 카드 이미지
+    // 이미지 resize 옵션 설정 (최대 width을 100px로 지정)
+    const options = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 100,
+    };
+
     try {
-      const result = await uploadBannerImagefile({
-        variables: { file },
-      });
-      const url = result?.data?.uploadBannerImagefile;
+      const compressedFile = await imageCompression(file, options);
+      console.log("카드 이미지 :", compressedFile);
+
       try {
-        await updateBannerImage({
+        const compressedResult = await uploadBannerImagefile({
           variables: {
-            scheduleId: String(event.target.id),
-            updateBannerImageInput: {
-              url: url,
-            },
+            file: compressedFile,
           },
         });
+
+        const originResult = await uploadBannerImagefile({
+          variables: {
+            file: file,
+          },
+        });
+
+        const url = originResult?.data?.uploadBannerImagefile;
+        const thumbnailUrl = compressedResult?.data?.uploadBannerImagefile;
+
+        try {
+          const result = await updateBannerImage({
+            variables: {
+              updateBannerImageInput: { url, thumbnailUrl },
+              scheduleId: String(event.target.id),
+            },
+          });
+          console.log(result?.data?.updateBannerImage);
+        } catch (error) {
+          console.log(error.message);
+        }
       } catch (error) {
         console.log(error.message);
       }
@@ -58,6 +85,10 @@ export default function MyTripList(props) {
       console.log(error.message);
     }
   };
+
+  useEffect(() => {
+    console.log(myData);
+  }, [myData]);
 
   return (
     <MyTripListUI
