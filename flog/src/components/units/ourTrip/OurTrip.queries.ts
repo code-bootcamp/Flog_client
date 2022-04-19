@@ -10,6 +10,7 @@ export const FETCH_SHARE_SCHEDULES = gql`
       hashtag
       location
       url
+      thumbnailUrl
     }
   }
 `;
@@ -22,7 +23,8 @@ export const FETCH_HASHTAG_SEARCH = gql`
       startDate
       endDate
       location
-      url
+      # url
+      thumbnailUrl
     }
   }
 `;
@@ -35,7 +37,8 @@ export const FETCH_TITLE_SEARCH = gql`
       startDate
       endDate
       location
-      url
+      # url
+      thumbnailUrl
     }
   }
 `;

@@ -10,7 +10,7 @@ export const FETCH_SCHEDULES = gql`
       endDate
       isShare
       thumbnailUrl
-      # url
+      url
     }
   }
 `;

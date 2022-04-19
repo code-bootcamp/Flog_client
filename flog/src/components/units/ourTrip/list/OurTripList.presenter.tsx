@@ -22,7 +22,7 @@ export default function OurTripListUI(props) {
                     onClick={() => router.push(`/ourTrips/${el.id}`)}
                     src={
                       el.url
-                        ? `https://storage.cloud.google.com/${el.url}`
+                        ? `https://storage.cloud.google.com/${el.thumbnailUrl}`
                         : `/img/tripList-default.jpg`
                     }
                     onError={props.onErrorImg}
