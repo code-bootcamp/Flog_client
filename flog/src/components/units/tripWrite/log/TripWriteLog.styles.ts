@@ -9,6 +9,7 @@ export const Contents = styled.div`
   width: 100%;
   height: auto;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -17,12 +18,19 @@ export const ToggleResponsive = styled.div`
   background-image: url("/img/mytrips-responsive.png");
   width: 56px;
   height: 56px;
-  position: relative;
+  position: absolute;
+  right:0;
+  top:10  0px;
+  background-size: cover;
   z-index: 12;
   display: none;
-`;
+  @media ${breakPoints.mobile} {
+    display: block;
+  }
+`;  
 export const InnerWrap = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   min-height: 700px;
   //position sticky 때문에 높이 지정
   height: 1200px;
@@ -37,6 +45,7 @@ export const LogListWrapper = styled.div`
   top: 0;
   width: calc(26000% / 1200);
   margin-right: 80px;
+  background: blue;
 `;
 
 export const isShow = styled.div`
@@ -101,6 +110,9 @@ export const MoveBack = styled.div`
   }
   img {
     margin-right: 12px;
+  }
+  @media ${breakPoints.mobile} {
+    display:none;
   }
 `;
 export const BtnGroup = styled.div`
@@ -169,4 +181,9 @@ export const ToggleImg = styled.img`
 `;
 
 export const SelectBox = styled.div``;
-export const EditorWrapper = styled.div``;
+export const EditorWrapper = styled.div`
+  width: calc(820 * 100%/ 1200);
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;

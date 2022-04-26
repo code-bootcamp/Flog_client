@@ -48,7 +48,6 @@ export default function TripWriteLogUI(props) {
         <TripWriteNavigation />
       ) : (
         <Log.Bar>
-          {props.viewport > 767 && (
             <Log.MoveBack
               onClick={() => {
                 router.push("/myTrips");
@@ -57,7 +56,7 @@ export default function TripWriteLogUI(props) {
               <img src="/img/mytrips-write-log1.png" />
               나의 여행 목록으로
             </Log.MoveBack>
-          )}
+
           {props.isMine && (
             <Log.BtnGroup>
               {props.togglePRST[2] ? (
@@ -86,13 +85,11 @@ export default function TripWriteLogUI(props) {
         </Log.Bar>
       )}
       <Log.Contents>
-        {props.viewport < 767 && (
           <Log.ToggleResponsive
             onClick={() => props.setResponsiveToggle((prev) => !prev)}
           />
-        )}
         <Log.InnerWrap isShow={props.togglePRST[1]}>
-          {props.viewport < 767 && <Log.DimBg></Log.DimBg>}
+          {props.viewport < 767? <Log.DimBg></Log.DimBg> : 
           <Log.LogListWrapper>
             <TripWriteLogList
               changePRST={props.changePRST}
@@ -103,7 +100,9 @@ export default function TripWriteLogUI(props) {
               isShow={props.isShow}
               setSelected={props.setSelected}
             />
-          </Log.LogListWrapper>
+          </Log.LogListWrapper>}
+
+          
 
           <Log.EditorWrapper>
             {props.userData?.fetchSchedule?.tripdates

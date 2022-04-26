@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
-  width: 820px;
+  width: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
   display: ${(props) => (props.isShow ? "block" : "none")};
   margin-top: 30px;
   height: 700px;
@@ -23,56 +24,47 @@ export const Container = styled.div`
     width: 100%;
     top: auto;
     height: auto;
-    padding: 0 10px 0 0;
     overflow: auto;
   }
 `;
 export const Contents = styled.div`
   padding: 0 0 33px 10px;
   height: auto;
-  margin: 15px 0 100px;
+
+  margin: 0 0 100px;
   @media ${breakPoints.mobile} {
     width: 100%;
-    margin: 0;
-    padding: 15px 0 15px;
-    border-left: 2px solid #58bd97;
+    /* margin: 0 0 0 22px; */
+    padding-left:  22px;
   }
 `;
 
-export const InnerWrap = styled.div`
-  width: calc(100% - 30px);
-  max-width: 1200px;
-  display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
-`;
+
 export const Day = styled.div`
-  margin: 0 0 10px 20px;
+  padding: 0 0 10px 22px;
+  border-left: 2px solid #58bd97;
   display: flex;
   font-size: 24px;
   font-weight: 500;
+  margin-left: 10px;
   div {
     margin-right: 10px;
   }
   @media ${breakPoints.mobile} {
-    margin: 0;
-    padding: 0 0 10px 20px;
-    border-left: 2px solid #58bd97;
+    margin-left: 22px;
   }
-`;
-export const Line = styled.div`
-  height: 500px;
 `;
 
 export const DayContents = styled.div`
+  width:100%;
+
   font-size: 16px;
   border-left: 2px solid #58bd97;
   position: relative;
-
   .ql-size-large {
     font-size: 24px;
     display: inline-block;
-    margin: 43px 10px 26px 0 !important;
+    margin: 43px 0 26px 0 !important;
     :before {
       content: "";
       width: 20px;
@@ -104,23 +96,26 @@ export const DayContents = styled.div`
   }
   @media ${breakPoints.mobile} {
     width: 100%;
-    border-left: none;
+    padding-left: 29px;
+
     p {
-      padding-left: 20px;
+      padding-left: 0;
       position: relative;
     }
     .ql-size-large {
       font-size: 18px;
       margin-bottom: 0;
+
       margin: 20px 10px 10px 0 !important;
+      position: relative;
       :before {
         content: "";
-        width: 6px;
-        height: 2px;
+        width: 12px;
+        height: 12px;
         background-color: #58bd97;
         position: absolute;
-        left: 0;
-        top: 32px;
+        left: -35.5px;
+        top: 5px;
         margin-right: 60px;
       }
     }
@@ -128,10 +123,11 @@ export const DayContents = styled.div`
       font-size: 14px;
     }
     img {
-      margin: 0;
       width: calc(100% - 30px);
+      margin: 10px 0;
+
     }
-  }
+  } 
 `;
 
 export const Bar = styled.div`
