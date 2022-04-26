@@ -1,15 +1,20 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/Media";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  min-height: calc(100vh - 80px);
+`;
 export const Bg = styled.div`
   background-image: url("/img/login-bg-img1.jpg");
   width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 80px);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   display: flex;
   justify-content: center;
+  align-items: center;
   @media ${breakPoints.mobile} {
     background: none;
   }
