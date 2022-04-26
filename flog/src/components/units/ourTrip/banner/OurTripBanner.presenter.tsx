@@ -16,25 +16,6 @@ export default function OurTripBannerUI(props) {
         </Our.UpperWrap>
         <Our.LowerWrap>
           <Our.Contents>
-            <Our.Region>
-              <Our.RegionSearch onClick={props.onClickMapModal}>
-                <Our.SearchIcon>
-                  <img src="/img/icon-ourtrip-search.svg" alt="검색" />
-                </Our.SearchIcon>
-                <Our.SearchLabel>
-                  {props.viewport <= 767 ? "지역" : "지역 찾아보기"}
-                </Our.SearchLabel>
-              </Our.RegionSearch>
-              <Our.SearchReturn>
-                {props.inputs.doName ? (
-                  <span>
-                    {props.inputs.doName} {props.inputs.cityName}
-                  </span>
-                ) : (
-                  <span className="default">지역을 선택해주세요</span>
-                )}
-              </Our.SearchReturn>
-            </Our.Region>
             <Our.Search>
               <Dropdown04 />
               <Our.SearchBox
@@ -43,10 +24,31 @@ export default function OurTripBannerUI(props) {
                 onChange={props.onChangeTitle}
                 disabled={true}
               />
+            </Our.Search>
+            <Our.RegionWrap>
+              <Our.Region>
+                <Our.RegionSearch onClick={props.onClickMapModal}>
+                  <Our.SearchIcon>
+                    <img src="/img/icon-ourtrip-search.svg" alt="검색" />
+                  </Our.SearchIcon>
+                  <Our.SearchLabel>
+                    {props.viewport <= 767 ? "지역" : "지역 찾아보기"}
+                  </Our.SearchLabel>
+                </Our.RegionSearch>
+                <Our.SearchReturn>
+                  {props.inputs.doName ? (
+                    <span>
+                      {props.inputs.doName} {props.inputs.cityName}
+                    </span>
+                  ) : (
+                    <span className="default">지역을 선택해주세요</span>
+                  )}
+                </Our.SearchReturn>
+              </Our.Region>
               {props.viewport > 767 && (
                 <ContainedButton03 content="검색" size="large" />
               )}
-            </Our.Search>
+            </Our.RegionWrap>
           </Our.Contents>
         </Our.LowerWrap>
       </Our.InnerWrap>

@@ -83,8 +83,18 @@ export const Contents = styled.div`
   width: 100%;
 `;
 
-export const Region = styled.div`
+export const RegionWrap = styled.div`
   width: 984px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;
+
+export const Region = styled.div`
+  width: 86%;
   height: 60px;
   background: #ffffff;
   border-radius: 10px;
@@ -92,7 +102,6 @@ export const Region = styled.div`
   flex-direction: row;
   align-items: center;
   padding-left: 10px;
-  margin-bottom: 20px;
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 48px;
@@ -167,34 +176,10 @@ export const Search = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 20px;
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 48px;
-  }
-  @media ${breakPoints.tablet} {
-  }
-`;
-
-export const SearchBox = styled.div`
-  @media ${breakPoints.mobile} {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 0 24px;
-    border: none;
-    margin-left: 10px;
-    width: 230px;
-    height: 48px;
-    .default {
-      color: #a9a9a9;
-    }
-
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
   }
   @media ${breakPoints.tablet} {
   }

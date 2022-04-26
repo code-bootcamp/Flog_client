@@ -1,4 +1,5 @@
 import { SetStateAction, useEffect, useState } from "react";
+import ContainedButton03 from "../../../../commons/buttons/contained/03/ContainedButton03.container";
 import Dropdown04 from "../../../../commons/dropdowns/04/Dropdown04.container";
 import Dropdown09 from "../../../../commons/dropdowns/09-hashTag/Dropdown09.container";
 import TagSearchBar from "../searchBar/TagSearchBar.container";
@@ -24,25 +25,6 @@ export default function TagSearchBanner(props) {
         </Tag.UpperWrap>
         <Tag.LowerWrap>
           <Tag.Contents>
-            <Tag.Region>
-              <Tag.RegionSearch onClick={props.onClickMapModal}>
-                <Tag.SearchIcon>
-                  <img src="/img/icon-ourtrip-search.svg" alt="검색" />
-                </Tag.SearchIcon>
-                <Tag.SearchLabel>
-                  {viewport <= 767 ? "지역" : "지역 찾아보기"}
-                </Tag.SearchLabel>
-              </Tag.RegionSearch>
-              <Tag.SearchReturn>
-                {props.inputs.doName ? (
-                  <span>
-                    {props.inputs.doName} {props.inputs.cityName}
-                  </span>
-                ) : (
-                  <span className="default">지역을 선택해주세요</span>
-                )}
-              </Tag.SearchReturn>
-            </Tag.Region>
             <Tag.Search>
               <Dropdown04 />
               {viewport <= 767 ? (
@@ -57,6 +39,30 @@ export default function TagSearchBanner(props) {
                 />
               )}
             </Tag.Search>
+            <Tag.RegionWrap>
+              <Tag.Region>
+                <Tag.RegionSearch onClick={props.onClickMapModal}>
+                  <Tag.SearchIcon>
+                    <img src="/img/icon-ourtrip-search.svg" alt="검색" />
+                  </Tag.SearchIcon>
+                  <Tag.SearchLabel>
+                    {viewport <= 767 ? "지역" : "지역 찾아보기"}
+                  </Tag.SearchLabel>
+                </Tag.RegionSearch>
+                <Tag.SearchReturn>
+                  {props.inputs.doName ? (
+                    <span>
+                      {props.inputs.doName} {props.inputs.cityName}
+                    </span>
+                  ) : (
+                    <span className="default">지역을 선택해주세요</span>
+                  )}
+                </Tag.SearchReturn>
+              </Tag.Region>
+              {viewport > 767 && (
+                <ContainedButton03 content="검색" size="large" />
+              )}
+            </Tag.RegionWrap>
           </Tag.Contents>
         </Tag.LowerWrap>
       </Tag.InnerWrap>
