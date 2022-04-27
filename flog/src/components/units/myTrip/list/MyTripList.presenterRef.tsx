@@ -9,7 +9,6 @@ export default function TripListUIItem(props) {
   const onClickUploadBanner = () => {
     fileRef.current?.click();
   };
-  // console.log(props.el);
   return (
     <List.CardWrapper key={uuid4()}>
       <List.Wrapper>

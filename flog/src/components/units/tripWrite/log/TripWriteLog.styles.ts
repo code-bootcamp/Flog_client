@@ -4,36 +4,46 @@ import { breakPoints } from "../../../../commons/styles/Media";
 export const Container = styled.div`
   width: 100%;
   height: auto;
+  position: relative;
+`;
+export const darkScreen = styled.div`
+  width: 100%;
+  height: 104%;
+  background-color: black;
+  opacity: 0.6;
+  position: absolute;
+  top: -48px;
+  z-index: 14;
+  display: ${(props) => (props.darkMode ? "block" : "none")};
 `;
 export const Contents = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: ${(props) => (props.darkMode ? "" : "relative")}; ;
 `;
 export const ToggleResponsive = styled.div`
   background-image: url("/img/mytrips-responsive.png");
   width: 56px;
   height: 56px;
   position: absolute;
-  right:0;
-  top:10  0px;
+  right: 0;
+  top: 30px;
   background-size: cover;
   z-index: 12;
   display: none;
   @media ${breakPoints.mobile} {
     display: block;
   }
-`;  
+`;
 export const InnerWrap = styled.div`
   max-width: 1200px;
   width: 100%;
   min-height: 700px;
-  //position sticky 때문에 높이 지정
-  height: 1200px;
+
   display: flex;
   margin: 40px 0 120px;
   @media ${breakPoints.mobile} {
@@ -44,29 +54,15 @@ export const LogListWrapper = styled.div`
   position: sticky;
   top: 0;
   width: calc(26000% / 1200);
-  margin-right: 80px;
-  background: blue;
-`;
-
-export const isShow = styled.div`
-  display: ${(props) => (props.isShow ? "block" : "none")};
-`;
-
-export const PlanBox = styled.div`
-  display: flex;
-  z-index: 5;
-  top: 10px;
-  left: 0;
-  padding: 24px 20px;
-  border: 1px solid #fff;
-  width: 260px;
-  height: auto;
-  flex-direction: column;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  margin-right: 100px;
   @media ${breakPoints.mobile} {
-    width: 100%;
-    padding: 20px 15px;
+    position: absolute;
+    top: -48px;
+    right: 0;
+    background-color: #fff;
+    margin: 0;
+    z-index: 15;
+    width: 280px;
   }
 `;
 
@@ -94,12 +90,14 @@ export const Bar = styled.div`
   padding-left: 39px;
   width: 100%;
   height: 60px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #e9e9e9;
   @media ${breakPoints.mobile} {
     padding-left: 0;
+    display: ${(props) => (props.mine ? "" : "none")};
   }
 `;
 export const MoveBack = styled.div`
@@ -112,7 +110,15 @@ export const MoveBack = styled.div`
     margin-right: 12px;
   }
   @media ${breakPoints.mobile} {
-    display:none;
+    position: absolute;
+    z-index: 12;
+    background-color: #fff;
+    top: -48px;
+    padding-left: 15px;
+
+    height: 48px;
+    display: flex;
+    align-items: center;
   }
 `;
 export const BtnGroup = styled.div`
@@ -182,7 +188,7 @@ export const ToggleImg = styled.img`
 
 export const SelectBox = styled.div``;
 export const EditorWrapper = styled.div`
-  width: calc(820 * 100%/ 1200);
+  width: calc(820 * 100% / 1200);
   @media ${breakPoints.mobile} {
     width: 100%;
   }

@@ -2,6 +2,7 @@ import TripWriteLogDetailListUI from "./TripWriteLogDetailList.presenter";
 import { FETCH_DETAIL_SCHEDULE } from "../list/TripWriteLogList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 export default function TripWriteLogDetailList(props) {
   const router = useRouter();
 
@@ -11,6 +12,7 @@ export default function TripWriteLogDetailList(props) {
       day: String(props.index + 1),
     },
   });
+
   const addEl = (place: string, memo: string, elIndex: number) => () => {
     const temp = [[]];
     temp[props.index] = [place, memo, elIndex];

@@ -3,13 +3,14 @@ import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const PlanBtnGroup = styled.div`
   display: flex;
-  padding-top: 24px;
-
+  padding: 24px;
   flex-direction: column;
+  > button:nth-child(1) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const PlanWrapper = styled.div`
-  margin-top: 14px;
   width: 100%;
 `;
 
@@ -17,35 +18,22 @@ export const XButton = styled.div`
   font-size: 21px;
   position: absolute;
   z-index: 20;
-  right: 20px;
-  top: 20px;
+  right: 10px;
+  top: 10px;
+  font-size: 25px;
   color: #626262;
-`;
+  cursor: pointer;
+  display: none;
 
-export const DayPlanDetail = styled.div`
-  width: 220px;
-  padding: 8px 16px;
-  background-color: #f1f1f1;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  div {
-    color: #818181;
-    font-size: 12px;
-  }
-  :hover {
-    background-color: #58bd97;
-    div {
-      color: #ffffff;
-    }
-  }
   @media ${breakPoints.mobile} {
-    display: none;
+    display: block;
   }
 `;
 
 export const isShow = styled.div`
   display: ${(props) => (props.isShow ? "block" : "none")};
   margin-top: 24px;
+  padding: 0 24px;
   max-height: 200px;
   overflow-y: scroll;
   ::-webkit-scrollbar {
@@ -61,12 +49,15 @@ export const PlanBox = styled.div`
   z-index: 5;
   height: auto;
   min-height: 600px;
-  padding: 24px 20px;
+  padding: 50px 0;
   border: 1px solid #fff;
   flex-direction: column;
 
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  @media ${breakPoints.mobile} {
+    border-radius: 0;
+  }
 `;
 
 export const BtnGroup = styled.div`
@@ -96,17 +87,15 @@ export const DayWrapper = styled.div`
 
 export const Day = styled.div`
   position: relative;
-  padding: 10px 0;
+  padding: 10px 24px;
   font-size: 20px;
-
   font-weight: 500;
-  padding-left: 10px;
   border-bottom: 1px solid #f1f1f1;
   border-top: 1px solid #f1f1f1;
 `;
 export const ToggleImg = styled.img`
   top: 28px;
-  right: 10px;
+  right: 25px;
   width: 16px;
   position: absolute;
 
@@ -117,36 +106,46 @@ export const ToggleImg = styled.img`
 
 export const moveBtn = styled.button`
   width: 100%;
-  margin-bottom: 20px;
-  background: ${(props) => (props.isMine ? "#fff" : "#58bd97")};
   border-radius: 40px;
-  color: ${(props) => (props.isMine ? "#58bd97" : "#fff")};
+  background-color: #fff;
+  color: #58bd97;
   height: 40px;
 
-  border: ${(props) => (props.isMine ? "1px solid #58bd97 " : "none")};
+  border: 1px solid #58bd97;
 
   :hover {
     background: #a1dac5;
     border-color: #a1dac5;
-    color: ${(props) => (props.isMine ? "#fff" : "")};
+    color: #fff;
   }
 `;
 
 export const UserInfo = styled.div`
   border-bottom: 1px solid #e9e9e9;
-  padding: 8px 0 24px;
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 24px 24px;
   img {
-    margin-bottom: 7px;
+    margin-right: 20px;
+    width: 60px;
+  }
+  > div {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+  > button {
+    width: 100%;
+    margin-top: 12px;
   }
 `;
 export const Name = styled.div`
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
 `;
 export const Email = styled.div`
-  margin-bottom: 13px;
-  font-size: 12px;
+  font-size: 14px;
   color: #7d7d7d;
 `;
