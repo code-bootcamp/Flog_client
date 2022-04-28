@@ -13,7 +13,7 @@ const Container = styled.div`
   width: 100%;
   height: auto;
 `;
-const Body = styled.div`
+const Body = styled.section`
   width: 100%;
   height: auto;
 `;
