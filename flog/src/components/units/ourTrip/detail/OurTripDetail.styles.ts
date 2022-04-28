@@ -2,52 +2,45 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Container = styled.div`
-  width: 820px;
-  overflow-y: scroll;
+  width: 100%;
   display: ${(props) => (props.isShow ? "block" : "none")};
-  margin-top: 30px;
-  height: 700px;
-  ::-webkit-scrollbar {
+  min-height: 700px;
+  /* overflow-y: scroll; */
+  /* ::-webkit-scrollbar {
     width: 10px;
   }
-
   ::-webkit-scrollbar-track {
     background: #eeeeee;
   }
-
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(#58bd97, #58bd97);
-  }
-  @media ${breakPoints.mobile} {
-    position: relative;
-    width: 100%;
-    top: auto;
-    height: auto;
-    padding: 0 10px 0 0;
-    overflow: auto;
-  }
+  } */
 `;
 export const Contents = styled.div`
   padding: 0 0 33px 10px;
   height: auto;
-  margin: 15px 0 100px;
+  margin: 0 0 100px;
+  > div {
+    position: relative;
+    @media ${breakPoints.mobile} {
+      .line {
+        background-color: #58bd97;
+        width: 2px;
+        top: 30px;
+        position: absolute;
+        z-index: 3;
+        height: 30px;
+      }
+    }
+  }
   @media ${breakPoints.mobile} {
     width: 100%;
-    margin: 0;
-    padding: 15px 0 15px;
-    border-left: 2px solid #58bd97;
+    padding-left: 22px;
   }
 `;
 
-export const InnerWrap = styled.div`
-  width: calc(100% - 30px);
-  max-width: 1200px;
-  display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
-`;
 export const Day = styled.div`
-  margin: 0 0 10px 20px;
+  padding: 0 0 40px 0;
   display: flex;
   font-size: 24px;
   font-weight: 500;
@@ -55,24 +48,32 @@ export const Day = styled.div`
     margin-right: 10px;
   }
   @media ${breakPoints.mobile} {
-    margin: 0;
-    padding: 0 0 10px 20px;
-    border-left: 2px solid #58bd97;
+    margin-left: 22px;
+    padding: 0;
   }
-`;
-export const Line = styled.div`
-  height: 500px;
 `;
 
 export const DayContents = styled.div`
+  width: 100%;
   font-size: 16px;
-  border-left: 2px solid #58bd97;
   position: relative;
-
+  .ql-size-large:after {
+    content: "";
+    width: 2px;
+    position: absolute;
+    height: 25px;
+    left: 0;
+    top: 10px;
+    border-left: 2px solid #58bd97;
+    @media ${breakPoints.mobile} {
+      display: none;
+    }
+  }
   .ql-size-large {
+    font-weight: 500;
     font-size: 24px;
     display: inline-block;
-    margin: 43px 10px 26px 0 !important;
+    margin: 0 !important;
     :before {
       content: "";
       width: 20px;
@@ -80,23 +81,31 @@ export const DayContents = styled.div`
       border-radius: 50%;
       background-color: #58bd97;
       position: absolute;
-      left: -11px;
-      margin-right: 60px;
+      left: -9.5px;
+      margin: 5px 0 0;
     }
   }
   .ql-size-large.focused {
     font-weight: 600;
     color: #58bd97 !important;
   }
+  P:nth-child(2) {
+    border: 2px solid #fff;
+  }
+  p:first-child {
+    display: none;
+  }
   p {
-    padding-left: 68px;
+    padding: 0 68px;
+    border-left: 2px solid #58bd97;
   }
   img {
     text-align: center;
     display: block;
     width: 100%;
+    padding: 10px 0;
     max-width: 400px;
-    margin: 10px auto;
+    margin: 0 auto;
   }
   .ql-size-small {
     font-size: 18px;
@@ -104,88 +113,27 @@ export const DayContents = styled.div`
   }
   @media ${breakPoints.mobile} {
     width: 100%;
-    border-left: none;
+
     p {
-      padding-left: 20px;
+      padding: 0 29px;
       position: relative;
     }
     .ql-size-large {
       font-size: 18px;
-      margin-bottom: 0;
       margin: 20px 10px 10px 0 !important;
+      position: relative;
       :before {
-        content: "";
-        width: 6px;
-        height: 2px;
-        background-color: #58bd97;
-        position: absolute;
-        left: 0;
-        top: 32px;
-        margin-right: 60px;
+        width: 12px;
+        height: 12px;
+        left: -35.5px;
       }
     }
     .ql-size-small {
       font-size: 14px;
     }
     img {
-      margin: 0;
       width: calc(100% - 30px);
-    }
-  }
-`;
-
-export const Bar = styled.div`
-  width: calc(100% - 30px);
-  max-width: 1200px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-export const MoveBack = styled.div`
-  font-size: 18px;
-  color: #58bd97;
-  img {
-    margin-right: 12px;
-  }
-`;
-export const BtnGroup = styled.div`
-  display: flex;
-  button {
-    margin-left: 10px;
-  }
-`;
-export const PlanBox = styled.div`
-  display: flex;
-  padding: 24px 20px;
-  width: calc(260 * 100% / 1200);
-  border: 1px solid #fff;
-  flex-direction: column;
-
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-`;
-
-export const DetailBox = styled.div``;
-export const PlanWrapper = styled.div`
-  margin-top: 14px;
-  width: 100%;
-`;
-
-export const DayWrapper = styled.div`
-  padding-top: 10px;
-
-  span {
-    font-size: 20px;
-    font-weight: 500;
-    padding-left: 10px;
-  }
-  img {
-    margin: 0 15px 2px;
-    width: 14px;
-
-    :hover {
-      cursor: pointer;
+      max-height: 205px;
     }
   }
 `;

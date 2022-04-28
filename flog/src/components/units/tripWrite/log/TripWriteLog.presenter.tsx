@@ -17,6 +17,10 @@ export default function TripWriteLogUI(props) {
   const router = useRouter();
   return (
     <Log.Container>
+      <Log.darkScreen
+        onClick={() => props.changePRST(1)}
+        darkMode={props.togglePRST[1]}
+      ></Log.darkScreen>
       <TripWriteBanner />
       {props.modalContents && (
         <Alert
@@ -47,17 +51,16 @@ export default function TripWriteLogUI(props) {
       {props.isEdit ? (
         <TripWriteNavigation />
       ) : (
-        <Log.Bar>
-          {props.viewport > 767 && (
-            <Log.MoveBack
-              onClick={() => {
-                router.push("/myTrips");
-              }}
-            >
-              <img src="/img/mytrips-write-log1.png" />
-              나의 여행 목록으로
-            </Log.MoveBack>
-          )}
+        <Log.Bar mine={props.isMine}>
+          <Log.MoveBack
+            onClick={() => {
+              router.push("/myTrips");
+            }}
+          >
+            <img src="/img/mytrips-write-log1.png" />
+            {props.isMine ? "나의 여행 목록" : "우리의 여행 목록"}
+          </Log.MoveBack>
+
           {props.isMine && (
             <Log.BtnGroup>
               {props.togglePRST[2] ? (
@@ -85,25 +88,22 @@ export default function TripWriteLogUI(props) {
           )}
         </Log.Bar>
       )}
-      <Log.Contents>
-        {props.viewport < 767 && (
-          <Log.ToggleResponsive
-            onClick={() => props.setResponsiveToggle((prev) => !prev)}
-          />
-        )}
-        <Log.InnerWrap isShow={props.togglePRST[1]}>
-          {props.viewport < 767 && <Log.DimBg></Log.DimBg>}
-          <Log.LogListWrapper>
-            <TripWriteLogList
-              changePRST={props.changePRST}
-              isMine={props.isMine}
-              isEdit={props.isEdit}
-              setIsShow={props.setIsShow}
-              userData={props.userData}
-              isShow={props.isShow}
-              setSelected={props.setSelected}
-            />
-          </Log.LogListWrapper>
+      <Log.Contents darkMode={props.togglePRST[1]}>
+        <Log.ToggleResponsive onClick={() => props.changePRST(1)} />
+        <Log.InnerWrap>
+          {(props.viewport > 767 || props.togglePRST[1]) && (
+            <Log.LogListWrapper>
+              <TripWriteLogList
+                changePRST={props.changePRST}
+                isMine={props.isMine}
+                isEdit={props.isEdit}
+                setIsShow={props.setIsShow}
+                userData={props.userData}
+                isShow={props.isShow}
+                setSelected={props.setSelected}
+              />
+            </Log.LogListWrapper>
+          )}
 
           <Log.EditorWrapper>
             {props.userData?.fetchSchedule?.tripdates

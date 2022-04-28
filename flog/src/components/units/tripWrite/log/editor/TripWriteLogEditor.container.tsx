@@ -61,8 +61,6 @@ export default function TripWriteLogEditor(props) {
     });
   };
   const submitDb = async () => {
-    console.log("저장");
-    console.log(props.index);
     if (!contents) return;
     try {
       boardId || props.BoardData ? update() : create();

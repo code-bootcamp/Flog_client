@@ -40,9 +40,6 @@ export default function TripWriteLog(props) {
 
     if (temp[index]) temp[index] = false;
     else temp[index] = true;
-    console.log("d");
-    console.log(temp);
-    console.log(index);
 
     setTogglePRST(temp);
   };
@@ -90,7 +87,6 @@ export default function TripWriteLog(props) {
           scheduleId: String(router.query.scheduleId),
         },
       });
-      console.log(result);
       if (result.data?.deleteBoard)
         setModalContents("여행 로그 삭제가 완료되었습니다.");
       else setModalContents("여행 로그가 없습니다.");
@@ -98,9 +94,6 @@ export default function TripWriteLog(props) {
       setModalContents(error.message);
     }
   };
-  useEffect(() => {
-    console.log(BoardData);
-  }, [BoardData]);
 
   return (
     <TripWriteLogUI

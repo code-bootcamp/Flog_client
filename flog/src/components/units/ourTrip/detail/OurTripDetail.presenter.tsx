@@ -9,6 +9,7 @@ export default function OurTripDetailUI(props) {
       <Detail.Contents>
         {props.BoardData ? (
           <div>
+            <div className="line"></div>
             <Detail.DayContents
               dangerouslySetInnerHTML={{
                 __html: Dompurify.sanitize(String(props.BoardData.content)),
