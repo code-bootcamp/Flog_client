@@ -26,13 +26,12 @@ export default function OurTripList() {
     });
   };
   const onErrorImg = (e: any) => {
-    e.target.src = "/img/tripList-default.jpg"
-  }
+    e.target.src = "/img/tripList-default.jpg";
+  };
   return (
     <OurTripListUI
       onClickMoreOurTrip={onClickMoreOurTrip}
       shareData={shareData}
-
       onErrorImg={onErrorImg}
     />
   );

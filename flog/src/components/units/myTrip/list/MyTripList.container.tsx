@@ -6,7 +6,6 @@ import {
   UPLOAD_BANNER_IMAGE,
 } from "./MyTripList.queries";
 import imageCompression from "browser-image-compression";
-import { useEffect } from "react";
 
 export default function MyTripList(props) {
   const [uploadBannerImagefile] = useMutation(GET_BANNER_IMAGE_URL);
@@ -49,8 +48,6 @@ export default function MyTripList(props) {
 
     try {
       const compressedFile = await imageCompression(file, options);
-      console.log("카드 이미지 :", compressedFile);
-
       try {
         const compressedResult = await uploadBannerImagefile({
           variables: {
@@ -74,7 +71,6 @@ export default function MyTripList(props) {
               scheduleId: String(event.target.id),
             },
           });
-          console.log(result?.data?.updateBannerImage);
         } catch (error) {
           console.log(error.message);
         }
@@ -85,10 +81,6 @@ export default function MyTripList(props) {
       console.log(error.message);
     }
   };
-
-  useEffect(() => {
-    console.log(myData);
-  }, [myData]);
 
   return (
     <MyTripListUI

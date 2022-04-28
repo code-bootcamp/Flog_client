@@ -4,14 +4,14 @@ import { breakPoints } from "../../../../../commons/styles/Media";
 export const Search = styled.div`
   display: flex;
   flex-direction: row;
+  width: 82%;
 `;
 
 export const SearchBox = styled.div`
-  width: 664px;
+  width: 100%;
   height: 60px;
   background: #ffffff;
   border-radius: 10px;
-  margin-right: 20px;
   padding: 0 24px;
   border: none;
   font-size: 16px;
@@ -38,6 +38,7 @@ export const SearchBox = styled.div`
   .checkbox {
     display: flex;
     align-items: center;
+    margin-right: 30px;
   }
   .checkbox_text {
     margin-left: 10px;
