@@ -61,6 +61,7 @@ export const LogListWrapper = styled.div`
     right: 0;
     background-color: #fff;
     margin: 0;
+    height: calc(100% + 48px);
     z-index: 15;
     width: 280px;
   }

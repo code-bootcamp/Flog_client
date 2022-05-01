@@ -8,9 +8,11 @@ export default function TripWriteLogList(props) {
 
   useEffect(() => {
     if (!props.userData) return;
+    if(props.togglePRST[2]) return 
     if (props.userData?.fetchSchedule?.isShare === "1") {
       // props.setTogglePRST([false, false, true, false]);
       props.changePRST(2);
+      console.log(props.userData)
     }
   }, [props.userData]);
 
