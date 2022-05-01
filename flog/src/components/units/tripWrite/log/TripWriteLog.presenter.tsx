@@ -6,6 +6,7 @@ import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
 import TripWriteLogList from "./list/TripWriteLogList.container";
 import { useRouter } from "next/router";
+import { v4 as uuid4 } from "uuid";
 
 import * as Log from "./TripWriteLog.styles";
 import Point from "../../../commons/modals/chargePoint/ChargePoint.container";
@@ -14,6 +15,7 @@ import TotalMoneyModal from "../../../commons/modals/ourTrips/totalMoney/TotalMo
 import TripWriteLogEditor from "./editor/TripWriteLogEditor.container";
 import OurTripDetail from "../../ourTrip/detail/OurTripDetail.container";
 import TotalSchedulesModal from "../../../commons/modals/ourTrips/totalSchedules/TotalSchedules.container";
+import { Fragment } from "react";
 export default function TripWriteLogUI(props) {
   const router = useRouter();
   return (
@@ -104,6 +106,7 @@ export default function TripWriteLogUI(props) {
           {(props.viewport > 767 || props.togglePRST[1]) && (
             <Log.LogListWrapper>
               <TripWriteLogList
+              togglePRST={props.togglePRST}
                 changePRST={props.changePRST}
                 isMine={props.isMine}
                 isEdit={props.isEdit}
@@ -119,7 +122,7 @@ export default function TripWriteLogUI(props) {
             {props.userData?.fetchSchedule?.tripdates
               .split(";")
               .map((el: any, index: number) => (
-                <>
+                <Fragment key={uuid4()}>
                   {props.isEdit ? (
                     <TripWriteLogEditor
                       index={index}
@@ -136,7 +139,7 @@ export default function TripWriteLogUI(props) {
                       selected={props.selected[index]}
                     />
                   )}
-                </>
+                </Fragment>
               ))}
           </Log.EditorWrapper>
         </Log.InnerWrap>

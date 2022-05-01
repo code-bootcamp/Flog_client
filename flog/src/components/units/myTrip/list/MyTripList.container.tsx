@@ -6,6 +6,7 @@ import {
   UPLOAD_BANNER_IMAGE,
 } from "./MyTripList.queries";
 import imageCompression from "browser-image-compression";
+import { checkFileValidation } from "../../../../commons/utils/checkFileValidation";
 
 export default function MyTripList(props) {
   const [uploadBannerImagefile] = useMutation(GET_BANNER_IMAGE_URL);
@@ -38,9 +39,9 @@ export default function MyTripList(props) {
 
   const onChangeFile = async (event) => {
     const file = event.target.files[0];
+    const isValid = checkFileValidation(file);
+    if (!isValid) return;
 
-    // 카드 이미지
-    // 이미지 resize 옵션 설정 (최대 width을 100px로 지정)
     const options = {
       maxSizeMB: 2,
       maxWidthOrHeight: 500,
