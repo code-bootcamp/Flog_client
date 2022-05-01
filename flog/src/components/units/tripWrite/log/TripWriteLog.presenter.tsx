@@ -14,6 +14,7 @@ import Alert from "../../../commons/modals/alert/Alert.container";
 import TotalMoneyModal from "../../../commons/modals/ourTrips/totalMoney/TotalMoney.container";
 import TripWriteLogEditor from "./editor/TripWriteLogEditor.container";
 import OurTripDetail from "../../ourTrip/detail/OurTripDetail.container";
+import TotalSchedulesModal from "../../../commons/modals/ourTrips/totalSchedules/TotalSchedules.container";
 import { Fragment } from "react";
 export default function TripWriteLogUI(props) {
   const router = useRouter();
@@ -44,9 +45,18 @@ export default function TripWriteLogUI(props) {
       )}
 
       {props.togglePRST[3] && (
-        <TotalMoneyModal
+        <TotalSchedulesModal
+          scheduleId={props.scheduleId}
           onClickExit={() => props.changePRST(3)}
           onClickSubmit={() => props.changePRST(3)}
+        />
+      )}
+
+      {props.togglePRST[4] && (
+        <TotalMoneyModal
+          scheduleId={props.scheduleId}
+          onClickExit={() => props.changePRST(4)}
+          onClickSubmit={() => props.changePRST(4)}
         />
       )}
 

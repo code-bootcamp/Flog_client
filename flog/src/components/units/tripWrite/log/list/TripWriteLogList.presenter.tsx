@@ -34,8 +34,13 @@ export default function TripWriteLogListUI(props) {
           </List.UserInfo>
 
           <List.PlanBtnGroup>
-            <List.moveBtn isMine={props.isMine}>전체 일정</List.moveBtn>
-            <List.moveBtn onClick={() => props.changePRST(3)}>
+            <List.moveBtn
+              isMine={props.isMine}
+              onClick={() => props.changePRST(3)}
+            >
+              전체 일정
+            </List.moveBtn>
+            <List.moveBtn onClick={() => props.changePRST(4)}>
               전체 예산
             </List.moveBtn>
           </List.PlanBtnGroup>

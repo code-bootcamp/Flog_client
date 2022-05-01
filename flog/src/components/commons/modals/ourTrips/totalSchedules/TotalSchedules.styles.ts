@@ -16,9 +16,9 @@ export const ModalWrapper = styled.div`
   background-color: #ffffff;
   border-radius: 20px;
   width: 95%;
-  max-width: 960px;
+  max-width: 1200px;
   height: 700px;
-  padding: 25px 50px;
+  padding: 25px;
   border: none;
   left: 50%;
   top: 50%;
@@ -66,6 +66,9 @@ export const Title = styled.div`
   }
   img {
     width: 23px;
+    :hover {
+      cursor: pointer;
+    }
     @media ${breakPoints.mobile} {
       width: 18px;
     }
@@ -78,8 +81,12 @@ export const Content = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  margin-top: 30px;
-  padding-right: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
   &::-webkit-scrollbar {
     width: 8px;
     border-radius: 10px;
@@ -91,35 +98,71 @@ export const Content = styled.div`
   }
 `;
 
-export const MoneyBookColumn = styled.div`
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #dddddd;
-  margin-bottom: 40px;
-  &:last-of-type {
-    border-bottom: 0;
+export const Column = styled.div`
+  display: block;
+  width: 25%;
+  padding: 11px;
+  @media ${breakPoints.tablet} {
+    width: 50%;
   }
   @media ${breakPoints.mobile} {
-    margin-bottom: 0;
+    width: 100%;
   }
 `;
-export const MoneyBookTitle = styled.div`
+
+export const TitleBox = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 0 40px;
-  .title {
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-  .amount {
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
+  margin-bottom: 30px;
   @media ${breakPoints.mobile} {
-    font-size: 18px;
-    padding: 24px 0 36px;
+    margin-top: 26px;
   }
 `;
-export const MoneyBookCards = styled.div``;
+export const ScheduleTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+export const TitleNumber = styled.div`
+  width: 80px;
+  height: 80px;
+  background: #58bd97;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  span {
+    color: #ffffff;
+    font-size: 60px;
+    font-weight: 700;
+  }
+  &:after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: calc(50% - 2px);
+    background: #ffffff;
+  }
+`;
+export const TitleText = styled.div`
+  padding-left: 15px;
+  .date {
+    font-size: 0.9rem;
+    color: #818181;
+    margin-bottom: 7px;
+  }
+  .text {
+    font-size: 1.35rem;
+    font-weight: 500;
+  }
+`;
+export const PlansBox = styled.div`
+  width: 100%;
+`;
