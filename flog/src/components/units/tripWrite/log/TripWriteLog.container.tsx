@@ -19,8 +19,14 @@ export default function TripWriteLog(props) {
   const router = useRouter();
   const [point, setPoint] = useState(0);
   const [viewport, setViewport] = useState(0);
-  // Point ResponsiveToggle Sharing TotalMoney
-  const [togglePRST, setTogglePRST] = useState([false, false, false, false]);
+  // Point ResponsiveToggle Sharing TotalMoney TotalSchedules
+  const [togglePRST, setTogglePRST] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
   const [modalContents, setModalContents] = useState("");
   const [isShow, setIsShow] = useState([true]);
   const [selected, setSelected] = useState([[]]);
@@ -117,6 +123,7 @@ export default function TripWriteLog(props) {
       userData={userData}
       isShow={isShow}
       setIsShow={setIsShow}
+      scheduleId={router.query.scheduleId}
     />
   );
 }

@@ -68,9 +68,13 @@ export default function TripWriteMoneyUI(props) {
                               : el.date.slice(-5).replace("-", ".")}
                           </span>
                           <span className="amount">
-                            {`${insertCommaPrice(
-                              String(props.dailyAmount[index])
-                            )}`}
+                            {`${
+                              props.dailyAmount[index]
+                                ? insertCommaPrice(
+                                    String(props.dailyAmount[index])
+                                  )
+                                : "0"
+                            }`}
                             원
                           </span>
                         </Write.MoneyBookTitle>

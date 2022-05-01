@@ -287,7 +287,7 @@ export default function TripWritePlans() {
     setAlertModal(false);
   };
 
-  console.log("New Upstream PR Test!")
+  console.log("New Upstream PR Test!");
 
   return (
     // <></>
