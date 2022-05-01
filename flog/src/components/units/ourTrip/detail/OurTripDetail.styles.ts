@@ -89,10 +89,10 @@ export const DayContents = styled.div`
     font-weight: 600;
     color: #58bd97 !important;
   }
-  P:nth-child(2) {
+  P:nth-of-type(2) {
     border: 2px solid #fff;
   }
-  p:first-child {
+  p:first-of-type {
     display: none;
   }
   p {

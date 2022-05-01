@@ -5,7 +5,7 @@ export const PlanBtnGroup = styled.div`
   display: flex;
   padding: 24px;
   flex-direction: column;
-  > button:nth-child(1) {
+  > button:nth-of-type(1) {
     margin-bottom: 20px;
   }
 `;
@@ -47,16 +47,15 @@ export const PlanBox = styled.div`
   top: 0px;
   width: 100%;
   z-index: 5;
-  height: auto;
   min-height: 600px;
   padding: 50px 0;
   border: 1px solid #fff;
   flex-direction: column;
-
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   @media ${breakPoints.mobile} {
     border-radius: 0;
+
   }
 `;
 
