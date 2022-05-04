@@ -26,10 +26,7 @@ export default function OurTripDetail(props) {
 
     d(props.selected[2]);
   }, [props.selected]);
-  useEffect(() => {
-    console.log(props.BoardData);
-    console.log(props.index);
-  }, [props.BoardData]);
+
   return (
     <OurTripDetailUI
       modalContents={modalContents}

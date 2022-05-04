@@ -41,7 +41,6 @@ export default function TripWriteLogEditor(props) {
   let currentFocus: any;
 
   const create = async () => {
-    console.log(`${props.index} create`);
     const result = await createBoard({
       variables: {
         createBoardInput: {
@@ -54,7 +53,6 @@ export default function TripWriteLogEditor(props) {
     setBoardId(result.data?.createBoard?.id);
   };
   const update = async () => {
-    console.log(`${props.index} update`);
     try {
       const result = await updateBoard({
         variables: {
@@ -72,9 +70,6 @@ export default function TripWriteLogEditor(props) {
     if (!contents) return;
 
     try {
-      console.log(contents);
-      console.log(props.boardData);
-      console.log(props.index);
       boardId || props.BoardData ? update() : create();
     } catch (error) {
       alert(error.message);
