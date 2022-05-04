@@ -53,7 +53,9 @@ export default function TripWriteLog(props) {
     const viewportWidth = window.visualViewport.width;
     setViewport(viewportWidth);
   }, []);
-
+  useEffect(() => {
+    console.log(BoardData);
+  }, [BoardData]);
   const shareBtn = async () => {
     try {
       await share({

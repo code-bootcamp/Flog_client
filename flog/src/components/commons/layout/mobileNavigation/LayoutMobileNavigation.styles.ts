@@ -8,7 +8,7 @@ export const Container = styled.nav`
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 12;
 `;
 
 export const NavigationList = styled.ul`

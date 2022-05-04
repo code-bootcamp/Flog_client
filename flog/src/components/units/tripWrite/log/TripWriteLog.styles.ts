@@ -8,12 +8,12 @@ export const Container = styled.div`
 `;
 export const darkScreen = styled.div`
   width: 100%;
-  height: 104%;
+  height: calc(150%);
   background-color: black;
   opacity: 0.6;
   position: absolute;
   top: -48px;
-  z-index: 14;
+  z-index: 11;
   display: ${(props) => (props.darkMode ? "block" : "none")};
 `;
 export const Contents = styled.div`
@@ -33,7 +33,7 @@ export const ToggleResponsive = styled.div`
   right: 0;
   top: 30px;
   background-size: cover;
-  z-index: 12;
+  z-index: 9;
   display: none;
   @media ${breakPoints.mobile} {
     display: block;
@@ -62,7 +62,7 @@ export const LogListWrapper = styled.div`
     background-color: #fff;
     margin: 0;
     height: calc(100% + 48px);
-    z-index: 15;
+    z-index: 12;
     width: 280px;
   }
 `;
@@ -112,7 +112,7 @@ export const MoveBack = styled.div`
   }
   @media ${breakPoints.mobile} {
     position: absolute;
-    z-index: 12;
+    z-index: 10;
     background-color: #fff;
     top: -48px;
     padding-left: 15px;
