@@ -8,12 +8,12 @@ export const Container = styled.div`
 `;
 export const darkScreen = styled.div`
   width: 100%;
-  height: calc(150%);
+  height: 100vh;
   background-color: black;
   opacity: 0.6;
-  position: absolute;
-  top: -48px;
-  z-index: 11;
+  position: fixed;
+  top: 0;
+  z-index: 15;
   display: ${(props) => (props.darkMode ? "block" : "none")};
 `;
 export const Contents = styled.div`
@@ -56,13 +56,13 @@ export const LogListWrapper = styled.div`
   width: calc(26000% / 1200);
   margin-right: 100px;
   @media ${breakPoints.mobile} {
-    position: absolute;
-    top: -48px;
+    position: fixed;
+    top: 0;
     right: 0;
     background-color: #fff;
     margin: 0;
-    height: calc(100% + 48px);
-    z-index: 12;
+    height: 100vh;
+    z-index: 16;
     width: 280px;
   }
 `;
