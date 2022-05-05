@@ -29,9 +29,9 @@ export const ToggleResponsive = styled.div`
   background-image: url("/img/mytrips-responsive.png");
   width: 56px;
   height: 56px;
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: 30px;
+  top: 50%;
   background-size: cover;
   z-index: 9;
   display: none;
