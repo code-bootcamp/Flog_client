@@ -54,6 +54,12 @@ export default function TripWriteLog(props) {
     setViewport(viewportWidth);
   }, []);
 
+  useEffect(() => {
+    if (!userData) return;
+    if (userData?.fetchSchedule?.isShare === "1") {
+      changePRST(2);
+    }
+  }, [userData]);
   const shareBtn = async () => {
     try {
       await share({
