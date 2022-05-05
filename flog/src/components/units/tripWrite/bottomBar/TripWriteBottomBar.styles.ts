@@ -12,7 +12,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  z-index: 5;
+  z-index: 11;
   align-items: center;
   @media ${breakPoints.mobile} {
     bottom: 63px;

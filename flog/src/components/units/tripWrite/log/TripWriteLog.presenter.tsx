@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 
-import ContainedButton03 from "../../../commons/buttons/contained/03/ContainedButton03.container";
 import TripWriteBanner from "../banner/TripWriteBanner.container";
 import TripWriteBottomBar from "../bottomBar/TripWriteBottomBar.container";
 import TripWriteNavigation from "../navigation/TripWriteNavigation.container";
@@ -12,10 +11,10 @@ import * as Log from "./TripWriteLog.styles";
 import Point from "../../../commons/modals/chargePoint/ChargePoint.container";
 import Alert from "../../../commons/modals/alert/Alert.container";
 import TotalMoneyModal from "../../../commons/modals/ourTrips/totalMoney/TotalMoney.container";
-import TripWriteLogEditor from "./editor/TripWriteLogEditor.container";
 import OurTripDetail from "../../ourTrip/detail/OurTripDetail.container";
 import TotalSchedulesModal from "../../../commons/modals/ourTrips/totalSchedules/TotalSchedules.container";
 import { Fragment } from "react";
+import EditorWrapper from "./EditorWrapper.container";
 export default function TripWriteLogUI(props) {
   const router = useRouter();
   return (
@@ -104,9 +103,9 @@ export default function TripWriteLogUI(props) {
         <Log.ToggleResponsive onClick={() => props.changePRST(1)} />
         <Log.InnerWrap>
           {(props.viewport > 767 || props.togglePRST[1]) && (
-            <Log.LogListWrapper>
+            <Log.LogListWrapper isEdit={props.isEdit}>
               <TripWriteLogList
-              togglePRST={props.togglePRST}
+                togglePRST={props.togglePRST}
                 changePRST={props.changePRST}
                 isMine={props.isMine}
                 isEdit={props.isEdit}
@@ -119,28 +118,27 @@ export default function TripWriteLogUI(props) {
           )}
 
           <Log.EditorWrapper>
-            {props.userData?.fetchSchedule?.tripdates
-              .split(";")
-              .map((el: any, index: number) => (
-                <Fragment key={uuid4()}>
-                  {props.isEdit ? (
-                    <TripWriteLogEditor
-                      index={index}
-                      isShow={props.isShow[index]}
-                      saveButtonRef={props.saveButtonRef}
-                      BoardData={props.BoardData?.fetchBoard[index]}
-                      selected={props.selected[index]}
-                    />
-                  ) : (
-                    <OurTripDetail
-                      index={index}
-                      isShow={props.isShow[index]}
-                      BoardData={props.BoardData?.fetchBoard[index]}
-                      selected={props.selected[index]}
-                    />
-                  )}
-                </Fragment>
-              ))}
+            {props.isEdit ? (
+              <EditorWrapper
+                userData={props.userData}
+                isShow={props.isShow}
+                saveButtonRef={props.saveButtonRef}
+                BoardData={props.BoardData?.fetchBoard}
+                selected={props.selected}
+              />
+            ) : (
+              props.userData?.fetchSchedule?.tripdates
+                .split(";")
+                .map((el: any, index: number) => (
+                  <OurTripDetail
+                    key={uuid4()}
+                    index={index}
+                    isShow={props.isShow[index]}
+                    BoardData={props.BoardData?.fetchBoard[index]}
+                    selected={props.selected[index]}
+                  />
+                ))
+            )}
           </Log.EditorWrapper>
         </Log.InnerWrap>
       </Log.Contents>

@@ -25,13 +25,15 @@ const ReactQuill = dynamic(
 export default function TripWriteLogEditor(props) {
   const [contents, setContents] = useState(props.BoardData?.content || "");
   const [boardId, setBoardId] = useState(props.BoardData?.id || "");
+  const [modalContents, setModalContents] = useState("");
+
   const quillRef = useRef();
   const router = useRouter();
   const [uploadBoardImagefile] = useMutation(UPLOAD_FILE);
   const [updateBoard] = useMutation(UPDATE_BOARD);
   const [createBoard] = useMutation(CREATE_BOARD);
   useEffect(() => {
-    setContents(props.BoardData);
+    if (props.BoardData?.content) setContents(props.BoardData.content);
   }, [props.BoardData]);
 
   let quillCurrent: any;
@@ -51,17 +53,22 @@ export default function TripWriteLogEditor(props) {
     setBoardId(result.data?.createBoard?.id);
   };
   const update = async () => {
-    const result = await updateBoard({
-      variables: {
-        updateBoardInput: {
-          content: String(contents),
+    try {
+      const result = await updateBoard({
+        variables: {
+          updateBoardInput: {
+            content: String(contents),
+          },
+          boardId: boardId || props.BoardData?.id,
         },
-        boardId: boardId || props.BoardData?.id,
-      },
-    });
+      });
+    } catch (error) {
+      alert(error.message);
+    }
   };
   const submitDb = async () => {
     if (!contents) return;
+
     try {
       boardId || props.BoardData ? update() : create();
     } catch (error) {
@@ -172,6 +179,7 @@ export default function TripWriteLogEditor(props) {
 
   const handleChange = (value) => {
     setContents(value);
+    if (!props.selected) setModalContents("상세일정을 추가해주세요");
   };
 
   useEffect(() => {
@@ -193,6 +201,8 @@ export default function TripWriteLogEditor(props) {
       saveButtonRef={props.saveButtonRef}
       submitDb={submitDb}
       BoardData={props.BoardData}
+      modalContents={modalContents}
+      setModalContents={setModalContents}
     />
   );
 }

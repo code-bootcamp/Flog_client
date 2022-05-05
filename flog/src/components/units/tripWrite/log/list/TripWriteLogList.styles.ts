@@ -55,7 +55,7 @@ export const PlanBox = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   @media ${breakPoints.mobile} {
     border-radius: 0;
-
+    height: 100%;
   }
 `;
 

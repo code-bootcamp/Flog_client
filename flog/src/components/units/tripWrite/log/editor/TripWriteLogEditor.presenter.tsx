@@ -1,9 +1,16 @@
 import * as Editor from "./TripWriteLogEditor.styles";
-import Dompurify from "dompurify";
+import Alert from "../../../../commons/modals/alert/Alert.container";
 
 export default function TripWriteLogEditorUI(props) {
   return (
     <Editor.Main>
+      {props.modalContents && (
+        <Alert
+          onClickExit={() => props.setModalContents("")}
+          onClickSubmit={() => props.setModalContents("")}
+          contents={props.modalContents}
+        />
+      )}
       <div
         style={{ display: "none" }}
         onClick={props.submitDb}
