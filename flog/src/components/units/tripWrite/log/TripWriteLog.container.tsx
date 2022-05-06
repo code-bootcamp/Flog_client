@@ -19,8 +19,14 @@ export default function TripWriteLog(props) {
   const router = useRouter();
   const [point, setPoint] = useState(0);
   const [viewport, setViewport] = useState(0);
-  // Point ResponsiveToggle Sharing TotalMoney
-  const [togglePRST, setTogglePRST] = useState([false, false, false, false]);
+  // Point ResponsiveToggle Sharing TotalMoney TotalSchedules
+  const [togglePRST, setTogglePRST] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
   const [modalContents, setModalContents] = useState("");
   const [isShow, setIsShow] = useState([true]);
   const [selected, setSelected] = useState([[]]);
@@ -40,9 +46,6 @@ export default function TripWriteLog(props) {
 
     if (temp[index]) temp[index] = false;
     else temp[index] = true;
-    console.log("d");
-    console.log(temp);
-    console.log(index);
 
     setTogglePRST(temp);
   };
@@ -51,6 +54,12 @@ export default function TripWriteLog(props) {
     setViewport(viewportWidth);
   }, []);
 
+  useEffect(() => {
+    if (!userData) return;
+    if (userData?.fetchSchedule?.isShare === "1") {
+      changePRST(2);
+    }
+  }, [userData]);
   const shareBtn = async () => {
     try {
       await share({
@@ -90,7 +99,6 @@ export default function TripWriteLog(props) {
           scheduleId: String(router.query.scheduleId),
         },
       });
-      console.log(result);
       if (result.data?.deleteBoard)
         setModalContents("여행 로그 삭제가 완료되었습니다.");
       else setModalContents("여행 로그가 없습니다.");
@@ -98,9 +106,6 @@ export default function TripWriteLog(props) {
       setModalContents(error.message);
     }
   };
-  useEffect(() => {
-    console.log(BoardData);
-  }, [BoardData]);
 
   return (
     <TripWriteLogUI
@@ -124,6 +129,7 @@ export default function TripWriteLog(props) {
       userData={userData}
       isShow={isShow}
       setIsShow={setIsShow}
+      scheduleId={router.query.scheduleId}
     />
   );
 }

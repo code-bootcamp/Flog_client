@@ -9,7 +9,6 @@ export default function TripListUIItem(props) {
   const onClickUploadBanner = () => {
     fileRef.current?.click();
   };
-
   return (
     <List.CardWrapper key={uuid4()}>
       <List.Wrapper>
@@ -41,8 +40,8 @@ export default function TripListUIItem(props) {
               router.push(`/myTrips/${props.el.id}`);
             }}
             src={
-              props.el.url
-                ? `https://storage.cloud.google.com/${props.el.url}`
+              props.el.thumbnailUrl
+                ? `https://storage.cloud.google.com/${props.el.thumbnailUrl}`
                 : `/img/tripList-default.jpg`
             }
             alt="여행이미지"

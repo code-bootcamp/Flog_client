@@ -1,19 +1,5 @@
 import { gql } from "@apollo/client";
 
-export const FETCH_DETAIL_SCHEDULES = gql`
-  query fetchDetailSchedules($scheduleId: String!) {
-    fetchDetailSchedules(scheduleId: $scheduleId) {
-      id
-      day
-      date
-      startTime
-      useTime
-      place
-      memo
-    }
-  }
-`;
-
 export const FETCH_DETAIL_SCHEDULE = gql`
   query fetchDetailSchedule($scheduleId: String!, $day: String!) {
     fetchDetailSchedule(scheduleId: $scheduleId, day: $day) {

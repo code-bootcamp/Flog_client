@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/Media";
 
-export const Container = styled.div`
+export const Container = styled.header`
   width: 100%;
   height: 80px;
   display: flex;
@@ -43,7 +43,7 @@ export const MenuBar = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const Navigation = styled.div`
+export const Navigation = styled.nav`
   width: auto;
   height: auto;
   margin-right: 70px;
@@ -55,7 +55,7 @@ export const Navigation = styled.div`
     li {
       list-style: none;
       display: block;
-      span {
+      a {
         display: block;
         font-size: 1rem;
         font-weight: 500;

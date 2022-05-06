@@ -17,13 +17,13 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
               {NAVIGATION_MENUS.map((el) => (
                 <li key={el.title}>
                   <Link href={{ pathname: el.url }} passHref>
-                    <span
+                    <a
                       className={
                         props.router.asPath.includes(el.url) ? "isNow" : ""
                       }
                     >
                       {el.title}
-                    </span>
+                    </a>
                   </Link>
                 </li>
               ))}

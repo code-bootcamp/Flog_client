@@ -1,17 +1,13 @@
 import * as List from "./TripWriteLogList.styles";
-import TripWriteLogEditor from "../editor/TripWriteLogEditor.container";
-import OurTripDetail from "../../../../units/ourTrip/detail/OurTripDetail.container";
 import ContainedButton03 from "../../../../commons/buttons/contained/03/ContainedButton03.container";
 import TripWriteLogDetailList from "../detailList/TripWriteLogDetailList.container";
 
 export default function TripWriteLogListUI(props) {
   return (
     <List.PlanBox>
+      <List.XButton onClick={() => props.changePRST(1)}>×</List.XButton>
       {props.isEdit || (
         <>
-          {props.viewport < 767 && (
-            <List.XButton onClick={() => props.changePRST(1)}>X</List.XButton>
-          )}
           <List.UserInfo>
             <img
               src={
@@ -20,10 +16,14 @@ export default function TripWriteLogListUI(props) {
                   : "/img/ourtrips-detail-usericon.png"
               }
             />
-            <List.Name>
-              {props.userData?.fetchSchedule?.user.nickName}
-            </List.Name>
-            <List.Email>{props.userData?.fetchSchedule?.user.email}</List.Email>
+            <div>
+              <List.Name>
+                {props.userData?.fetchSchedule?.user.nickName}
+              </List.Name>
+              <List.Email>
+                {props.userData?.fetchSchedule?.user.email}
+              </List.Email>
+            </div>
             {props.isMine || (
               <ContainedButton03
                 content="포인트 후원하기"
@@ -32,9 +32,15 @@ export default function TripWriteLogListUI(props) {
               />
             )}
           </List.UserInfo>
+
           <List.PlanBtnGroup>
-            <List.moveBtn isMine={props.isMine}>전체 일정</List.moveBtn>
-            <List.moveBtn onClick={() => props.changePRST(3)}>
+            <List.moveBtn
+              isMine={props.isMine}
+              onClick={() => props.changePRST(3)}
+            >
+              전체 일정
+            </List.moveBtn>
+            <List.moveBtn onClick={() => props.changePRST(4)}>
               전체 예산
             </List.moveBtn>
           </List.PlanBtnGroup>

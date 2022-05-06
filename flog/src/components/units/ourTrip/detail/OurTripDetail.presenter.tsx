@@ -1,14 +1,22 @@
 import Dompurify from "dompurify";
-import { v4 as uuid4 } from "uuid";
+import Alert from "../../../commons/modals/alert/Alert.container";
 
 import * as Detail from "./OurTripDetail.styles";
 export default function OurTripDetailUI(props) {
   return (
     <Detail.Container ref={props.moveRef} isShow={props.isShow}>
+      {props.modalContents && (
+        <Alert
+          onClickExit={() => props.setModalContents("")}
+          onClickSubmit={() => props.setModalContents("")}
+          contents={props.modalContents}
+        />
+      )}
       <Detail.Day>Day {props.index + 1}</Detail.Day>
       <Detail.Contents>
         {props.BoardData ? (
           <div>
+            <div className="line"></div>
             <Detail.DayContents
               dangerouslySetInnerHTML={{
                 __html: Dompurify.sanitize(String(props.BoardData.content)),

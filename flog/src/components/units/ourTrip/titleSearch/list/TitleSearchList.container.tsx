@@ -14,15 +14,15 @@ export default function OurTripListUI(props) {
           <Dropdown01 />
         </List.Head>
         <List.TripList>
-          {props.titleData?.scheduleSearch.map((el, index) => (
+          {props.titleData?.scheduleSearch.map((el) => (
             <List.CardWrapper key={uuid4()}>
               <List.Wrapper>
                 <List.Image>
                   <img
                     onClick={() => router.push(`/ourTrips/${el.id}`)}
                     src={
-                      el.url
-                        ? `https://storage.cloud.google.com/${el.url}`
+                      el.thumbnailUrl
+                        ? `https://storage.cloud.google.com/${el.thumbnailUrl}`
                         : `/img/tripList-default.jpg`
                     }
                     alt="여행이미지"

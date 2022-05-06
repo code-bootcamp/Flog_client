@@ -36,25 +36,6 @@ export default function TitleSearchBanner(props) {
         </Title.UpperWrap>
         <Title.LowerWrap>
           <Title.Contents>
-            <Title.Region>
-              <Title.RegionSearch onClick={props.onClickMapModal}>
-                <Title.SearchIcon>
-                  <img src="/img/icon-ourtrip-search.svg" alt="검색" />
-                </Title.SearchIcon>
-                <Title.SearchLabel>
-                  {viewport <= 767 ? "지역" : "지역 찾아보기"}
-                </Title.SearchLabel>
-              </Title.RegionSearch>
-              <Title.SearchReturn>
-                {props.inputs.doName ? (
-                  <span>
-                    {props.inputs.doName} {props.inputs.cityName}
-                  </span>
-                ) : (
-                  <span className="default">지역을 선택해주세요</span>
-                )}
-              </Title.SearchReturn>
-            </Title.Region>
             <Title.Search>
               <Dropdown04 />
               <Title.SearchBox
@@ -62,6 +43,27 @@ export default function TitleSearchBanner(props) {
                 placeholder="검색어를 입력해주세요."
                 onChange={onChangeTitle}
               />
+            </Title.Search>
+            <Title.RegionWrap>
+              <Title.Region>
+                <Title.RegionSearch onClick={props.onClickMapModal}>
+                  <Title.SearchIcon>
+                    <img src="/img/icon-ourtrip-search.svg" alt="검색" />
+                  </Title.SearchIcon>
+                  <Title.SearchLabel>
+                    {viewport <= 767 ? "지역" : "지역 찾아보기"}
+                  </Title.SearchLabel>
+                </Title.RegionSearch>
+                <Title.SearchReturn>
+                  {props.inputs.doName ? (
+                    <span>
+                      {props.inputs.doName} {props.inputs.cityName}
+                    </span>
+                  ) : (
+                    <span className="default">지역을 선택해주세요</span>
+                  )}
+                </Title.SearchReturn>
+              </Title.Region>
               {viewport > 767 && (
                 <ContainedButton03
                   content="검색"
@@ -69,7 +71,7 @@ export default function TitleSearchBanner(props) {
                   onClick={props.onClickSearch}
                 />
               )}
-            </Title.Search>
+            </Title.RegionWrap>
           </Title.Contents>
         </Title.LowerWrap>
       </Title.InnerWrap>

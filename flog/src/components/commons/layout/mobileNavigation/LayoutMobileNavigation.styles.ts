@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
+export const Container = styled.nav`
   width: 100%;
   height: 64px;
   background: #fff;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 12;
 `;
 
 export const NavigationList = styled.ul`
