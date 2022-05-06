@@ -14,20 +14,7 @@ export const UPDATE_SHARE = gql`
     }
   }
 `;
-export const FETCH_SCHEDULE = gql`
-  query fetchSchedule($scheduleId: String!) {
-    fetchSchedule(scheduleId: $scheduleId) {
-      user {
-        id
-        email
-        nickName
-        url
-      }
-      tripdates
-      isShare
-    }
-  }
-`;
+
 export const FETCH_USER = gql`
   query fetchUser {
     fetchUser {
@@ -42,11 +29,25 @@ export const DELETE_BOARD = gql`
   }
 `;
 export const FETCH_BOARD = gql`
-  query fetchBoard ($scheduleId: String!){
+  query fetchBoard($scheduleId: String!) {
     fetchBoard(scheduleId: $scheduleId) {
       id
       day
       content
+    }
+  }
+`;
+export const FETCH_SCHEDULE = gql`
+  query fetchSchedule($scheduleId: String!) {
+    fetchSchedule(scheduleId: $scheduleId) {
+      user {
+        id
+        email
+        nickName
+        url
+      }
+      tripdates
+      isShare
     }
   }
 `;

@@ -20,6 +20,7 @@
     "apollo-codegen": "^0.20.2",
     "apollo-upload-client": "^17.0.0",
     "axios": "^0.26.1",
+    "browser-image-compression": "^2.0.0",
     "date-fns": "^2.28.0",
     "dompurify": "^2.3.6",
     "graphql": "^16.3.0",

@@ -5,6 +5,8 @@ import {
   GET_BANNER_IMAGE_URL,
   UPLOAD_BANNER_IMAGE,
 } from "./MyTripList.queries";
+import imageCompression from "browser-image-compression";
+import { checkFileValidation } from "../../../../commons/utils/checkFileValidation";
 
 export default function MyTripList(props) {
   const [uploadBannerImagefile] = useMutation(GET_BANNER_IMAGE_URL);
@@ -37,20 +39,42 @@ export default function MyTripList(props) {
 
   const onChangeFile = async (event) => {
     const file = event.target.files[0];
+    const isValid = checkFileValidation(file);
+    if (!isValid) return;
+
+    const options = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 500,
+    };
+
     try {
-      const result = await uploadBannerImagefile({
-        variables: { file },
-      });
-      const url = result?.data?.uploadBannerImagefile;
+      const compressedFile = await imageCompression(file, options);
       try {
-        await updateBannerImage({
+        const compressedResult = await uploadBannerImagefile({
           variables: {
-            scheduleId: String(event.target.id),
-            updateBannerImageInput: {
-              url: url,
-            },
+            file: compressedFile,
           },
         });
+
+        const originResult = await uploadBannerImagefile({
+          variables: {
+            file: file,
+          },
+        });
+
+        const url = originResult?.data?.uploadBannerImagefile;
+        const thumbnailUrl = compressedResult?.data?.uploadBannerImagefile;
+
+        try {
+          const result = await updateBannerImage({
+            variables: {
+              updateBannerImageInput: { url, thumbnailUrl },
+              scheduleId: String(event.target.id),
+            },
+          });
+        } catch (error) {
+          console.log(error.message);
+        }
       } catch (error) {
         console.log(error.message);
       }

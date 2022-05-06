@@ -65,7 +65,6 @@ export const Image = styled.div`
   border-radius: 20px;
   z-index: 0;
   aspect-ratio: 38 / 32.8;
-  cursor: pointer;
   @media ${breakPoints.mobile} {
     border-radius: 10px;
   }

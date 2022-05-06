@@ -46,21 +46,6 @@ export default function TripWriteMoney() {
     },
   });
 
-  // const fetchSchedule = () => {
-  //   try {
-  //     const result = client.query({
-  //       query: FETCH_SCHEDULE,
-  //       variables: {
-  //         scheduleId: router.query.scheduleId,
-  //       },
-  //     });
-  //     return result;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // const dataSchedule = fetchSchedule();
-
   const [createBudget] = useMutation(CREATE_BUDGET);
   const [updateBudget] = useMutation(UPDATE_BUDGET);
   const [createMoneyBook] = useMutation(CREATE_MONEYBOOK);

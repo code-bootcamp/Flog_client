@@ -6,6 +6,7 @@ import Dropdown01 from "../../../../commons/dropdowns/01/Dropdown01.container";
 
 export default function OurTripListUI(props) {
   const router = useRouter();
+
   return (
     <List.ListWrap>
       <List.List>
@@ -21,8 +22,8 @@ export default function OurTripListUI(props) {
                   <img
                     onClick={() => router.push(`/ourTrips/${el.id}`)}
                     src={
-                      el.url
-                        ? `https://storage.cloud.google.com/${el.url}`
+                      el.thumbnailUrl
+                        ? `https://storage.cloud.google.com/${el.thumbnailUrl}`
                         : `/img/tripList-default.jpg`
                     }
                     alt="여행이미지"

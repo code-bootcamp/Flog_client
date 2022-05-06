@@ -1,38 +1,27 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/Media";
 
 export const Main = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   h1 {
     margin-bottom: 20px;
+  }
+  @media ${breakPoints.mobile} {
+    padding: 0 16px;
   }
 `;
 export const hideWrapper = styled.div`
   display: none;
 `;
 
-export const EditorWrapper = styled.div``;
+export const EditorWrapper = styled.div`
+  display: ${(props) => (props.isShow ? "block" : "none")};
+`;
 
 export const ReactWrapper = styled.div`
-  /* width: 860px; */
   display: flex;
   flex-direction: column;
-
-  .ql-editor {
-    height: 570px;
-    overflow-y: scroll;
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #eeeeee;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(#58bd97, #58bd97);
-    }
-  }
 
   .ql-editor img {
     max-width: 400px !important;
@@ -49,10 +38,6 @@ export const ReactWrapper = styled.div`
   }
   padding: 0;
   margin: 0;
-
-  /* .ql-snow .ql-picker-label {
-      font-size: 14px;
-    } */
 `;
 export const AddBtn = styled.div`
   padding: 20px;

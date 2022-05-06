@@ -1,6 +1,5 @@
 import * as Search from "./TagSearchBar.styles";
 import { useState } from "react";
-import ContainedButton03 from "../../../../commons/buttons/contained/03/ContainedButton03.container";
 
 export default function TagSearchBar(props) {
   const [isSelect, setIsSelect] = useState([
@@ -35,7 +34,6 @@ export default function TagSearchBar(props) {
           </label>
         ))}
       </Search.SearchBox>
-      <ContainedButton03 content="검색" size="large" />
     </Search.Search>
   );
 }

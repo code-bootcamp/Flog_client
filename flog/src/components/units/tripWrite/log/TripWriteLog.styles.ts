@@ -4,6 +4,17 @@ import { breakPoints } from "../../../../commons/styles/Media";
 export const Container = styled.div`
   width: 100%;
   height: auto;
+  position: relative;
+`;
+export const darkScreen = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.6;
+  position: fixed;
+  top: 0;
+  z-index: 15;
+  display: ${(props) => (props.darkMode ? "block" : "none")};
 `;
 export const Contents = styled.div`
   width: 100%;
@@ -12,46 +23,47 @@ export const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: ${(props) => (props.darkMode ? "" : "relative")}; ;
 `;
 export const ToggleResponsive = styled.div`
   background-image: url("/img/mytrips-responsive.png");
   width: 56px;
   height: 56px;
-  position: relative;
-  z-index: 12;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  background-size: cover;
+  z-index: 9;
   display: none;
+  @media ${breakPoints.mobile} {
+    display: block;
+  }
 `;
 export const InnerWrap = styled.div`
-  width: 95%;
   max-width: 1200px;
-  height: ${(props) => (props.isEdit ? "auto" : "auto")};
+  width: 100%;
   min-height: 700px;
+
   display: flex;
   margin: 40px 0 120px;
   @media ${breakPoints.mobile} {
     margin-bottom: 0;
   }
 `;
-
-export const isShow = styled.div`
-  display: ${(props) => (props.isShow ? "block" : "none")};
-`;
-
-export const PlanBox = styled.div`
-  display: flex;
-  z-index: 5;
-  top: 10px;
-  left: 0;
-  padding: 24px 20px;
-  border: 1px solid #fff;
-  width: 260px;
-  height: auto;
-  flex-direction: column;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+export const LogListWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  width: calc(26000% / 1200);
+  margin-right: 100px;
   @media ${breakPoints.mobile} {
-    width: 100%;
-    padding: 20px 15px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    margin: 0;
+    height: 100vh;
+    z-index: 16;
+    width: 280px;
   }
 `;
 
@@ -79,12 +91,14 @@ export const Bar = styled.div`
   padding-left: 39px;
   width: 100%;
   height: 60px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #e9e9e9;
   @media ${breakPoints.mobile} {
     padding-left: 0;
+    display: ${(props) => (props.mine ? "" : "none")};
   }
 `;
 export const MoveBack = styled.div`
@@ -95,6 +109,17 @@ export const MoveBack = styled.div`
   }
   img {
     margin-right: 12px;
+  }
+  @media ${breakPoints.mobile} {
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+    top: -48px;
+    padding-left: 15px;
+
+    height: 48px;
+    display: flex;
+    align-items: center;
   }
 `;
 export const BtnGroup = styled.div`
@@ -152,22 +177,6 @@ export const PlanWrapper = styled.div`
   }
 `;
 
-export const DayWrapper = styled.div`
-  padding-top: 10px;
-  position: relative;
-  height: auto;
-  width: 220px;
-  @media ${breakPoints.mobile} {
-    width: 100%;
-  }
-`;
-
-export const Day = styled.span`
-  position: relative;
-  font-size: 20px;
-  font-weight: 500;
-  padding-left: 10px;
-`;
 export const ToggleImg = styled.img`
   top: 18px;
   left: 68px;
@@ -178,62 +187,10 @@ export const ToggleImg = styled.img`
   }
 `;
 
-export const DayPlanWrapper = styled.div`
-  margin-top: 22px;
-`;
-
-export const DayPlanDetail = styled.div`
-  width: 100%;
-  padding: 8px 16px;
-  background-color: #f1f1f1;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  div {
-    color: #818181;
-    font-size: 12px;
-  }
-`;
-
-export const DayPlanLabel = styled.div`
-  font-weight: 500;
-  font-size: 16px;
-`;
-export const moveBtn = styled.button`
-  width: 100%;
-  margin-bottom: 20px;
-  background: ${(props) => (props.isMine ? "#fff" : "#58bd97")};
-  border-radius: 40px;
-  color: ${(props) => (props.isMine ? "#58bd97" : "#fff")};
-  height: 40px;
-  border: ${(props) => (props.isMine ? "1px solid #58bd97 " : "none")};
-  :hover {
-    background: #a1dac5;
-    border-color: #a1dac5;
-    color: ${(props) => (props.isMine ? "#fff" : "")};
-  }
-`;
-
-export const UserInfo = styled.div`
-  border-bottom: 1px solid #e9e9e9;
-  padding: 8px 0 24px;
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-  img {
-    margin-bottom: 7px;
-    width: 98px;
-    height: 98px;
-    border-radius: 50%;
-  }
-`;
-export const Name = styled.div`
-  font-size: 16px;
-  font-weight: 700;
-`;
-export const Email = styled.div`
-  margin-bottom: 13px;
-  font-size: 12px;
-  color: #7d7d7d;
-`;
-
 export const SelectBox = styled.div``;
+export const EditorWrapper = styled.div`
+  width: calc(820 * 100% / 1200);
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;

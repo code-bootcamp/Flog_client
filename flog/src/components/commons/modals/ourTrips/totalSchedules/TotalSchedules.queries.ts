@@ -13,15 +13,15 @@ export const FETCH_DETAIL_SCHEDULE = gql`
     }
   }
 `;
-export const CREATE_BOARD = gql`
-  mutation createBoard(
-    $createBoardInput: CreateBoardInput!
-    $scheduleId: String!
-  ) {
-    createBoard(createBoardInput: $createBoardInput, scheduleId: $scheduleId) {
+
+export const FETCH_SCHEDULE = gql`
+  query fetchSchedule($scheduleId: String!) {
+    fetchSchedule(scheduleId: $scheduleId) {
       id
-      day
-      content
+      title
+      startDate
+      endDate
+      tripdates
     }
   }
 `;
